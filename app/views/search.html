@@ -11,63 +11,41 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-4">
-                            <input type="text" class="form-control" placeholder="Last Name">
+                            <input type="text" class="form-control" placeholder="Last Name" ng-model="lastName">
                         </div>
                         <div class="col-xs-4">
-                            <input type="date" class="form-control" placeholder="Arrival Date">
+                            <input type="date" class="form-control" placeholder="Arrival Date" ng-model="arrivalDate">
                         </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-default" type="button">
+                            <button class="btn btn-default" type="button" ng-click="onSearchClick()">
                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+           
             <div class="row">
+               
                 <table class="table table-hover textAlignLeft">
                   <thead>
-                      <th>#</th>
+                    <tr>
+                      <th>Reseravation Number</th>
                       <th>First Name</th>
                       <th>Last Name</th>
-                      <th>Email</th>
-                      <th>Room No</th>
+                      <th>Arrival Date</th>
+                      <th>Departure Date</th>
                       <th>Actions</th>
+                    </tr>
                   </thead>
                   <tbody>
-                     <tr>
-                        <td>1</td>
-                        <td>Ankit</td>
-                         <td>Tanna</td>
-                         <td>ankit.bharat.tanna@accenture.com</td>
-                         <td>134</td>
-                         <td>
-                            <p>
-                              <button type="button" class="btn btn-info btn-sm">Modify</button>
-                              <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                            </p>
-                         </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Ankit</td>
-                         <td>Tanna</td>
-                         <td>ankit.bharat.tanna@accenture.com</td>
-                         <td>134</td>
-                         <td>
-                            <p>
-                              <button type="button" class="btn btn-info btn-sm">Modify</button>
-                              <button type="button" class="btn btn-danger btn-sm">Delete</button>
-                            </p>
-                         </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Ankit</td>
-                         <td>Tanna</td>
-                         <td>ankit.bharat.tanna@accenture.com</td>
-                         <td>134</td>
-                         <td>
+                    <tr ng-repeat="(index, reservation) in reservations">
+                      <td>{{reservation.reservationNumber}}</td>
+                      <td>{{reservation.firstName}}</td>
+                      <td>{{reservation.lastName}}</td>
+                      <td>{{reservation.arrivalDate}}</td>
+                      <td>{{reservation.departureDate}}</td>
+                       <td>
                             <p>
                               <button type="button" class="btn btn-info btn-sm">Modify</button>
                               <button type="button" class="btn btn-danger btn-sm">Delete</button>
