@@ -8,7 +8,7 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('SearchCtrl', ['$scope', '$http', function ($scope, $http) {  
+  .controller('SearchCtrl', ['$scope', '$http', 'HRS', function ($scope, $http, HRS) {  
     
     // Tab Visibility Logic
     angular.element('#appNavBar').css('display', 'block');
@@ -49,6 +49,10 @@ angular.module('appModernizationApp')
                 lastName: this.searchLastName.trim(),
                 arrivalDate: this.searchArrivalDate
             };
+            
+            HRS.searchReservations('Jo', '20150202').then(function(response){
+                alert(JSON.stringify(response))
+            });
             
            // alert(JSON.stringify(postSearchCriteria));
         } else

@@ -13,11 +13,13 @@ function hotelReservationServices($http)
         searchReservations: searchReservations
     };
     
-    function searchReservation()
+    function searchReservations(lastName, arrivalDate)
     {
+       // alert(lastName + ' ' + arrivalDate)
+        
           return $http({
           method: 'GET',
-          url: baseUrl + '/reservation'
+          url: baseUrl + '/reservation?lastName='+lastName+'&arrivalDate='+arrivalDate
           })
             .then(success)
             .catch(failure);
