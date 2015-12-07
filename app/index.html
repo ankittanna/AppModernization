@@ -39,8 +39,8 @@
 
                 <ul id="appNavBar" class="nav navbar-nav">
                   <!--<li class="active"><a href="#/">Home</a></li> -->
-                  <li class="active"><a href="#/details">Book A Room</a></li>
-                  <li><a ng-href="#/search">Search Room</a></li>
+                  <li class="active" id="bookTab" onClick="switchTabStyle(this)"><a href="#/details">Book A Room</a></li>
+                  <li id="searchTab" onClick="switchTabStyle(this)"><a ng-href="#/search">Search Room</a></li>
                   <!--<li><a ng-href="#/about">About</a></li>
                   <li><a ng-href="#/">Contact</a></li> -->
                 </ul>
@@ -58,7 +58,6 @@
                 <p><span class="glyphicon glyphicon-copyright-mark"></span> OceanView Hotel 2015.</p>
             </div>
         </div>
-    
     
       <script>
           // This is called with the results from from FB.getLoginStatus().
@@ -174,6 +173,7 @@
         <script src="scripts/controllers/details.js"></script>
         <script src="scripts/controllers/search.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/appModernization.js"></script>
         <!-- endbuild -->
 </body>
 </html>
