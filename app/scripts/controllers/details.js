@@ -10,14 +10,9 @@
 angular.module('appModernizationApp')
   .controller('DetailsCtrl', function () {
     
+    console.log("Comes here 1");
     angular.element('#appNavBar').css('display', 'block');
+    console.log("Comes here 2");
     
-    this.storeDetails = function(){
-        console.log("Form Submitted");
-    };
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    
   });
