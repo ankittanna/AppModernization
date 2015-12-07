@@ -16,6 +16,48 @@ angular.module('appModernizationApp')
     angular.element('#searchTab').addClass('active');
     angular.element('#bookTab').removeClass('active');
 
+    this.searchLastName = '';
+    this.searchArrivalDate = '';
+    
+    this.validateSearchCriteria = function()
+    {
+        var lastName = this.searchLastName.trim();
+        var todayDate = new Date();
+        var selectedDate = new Date(this.searchArrivalDate);
+        
+        if(lastName.length === 0 && todayDate.notPreviousDay(selectedDate))
+        {
+            alert('Name cannot be blank and Date cannot be less than todays date.');
+            return false;
+        } else if(selectedDate == 'Invalid Date')
+        {
+            alert('Date Cannot be blank.');
+            return false;
+        } else
+        {
+            return true;
+        }
+    };
+      
+    this.searchReservations = function()
+    {
+        //alert(this.validateSearchCriteria());
+        
+        if(this.validateSearchCriteria())
+        {
+            var postSearchCriteria = {
+                lastName: this.searchLastName.trim(),
+                arrivalDate: this.searchArrivalDate
+            };
+            
+           // alert(JSON.stringify(postSearchCriteria));
+        } else
+        {
+            alert('Please enter proper name or date.');
+        }
+    };
+      
+      
   	$scope.reservations = [
         {reservationNumber: '1',  firstName: 'Vinod', lastName: 'Khandelwal', arrivalDate: '01/12/2015' ,departureDate:'05/12/2015'},
         {reservationNumber: '2',  firstName: 'Vinod1', lastName: 'Khandelwal', arrivalDate: '02/12/2015' ,departureDate:'06/12/2015'},

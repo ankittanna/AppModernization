@@ -14,3 +14,10 @@ function switchTabStyle(tab)
     }
     
 }
+
+// Date Not Previous Day
+Date.prototype.notPreviousDay = function(d) {
+  return d.getFullYear() >= this.getFullYear()
+    && d.getDate() >= this.getDate()
+    && d.getMonth() >= this.getMonth();
+};
