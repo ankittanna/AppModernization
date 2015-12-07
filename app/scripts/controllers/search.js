@@ -10,8 +10,11 @@
 angular.module('appModernizationApp')
   .controller('SearchCtrl', ['$scope', '$http', function ($scope, $http) {  
     
+    // Tab Visibility Logic
     angular.element('#appNavBar').css('display', 'block');
-      
+    // Tab Active Logic
+    angular.element('#searchTab').addClass('active');
+    angular.element('#bookTab').removeClass('active');
 
   	$scope.reservations = [
         {reservationNumber: '1',  firstName: 'Vinod', lastName: 'Khandelwal', arrivalDate: '01/12/2015' ,departureDate:'05/12/2015'},
