@@ -9,7 +9,9 @@
  */
 angular.module('appModernizationApp')
   .controller('SearchCtrl', ['$scope', '$http', function ($scope, $http) {  
-
+    
+    angular.element('#appNavBar').css('display', 'block');
+      
 
   	$scope.reservations = [
         {reservationNumber: '1',  firstName: 'Vinod', lastName: 'Khandelwal', arrivalDate: '01/12/2015' ,departureDate:'05/12/2015'},

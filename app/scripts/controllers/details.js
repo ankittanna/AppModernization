@@ -9,6 +9,9 @@
  */
 angular.module('appModernizationApp')
   .controller('DetailsCtrl', function () {
+    
+    angular.element('#appNavBar').css('display', 'block');
+    
     this.storeDetails = function(){
         console.log("Form Submitted");
     };

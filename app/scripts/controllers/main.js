@@ -9,6 +9,9 @@
  */
 angular.module('appModernizationApp')
   .controller('MainCtrl', function () {
+    
+    angular.element('#appNavBar').css('display', 'none');
+    
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
