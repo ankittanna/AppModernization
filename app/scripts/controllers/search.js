@@ -64,7 +64,7 @@ angular.module('appModernizationApp')
         {reservationNumber: '3',  firstName: 'Vinod2', lastName: 'Khandelwal', arrivalDate: '03/12/2015', departureDate:'07/12/2015'},
         {reservationNumber: '4',  firstName: 'Vinod3', lastName: 'Khandelwal', arrivalDate: '04/12/2015', departureDate:'08/12/2015'},
         {reservationNumber: '5',  firstName: 'Vinod4', lastName: 'Khandelwal', arrivalDate: '05/12/2015', departureDate:'09/12/2015'},
-        {reservationNumber: '6',  firstName: 'Vinod5', lastName: 'Khandelwal', arrivalDate: '06y/12/2015', departureDate:'10/12/2015'}
+        {reservationNumber: '6',  firstName: 'Vinod5', lastName: 'Khandelwal', arrivalDate: '06/12/2015', departureDate:'10/12/2015'}
 
     ];
 
