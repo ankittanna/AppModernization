@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="DetailsCtrl">
     <div class="row">
         <div class="col-xs-12">
             <h3>Reservation Details</h3>    
@@ -29,12 +29,16 @@
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="date" class="form-control" placeholder="Date">
+            <select id="roomtype">
+                <option ng-repeat="type in roomtype" value="{{type}}">{{type}}</option>
+            </select>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
-        <div class="col-xs-12 col-sm-9 col-md-1">
-           <input class="form-control"  type="checkbox">
+        <div class="col-xs-12 col-sm-9 col-md-2">
+           <!--<input class="form-control"  type="checkbox">-->
+            <label><input type="radio" name="optradio">Yes</label>
+            <label><input type="radio" name="optradio">No</label>
         </div>
 
   </div>
@@ -48,14 +52,16 @@
    <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-         <input type="text" class="form-control" placeholder="Room Number">
+         <select id="roomnumber">
+                <option ng-repeat="number in roomnumbers" value="{{number}}">{{number}}</option>
+        </select>      
         </div>
   </div>
 
    <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
         <div class="col-xs-12 col-sm-9 col-md-10">
-           <input type="text" class="form-control" placeholder="Room Desc">
+             <textarea class="form-control" rows="5" id="roomdescription" placeholder="Room Desc"></textarea>
         </div>
   </div>
 
@@ -130,7 +136,10 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Card Type">
+           <select id="cardtype">
+            <option>Master Card</option> 
+               <option>Visa Card</option>
+           </select>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
@@ -184,8 +193,10 @@
 
     <br/> 
     <div class="form-group">
-       <div class="col-xs-12 col-sm-6 col-md-3">
-            <input type="submit" value="Reserve a Room" />
+       <div class="col-xs-12 col-sm-6 col-md-4">
+            <input type="submit" value="Book a Room" />
+           <input type="submit" value="Cancel" />
+           
         </div>
     </div>
   

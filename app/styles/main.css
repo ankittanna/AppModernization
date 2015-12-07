@@ -86,3 +86,9 @@ body {
 {
     text-align: left;
 }
+form hr
+{
+    border:1px solid black;
+    margin-top:0px;
+    margin-bottom:15px;
+}
