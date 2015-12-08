@@ -88,7 +88,47 @@ body {
 }
 form hr
 {
-    border:1px solid black;
+    border:1px solid #ccc;
     margin-top:0px;
     margin-bottom:15px;
+}
+
+form h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form .form-group label.control-label {
+  font-weight: normal;
+  text-align: left;
+}
+
+.navbar {
+  background-color: #FF7A01;
+}
+
+body {
+  color: #000;
+  font-size: 1.2em;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff !important;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #000 !important;
+    background-color: #FFDD00;
+}
+
+.btn-md {
+  background-color: #FF7A01;
+  color:#fff;
+}
+
+.form-control {
+  font-size: 1em;
+  height: 28px;
 }

@@ -36,6 +36,10 @@ angular.module('appModernizationApp')
 'WEDDING SUITE'
  ];
 
+ $scope.expirymonth = ['Jan','Feb','Mar','Apr','May'];
+
+ $scope.expiryyear = ['2015','2016','2017','2018','2019'];
+
     $scope.ratecode = ['TW - TWIN ROOM EAST EXPOSURE',
 'AN - SINGLE ROOM EAST',
 'KN - KING SIZE NORTH EXPOSURE',

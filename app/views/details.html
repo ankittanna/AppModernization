@@ -29,51 +29,51 @@
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <select id="roomtype">
+            <select id="roomtype" class="form-control">
                 <option ng-repeat="type in roomtype" value="{{type}}">{{type}}</option>
             </select>
         </div>
 
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
-        <div class="col-xs-12 col-sm-9 col-md-2">
-           <!--<input class="form-control"  type="checkbox">-->
-            <label><input type="radio" name="optradio">Yes</label>
-            <label><input type="radio" name="optradio">No</label>
-        </div>
+         <div class="col-xs-12 col-sm-12 col-md-2">
+              <a><button type="button" class="btn btn-default btn-md form-control">
+              Get Rooms
+            </button></a>
+         </div>
+
+       
 
   </div>
 
   <div class="form-group">
-        <div class="col-xs-12 col-sm-12 col-md-2 col-md-offset-2">
-                <input type="submit" class="form-control" value="Get Rooms" />
-         </div>
-  </div>
-
-   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-         <select id="roomnumber">
+         <select id="roomnumber" class="form-control">
                 <option ng-repeat="number in roomnumbers" value="{{number}}">{{number}}</option>
         </select>      
         </div>
-  </div>
 
-   <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
-        <div class="col-xs-12 col-sm-9 col-md-10">
-             <textarea class="form-control" rows="5" id="roomdescription" placeholder="Room Desc"></textarea>
+         <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
+        <div class="col-xs-12 col-sm-9 col-md-3">
+           <input type="text" class="form-control" placeholder="Smoking flag" readonly>
         </div>
   </div>
 
    <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Rating Code">
+           <input type="text" class="form-control" placeholder="Rating Code" readonly>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Room Rate">
+           <input type="text" class="form-control" placeholder="Room Rate" readonly>
+        </div>
+  </div>
+
+  <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
+        <div class="col-xs-12 col-sm-9 col-md-10">
+             <textarea class="form-control" rows="3" id="roomdescription" placeholder="Room Desc" readonly></textarea>
         </div>
   </div>
 
@@ -114,7 +114,7 @@
            <input type="text" class="form-control" placeholder="Company Name">
         </div>
 
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone:</label>
+        <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
            <input type="text" class="form-control" placeholder="Phone Number">
         </div>
@@ -136,7 +136,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <select id="cardtype">
+           <select id="cardtype" class="form-control">
             <option>Master Card</option> 
                <option>Visa Card</option>
            </select>
@@ -150,32 +150,18 @@
 
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
-        <div class="col-xs-12 col-sm-9 col-md-2">
-           <div class="dropdown" class="col-xs-3">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Month
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><a>Jan</a></li>
-                <li><a>Feb</a></li>
-                <li><a>March</a></li>
-              </ul>
-            </div>
-
-        </div>
-        <div class="col-xs-12 col-sm-9 col-md-2">
-            <div class="dropdown" class="col-xs-3">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Year
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><a>2015</a></li>
-                <li><a>2016</a></li>
-                <li><a>2017</a></li>
-              </ul>
-            </div>
+       <div class="col-xs-12 col-sm-9 col-md-2">
+            
+            <select id="roomtype" class="form-control">
+                <option ng-repeat="month in expirymonth" value="{{month}}">{{month}}</option>
+            </select>
+        
+        
+         </div>
+        <div class="col-xs-12 col-sm-9 col-md-2">            
+            <select id="roomtype" class="form-control">
+                <option ng-repeat="year in expiryyear" value="{{year}}">{{year}}</option>
+            </select>        
         
          </div>
     </div>
@@ -186,22 +172,25 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
         <div class="col-xs-12 col-sm-9 col-md-10">
-           <input type="text" class="form-control" placeholder="Comments">
+           <textarea class="form-control" rows="3" id="comments" placeholder="Comments"></textarea>
         </div>
     </div>
 
 
     <br/> 
     <div class="form-group">
-       <div class="col-xs-12 col-sm-6 col-md-4">
-            <input type="submit" value="Book a Room" />
-           <input type="submit" value="Cancel" />
-           
+       <div class="col-xs-12 col-sm-6 col-md-3">
+             <a><button type="button" class="btn btn-default btn-md form-control">
+              Request Reservation
+            </button></a>
+       </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+           <a><button type="button" class="btn btn-default btn-md form-control">
+              Cancle Reservation
+            </button></a>
         </div>
     </div>
-  
-    
-    </form>
-    
+  </form>
     
 </div>
