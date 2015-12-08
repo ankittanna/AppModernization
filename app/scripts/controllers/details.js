@@ -9,7 +9,8 @@
  */
 angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS',function ($scope,$http,HRS,$location) {
-    
+
+      
 this.storeDetails = function(){
     $scope.arrivalDate = angular.element($('#arrivalDate')).val();
     $scope.departureDate = angular.element($('#departureDate')).val();
@@ -28,8 +29,14 @@ this.storeDetails = function(){
     $scope.expiryMonth = angular.element($('#expiryMonth')).val();
     $scope.expiryYear = angular.element($('#expiryYear')).val();
     $scope.comments = angular.element($('#comments')).val();
+    
+    $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
+    //$scope.arrivalDate = $scope.reverse($scope.arrivalDate);
+    console.log($scope.arrivalDate);
 
     HRS.saveReservations($scope.arrivalDate,$scope.departureDate,$scope.roomType, $scope.firstName, $scope.middleName, $scope.lastName, $scope.addressLine1, $scope.addressLine2, $scope.addressLine3, $scope.companyName, $scope.phonenumber, $scope.lateArrival, $scope.cardType, $scope.cardNumber, $scope.expiryMonth, $scope.expiryYear, $scope.comments);
+    
+    window.location.href="http://localhost:9000/#/view";
 }
 
       
