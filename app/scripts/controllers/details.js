@@ -9,7 +9,64 @@
  */
 angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS',function ($scope,$http,HRS,$location) {
+      
+$scope.roomDetails = [{
+                roomNo : 101,
+                smoking: "Yes",
+                rateCode: 'HA',
+                roomRate: 1500,
+                roomDesc: "Large Room with Wifi Facility",
+                lateArrival: "Yes"
+            },
+            {
+                roomNo : 102,
+                smoking: 'Yes',
+                rateCode: 'HA',
+                roomRate: 1500,
+                roomDesc: "Large Room with Wifi Facility",
+                lateArrival: 'Yes'
+            },
+            {
+                roomNo : 103,
+                smoking: 'Yes',
+                rateCode: 'HA',
+                roomRate: 1500,
+                roomDesc: "Large Room with Wifi Facility",
+                lateArrival:'Yes'
+            },
+            {
+                roomNo : 104,
+                smoking: 'Yes',
+                rateCode: 'HA',
+                roomRate: 1500,
+                roomDesc:"Large Room with Wifi Facility",
+                lateArrival: 'Yes'
+            }
+        ]
+      
+this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag,lateArrival){
+    console.log(" Data :"+roomno+rateCode+roomRate+roomDesc+smokingFlag+lateArrival);
+    $scope.roomNumberTemp = roomno;
+    $scope.rateCodeTemp = rateCode+" ";
+    $scope.roomRateTemp = roomRate;
+    $scope.roomDescTemp = roomDesc;
+    $scope.smokingFlagTemp = smokingFlag;
+    $scope.lateArrivalTemp = lateArrival;
+}
+    
+this.selectRoom = function(){
+    $scope.roomNumber = $scope.roomNumberTemp;
+    $scope.rateCode = $scope.rateCodeTemp;
+    $scope.roomRate = $scope.roomRateTemp;
+    $scope.roomDesc = $scope.roomDescTemp;
+    $scope.smokingFlag = $scope.smokingFlagTemp;
+    $scope.lateArrival = $scope.lateArrivalTemp;
+}
 
+this.searchRooms = function(){
+    
+    angular.element('.roomDetails').css('display', 'block');
+};
       
 this.storeDetails = function(){
     $scope.arrivalDate = angular.element($('#arrivalDate')).val();
@@ -23,7 +80,6 @@ this.storeDetails = function(){
     $scope.addressLine3 = angular.element($('#addressLine3')).val();
     $scope.companyName = angular.element($('#companyName')).val();
     $scope.phonenumber = angular.element($('#phonenumber')).val();
-    $scope.lateArrival = angular.element($('#lateArrival')).val();
     $scope.cardType = angular.element($('#cardType')).val();
     $scope.cardNumber = angular.element($('#cardNumber')).val();
     $scope.expiryMonth = angular.element($('#expiryMonth')).val();

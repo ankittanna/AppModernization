@@ -43,49 +43,72 @@
               <a><button type="button" class="btn btn-default btn-md form-control" ng-click="details.searchRooms()">
               Search Rooms
             </button></a>
-         </div>      
+         </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 roomDetails">
+        <table class="table-bordered .table-striped table-hover roomDetailsTable">
+        <thead>
+            <th>Select Room</th>
+            <th>Room Number</th>
+            <th>Rate Code</th>
+            <th>Room Rate</th>
+            <th>Room Desc.</th>
+            <th>Smoking</th>
+            <th>Late Arrival</th>
+        </thead>
+        <tr ng-repeat="rooms in roomDetails">
+            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.roomRate}},'{{rooms.roomDesc}}','{{rooms.smoking}}','{{rooms.lateArrival}}')"></td>
+            <td>{{rooms.roomNo}}</td>
+            <td>{{rooms.rateCode}}</td>    
+            <td>{{rooms.roomRate}}</td>    
+            <td>{{rooms.roomDesc}}</td>    
+            <td>{{rooms.smoking}}</td>    
+            <td>{{rooms.lateArrival}}</td>    
+        </tr>
+        </table>
+          <div class="col-xs-12 col-sm-12 col-md-4">
+        <button type="button" class="btn btn-default btn-md form-control" ng-click="details.selectRoom()">
+            Select Room
+          </button>
+              </div>
+    </div>
    </div>
     
     <h4>Room Details:</h4>
     <hr>
     
-
-
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-         <select id="roomnumber" class="form-control">
-                <option ng-repeat="number in roomnumbers" value="{{number}}">{{number}}</option>
-        </select>      
+            <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" ng-model= "roomNumber" readonly>
         </div>
 
          <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
         <div class="col-xs-12 col-sm-9 col-md-3">
-           <input type="text" class="form-control" placeholder="Smoking flag" readonly>
+           <input  type="text" id="smokingFlag" class="form-control" placeholder="Smoking flag" ng-model= "smokingFlag" readonly>
         </div>
   </div>
 
    <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Rating Code" readonly>
+           <input id="rateCode" type="text" class="form-control" placeholder="Rating Code" ng-model="rateCode" readonly>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Room Rate" readonly>
+           <input id="roomRate" type="text" class="form-control" placeholder="Room Rate" ng-model="roomRate" readonly>
         </div>
   </div>
 
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-             <textarea class="form-control" rows="3" id="roomdescription" placeholder="Room Desc" readonly></textarea>
+             <textarea id="romDesc" class="form-control" rows="3" id="roomdescription" ng-model="roomDesc" placeholder="Room Desc" readonly></textarea>
         </div>
          
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
-        <div class="col-xs-12 col-sm-9 col-md-1">
-           <input class="form-control" id="lateArrival" type="checkbox">
+        <div class="col-xs-12 col-sm-9 col-md-3">
+           <input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly>
         </div>
   </div>
 

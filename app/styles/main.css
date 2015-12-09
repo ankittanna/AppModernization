@@ -132,3 +132,17 @@ body {
   font-size: 1em;
   height: 28px;
 }
+
+.roomDetailsTable{
+    width:100%;
+    text-align:center;
+    margin-top:20px;
+}
+.roomDetails{
+    display:none;   
+}
+
+.roomDetailsTable th{
+    background-color: #FF7A01;
+    
+}
