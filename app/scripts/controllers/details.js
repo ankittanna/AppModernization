@@ -80,7 +80,8 @@ this.storeDetails = function(){
     $scope.addressLine2 = angular.element($('#addressLine2')).val();
     $scope.addressLine3 = angular.element($('#addressLine3')).val();
     $scope.companyName = angular.element($('#companyName')).val();
-    $scope.phonenumber = angular.element($('#phonenumber')).val();
+    $scope.phoneNumber = angular.element($('#phoneNumber')).val();
+    $scope.lateArrival = angular.element($('#lateArrival')).val();
     $scope.cardType = angular.element($('#cardType')).val();
     $scope.cardNumber = angular.element($('#cardNumber')).val();
     $scope.expiryMonth = angular.element($('#expiryMonth')).val();
@@ -88,13 +89,48 @@ this.storeDetails = function(){
     $scope.comments = angular.element($('#comments')).val();
     
     $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
-    //$scope.arrivalDate = $scope.reverse($scope.arrivalDate);
-    console.log($scope.arrivalDate);
-
-
-    HRS.saveReservations($scope.arrivalDate,$scope.departureDate,$scope.roomType, $scope.firstName, $scope.middleName, $scope.lastName, $scope.addressLine1, $scope.addressLine2, $scope.addressLine3, $scope.companyName, $scope.phonenumber, $scope.lateArrival, $scope.cardType, $scope.cardNumber, $scope.expiryMonth, $scope.expiryYear, $scope.comments);
+    $scope.departureDate = $scope.departureDate.replace(/-/g,'');
     
-    window.location.href="http://localhost:9000/#/view";
+    var reservationDetails = {
+    "customer": {
+    "firstName": $scope.firstName,
+    "lastName": $scope.lastName,
+    "middleName": $scope.middleName,
+    "addressLine1": $scope.addressLine1,
+    "addressLine2": $scope.addressLine2,
+    "addressLine3": $scope.addressLine3,
+    "phoneNumber": $scope.phoneNumber,
+    "companyName": $scope.companyName
+  },
+ 
+  "arrivalDate": parseInt($scope.arrivalDate),
+  "departureDate": parseInt($scope.departureDate),
+  "cardNumber": $scope.cardNumber,
+  "cardType": $scope.cardType,
+  "comments1": $scope.comments,
+  "comments2": "",
+  "lateArrivalFlag": false,
+  "expiryDate": 1017,
+  
+ "room" : {
+    "roomNo": 1,
+    "smokeFlag": true,
+    "roomType": "KI",
+    "rateCode": "TW",
+    "roomDescription": "Nice Room",
+    "rate": 0
+  }
+};
+
+
+    console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
+    
+    HRS.saveReservations(reservationDetails).then(function(data){
+        alert(data);
+    });
+    
+    // dont use this. Use $location for changing the view.
+    //window.location.href="http://localhost:9000/#/view";
 }
 
       

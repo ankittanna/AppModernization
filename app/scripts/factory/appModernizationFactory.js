@@ -37,24 +37,28 @@ function hotelReservationServices($http)
     
         function saveReservations(reservationDetails)
     {   
-            console.log("Inside Reservations");
+            console.log("Inside Reservations " + reservationDetails);
+        console.log("Inside Reservations 2" + JSON.stringify(reservationDetails));
             
             //console.log("Data :"+arrivalDate+" "+departureDate+" "+roomType+" "+ firstName+" "+ middleName+" "+ lastName+" "+ addressLine1+" "+ addressLine2+" "+ addressLine3+" "+ companyName+" "+ phonenumber+" "+ lateArrival+" "+ cardType+" "+ cardNumber+" "+ expiryMonth+" "+ expiryYear+" "+ comments);
         
           return $http({
           method: 'POST',
           url: baseUrl + '/reservation',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           data: reservationDetails
-          })
-            .then(success)
+        }).then(success)
             .catch(failure);
 
           function success(response) {
+            console.log('reaching success function');
             return response;
           }
 
           function failure(error) {
-            console.log('XHR Failed for searchReservation' + error.data);
+            console.log('XHR Failed for searchReservation' + JSON.stringify(error));
             return error;
           }
     }
