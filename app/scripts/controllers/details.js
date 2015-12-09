@@ -45,14 +45,14 @@ $scope.roomDetails = [{
             }
         ]
       
-this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag,lateArrival){
-    console.log(" Data :"+roomno+rateCode+roomRate+roomDesc+smokingFlag+lateArrival);
+this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag){
+    console.log(" Data :"+roomno+rateCode+roomRate+roomDesc+smokingFlag);
     $scope.roomNumberTemp = roomno;
     $scope.rateCodeTemp = rateCode+" ";
     $scope.roomRateTemp = roomRate;
     $scope.roomDescTemp = roomDesc;
     $scope.smokingFlagTemp = smokingFlag;
-    $scope.lateArrivalTemp = lateArrival;
+   // $scope.lateArrivalTemp = lateArrival;
 }
     
 this.selectRoom = function(){

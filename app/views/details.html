@@ -39,7 +39,7 @@
             </select>
         </div>
 
-         <div class="col-xs-12 col-sm-12 col-md-2">
+         <div class="col-xs-12 col-sm-12 col-md-3">
               <a><button type="button" class="btn btn-default btn-md form-control" ng-click="details.searchRooms()">
               Search Rooms
             </button></a>
@@ -53,16 +53,16 @@
             <th>Room Rate</th>
             <th>Room Desc.</th>
             <th>Smoking</th>
-            <th>Late Arrival</th>
+           <!-- <th>Late Arrival</th>-->
         </thead>
         <tr ng-repeat="rooms in roomDetails">
-            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.roomRate}},'{{rooms.roomDesc}}','{{rooms.smoking}}','{{rooms.lateArrival}}')"></td>
+            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.roomRate}},'{{rooms.roomDesc}}','{{rooms.smoking}}')"></td>
             <td>{{rooms.roomNo}}</td>
             <td>{{rooms.rateCode}}</td>    
             <td>{{rooms.roomRate}}</td>    
             <td>{{rooms.roomDesc}}</td>    
             <td>{{rooms.smoking}}</td>    
-            <td>{{rooms.lateArrival}}</td>    
+           <!-- <td>{{rooms.lateArrival}}</td>    -->
         </tr>
         </table>
         <div class="col-xs-12 col-sm-12 col-md-4">
@@ -107,8 +107,9 @@
         </div>
          
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
-        <div class="col-xs-12 col-sm-9 col-md-3">
-           <input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly>
+        <div class="col-xs-12 col-sm-9 col-md-1">
+           <input id="lateArriva" class="form-control"  type="checkbox">
+           <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
         </div>
   </div>
 
@@ -183,6 +184,7 @@
        <div class="col-xs-12 col-sm-9 col-md-2">
             
             <select id="expiryMonth" class="form-control">
+                <option selected disabled hidden value=''>Month</option>
                 <option ng-repeat="month in expirymonth" value="{{month}}">{{month}}</option>
             </select>
         
@@ -190,6 +192,7 @@
          </div>
         <div class="col-xs-12 col-sm-9 col-md-2">            
             <select id="expiryYear" class="form-control">
+                <option selected disabled hidden value=''>Year</option>
                 <option ng-repeat="year in expiryyear" value="{{year}}">{{year}}</option>
             </select>        
         
