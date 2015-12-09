@@ -108,16 +108,16 @@ this.storeDetails = function(){
   "cardType": $scope.cardType,
   "comments1": $scope.comments,
   "comments2": "",
-  "lateArrivalFlag": false,
-  "expiryDate": 1017,
+  "lateArrivalFlag": $scope.lateArrival == "on" ? true:false,
+  "expiryDate": parseInt($scope.expiryMonth + $scope.expiryYear, 0),
   
  "room" : {
-    "roomNo": 1,
-    "smokeFlag": true,
-    "roomType": "KI",
-    "rateCode": "TW",
-    "roomDescription": "Nice Room",
-    "rate": 0
+    "roomNo": parseInt(angular.element('#roomNumber').val()),
+    "smokeFlag": $scope.smokingFlag == "Yes" ? true:false,
+    "roomType": $scope.roomType,
+    "rateCode": $scope.rateCode,
+    "roomDescription": $scope.roomDesc,
+    "rate": parseInt($scope.roomRate)
   }
 };
 
@@ -160,9 +160,32 @@ this.storeDetails = function(){
 'WEDDING SUITE'
  ];
 
- $scope.expirymonth = ['Jan','Feb','Mar','Apr','May'];
+ $scope.expirymonth = [
+     {month: 'Jan', val: '01'},
+     {month: 'Feb', val: '02'},
+     {month: 'Mar', val: '03'},
+     {month: 'Apr', val: '04'},
+     {month: 'May', val: '05'},
+     {month: 'Jun', val: '06'},
+     {month: 'Jul', val: '07'},
+     {month: 'Aug', val: '08'},
+     {month: 'Sep', val: '09'},
+     {month: 'Oct', val: '10'},
+     {month: 'Nov', val: '11'},
+     {month: 'Dec', val: '12'}
+ ];
 
- $scope.expiryyear = ['2015','2016','2017','2018','2019'];
+ $scope.expiryyear = [
+     {year: '2015', val:'15'},
+     {year: '2016', val:'16'},
+     {year: '2017', val:'17'},
+     {year: '2018', val:'18'},
+     {year: '2019', val:'19'},
+     {year: '2020', val:'20'},
+     {year: '2021', val:'21'},
+     {year: '2022', val:'22'},
+     {year: '2023', val:'23'}
+ ];
 
     $scope.ratecode = ['TW - TWIN ROOM EAST EXPOSURE',
 'AN - SINGLE ROOM EAST',
