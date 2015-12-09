@@ -9,7 +9,6 @@
  */
 angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS','$location',function ($scope,$http,HRS,$location) {
-      //$location.html5Mode(true).hashPrefix('!');
 
 $scope.roomDetails = [{
                 roomNo : 101,
@@ -66,7 +65,6 @@ this.selectRoom = function(){
 }
 
 this.searchRooms = function(){
-    
     angular.element('.roomDetails').css('display', 'block');
 };
       
@@ -132,7 +130,7 @@ this.storeDetails = function(){
     
     // dont use this. Use $location for changing the view.
     //window.location.href="http://localhost:9000/#/view";
-   // $location.path('/view');
+    $location.path('/view');
 }
 
       

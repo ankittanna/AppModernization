@@ -139,7 +139,7 @@ body {
     margin-top:20px;
 }
 .roomDetails{
-    display:none;   
+    display:none;
 }
 
 .roomDetailsTable th{
@@ -147,12 +147,12 @@ body {
 }
 .footer{
     background-color: #282828;
-    
 }
 
 .footer p{
     text-align: right; 
     color:#E7E7E7;
+   
 }
 
 .title{
