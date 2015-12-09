@@ -61,6 +61,7 @@ this.selectRoom = function(){
     $scope.roomDesc = $scope.roomDescTemp;
     $scope.smokingFlag = $scope.smokingFlagTemp;
     $scope.lateArrival = $scope.lateArrivalTemp;
+    angular.element('.roomDetails').css('display', 'none');
 }
 
 this.searchRooms = function(){
