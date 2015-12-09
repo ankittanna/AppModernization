@@ -8,8 +8,9 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('DetailsCtrl', ['$scope','$http','HRS',function ($scope,$http,HRS,$location) {
-      
+  .controller('DetailsCtrl', ['$scope','$http','HRS','$location',function ($scope,$http,HRS,$location) {
+      //$location.html5Mode(true).hashPrefix('!');
+
 $scope.roomDetails = [{
                 roomNo : 101,
                 smoking: "Yes",
@@ -131,6 +132,7 @@ this.storeDetails = function(){
     
     // dont use this. Use $location for changing the view.
     //window.location.href="http://localhost:9000/#/view";
+   // $location.path('/view');
 }
 
       
