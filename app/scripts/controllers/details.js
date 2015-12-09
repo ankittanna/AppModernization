@@ -34,6 +34,7 @@ this.storeDetails = function(){
     //$scope.arrivalDate = $scope.reverse($scope.arrivalDate);
     console.log($scope.arrivalDate);
 
+
     HRS.saveReservations($scope.arrivalDate,$scope.departureDate,$scope.roomType, $scope.firstName, $scope.middleName, $scope.lastName, $scope.addressLine1, $scope.addressLine2, $scope.addressLine3, $scope.companyName, $scope.phonenumber, $scope.lateArrival, $scope.cardType, $scope.cardNumber, $scope.expiryMonth, $scope.expiryYear, $scope.comments);
     
     window.location.href="http://localhost:9000/#/view";
@@ -83,8 +84,7 @@ this.storeDetails = function(){
     angular.element('#appNavBar').css('display', 'block');
     // Tab Active Logic
     angular.element('#bookTab').addClass('active');
-    angular.element('#searchTab').removeClass('active');
-    
+    angular.element('#searchTab').removeClass('active'); 
     
   }]);
 

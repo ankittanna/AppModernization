@@ -35,14 +35,16 @@ function hotelReservationServices($http)
           }
     }
     
-        function saveReservations(arrivalDate,departureDate,roomType, firstName, middleName, lastName, addressLine1, addressLine2, addressLine3, companyName, phonenumber, lateArrival, cardType, cardNumber, expiryMonth, expiryYear, comments)
+        function saveReservations(reservationDetails)
     {   
-            console.log("Inside Reservations")
-            console.log("Data :"+arrivalDate+" "+departureDate+" "+roomType+" "+ firstName+" "+ middleName+" "+ lastName+" "+ addressLine1+" "+ addressLine2+" "+ addressLine3+" "+ companyName+" "+ phonenumber+" "+ lateArrival+" "+ cardType+" "+ cardNumber+" "+ expiryMonth+" "+ expiryYear+" "+ comments);
+            console.log("Inside Reservations");
+            
+            //console.log("Data :"+arrivalDate+" "+departureDate+" "+roomType+" "+ firstName+" "+ middleName+" "+ lastName+" "+ addressLine1+" "+ addressLine2+" "+ addressLine3+" "+ companyName+" "+ phonenumber+" "+ lateArrival+" "+ cardType+" "+ cardNumber+" "+ expiryMonth+" "+ expiryYear+" "+ comments);
         
           return $http({
-          method: 'GET',
-          url: baseUrl + '/reservation?lastName='+lastName+'&arrivalDate='+arrivalDate
+          method: 'POST',
+          url: baseUrl + '/reservation',
+          data: reservationDetails
           })
             .then(success)
             .catch(failure);
