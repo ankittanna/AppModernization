@@ -105,7 +105,7 @@ form .form-group label.control-label {
 }
 
 .navbar {
-  background-color: #FF7A01;
+  background-color: #66AA45;
 }
 
 body {
@@ -124,7 +124,7 @@ body {
 }
 
 .btn-md {
-  background-color: #FF7A01;
+  background-color: #66AA45;
   color:#fff;
 }
 
@@ -143,6 +143,5 @@ body {
 }
 
 .roomDetailsTable th{
-    background-color: #FF7A01;
-    
+    background-color: #66AA45;  
 }
