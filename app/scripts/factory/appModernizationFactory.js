@@ -48,9 +48,9 @@ function hotelReservationServices($http)
           headers: {
             'Content-Type': 'application/json'
           },
-          data: reservationDetails
+          data: {"customer":{"firstName":"a","lastName":"c","middleName":"b","addressLine1":"x","addressLine2":"y","addressLine3":"z","phoneNumber":"904977","companyName":"acc"},"arrivalDate":20151210,"departureDate":20151212,"cardNumber":"1111111111111111","cardType":"Master Card","comments1":"aaa","comments2":"","lateArrivalFlag":false,"expiryDate":1017,"room":{"roomNo":1,"smokeFlag":true,"roomType":"KI","rateCode":"TW","roomDescription":"Nice Room","rate":0}}
         }).then(success)
-            .catch(failure);
+        .catch(failure);
 
           function success(response) {
             console.log('reaching success function');
