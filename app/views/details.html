@@ -56,12 +56,12 @@
            <!-- <th>Late Arrival</th>-->
         </thead>
         <tr ng-repeat="rooms in roomDetails">
-            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.roomRate}},'{{rooms.roomDesc}}','{{rooms.smoking}}')"></td>
+            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')"></td>
             <td>{{rooms.roomNo}}</td>
             <td>{{rooms.rateCode}}</td>    
-            <td>{{rooms.roomRate}}</td>    
-            <td>{{rooms.roomDesc}}</td>    
-            <td>{{rooms.smoking}}</td>    
+            <td>{{rooms.rate}}</td>    
+            <td>{{rooms.roomDescription}}</td>    
+            <td>{{rooms.smokeFlag}}</td>    
            <!-- <td>{{rooms.lateArrival}}</td>    -->
         </tr>
         </table>

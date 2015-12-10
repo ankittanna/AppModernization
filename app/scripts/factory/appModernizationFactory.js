@@ -39,11 +39,7 @@ function hotelReservationServices($http)
     
     function saveReservations(reservationDetails)
     {   
-        reservedData = reservationDetails;
-        console.log("Inside Reservations " + reservationDetails);
-        console.log("Inside Reservations 2" + JSON.stringify(reservationDetails));
-        
-          return $http({
+         return $http({
           method: 'POST',
           url: baseUrl + '/reservation',
           headers: {
@@ -54,7 +50,12 @@ function hotelReservationServices($http)
         .catch(failure);
 
           function success(response) {
-            console.log('reaching success function');
+            reservedData = response.data;
+
+            console.log("response  "  + JSON.stringify(response));
+            console.log("response Data  "  + JSON.stringify(response.data));
+            console.log("reservedData  "  + JSON.stringify(reservedData));
+
             return response;
           }
 
@@ -68,14 +69,14 @@ function hotelReservationServices($http)
     {   
           return $http({
           method: 'GET',
-          url: baseUrl + '/rooms?arrivalDate='+arrivalDate + '&departureDate=' + departureDate + '&departureDate=' + roomType
+          url: baseUrl + '/rooms?arrivalDate='+arrivalDate + '&departureDate=' + departureDate + '&roomType=' + roomType
               
         }).then(success)
         .catch(failure);
 
           function success(response) {
             console.log('reaching success function');
-            return response;
+            return response.data;
           }
 
           function failure(error) {

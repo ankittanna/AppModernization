@@ -10,39 +10,7 @@
 angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS','$location',function ($scope,$http,HRS,$location) {
 
-$scope.roomDetails = [{
-                roomNo : 101,
-                smoking: "Yes",
-                rateCode: 'HA',
-                roomRate: 1500,
-                roomDesc: "Large Room with Wifi Facility",
-                lateArrival: "Yes"
-            },
-            {
-                roomNo : 102,
-                smoking: 'Yes',
-                rateCode: 'HA',
-                roomRate: 1500,
-                roomDesc: "Large Room with Wifi Facility",
-                lateArrival: 'Yes'
-            },
-            {
-                roomNo : 103,
-                smoking: 'Yes',
-                rateCode: 'HA',
-                roomRate: 1500,
-                roomDesc: "Large Room with Wifi Facility",
-                lateArrival:'Yes'
-            },
-            {
-                roomNo : 104,
-                smoking: 'Yes',
-                rateCode: 'HA',
-                roomRate: 1500,
-                roomDesc:"Large Room with Wifi Facility",
-                lateArrival: 'Yes'
-            }
-        ]
+$scope.roomDetails = [ ];
       
 this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag){
     console.log(" Data :"+roomno+rateCode+roomRate+roomDesc+smokingFlag);
@@ -67,8 +35,9 @@ this.selectRoom = function(){
 this.searchRooms = function(){
 
     HRS.getRoomList(parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')), 
-                    parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')),
+                    parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')),
                     angular.element($('#roomType')).val().slice(0,2)).then(function(data){
+                      console.log(JSON.stringify(data));
       $scope.roomDetails = data;
     });
 
@@ -132,12 +101,14 @@ this.storeDetails = function(){
     console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
     
     HRS.saveReservations(reservationDetails).then(function(data){
+
+        $location.path('/view');
         
     });
     
     // dont use this. Use $location for changing the view.
     //window.location.href="http://localhost:9000/#/view";
-    $location.path('/view');
+    //$location.path('/view');
 }
 
       

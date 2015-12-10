@@ -14,6 +14,8 @@ angular.module('appModernizationApp')
       console.log("ViewController Data :"+JSON.stringify(reservedData));
       console.log("FirstNAme :"+reservedData.customer.firstName);
       
+      $scope.reservationId = reservedData.reservationId;
+
       $scope.arrivalDate = reservedData.arrivalDate;
       $scope.departureDate = reservedData.departureDate;
       $scope.roomType = reservedData.room.roomType;
