@@ -146,7 +146,7 @@ body {
     background-color: #66AA45;  
 }
 .footer{
-    background-color: #282828;
+    background-color: #337722;
 }
 
 .footer p{
@@ -163,4 +163,20 @@ body {
 .title h3{
     padding-top:60px;
     color:#E7E7E7;
+}
+
+
+#serchreservationform button.form-control {
+  width:auto;
+}
+
+#reservationform,#serchreservationform {
+  padding: 10px;
+  border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#serchreservationform  .form-group{
+  padding: 10px;
+
 }

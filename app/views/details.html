@@ -22,12 +22,12 @@
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             
        <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="date" id="arrivalDate" class="form-control" placeholder="Date">
+          <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date">
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="date" id="departureDate" class="form-control" placeholder="Date">
+          <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date">
         </div>
     </div>
     
@@ -35,7 +35,7 @@
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
             <select id="roomType" class="form-control">
-                <option ng-repeat="type in roomtype" value="{{type}}">{{type}}</option>
+                <option ng-repeat="type in roomtype" ng-model="roomType" value="{{type}}">{{type}}</option>
             </select>
         </div>
 
@@ -220,8 +220,8 @@
        </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3">
-           <a><button type="button" class="btn btn-default btn-md form-control">
-              Cancel Reservation
+           <a href="#/search"><button type="button" class="btn btn-default btn-md form-control">
+              Cancel
             </button></a>
         </div>
     </div>

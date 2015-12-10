@@ -65,6 +65,14 @@ this.selectRoom = function(){
 }
 
 this.searchRooms = function(){
+
+    HRS.getRoomList(parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')), 
+                    parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')),
+                    angular.element($('#roomType')).val().slice(0,2)).then(function(data){
+      $scope.roomDetails = data;
+        alert(data);
+    });
+
     angular.element('.roomDetails').css('display', 'block');
 };
       
@@ -135,29 +143,29 @@ this.storeDetails = function(){
 
       
     $scope.roomnumbers = ['101','102','103','104','105'];
-       $scope.roomtype = ['ANNIVERSARY SUITE',
-'BUDGET DOUBLE',
-'BUDGET SINGLE',
-'TWO DOUBLE BEDS',
-'SINGLE KING BED',
-'MID SIZE SUITE',
-'PRESIDENTIAL SUITE',
-'SINGLE QUEEN BED',
-'EDDY BARCLAY SUITE',
-'BUDGET SMALL',
-'ORIENTAL SUITE',
-'SWIMINGPOOL SUITE',
-'DONALD TRUMP SUITE',
-'ONE BED SUITE',
-'TWO BED SUITE',
-'THREE BED SUITE',
-'FOUR BED SUITE',
-'FIVE BED SUITE',
-'SIX BED SUITE ',
-'SEVEN BED SUITE',
-'EIGHT BED SUITE ',
-'TWO TWIN BEDS',
-'WEDDING SUITE'
+       $scope.roomtype = ['AS-ANNIVERSARY SUITE',
+'BD-BUDGET DOUBLE',
+'BS-BUDGET SINGLE',
+'DB-TWO DOUBLE BEDS',
+'KI-SINGLE KING BED',
+'MA-MID SIZE SUITE',
+'PS-PRESIDENTIAL SUITE',
+'QU-SINGLE QUEEN BED',
+'SB-EDDY BARCLAY SUITE',
+'SM-BUDGET SMALL',
+'SO-ORIENTAL SUITE',
+'SS-SWIMINGPOOL SUITE',
+'ST-DONALD TRUMP SUITE',
+'S1-ONE BED SUITE',
+'S2-TWO BED SUITE',
+'S3-THREE BED SUITE',
+'S4-FOUR BED SUITE',
+'S5-FIVE BED SUITE',
+'S6-SIX BED SUITE ',
+'S7-SEVEN BED SUITE',
+'S8-EIGHT BED SUITE ',
+'TW-TWO TWIN BEDS',
+'WS-WEDDING SUITE'
  ];
 
  $scope.expirymonth = [
