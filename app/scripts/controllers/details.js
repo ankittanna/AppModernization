@@ -70,7 +70,6 @@ this.searchRooms = function(){
                     parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')),
                     angular.element($('#roomType')).val().slice(0,2)).then(function(data){
       $scope.roomDetails = data;
-        alert(data);
     });
 
     angular.element('.roomDetails').css('display', 'block');
@@ -133,7 +132,7 @@ this.storeDetails = function(){
     console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
     
     HRS.saveReservations(reservationDetails).then(function(data){
-        alert(data);
+        
     });
     
     // dont use this. Use $location for changing the view.

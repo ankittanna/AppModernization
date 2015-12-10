@@ -7,12 +7,13 @@ hotelReservationServices.$inject = ['$http'];
 function hotelReservationServices($http)
 {   
     var baseUrl = 'http://10.168.11.33:8080/authrestserv-war';
-    
+    var reservedData = "";
     // Object Map of functions
     return {
         searchReservations: searchReservations,
         saveReservations: saveReservations,
-        getRoomList: getRoomList
+        getRoomList: getRoomList,
+        getReservedRoomData:getReservedRoomData
     };
     
     function searchReservations(lastName, arrivalDate)
@@ -38,6 +39,7 @@ function hotelReservationServices($http)
     
     function saveReservations(reservationDetails)
     {   
+        reservedData = reservationDetails;
         console.log("Inside Reservations " + reservationDetails);
         console.log("Inside Reservations 2" + JSON.stringify(reservationDetails));
         
@@ -100,5 +102,9 @@ function hotelReservationServices($http)
             console.log('XHR Failed for searchReservation' + JSON.stringify(error));
             return error;
           }
+    }
+    function getReservedRoomData()
+    {
+           return reservedData;
     }
 }

@@ -1,4 +1,4 @@
-<div class="container" ng-controller="DetailsCtrl as details">
+<div class="container" ng-controller="ViewCtrl as view">
     <div class="row">
         <div class="col-xs-12">
             <h3>View Reservation Details</h3>    
@@ -18,23 +18,23 @@
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             
        <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="text" id="arrivalDate" class="form-control" placeholder="Date" readonly>
+          <input type="text" id="arrivalDate" class="form-control" placeholder="Date" ng-model="arrivalDate" readonly>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="text" id="departureDate" class="form-control" placeholder="Date" readonly>
+          <input type="text" id="departureDate" class="form-control" placeholder="Date" ng-model="departureDate" readonly>
         </div>
     </div>
     
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <input type="text" id="roomType" class="form-control" readonly>
+            <input type="text" id="roomType" class="form-control" ng-model="roomType" readonly>
         </div>
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <input type="text" id="roomNumber" class="form-control" readonly>
+            <input type="text" id="roomNumber" class="form-control" ng-model="roomNumber" readonly>
         </div>
          
    </div>
@@ -46,7 +46,7 @@
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
         <div class="col-xs-12 col-sm-9 col-md-9">
-             <textarea class="form-control" rows="3" id="roomdescription" placeholder="Room Desc" readonly></textarea>
+             <textarea class="form-control" rows="3" id="roomdescription" placeholder="Room Desc" ng-model="roomDesc" readonly></textarea>
         </div>
 
   </div>
@@ -54,24 +54,24 @@
    <div class="form-group">
        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Room Rate" readonly>
+           <input type="text" class="form-control" placeholder="Room Rate" ng-model="roomRate" readonly>
         </div>
        
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Rating Code" readonly>
+           <input type="text" class="form-control" placeholder="Rating Code" ng-model="rateCode" readonly>
         </div>  
   </div>
 
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" placeholder="Smoking Flag" readonly>
+           <input type="text" class="form-control" placeholder="Smoking Flag" ng-model="smokingFlag" readonly>
         </div>
          
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" class="form-control" id="lateArrival" readonly>
+           <input type="text" class="form-control" id="lateArrival" ng-model="lateArrivalFlag" readonly>
         </div>
   </div>
 
@@ -83,38 +83,38 @@
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="firstName" class="form-control" placeholder="First Name" readonly>
+            <input type="text" id="firstName" class="form-control" placeholder="First Name" ng-model = "firstName" readonly>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="middleName" class="form-control" placeholder="Middle Name" readonly>
+            <input type="text" id="middleName" class="form-control" placeholder="Middle Name" ng-model = "middleName" readonly>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <input type="text" id="lastName" class="form-control" placeholder="Last Name" readonly>
+            <input type="text" id="lastName" class="form-control" placeholder="Last Name" ng-model="lastName" readonly>
         </div>
     </div>
 
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="addressLine1" class="form-control" placeholder="Address Line 1" readonly>
+            <input type="text" id="addressLine1" class="form-control" placeholder="Address Line 1" ng-model="addressLine1" readonly>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="addressLine2" class="form-control" placeholder="Address Line 2" readonly>
+            <input type="text" id="addressLine2" class="form-control" placeholder="Address Line 2" ng-model="addressLine1" readonly>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <input type="text" id="addressLine3" class="form-control" placeholder="Address Line 3" readonly>
+            <input type="text" id="addressLine3" class="form-control" placeholder="Address Line 3" ng-model="addressLine1" readonly>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="companyName" class="form-control" placeholder="Company Name" readonly>
+           <input type="text" id="companyName" class="form-control" placeholder="Company Name" ng-model="companyName" readonly>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="phoneNumber" class="form-control" placeholder="Phone Number" readonly>
+           <input type="text" id="phoneNumber" class="form-control" placeholder="Phone Number" ng-model="phoneNumber" readonly>
         </div>
     </div>
 
@@ -125,19 +125,19 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="cardType" class="form-control" placeholder="Card Type" readonly> 
+           <input type="text" id="cardType" class="form-control" placeholder="Card Type" ng-model="cardType" readonly> 
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="cardNumber" class="form-control" placeholder="Card Number" readonly>
+           <input type="text" id="cardNumber" class="form-control" placeholder="Card Number" ng-model="cardNumber" readonly>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
        <div class="col-xs-12 col-sm-9 col-md-2">
-            <input type="text" id="expiryDate" class="form-control" placeholder="Expiry Date" readonly>    
+            <input type="text" id="expiryDate" class="form-control" placeholder="Expiry Date" ng-model="expiryDate" readonly>    
          </div>
         <div class="col-xs-12 col-sm-9 col-md-2">            
             
@@ -151,27 +151,25 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
         <div class="col-xs-12 col-sm-9 col-md-10">
-           <textarea id="comments" class="form-control" rows="3" id="comments" placeholder="Comments" readonly></textarea>
+           <textarea id="comments" class="form-control" rows="3" id="comments" placeholder="Comments" ng-model="comments" readonly></textarea>
         </div>
     </div>
 
 
     <br/> 
     <div class="form-group">
-      
-
-        <div class="col-xs-12 col-sm-6 col-md-3">
-           <a href="#/search"><button type="button" class="btn btn-default btn-md form-control">
-              Close
-            </button></a>
-        </div>
-
-         <div class="col-xs-12 col-sm-6 col-md-3">
+       <div class="col-xs-12 col-sm-6 col-md-3">
     <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
             <a><button type="button" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
               Edit Reservation
             </button></a>
        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+           <a href="#/search"><button type="button" class="btn btn-default btn-md form-control">
+              Cancel
+            </button></a>
+        </div>
     </div>
   </form>
     

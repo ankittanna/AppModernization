@@ -76,7 +76,6 @@ angular.module('appModernizationApp')
 
         HRS.searchReservations($scope.lastName, $scope.arrivalDate).then(function(data){
           $scope.roomDetails = data;
-            alert(data);
         });
 }
 

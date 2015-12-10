@@ -48,8 +48,8 @@ angular
       })
     .when('/view', {
         templateUrl: 'views/view.html',
-        controller: 'DetailsCtrl',
-        controllerAs: 'details'
+        controller: 'ViewCtrl',
+        controllerAs: 'view'
       })
       .otherwise({
         redirectTo: '/'
