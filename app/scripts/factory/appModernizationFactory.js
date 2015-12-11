@@ -118,13 +118,13 @@ function hotelReservationServices($http)
     {
         return $http({
           method: 'GET',
-          url: baseUrl + '/reservation?reservationId='+reservationId
+          url: baseUrl + '/reservation/'+reservationId
           })
             .then(success)
             .catch(failure);
 
           function success(response) {
-            return response.data;
+            return response;
           }
 
           function failure(error) {

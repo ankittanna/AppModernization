@@ -51,7 +51,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="(index, reservation) in reservations">
-                        <td><a href="view.html">{{reservation.reservationNumber}}</a></td>
+                        <td><a href="view.html">{{reservation.reservationId}}</a></td>
                         <td>{{reservation.firstName}}</td>
                         <td>{{reservation.lastName}}</td>
                         <td>{{reservation.arrivalDate}}</td>
@@ -59,7 +59,7 @@
                         <td>
                             <button type="button" class="btn btn-default btn-md form-control ">Modify</button>
                            <!-- <button type="button" class="btn btn-default btn-md form-control ">Delete</button>-->
-                        <a ng-href="#/delete/{{reservation.reservationNumber}}"><button type="button" class="btn btn-default btn-md form-control">
+                        <a ng-href="#/delete/{{reservation.reservationId}}"><button type="button" class="btn btn-default btn-md form-control">
                             Delete
                                 </button></a>
                         </td>

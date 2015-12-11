@@ -46,10 +46,10 @@ angular.module('appModernizationApp')
         {
             var postSearchCriteria = {
                 lastName: this.searchLastName.trim(),
-                arrivalDate: (this.searchArrivalDate).getFullYear() + ((this.searchArrivalDate).getMonth()+1) + (this.searchArrivalDate).getDate() +"";
+                arrivalDate: (this.searchArrivalDate).getFullYear() + "" + ((this.searchArrivalDate).getMonth()+1) + "" + (this.searchArrivalDate).getDate() +""
             };
             
-            HRS.searchReservations(postSearchCriteria.lastName, parseInt(this.searchArrivalDate).replace(/-/g,'')).then(function(response){
+            HRS.searchReservations(postSearchCriteria.lastName, postSearchCriteria.arrivalDate).then(function(response){
 
                 $scope.reservations = response.data;
                 console.log(JSON.stringify(response))
@@ -63,21 +63,15 @@ angular.module('appModernizationApp')
     };
       
       
-  	$scope.reservations = [
-        {reservationNumber: '1',  firstName: 'Vinod', lastName: 'Khandelwal', arrivalDate: '01/12/2015' ,departureDate:'05/12/2015'},
-        {reservationNumber: '2',  firstName: 'Vinod1', lastName: 'Khandelwal', arrivalDate: '02/12/2015' ,departureDate:'06/12/2015'},
-        {reservationNumber: '3',  firstName: 'Vinod2', lastName: 'Khandelwal', arrivalDate: '03/12/2015', departureDate:'07/12/2015'},
-        {reservationNumber: '4',  firstName: 'Vinod5', lastName: 'Khandelwal', arrivalDate: '06/12/2015', departureDate:'10/12/2015'}
-
-    ];
+  	$scope.reservations = [];
 
    
 
     $scope.onSearchClick = function () {
 
-        HRS.searchReservations($scope.lastName, parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,''))).then(function(data){
-          $scope.roomDetails = data;
-        });
+        // HRS.searchReservations($scope.lastName, parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,''))).then(function(data){
+        //   $scope.roomDetails = data;
+        // });
 }
 
 }]);
