@@ -124,7 +124,7 @@ function hotelReservationServices($http)
             .catch(failure);
 
           function success(response) {
-            return response;
+            return response.data;
           }
 
           function failure(error) {
