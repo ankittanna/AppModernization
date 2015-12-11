@@ -41,17 +41,18 @@ angular.module('appModernizationApp')
       
     this.searchReservations = function()
     {
-        //alert(this.validateSearchCriteria());
         
         if(this.validateSearchCriteria())
         {
             var postSearchCriteria = {
                 lastName: this.searchLastName.trim(),
-                arrivalDate: this.searchArrivalDate
+                arrivalDate: (this.searchArrivalDate).getFullYear() + ((this.searchArrivalDate).getMonth()+1) + (this.searchArrivalDate).getDate() +"";
             };
             
-            HRS.searchReservations('Jo', '20150202').then(function(response){
-                alert(JSON.stringify(response))
+            HRS.searchReservations(postSearchCriteria.lastName, parseInt(this.searchArrivalDate).replace(/-/g,'')).then(function(response){
+
+                $scope.reservations = response.data;
+                console.log(JSON.stringify(response))
             });
             
            // alert(JSON.stringify(postSearchCriteria));
@@ -74,7 +75,7 @@ angular.module('appModernizationApp')
 
     $scope.onSearchClick = function () {
 
-        HRS.searchReservations($scope.lastName, $scope.arrivalDate).then(function(data){
+        HRS.searchReservations($scope.lastName, parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,''))).then(function(data){
           $scope.roomDetails = data;
         });
 }
