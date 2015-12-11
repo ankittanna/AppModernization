@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name appModernizationApp.controller:MainCtrl
+ * @name appModernizationApp.controller:SearchCtrl
  * @description
- * # MainCtrl
+ * # SearchCtrl
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('SearchCtrl', ['$scope', '$http', 'HRS', function ($scope, $http, HRS) {  
+  .controller('SearchCtrl', ['$scope', '$http', 'HRS','$location', function ($scope, $http, HRS,$location) {  
     
     // Tab Visibility Logic
     angular.element('#appNavBar').css('display', 'block');

@@ -1,14 +1,14 @@
-<div class="container" ng-controller="ViewCtrl as view">
+<div class="container" ng-controller="DeleteCtrl as delete">
     <div class="row">
         <div class="col-xs-12">
-            <h3>View Reservation Details</h3>    
+            <h3>Reservation Details</h3>    
         </div>
     </div>
 <form name = "bookRoomForm" class="form-horizontal">
 
     <div class="form-group">
-         <label class="control-label col-xs-12 col-sm-3 col-md-3">Reseravation Id:</label>
-         <label class="control-label col-xs-12 col-sm-3 col-md-1" ng-model="reservationId"><b>{{reservationId}}</b></label>
+         <label class="control-label col-xs-12 col-sm-3 col-md-3"><b>Reseravation Id:</b></label>
+         <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationId}}</b></label>
     </div>
    <br/>
     
@@ -182,8 +182,8 @@
     <div class="form-group">
        <div class="col-xs-12 col-sm-6 col-md-3">
     <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
-            <a><button type="button" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
-              Edit Reservation
+            <a><button type="button" ng-click="delete.deleteReservation()" class="btn btn-default btn-md form-control">
+              Delete Reservation
             </button></a>
        </div>
 

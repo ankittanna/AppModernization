@@ -51,6 +51,16 @@ angular
         controller: 'ViewCtrl',
         controllerAs: 'view'
       })
+    .when('/delete', {
+        templateUrl: 'views/delete.html',
+        controller: 'DeleteCtrl',
+        controllerAs: 'delete'
+      })
+    .when('/delete/:param1', {
+            templateUrl: 'views/delete.html',
+            controller: 'DeleteCtrl',
+            controllerAs: 'delete'
+            })
       .otherwise({
         redirectTo: '/'
       });

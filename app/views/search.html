@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="SearchCtrl as search">
     <form id="reservationform" name="reservedRoomForm" class="form-horizontal">
     <h4>New Room Reservation: </h4>
        
@@ -58,7 +58,10 @@
                         <td>{{reservation.departureDate}}</td>
                         <td>
                             <button type="button" class="btn btn-default btn-md form-control ">Modify</button>
-                            <button type="button" class="btn btn-default btn-md form-control ">Delete</button>
+                           <!-- <button type="button" class="btn btn-default btn-md form-control ">Delete</button>-->
+                        <a ng-href="#/delete/{{reservation.reservationNumber}}"><button type="button" class="btn btn-default btn-md form-control">
+                            Delete
+                                </button></a>
                         </td>
                     </tr>
                 </tbody>

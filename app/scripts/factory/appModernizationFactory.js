@@ -13,8 +13,10 @@ function hotelReservationServices($http)
         searchReservations: searchReservations,
         saveReservations: saveReservations,
         getRoomList: getRoomList,
-        getReservedRoomData:getReservedRoomData
-    };
+        getReservedRoomData:getReservedRoomData,
+        cancleReservation:cancleReservation,
+        getRegisteredData:getRegisteredData
+    };  
     
     function searchReservations(lastName, arrivalDate)
     {
@@ -38,7 +40,8 @@ function hotelReservationServices($http)
     }
     
     function saveReservations(reservationDetails)
-    {   
+    {  
+       // reservedData = reservationDetails;
          return $http({
           method: 'POST',
           url: baseUrl + '/reservation',
@@ -87,6 +90,7 @@ function hotelReservationServices($http)
 
      function cancleReservation(reservationId)
     {   
+            console.log("Inside Cancel Reservaition");
           return $http({
           method: 'DELETE',
           url: baseUrl + '/reservation/' + reservationId
@@ -104,8 +108,29 @@ function hotelReservationServices($http)
             return error;
           }
     }
+    
     function getReservedRoomData()
     {
            return reservedData;
+    }
+    
+    function getRegisteredData(reservationId)
+    {
+        return $http({
+          method: 'GET',
+          url: baseUrl + '/reservation?reservationId='+reservationId
+          })
+            .then(success)
+            .catch(failure);
+
+          function success(response) {
+            return response.data;
+          }
+
+          function failure(error) {
+            console.log('XHR Failed for searchReservation' + error.data);
+            return error;
+          }
+        
     }
 }
