@@ -183,7 +183,7 @@ body {
 
 }
 .big-checkbox {width: 30px; height: 30px;background: white}
-.roomDetails{
+#roomDetailsTable{
     max-height:300px;
     overflow-y: auto
 }
