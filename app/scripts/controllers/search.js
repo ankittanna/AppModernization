@@ -8,7 +8,8 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('SearchCtrl', ['$scope', '$http', 'HRS','$location', function ($scope, $http, HRS,$location) {  
+  .controller('SearchCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) { 
+      $scope.breadcrumbs = breadcrumbs;
     
     // Tab Visibility Logic
     angular.element('#appNavBar').css('display', 'block');

@@ -8,7 +8,9 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('DeleteCtrl', ['$scope','$http','HRS','$location','$routeParams',function ($scope,$http,HRS,$location,$routeParams) {
+  .controller('DeleteCtrl', ['$scope','$http','HRS','$location','$routeParams','breadcrumbs',function ($scope,$http,HRS,$location,$routeParams,breadcrumbs) {
+      
+      $scope.breadcrumbs = breadcrumbs;
       
       var reservedData =[ ];
       $scope.reservationId = $routeParams.param1;

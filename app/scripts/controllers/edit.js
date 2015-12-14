@@ -8,7 +8,9 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('EditCtrl', ['$scope','$http','HRS','$location','$routeParams',function ($scope,$http,HRS,$location,$routeParams) {
+  .controller('EditCtrl', ['$scope','$http','HRS','$location','$routeParams','breadcrumbs',function ($scope,$http,HRS,$location,$routeParams,breadcrumbs) {
+      
+      $scope.breadcrumbs = breadcrumbs;
       
       var reservedData =[ ];
       $scope.reservationId = $routeParams.param1;
@@ -49,7 +51,7 @@ angular.module('appModernizationApp')
         $scope.roomDescTemp = roomDesc;
         $scope.smokingFlagTemp = smokingFlag;
        // $scope.lateArrivalTemp = lateArrival;
-      }
+      };
     
         this.selectRoom = function()
         {
@@ -60,7 +62,7 @@ angular.module('appModernizationApp')
             $scope.smokingFlag = $scope.smokingFlagTemp;
             $scope.lateArrival = $scope.lateArrivalTemp;
             angular.element('.roomDetails').css('display', 'none');
-        }
+        };
 
         this.searchRooms = function()
         {
@@ -129,7 +131,7 @@ angular.module('appModernizationApp')
           function failure(error) {
             console.log('XHR Failed for searchReservation' + JSON.stringify(error));
             return error;
-          };
-      }
+          }
+      };
       
   }]);

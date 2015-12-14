@@ -8,7 +8,8 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('DetailsCtrl', ['$scope','$http','HRS','$location',function ($scope,$http,HRS,$location) {
+  .controller('DetailsCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
+      $scope.breadcrumbs = breadcrumbs;
 
 $scope.roomDetails = [ ];
       

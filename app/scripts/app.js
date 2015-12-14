@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('appModernizationApp', [
+  .module('appModernizationApp', ['ng-breadcrumbs',
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -18,7 +18,27 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch'
-  ])
+  ]).config(['$routeProvider', function($routeProvider,$httpProvider) {
+      $routeProvider
+        .when('/', { templateUrl: 'views/main.html', label: 'Home' })
+        .when('/about', { controller: 'AboutCtrl', templateUrl:'views/about.html', label:'About'})
+        .when('/search', { controller: 'SearchCtrl', templateUrl: 'views/search.html', label:'Search'})
+        .when('/search/details', { controller: 'DetailsCtrl',templateUrl: 'views/details.html',label: 'Detail'})
+        .when('/view', { controller: 'ViewCtrl', templateUrl:'views/view.html', label:'View'})
+        .when('/search/delete', { controller: 'DeleteCtrl', templateUrl:'views/delete.html', label:''})
+        .when('/search/delete/:param1', {controller: 'DeleteCtrl',templateUrl: 'views/delete.html',label:'Cancel'})
+        .when('/search/edit', {controller: 'EditCtrl',templateUrl: 'views/edit.html',label: ''})
+        .when('/search/edit/:param1', {controller: 'EditCtrl',templateUrl: 'views/edit.html',controllerAs: 'Edit'})
+        .otherwise({ redirectTo: '/' });
+}]);
+    
+    
+    
+
+
+
+
+/*
   .config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.headers.common = {};
     $httpProvider.defaults.headers.post = {};
@@ -74,4 +94,7 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+      
+
   });
+*/

@@ -15,7 +15,8 @@ function hotelReservationServices($http)
         getRoomList: getRoomList,
         getReservedRoomData:getReservedRoomData,
         cancleReservation:cancleReservation,
-        getRegisteredData:getRegisteredData
+        getRegisteredData:getRegisteredData,
+        editReservation:editReservation
     };  
     
     function searchReservations(lastName, arrivalDate)

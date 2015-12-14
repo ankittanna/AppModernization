@@ -8,7 +8,9 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('ViewCtrl', ['$scope','$http','HRS','$location',function ($scope,$http,HRS,$location) {
+  .controller('ViewCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
+      
+      $scope.breadcrumbs = breadcrumbs;
       
       var reservedData = HRS.getReservedRoomData();
       console.log("ViewController Data :"+JSON.stringify(reservedData));

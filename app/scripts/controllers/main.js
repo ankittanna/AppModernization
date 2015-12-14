@@ -8,8 +8,8 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('MainCtrl', function () {
-    
+  .controller('MainCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) {
+    $scope.breadcrumbs = breadcrumbs;
     angular.element('#appNavBar').css('display', 'none');
 
-  });
+  }]);
