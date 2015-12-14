@@ -124,7 +124,7 @@ body {
 }
 
 .btn-md {
-  background-color: #66AA45;
+  background-color: #337722;
   color:#fff;
 }
 
@@ -204,17 +204,23 @@ body {
 .userInfo{
     height:70px; 
     background-color: #F0F5EF;
-    
-    
 }
+
+.userInfo img{
+    padding-top:6px;
+}
+
+
 #userName{
        color:#CDAC4F;
     
 }
 .ab-nav{
-    background: #fff;
-    font-size:20px;  
+    
+    font-size:18px;  
     font-family: AgfaRotis sans-serif  ;
+    
+    padding-top:22px;
 }
 
 thead {
@@ -229,6 +235,47 @@ thead {
 
 .breadcrumb > li + li:before {
     padding: 0 5px;
-    color: #ccc;
+    color: #000;
     content: ">";
+}
+
+.breadcrumb > .active {
+    color: #000;
+}
+
+
+tbody:nth-child(even) { background: #999; }
+
+
+@media (max-width: 480px) { 
+    #logo {
+      margin-bottom: 10px;
+    }
+    .form-control {
+      margin-bottom: 15px;
+    }
+
+    tbody{
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+    }
+
+    .ab-nav{
+    
+    font-size:14px;  
+  
+    }
+ }
+
+ .container{
+  padding-right: 0;
+  padding-left: 0;
+ }
+
+ .breadcrumb {
+  padding: 22px 0;
+ }
+
+ .jumbotron .btn {
+    width: 275px;
 }

@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
@@ -14,39 +15,39 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-  </head>
-  <body ng-app="appModernizationApp">
+</head>
+
+<body ng-app="appModernizationApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
     <!-- Add your site or application content here -->
-        <div class="header" ng-controller="IndexCtrl as index">
-            <div class="title container-fluid">
-                <div class="hidden-xs col-sm-2 col-md-2">
-                    <img id="logo" src="images/AccLogo.png">
-                </div>
-                <div class="hidden-xs col-sm-7 col-md-8"><h3>OceanView Hotel Reservation System</h3></div>
-                
-                <div class="hidden-xs col-sm-2 col-md-2">
-                    <img src="images/AccGTSymbol.png">
-                </div>
+    <div class="header" ng-controller="IndexCtrl as index">
+        <div class="title container-fluid">
+            <div class="col-xs-12 col-sm-2 col-md-2">
+                <img id="logo" src="images/AccLogo.png">
             </div>
-            
-            <div class="userInfo container-fluid">
-                <div class="hidden-xs col-sm-9 col-md-9"> </div>              
-                <div class="col-xs-2 col-sm-2 col-md-1"><img src="images/profile_pic.PNG"></div>
-                <div class="col-xs-2 col-sm-2 col-md-2">
-                    <h4>Welcome <span id="userName">{{uesrName}}</span><span class="glyphicon glyphicon-chevron-down"></span></h4>
-                    <h4>[LegStar]</h4>
-                </div>
+            <div class="hidden-xs col-sm-7 col-md-8">
+                <h3>OceanView Hotel Reservation System</h3></div>
+            <div class="hidden-xs col-sm-2 col-md-2">
+                <img src="images/AccGTSymbol.png">
             </div>
-            <ol class="ab-nav breadcrumb">
-    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
-      <a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
-      <span ng-if="$last" ng-bind="breadcrumb.label"></span>
-    </li>
-    </ol>
+        </div>
+        <div class="userInfo container-fluid">
+            <div class="col-xs-9 col-sm-9 col-md-9">
+                <ol class="ab-nav breadcrumb">
+                    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
+                        <a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
+                        <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-1"><img src="images/profile_pic.PNG"></div>
+            <div class="hidden-xs col-xs-5 col-sm-2 col-md-2">
+                <h4>Welcome <span id="userName">{{uesrName}}</span><span class="glyphicon glyphicon-chevron-down"></span></h4>
+                <h4>[LegStar]</h4>
+            </div>
+        </div>
         <!--
           <div class="navbar navbar-default" role="navigation">
             <div class="container-fluid">
@@ -66,120 +67,117 @@
 
                 <ul id="appNavBar" class="nav navbar-nav">
                   <!--<li class="active"><a href="#/">Home</a></li> -->
-     
-                 <!--  <li id="searchTab" class="active" onClick="switchTabStyle(this)"><a ng-href="#/search">Home</a></li> -->
-                  <!-- <li  id="bookTab" onClick="switchTabStyle(this)"><a href="#/details">Book A Room</a></li> -->
-                  <!--<li><a ng-href="#/about">About</a></li>
+        <!--  <li id="searchTab" class="active" onClick="switchTabStyle(this)"><a ng-href="#/search">Home</a></li> -->
+        <!-- <li  id="bookTab" onClick="switchTabStyle(this)"><a href="#/details">Book A Room</a></li> -->
+        <!--<li><a ng-href="#/about">About</a></li>
                   <li><a ng-href="#/">Contact</a></li> 
                 </ul>
               </div>
             </div>
           </div>
 -->
-        </div>
-        
+    </div>
+    <div class="container-fluid">
+        <div ng-view=""></div>
+    </div>
+    <div class="footer">
         <div class="container-fluid">
-            <div ng-view=""></div>
+            <p><span class="glyphicon glyphicon-copyright-mark"></span> 2015 Accenture all Rights reserved</p>
         </div>
-
-        <div class="footer">
-            <div class="container-fluid">
-                <p><span class="glyphicon glyphicon-copyright-mark"></span> 2015 Accenture all Rights reserved</p>
-            </div>
-        </div>
-    
-      <script>
-          // This is called with the results from from FB.getLoginStatus().
-          function statusChangeCallback(response) {
-            console.log('statusChangeCallback');
-            console.log(response);
-            // The response object is returned with a status field that lets the
-            // app know the current login status of the person.
-            // Full docs on the response object can be found in the documentation
-            // for FB.getLoginStatus().
-            if (response.status === 'connected') {
-              // Logged into your app and Facebook.
-              testAPI();
-            } else if (response.status === 'not_authorized') {
-              // The person is logged into Facebook, but not your app.
-              document.getElementById('status').innerHTML = 'Please log ' +
+    </div>
+    <script>
+    // This is called with the results from from FB.getLoginStatus().
+    function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        // The response object is returned with a status field that lets the
+        // app know the current login status of the person.
+        // Full docs on the response object can be found in the documentation
+        // for FB.getLoginStatus().
+        if (response.status === 'connected') {
+            // Logged into your app and Facebook.
+            testAPI();
+        } else if (response.status === 'not_authorized') {
+            // The person is logged into Facebook, but not your app.
+            document.getElementById('status').innerHTML = 'Please log ' +
                 'into this app.';
-            } else {
-              // The person is not logged into Facebook, so we're not sure if
-              // they are logged into this app or not.
-              document.getElementById('status').innerHTML = 'Please log ' +
+        } else {
+            // The person is not logged into Facebook, so we're not sure if
+            // they are logged into this app or not.
+            document.getElementById('status').innerHTML = 'Please log ' +
                 'into Facebook.';
-            }
-          }
+        }
+    }
 
-          // This function is called when someone finishes with the Login
-          // Button.  See the onlogin handler attached to it in the sample
-          // code below.
-          function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-              statusChangeCallback(response);
-            });
-          }
-
-          window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '{your-app-id}',
-            cookie     : true,  // enable cookies to allow the server to access 
-                                // the session
-            xfbml      : true,  // parse social plugins on this page
-            version    : 'v2.2' // use version 2.2
-          });
-
-          // Now that we've initialized the JavaScript SDK, we call 
-          // FB.getLoginStatus().  This function gets the state of the
-          // person visiting this page and can return one of three states to
-          // the callback you provide.  They can be:
-          //
-          // 1. Logged into your app ('connected')
-          // 2. Logged into Facebook, but not your app ('not_authorized')
-          // 3. Not logged into Facebook and can't tell if they are logged into
-          //    your app or not.
-          //
-          // These three cases are handled in the callback function.
-
-          FB.getLoginStatus(function(response) {
+    // This function is called when someone finishes with the Login
+    // Button.  See the onlogin handler attached to it in the sample
+    // code below.
+    function checkLoginState() {
+        FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
-          });
+        });
+    }
 
-          };
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '{your-app-id}',
+            cookie: true, // enable cookies to allow the server to access 
+            // the session
+            xfbml: true, // parse social plugins on this page
+            version: 'v2.2' // use version 2.2
+        });
 
-          // Load the SDK asynchronously
-          (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
+        // Now that we've initialized the JavaScript SDK, we call 
+        // FB.getLoginStatus().  This function gets the state of the
+        // person visiting this page and can return one of three states to
+        // the callback you provide.  They can be:
+        //
+        // 1. Logged into your app ('connected')
+        // 2. Logged into Facebook, but not your app ('not_authorized')
+        // 3. Not logged into Facebook and can't tell if they are logged into
+        //    your app or not.
+        //
+        // These three cases are handled in the callback function.
 
-          // Here we run a very simple test of the Graph API after login is
-          // successful.  See statusChangeCallback() for when this call is made.
-          function testAPI() {
-            console.log('Welcome!  Fetching your information.... ');
-            FB.api('/me', function(response) {
-              console.log('Successful login for: ' + response.name);
-              document.getElementById('status').innerHTML =
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Here we run a very simple test of the Graph API after login is
+    // successful.  See statusChangeCallback() for when this call is made.
+    function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+            console.log('Successful login for: ' + response.name);
+            document.getElementById('status').innerHTML =
                 'Thanks for logging in, ' + response.name + '!';
-            });
-          }
-        </script>
-      
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+        });
+    }
     </script>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -196,19 +194,19 @@
     <script src="bower_components/ng-breadcrumbs/dist/ng-breadcrumbs.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
-
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/details.js"></script>
-        <script src="scripts/controllers/search.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <script src="scripts/controllers/view.js"></script>
-        <script src="scripts/controllers/delete.js"></script>
-        <scirpt src="scripts/controllers/edit.js"></scirpt>
-        <script src="scripts/controllers/index.js"></script>
-        <script src="scripts/appModernization.js"></script>
-        <script src="scripts/factory/appModernizationFactory.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/details.js"></script>
+    <script src="scripts/controllers/search.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/view.js"></script>
+    <script src="scripts/controllers/delete.js"></script>
+    <scirpt src="scripts/controllers/edit.js"></scirpt>
+    <script src="scripts/controllers/index.js"></script>
+    <script src="scripts/appModernization.js"></script>
+    <script src="scripts/factory/appModernizationFactory.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>

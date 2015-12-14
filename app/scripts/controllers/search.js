@@ -13,6 +13,7 @@ angular.module('appModernizationApp')
     
     // Tab Visibility Logic
     angular.element('#appNavBar').css('display', 'block');
+    angular.element('.userInfo').css('display', 'block');
     // Tab Active Logic
     angular.element('#searchTab').addClass('active');
     angular.element('#bookTab').removeClass('active');
@@ -64,7 +65,14 @@ angular.module('appModernizationApp')
     };
       
       
-  	$scope.reservations = [];
+  	$scope.reservations = [{"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
+    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
+    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
+    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
+    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
+    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"}
+];
+
 
    
 
