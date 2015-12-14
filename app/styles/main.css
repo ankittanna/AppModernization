@@ -226,3 +226,9 @@ thead {
   width: 22px;
   height: 22px;
 }
+
+.breadcrumb > li + li:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: ">";
+}
