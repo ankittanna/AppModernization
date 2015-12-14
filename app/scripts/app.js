@@ -23,7 +23,7 @@ angular
         .when('/', { templateUrl: 'views/main.html', label: 'Home' })
         .when('/about', { controller: 'AboutCtrl', templateUrl:'views/about.html', label:'About'})
         .when('/search', { controller: 'SearchCtrl', templateUrl: 'views/search.html', label:'Search'})
-        .when('/search/details', { controller: 'DetailsCtrl',templateUrl: 'views/details.html',label: 'Detail'})
+        .when('/search/details', { controller: 'DetailsCtrl',templateUrl: 'views/details.html',label: 'Reserve'})
         .when('/view', { controller: 'ViewCtrl', templateUrl:'views/view.html', label:'View'})
         .when('/search/delete', { controller: 'DeleteCtrl', templateUrl:'views/delete.html', label:''})
         .when('/search/delete/:param1', {controller: 'DeleteCtrl',templateUrl: 'views/delete.html',label:'Cancel'})
