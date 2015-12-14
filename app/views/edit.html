@@ -1,4 +1,4 @@
-<div class="container" ng-controller="DetailsCtrl as details">
+<div class="container" ng-controller="EditCtrl as edit">
     <div class="row">
         <div class="col-xs-12">
             <h3>Reservation Details</h3>    
@@ -9,11 +9,11 @@
     
     
 <form name = "bookRoomForm" class="form-horizontal">
-<!--
+
     <div class="form-group">
          <label class="control-label col-xs-12 col-sm-3 col-md-3">Reseravation Number:</label>
-         <label class="control-label col-xs-12 col-sm-3 col-md-1">23214</label>
-    </div>-->
+         <label class="control-label col-xs-12 col-sm-3 col-md-1">{{reservationId}}</label>
+    </div>
    <br/>
     
     <h4>Search for a Room:</h4>
@@ -40,12 +40,11 @@
         </div>
 
          <div class="col-xs-12 col-sm-12 col-md-3">
-              <a><button type="button" class="btn btn-default btn-md form-control" ng-click="details.searchRooms()">
+              <a><button type="button" class="btn btn-default btn-md form-control" ng-click="edit.searchRooms()">
               Search Rooms
             </button></a>
          </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 roomDetails">
-        <div id="roomDetailTable">
         <table class="table-bordered .table-striped table-hover roomDetailsTable">
         <thead>
             <th>Select Room</th>
@@ -57,7 +56,7 @@
            <!-- <th>Late Arrival</th>-->
         </thead>
         <tr ng-repeat="rooms in roomDetails">
-            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')"></td>
+            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "edit.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')"></td>
             <td>{{rooms.roomNo}}</td>
             <td>{{rooms.rateCode}}</td>    
             <td>{{rooms.rate}}</td>    
@@ -66,15 +65,13 @@
            <!-- <td>{{rooms.lateArrival}}</td>    -->
         </tr>
         </table>
-      </div>
-        <div class="col-xs-12 col-sm-12 col-md-4">
-            <button type="button" class="btn btn-default btn-md form-control" ng-click="details.selectRoom()">
+        
+    </div>
+      <div class="col-xs-12 col-sm-12 col-md-4">
+            <button type="button" class="btn btn-default btn-md form-control" ng-click="edit.selectRoom()">
                 Select Room
             </button>
         </div>
-        
-    </div>
-      
    </div>
     
     <h4>Room Details:</h4>
@@ -209,7 +206,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
         <div class="col-xs-12 col-sm-9 col-md-10">
-           <textarea id="comments" class="form-control" rows="3" id="comments" placeholder="Comments"></textarea>
+           <textarea id="comments" class="form-control" rows="3" id="comments" placeholder="Comments" ng-model="comments1"></textarea>
         </div>
     </div>
 
@@ -218,8 +215,8 @@
     <div class="form-group">
        <div class="col-xs-12 col-sm-6 col-md-3">
     <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
-            <a href="#"><button type="button" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
-              Request Reservation
+            <a><button type="button" ng-click="edit.editReservation()" class="btn btn-default btn-md form-control">
+              Edit Reservation
             </button></a>
        </div>
 

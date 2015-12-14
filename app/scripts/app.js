@@ -61,6 +61,16 @@ angular
             controller: 'DeleteCtrl',
             controllerAs: 'delete'
             })
+    .when('/edit', {
+            templateUrl: 'views/edit.html',
+            controller: 'EditCtrl',
+            controllerAs: 'edit'
+            })
+    .when('/edit/:param1', {
+            templateUrl: 'views/edit.html',
+            controller: 'EditCtrl',
+            controllerAs: 'edit'
+            })
       .otherwise({
         redirectTo: '/'
       });

@@ -39,9 +39,10 @@ this.searchRooms = function(){
                     angular.element($('#roomType')).val().slice(0,2)).then(function(data){
                       console.log(JSON.stringify(data));
       $scope.roomDetails = data;
+        angular.element('.roomDetails').css('display', 'block');
     });
 
-    angular.element('.roomDetails').css('display', 'block');
+    
 };
       
 this.storeDetails = function(){

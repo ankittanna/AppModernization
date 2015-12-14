@@ -133,4 +133,33 @@ function hotelReservationServices($http)
           }
         
     }
+    
+    function editReservation(reservationDetails,reservationId)
+    {
+        // reservedData = reservationDetails;
+         return $http({
+          method: 'PUT',
+          url: baseUrl + '/reservation/'+reservationId,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: reservationDetails
+        }).then(success)
+        .catch(failure);
+
+          function success(response) {
+            reservedData = response.data;
+
+            console.log("response  "  + JSON.stringify(response));
+            console.log("response Data  "  + JSON.stringify(response.data));
+            console.log("reservedData  "  + JSON.stringify(reservedData));
+
+            return response;
+          }
+
+          function failure(error) {
+            console.log('XHR Failed for searchReservation' + JSON.stringify(error));
+            return error;
+          }
+    }
 }

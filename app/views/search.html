@@ -57,8 +57,11 @@
                         <td>{{reservation.arrivalDate}}</td>
                         <td>{{reservation.departureDate}}</td>
                         <td>
-                            <button type="button" class="btn btn-default btn-md form-control ">Modify</button>
-                           <!-- <button type="button" class="btn btn-default btn-md form-control ">Delete</button>-->
+                            <a ng-href="#/edit/{{reservation.reservationId}}"><button type="button" class="btn btn-default btn-md form-control">
+                            Modify
+                                </button></a>
+                           <!-- <button type="button" class="btn btn-default btn-md form-control ">Modify</button>
+                            <button type="button" class="btn btn-default btn-md form-control ">Delete</button>-->
                         <a ng-href="#/delete/{{reservation.reservationId}}"><button type="button" class="btn btn-default btn-md form-control">
                             Delete
                                 </button></a>

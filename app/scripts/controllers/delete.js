@@ -56,7 +56,7 @@ angular.module('appModernizationApp')
           }
 
           function failure(error) {
-            console.log('XHR Failed for searchReservation' + JSON.stringify(error));
+            console.log('XHR Failed for deleteReservation' + JSON.stringify(error));
             return error;
           };
       }
