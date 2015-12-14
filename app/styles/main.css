@@ -200,3 +200,17 @@ body {
     width: 70px;
     padding: 10px 0 0 0 !important;
 }
+
+.userInfo{
+    height:70px; 
+    background-color: #F0F5EF;
+    
+}
+#userName{
+       color:#CDAC4F;
+    
+}
+.ab-nav{
+    background: #fff;
+    font-size:20px;  
+}
