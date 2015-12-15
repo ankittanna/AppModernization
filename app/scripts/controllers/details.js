@@ -11,6 +11,8 @@ angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
       $scope.breadcrumbs = breadcrumbs;
 
+
+
 $scope.roomDetails = [ ];
       
 this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag){
@@ -61,12 +63,16 @@ this.storeDetails = function(){
     $scope.lateArrival = angular.element($('#lateArrival')).val();
     $scope.cardType = angular.element($('#cardType')).val();
     $scope.cardNumber = angular.element($('#cardNumber')).val();
-    $scope.expiryMonth = angular.element($('#expiryMonth')).val();
-    $scope.expiryYear = angular.element($('#expiryYear')).val();
+    $scope.expiryMonth = $scope.expirymonth.val //angular.element($('#expiryMonth')).val();
+    $scope.expiryYear = $scope.expiryyear.val //angular.element($('#expiryYear')).val();
     $scope.comments = angular.element($('#comments')).val();
     
     $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
     $scope.departureDate = $scope.departureDate.replace(/-/g,'');
+
+
+
+
     
     var reservationDetails = {
     "customer": {
@@ -103,8 +109,10 @@ this.storeDetails = function(){
     console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
     
     HRS.saveReservations(reservationDetails).then(function(data){
+        var reservationId = data.reservationId;
 
-        $location.path('/view');
+         console.log("Detail Data  "  + JSON.stringify(data));
+        $location.path('/search/view/'+reservationId + "/fromadd");
         
     });
     
@@ -141,15 +149,15 @@ this.storeDetails = function(){
  ];
 
  $scope.expirymonth = [
-     {month: 'Jan', val: '01'},
-     {month: 'Feb', val: '02'},
-     {month: 'Mar', val: '03'},
-     {month: 'Apr', val: '04'},
-     {month: 'May', val: '05'},
-     {month: 'Jun', val: '06'},
-     {month: 'Jul', val: '07'},
-     {month: 'Aug', val: '08'},
-     {month: 'Sep', val: '09'},
+     {month: 'Jan', val: '1'},
+     {month: 'Feb', val: '2'},
+     {month: 'Mar', val: '3'},
+     {month: 'Apr', val: '4'},
+     {month: 'May', val: '5'},
+     {month: 'Jun', val: '6'},
+     {month: 'Jul', val: '7'},
+     {month: 'Aug', val: '8'},
+     {month: 'Sep', val: '9'},
      {month: 'Oct', val: '10'},
      {month: 'Nov', val: '11'},
      {month: 'Dec', val: '12'}
@@ -166,6 +174,7 @@ this.storeDetails = function(){
      {year: '2022', val:'22'},
      {year: '2023', val:'23'}
  ];
+
 
     $scope.ratecode = ['TW - TWIN ROOM EAST EXPOSURE',
 'AN - SINGLE ROOM EAST',

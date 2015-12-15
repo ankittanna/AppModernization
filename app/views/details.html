@@ -113,27 +113,27 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" ng-model="roomNumber" readonly>
+                <label id="roomNumber" class="control-label"> {{roomNumber}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
             <div class="col-xs-12 col-sm-9 col-md-3">
-                <input type="text" id="smokingFlag" class="form-control" placeholder="Smoking flag" ng-model="smokingFlag" readonly>
+                <label id="rateCode" class="control-label"> {{smokingFlag}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input id="rateCode" type="text" class="form-control" placeholder="Rating Code" ng-model="rateCode" readonly>
+                <label id="rateCode" class="control-label"> {{rateCode}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input id="roomRate" type="text" class="form-control" placeholder="Room Rate" ng-model="roomRate" readonly>
+                <label id="rateCode" class="control-label"> {{roomRate}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <textarea id="romDesc" class="form-control" rows="3" id="roomdescription" ng-model="roomDesc" placeholder="Room Desc" readonly></textarea>
+                 <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
@@ -197,16 +197,12 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
-                <select id="expiryMonth" class="form-control">
-                    <option selected disabled hidden value=''>Month</option>
-                    <option ng-repeat="month in expirymonth" value="{{month.val}}">{{month.month}}</option>
-                </select>
+                 <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth"> <option value="" disabled selected>Month</option></select>     
             </div>
+
+            
             <div class="col-xs-12 col-sm-9 col-md-2">
-                <select id="expiryYear" class="form-control">
-                    <option selected disabled hidden value=''>Year</option>
-                    <option ng-repeat="year in expiryyear" value="{{year.val}}">{{year.year}}</option>
-                </select>
+               <select id="expiryYear" class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear"> <option value="" disabled selected>Year</option></select>     
             </div>
         </div>
         <hr>

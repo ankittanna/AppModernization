@@ -206,10 +206,12 @@ body {
 .userInfo{
     height:70px; 
     background-color: #F0F5EF;
+    display:none;
 }
 
 .userInfo img{
     padding-top:6px;
+
 }
 
 
@@ -291,4 +293,16 @@ thead {
 
 .roomDetailsTable thead tr th {
 text-align: center;
+}
+
+.successMsg {
+  color: #337722;
+  padding-left: 0;
+  font-weight: bold;
+}
+
+.errorMsg {
+  color: red;
+  padding-left: 0;
+  font-weight: bold;
 }

@@ -10,6 +10,9 @@
 angular.module('appModernizationApp')
   .controller('SearchCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) { 
       $scope.breadcrumbs = breadcrumbs;
+      angular.element('.userInfo').css('display', 'none');
+
+      $scope.responseMsg = "";
     
     // Tab Visibility Logic
     angular.element('#appNavBar').css('display', 'block');
@@ -55,6 +58,10 @@ angular.module('appModernizationApp')
 
                 $scope.reservations = response.data;
                 console.log(JSON.stringify(response))
+
+                if($scope.reservations.length == 0) {
+                    $scope.responseMsg = "No reseravation found matching criteria.";
+                }
             });
             
            // alert(JSON.stringify(postSearchCriteria));

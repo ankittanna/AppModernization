@@ -12,5 +12,6 @@ angular.module('appModernizationApp')
     
     $scope.uesrName = "John Doe";
     $scope.breadcrumbs = breadcrumbs;
+    angular.element('.userInfo').css('display', 'none');
     
   }]);

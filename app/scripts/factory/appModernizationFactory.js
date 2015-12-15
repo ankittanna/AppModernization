@@ -56,11 +56,9 @@ function hotelReservationServices($http)
           function success(response) {
             reservedData = response.data;
 
-            console.log("response  "  + JSON.stringify(response));
-            console.log("response Data  "  + JSON.stringify(response.data));
             console.log("reservedData  "  + JSON.stringify(reservedData));
 
-            return response;
+            return reservedData;
           }
 
           function failure(error) {

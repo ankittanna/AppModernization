@@ -38,15 +38,15 @@ angular.module('appModernizationApp')
  ];
 
   $scope.expirymonth = [
-     {month: 'Jan', val: '01'},
-     {month: 'Feb', val: '02'},
-     {month: 'Mar', val: '03'},
-     {month: 'Apr', val: '04'},
-     {month: 'May', val: '05'},
-     {month: 'Jun', val: '06'},
-     {month: 'Jul', val: '07'},
-     {month: 'Aug', val: '08'},
-     {month: 'Sep', val: '09'},
+     {month: 'Jan', val: '1'},
+     {month: 'Feb', val: '2'},
+     {month: 'Mar', val: '3'},
+     {month: 'Apr', val: '4'},
+     {month: 'May', val: '5'},
+     {month: 'Jun', val: '6'},
+     {month: 'Jul', val: '7'},
+     {month: 'Aug', val: '8'},
+     {month: 'Sep', val: '9'},
      {month: 'Oct', val: '10'},
      {month: 'Nov', val: '11'},
      {month: 'Dec', val: '12'}
@@ -97,11 +97,12 @@ angular.module('appModernizationApp')
           $scope.phoneNumber = parseInt(reservedData.customer.phoneNumber);
           $scope.cardType = reservedData.cardType;
           $scope.cardNumber = parseInt(reservedData.cardNumber);
+
           
           var expiryDate = reservedData.expiryDate + "";
 
-          $scope.expiryMonth = parseInt(expiryDate.slice(0, expiryDate.length-2));
-          $scope.expiryYear = parseInt('20'+expiryDate.slice(expiryDate.length-2, expiryDate.length));
+          $scope.expirymonth.val = expiryDate.slice(0, expiryDate.length-2);
+          $scope.expiryyear.val = expiryDate.slice(expiryDate.length-2, expiryDate.length);
 
           $scope.comments1 = reservedData.comments1;
       });
@@ -169,12 +170,12 @@ angular.module('appModernizationApp')
               "cardType": $scope.cardType,
               "comments1": $scope.comments1,
               "comments2": "",
-              "lateArrivalFlag": $scope.lateArrival == "on" ? true:false,
-              "expiryDate": parseInt($scope.expiryMonth + $scope.expiryYear, 0),
+              "lateArrivalFlag": $scope.lateArrivalFlag,
+              "expiryDate": parseInt($scope.expirymonth.val + $scope.expiryyear.val, 0),
 
              "room" : {
                 "roomNo": parseInt(angular.element('#roomNumber').val()),
-                "smokeFlag": $scope.smokingFlag == "Yes" ? true:false,
+                "smokeFlag": $scope.smokingFlag,
                 "roomType": $scope.roomType,
                 "rateCode": $scope.rateCode,
                 "roomDescription": $scope.roomDesc,
@@ -190,7 +191,7 @@ angular.module('appModernizationApp')
 
           function success(response) {
             console.log('reaching success function');
-            $location.path('/search');
+            $location.path('/search/view/'+$scope.reservationId + "/fromedit");
             return response;
           }
 

@@ -18,8 +18,8 @@
 <form name = "bookRoomForm" class="form-horizontal">
 
     <div class="form-group">
-         <label class="control-label col-xs-12 col-sm-3 col-md-3">Reseravation Number:</label>
-         <label class="control-label col-xs-12 col-sm-3 col-md-1">{{reservationId}}</label>
+         <label class="control-label col-xs-12 col-sm-3 col-md-3"><b>Reseravation Number:</b></label>
+         <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationId}}</b></label>
     </div>
    <br/>
     
@@ -86,42 +86,37 @@
     <h4>Room Details:</h4>
     <hr>
     
-  <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-            <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" ng-model= "roomNumber" readonly>
-        </div>
-
-         <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
-        <div class="col-xs-12 col-sm-9 col-md-3">
-           <input  type="text" id="smokingFlag" class="form-control" placeholder="Smoking flag" ng-model= "smokingFlag" readonly>
-        </div>
-  </div>
-
    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <input id="rateCode" type="text" class="form-control" placeholder="Rating Code" ng-model="rateCode" readonly>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="roomNumber" class="control-label"> {{roomNumber}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
+            <div class="col-xs-12 col-sm-9 col-md-3">
+                <label id="rateCode" class="control-label"> {{smokingFlag}}</label>
+            </div>
         </div>
-
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <input id="roomRate" type="text" class="form-control" placeholder="Room Rate" ng-model="roomRate" readonly>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="rateCode" class="control-label"> {{rateCode}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="rateCode" class="control-label"> {{roomRate}}</label>
+            </div>
         </div>
-  </div>
-
-  <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-             <textarea id="romDesc" class="form-control" rows="3" id="roomdescription" ng-model="roomDesc" placeholder="Room Desc" readonly></textarea>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                 <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
+            <div class="col-xs-12 col-sm-9 col-md-2">
+                <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="lateArrivalFlag">
+                <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
+            </div>
         </div>
-         
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
-        <div class="col-xs-12 col-sm-9 col-md-2">
-           <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="lateArrival" ng-mode="lateArrivalFlag">
-           <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
-        </div>
-  </div>
 
   <br/>
     
@@ -192,21 +187,13 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
        <div class="col-xs-12 col-sm-9 col-md-2">
+                 <select class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth"></select>     
+            </div>
+
             
-            <select id="expiryMonth" ng-model='expiryMonth' class="form-control">
-                <option selected disabled hidden value=''>Month</option>
-                <option ng-repeat="month in expirymonth" value="{{month.val}}">{{month.month}}</option>
-            </select>
-        
-        
-         </div>
-        <div class="col-xs-12 col-sm-9 col-md-2">            
-            <select id="expiryYear" ng-model='expiryYear' class="form-control">
-                <option selected disabled hidden value=''>Year</option>
-                <option ng-repeat="year in expiryyear" value="{{year.val}}">{{year.year}}</option>
-            </select>        
-        
-         </div>
+            <div class="col-xs-12 col-sm-9 col-md-2">
+               <select class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear"></select>     
+            </div>
     </div>
 
    
@@ -225,7 +212,7 @@
        <div class="col-xs-12 col-sm-6 col-md-3">
     <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
             <a><button type="button" ng-click="edit.editReservation()" class="btn btn-default btn-md form-control">
-              Edit Reservation
+              Update Reservation
             </button></a>
        </div>
 

@@ -13,4 +13,6 @@ angular.module('appModernizationApp')
     angular.element('#appNavBar').css('display', 'none');
     angular.element('.userInfo').css('display', 'none');
 
+     $scope.backendSystems = ["LegStar"];
+
   }]);

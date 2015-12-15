@@ -62,7 +62,7 @@
                 <tbody>
                     <tr ng-repeat="(index, reservation) in reservations">
                         <td>{{index+1}}</td>
-                        <td><a href="#/view/{{reservation.reservationId}}">{{reservation.reservationId}}</a></td>
+                        <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch">{{reservation.reservationId}}</a></td>
                         <td>{{reservation.firstName}}</td>
                         <td>{{reservation.lastName}}</td>
                         <td>{{reservation.arrivalDate}}</td>
@@ -92,7 +92,7 @@
                     </tr>
                     <tr>
                         <th>Res No.</th>
-                        <td><a href="view.html">{{reservation.reservationId}}</a></td>
+                        <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch">{{reservation.reservationId}}</a></td>
                         <td></td>
                     </tr>
                     <tr>
@@ -122,6 +122,12 @@
 
                 
             </table>
+
+             <div class="row">
+        <div class="col-xs-12">
+            <label class="errorMsg col-xs-12 col-sm-10 col-md-12"><b>{{responseMsg}}</b></label>
+        </div>
+    </div>
             
         </div>
     </form>
