@@ -1,24 +1,23 @@
 <div class="container" ng-controller="ViewCtrl as view">
     
-    <!-- <ol class="ab-nav breadcrumb">
+    <!--<ol class="ab-nav breadcrumb">
     <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
       <a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
       <span ng-if="$last" ng-bind="breadcrumb.label"></span>
     </li>
-    </ol> -->
-    
+    </ol>-->
     
     
     <div class="row">
         <div class="col-xs-12">
-            <h3>View Reservation Details</h3>    
+            <h3>Reservation Details</h3>    
         </div>
     </div>
 <form name = "bookRoomForm" class="form-horizontal">
 
     <div class="form-group">
          <label class="control-label col-xs-12 col-sm-3 col-md-3"><b>Reseravation Id:</b></label>
-         <label class="control-label col-xs-12 col-sm-3 col-md-1" ng-model="reservationId"><b>{{reservationId}}</b></label>
+         <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationId}}</b></label>
     </div>
    <br/>
     
@@ -190,12 +189,6 @@
 
     <br/> 
     <div class="form-group">
-       <div class="col-xs-12 col-sm-6 col-md-3">
-    <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
-            <a><button type="button" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
-              Edit Reservation
-            </button></a>
-       </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3">
            <a href="#/search"><button type="button" class="btn btn-default btn-md form-control">

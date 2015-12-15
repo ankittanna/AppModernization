@@ -52,6 +52,7 @@
             </button></a>
          </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 roomDetails">
+      <div id="roomDetailsContainer">
         <table class="table-bordered .table-striped table-hover roomDetailsTable">
         <thead>
             <th>Select Room</th>
@@ -72,13 +73,14 @@
            <!-- <td>{{rooms.lateArrival}}</td>    -->
         </tr>
         </table>
-        
-    </div>
-      <div class="col-xs-12 col-sm-12 col-md-4">
+        </div>
+           <div class="col-xs-12 col-sm-12 col-md-4">
             <button type="button" class="btn btn-default btn-md form-control" ng-click="edit.selectRoom()">
                 Select Room
             </button>
         </div>
+    </div>
+   
    </div>
     
     <h4>Room Details:</h4>
@@ -135,7 +137,7 @@
             <input type="text" id="middleName" class="form-control" placeholder="Middle Name" ng-model="middleName">
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <input type="text" id="lastName" class="form-control" placeholder="Last Name" ng-model="lastNAme">
+            <input type="text" id="lastName" class="form-control" placeholder="Last Name" ng-model="lastName">
         </div>
     </div>
 
@@ -160,7 +162,7 @@
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="phoneNumber" class="form-control" placeholder="Phone Number" ng-model="phoneNumber">
+           <input type="number" id="phoneNumber" class="form-control" placeholder="Phone Number" ng-model="phoneNumber">
         </div>
     </div>
 
@@ -183,7 +185,7 @@
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="cardNumber" class="form-control" placeholder="Card Number" ng-model="cardNumber">
+           <input type="number" id="cardNumber" class="form-control" placeholder="Card Number" ng-model="cardNumber">
         </div>
     </div>
 
@@ -191,7 +193,7 @@
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
        <div class="col-xs-12 col-sm-9 col-md-2">
             
-            <select id="expiryMonth" class="form-control">
+            <select id="expiryMonth" ng-model='expiryMonth' class="form-control">
                 <option selected disabled hidden value=''>Month</option>
                 <option ng-repeat="month in expirymonth" value="{{month.val}}">{{month.month}}</option>
             </select>
@@ -199,7 +201,7 @@
         
          </div>
         <div class="col-xs-12 col-sm-9 col-md-2">            
-            <select id="expiryYear" class="form-control">
+            <select id="expiryYear" ng-model='expiryYear' class="form-control">
                 <option selected disabled hidden value=''>Year</option>
                 <option ng-repeat="year in expiryyear" value="{{year.val}}">{{year.year}}</option>
             </select>        

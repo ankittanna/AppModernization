@@ -145,7 +145,7 @@ body {
 }
 
 .roomDetailsTable th{
-    background-color: #66AA45;  
+    background-color: #337722;  
 }
 .footer{
     background-color: #282828;
@@ -191,7 +191,8 @@ body {
 .big-checkbox {width: 30px; height: 30px;background: white}
 #roomDetailsContainer{
     max-height:300px;
-    overflow-y: auto
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 /*#editsrch{
     padding-right: 20px;
@@ -199,6 +200,7 @@ body {
 #actions{
     width: 70px;
     padding: 10px 0 0 0 !important;
+    text-align: center;
 }
 
 .userInfo{
@@ -244,7 +246,7 @@ thead {
 }
 
 
-tbody:nth-child(even) { background: #999; }
+
 
 
 @media (max-width: 480px) { 
@@ -265,6 +267,8 @@ tbody:nth-child(even) { background: #999; }
     font-size:14px;  
   
     }
+
+    tbody:nth-child(even) { background: #f9f9f9; }
  }
 
  .container{
@@ -278,4 +282,13 @@ tbody:nth-child(even) { background: #999; }
 
  .jumbotron .btn {
     width: 275px;
+}
+
+.roomDetailsTable thead tr {
+  height:35px;
+  padding-left: 4px;
+}
+
+.roomDetailsTable thead tr th {
+text-align: center;
 }

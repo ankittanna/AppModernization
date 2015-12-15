@@ -5,240 +5,234 @@
       <span ng-if="$last" ng-bind="breadcrumb.label"></span>
     </li>
     </ol>-->
-    
     <div class="row">
         <div class="col-xs-12">
-            <h3>Reservation Details</h3>    
+            <h3>Reservation Details</h3>
         </div>
     </div>
-    
-    
-    
-    
-<form name = "bookRoomForm" class="form-horizontal">
-<!--
+    <form name="bookRoomForm" class="form-horizontal">
+        <!--
     <div class="form-group">
          <label class="control-label col-xs-12 col-sm-3 col-md-3">Reseravation Number:</label>
          <label class="control-label col-xs-12 col-sm-3 col-md-1">23214</label>
     </div>-->
-   <br/>
-    
-    <h4>Search for a Room:</h4>
-    <hr>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
-            
-       <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date">
+        <br/>
+        <h4>Search for a Room:</h4>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date">
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date">
+            </div>
         </div>
-
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date">
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <select id="roomType" class="form-control">
+                    <option ng-repeat="type in roomtype" ng-model="roomType" value="{{type}}">{{type}}</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <a>
+                    <button type="button" class="btn btn-default btn-md form-control" ng-click="details.searchRooms()">
+                        Search Rooms
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 roomDetails">
+                <div id="roomDetailsContainer">
+                    <table class="table-bordered table-striped roomDetailsTable hidden-xs">
+                        <thead>
+                            <th>Select Room</th>
+                            <th>Room Number</th>
+                            <th>Rate Code</th>
+                            <th>Room Rate</th>
+                            <th>Smoking</th>
+                            <th>Room Desc.</th>
+                        </thead>
+                        <tr ng-repeat="rooms in roomDetails">
+                            <td>
+                                <input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change="details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')">
+                            </td>
+                            <td>{{rooms.roomNo}}</td>
+                            <td>{{rooms.rateCode}}</td>
+                            <td>{{rooms.rate}}</td>
+                            <td>{{rooms.smokeFlag}}</td>
+                            <td>{{rooms.roomDescription}}</td>
+                        </tr>
+                    </table>
+                    <table class="table textAlignLeft visible-xs xs-table">
+                        <tbody ng-repeat="(index, rooms) in roomDetails">
+                            <tr>
+                                <th>Select Room</th>
+                                <td>
+                                <input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change="details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')">
+                            </td>
+                            </tr>
+                            <tr>
+                                <th>Room Number</th>
+                                <td>{{rooms.roomNo}}</td>
+                                
+                            </tr>
+                            <tr>
+                                <th>Rate Code</th>
+                               <td>{{rooms.rateCode}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <th>Room Rate</th>
+                                <td>{{rooms.rate}}</td>
+                               
+                            </tr>
+                            <tr>
+                                <th>Smoking</th>
+                                <td>{{rooms.smokeFlag}}</td>
+                               
+                            </tr>
+                            <tr>
+                               <th>Room Desc.</th>
+                                <td>{{rooms.roomDescription}}</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-4">
+                    <button type="button" class="btn btn-default btn-md form-control" ng-click="details.selectRoom()">
+                        Select Room
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-    
-  <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-            <select id="roomType" class="form-control">
-                <option ng-repeat="type in roomtype" ng-model="roomType" value="{{type}}">{{type}}</option>
-            </select>
+        <h4>Room Details:</h4>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" ng-model="roomNumber" readonly>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
+            <div class="col-xs-12 col-sm-9 col-md-3">
+                <input type="text" id="smokingFlag" class="form-control" placeholder="Smoking flag" ng-model="smokingFlag" readonly>
+            </div>
         </div>
-
-         <div class="col-xs-12 col-sm-12 col-md-3">
-              <a><button type="button" class="btn btn-default btn-md form-control" ng-click="details.searchRooms()">
-              Search Rooms
-            </button></a>
-         </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 roomDetails">
-
-        <div id="roomDetailsContainer">
-
-        <table class="table-bordered table-striped table-hover roomDetailsTable">
-        <thead>
-            <th>Select Room</th>
-            <th>Room Number</th>
-            <th>Rate Code</th>
-            <th>Room Rate</th>
-            <th>Room Desc.</th>
-            <th>Smoking</th>
-           <!-- <th>Late Arrival</th>-->
-        </thead>
-        <tr ng-repeat="rooms in roomDetails">
-            <td><input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change = "details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')"></td>
-            <td>{{rooms.roomNo}}</td>
-            <td>{{rooms.rateCode}}</td>    
-            <td>{{rooms.rate}}</td>    
-            <td>{{rooms.roomDescription}}</td>    
-            <td>{{rooms.smokeFlag}}</td>    
-           <!-- <td>{{rooms.lateArrival}}</td>    -->
-        </tr>
-        </table>
-
-      </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-4">
-            <button type="button" class="btn btn-default btn-md form-control" ng-click="details.selectRoom()">
-                Select Room
-            </button>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input id="rateCode" type="text" class="form-control" placeholder="Rating Code" ng-model="rateCode" readonly>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input id="roomRate" type="text" class="form-control" placeholder="Room Rate" ng-model="roomRate" readonly>
+            </div>
         </div>
-    </div>
-      
-   </div>
-    
-    <h4>Room Details:</h4>
-    <hr>
-    
-  <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-            <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" ng-model= "roomNumber" readonly>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <textarea id="romDesc" class="form-control" rows="3" id="roomdescription" ng-model="roomDesc" placeholder="Room Desc" readonly></textarea>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
+            <div class="col-xs-12 col-sm-9 col-md-2">
+                <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="lateArrival">
+                <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
+            </div>
         </div>
-
-         <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
-        <div class="col-xs-12 col-sm-9 col-md-3">
-           <input  type="text" id="smokingFlag" class="form-control" placeholder="Smoking flag" ng-model= "smokingFlag" readonly>
+        <br/>
+        <h4>Personal Details:</h4>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <input type="text" id="firstName" class="form-control" placeholder="First Name">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <input type="text" id="middleName" class="form-control" placeholder="Middle Name">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <input type="text" id="lastName" class="form-control" placeholder="Last Name">
+            </div>
         </div>
-  </div>
-
-   <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <input id="rateCode" type="text" class="form-control" placeholder="Rating Code" ng-model="rateCode" readonly>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <input type="text" id="addressLine1" class="form-control" placeholder="Address Line 1">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <input type="text" id="addressLine2" class="form-control" placeholder="Address Line 2">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <input type="text" id="addressLine3" class="form-control" placeholder="Address Line 3">
+            </div>
         </div>
-
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <input id="roomRate" type="text" class="form-control" placeholder="Room Rate" ng-model="roomRate" readonly>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input type="text" id="companyName" class="form-control" placeholder="Company Name">
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input type="text" id="phoneNumber" class="form-control" placeholder="Phone Number">
+            </div>
         </div>
-  </div>
-
-  <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-             <textarea id="romDesc" class="form-control" rows="3" id="roomdescription" ng-model="roomDesc" placeholder="Room Desc" readonly></textarea>
+        <br/>
+        <h4>Payment Details:</h4>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <select id="cardType" class="form-control">
+                    <option>Master Card</option>
+                    <option>Visa Card</option>
+                </select>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <input type="text" id="cardNumber" class="form-control" placeholder="Card Number">
+            </div>
         </div>
-         
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
-        <div class="col-xs-12 col-sm-9 col-md-2">
-           <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="lateArrival">
-           <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
+            <div class="col-xs-12 col-sm-9 col-md-2">
+                <select id="expiryMonth" class="form-control">
+                    <option selected disabled hidden value=''>Month</option>
+                    <option ng-repeat="month in expirymonth" value="{{month.val}}">{{month.month}}</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-2">
+                <select id="expiryYear" class="form-control">
+                    <option selected disabled hidden value=''>Year</option>
+                    <option ng-repeat="year in expiryyear" value="{{year.val}}">{{year.year}}</option>
+                </select>
+            </div>
         </div>
-  </div>
-
-  <br/>
-    
-    <h4>Personal Details:</h4>  
-    <hr>
-
-     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
-        <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="firstName" class="form-control" placeholder="First Name">
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
+            <div class="col-xs-12 col-sm-9 col-md-10">
+                <textarea id="comments" class="form-control" rows="3" id="comments" placeholder="Comments"></textarea>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="middleName" class="form-control" placeholder="Middle Name">
+        <br/>
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
+                <a href="#">
+                    <button type="button" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
+                        Request Reservation
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <a href="#/search">
+                    <button type="button" class="btn btn-default btn-md form-control">
+                        Close
+                    </button>
+                </a>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-4">
-            <input type="text" id="lastName" class="form-control" placeholder="Last Name">
-        </div>
-    </div>
-
-     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
-        <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="addressLine1" class="form-control" placeholder="Address Line 1">
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="addressLine2" class="form-control" placeholder="Address Line 2">
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-4">
-            <input type="text" id="addressLine3" class="form-control" placeholder="Address Line 3">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="companyName" class="form-control" placeholder="Company Name">
-        </div>
-
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="phoneNumber" class="form-control" placeholder="Phone Number">
-        </div>
-    </div>
-
- 
-
-        
-  
-    <br/>    
-    <h4>Payment Details:</h4> 
-    <hr>
-
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <select id="cardType" class="form-control">
-            <option>Master Card</option> 
-               <option>Visa Card</option>
-           </select>
-        </div>
-
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
-        <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="cardNumber" class="form-control" placeholder="Card Number">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
-       <div class="col-xs-12 col-sm-9 col-md-2">
-            
-            <select id="expiryMonth" class="form-control">
-                <option selected disabled hidden value=''>Month</option>
-                <option ng-repeat="month in expirymonth" value="{{month.val}}">{{month.month}}</option>
-            </select>
-        
-        
-         </div>
-        <div class="col-xs-12 col-sm-9 col-md-2">            
-            <select id="expiryYear" class="form-control">
-                <option selected disabled hidden value=''>Year</option>
-                <option ng-repeat="year in expiryyear" value="{{year.val}}">{{year.year}}</option>
-            </select>        
-        
-         </div>
-    </div>
-
-   
-    <hr>
-    
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
-        <div class="col-xs-12 col-sm-9 col-md-10">
-           <textarea id="comments" class="form-control" rows="3" id="comments" placeholder="Comments"></textarea>
-        </div>
-    </div>
-
-
-    <br/> 
-    <div class="form-group">
-       <div class="col-xs-12 col-sm-6 col-md-3">
-    <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
-            <a href="#"><button type="button" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
-              Request Reservation
-            </button></a>
-       </div>
-
-        <div class="col-xs-12 col-sm-6 col-md-3">
-           <a href="#/search"><button type="button" class="btn btn-default btn-md form-control">
-              Close
-            </button></a>
-        </div>
-    </div>
-  </form>
-    
+    </form>
 </div>
