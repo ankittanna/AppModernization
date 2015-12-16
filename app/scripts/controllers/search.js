@@ -11,7 +11,7 @@ angular.module('appModernizationApp')
   .controller('SearchCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) { 
       $scope.breadcrumbs = breadcrumbs;
       angular.element('.userInfo').css('display', 'none');
-
+      
       $scope.responseMsg = "";
     
     // Tab Visibility Logic

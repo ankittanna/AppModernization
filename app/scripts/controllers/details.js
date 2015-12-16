@@ -11,8 +11,6 @@ angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
       $scope.breadcrumbs = breadcrumbs;
 
-
-
 $scope.roomDetails = [ ];
       
 this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag){
@@ -69,6 +67,8 @@ this.storeDetails = function(){
     
     $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
     $scope.departureDate = $scope.departureDate.replace(/-/g,'');
+    
+    console.log("Name"+angular.element($('#firstName')).val());
 
 
 
@@ -92,8 +92,8 @@ this.storeDetails = function(){
   "cardType": $scope.cardType,
   "comments1": $scope.comments,
   "comments2": "",
-  "lateArrivalFlag": $scope.lateArrival == "on" ? true:false,
-  "expiryDate": parseInt($scope.expiryMonth + $scope.expiryYear, 0),
+  "lateArrivalFlag": $scope.lateArrival,
+  "expiryDate": $scope.expiryMonth +"/"+ $scope.expiryYear,
   
  "room" : {
     "roomNo": parseInt(angular.element('#roomNumber').val()),
@@ -149,15 +149,15 @@ this.storeDetails = function(){
  ];
 
  $scope.expirymonth = [
-     {month: 'Jan', val: '1'},
-     {month: 'Feb', val: '2'},
-     {month: 'Mar', val: '3'},
-     {month: 'Apr', val: '4'},
-     {month: 'May', val: '5'},
-     {month: 'Jun', val: '6'},
-     {month: 'Jul', val: '7'},
-     {month: 'Aug', val: '8'},
-     {month: 'Sep', val: '9'},
+     {month: 'Jan', val: '01'},
+     {month: 'Feb', val: '02'},
+     {month: 'Mar', val: '03'},
+     {month: 'Apr', val: '04'},
+     {month: 'May', val: '05'},
+     {month: 'Jun', val: '06'},
+     {month: 'Jul', val: '07'},
+     {month: 'Aug', val: '08'},
+     {month: 'Sep', val: '09'},
      {month: 'Oct', val: '10'},
      {month: 'Nov', val: '11'},
      {month: 'Dec', val: '12'}

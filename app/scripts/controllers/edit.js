@@ -11,7 +11,7 @@ angular.module('appModernizationApp')
   .controller('EditCtrl', ['$scope','$http','HRS','$location','$routeParams','breadcrumbs',function ($scope,$http,HRS,$location,$routeParams,breadcrumbs) {
       
       $scope.breadcrumbs = breadcrumbs;
-
+      
       $scope.roomtype = ['AS-ANNIVERSARY SUITE',
 'BD-BUDGET DOUBLE',
 'BS-BUDGET SINGLE',
@@ -38,15 +38,15 @@ angular.module('appModernizationApp')
  ];
 
   $scope.expirymonth = [
-     {month: 'Jan', val: '1'},
-     {month: 'Feb', val: '2'},
-     {month: 'Mar', val: '3'},
-     {month: 'Apr', val: '4'},
-     {month: 'May', val: '5'},
-     {month: 'Jun', val: '6'},
-     {month: 'Jul', val: '7'},
-     {month: 'Aug', val: '8'},
-     {month: 'Sep', val: '9'},
+     {month: 'Jan', val: '01'},
+     {month: 'Feb', val: '02'},
+     {month: 'Mar', val: '03'},
+     {month: 'Apr', val: '04'},
+     {month: 'May', val: '05'},
+     {month: 'Jun', val: '06'},
+     {month: 'Jul', val: '07'},
+     {month: 'Aug', val: '08'},
+     {month: 'Sep', val: '09'},
      {month: 'Oct', val: '10'},
      {month: 'Nov', val: '11'},
      {month: 'Dec', val: '12'}
@@ -101,7 +101,7 @@ angular.module('appModernizationApp')
           
           var expiryDate = reservedData.expiryDate + "";
 
-          $scope.expirymonth.val = expiryDate.slice(0, expiryDate.length-2);
+          $scope.expirymonth.val = expiryDate.slice(0, expiryDate.length-3);
           $scope.expiryyear.val = expiryDate.slice(expiryDate.length-2, expiryDate.length);
 
           $scope.comments1 = reservedData.comments1;
@@ -171,7 +171,7 @@ angular.module('appModernizationApp')
               "comments1": $scope.comments1,
               "comments2": "",
               "lateArrivalFlag": $scope.lateArrivalFlag,
-              "expiryDate": parseInt($scope.expirymonth.val + $scope.expiryyear.val, 0),
+              "expiryDate": $scope.expirymonth.val +"/"+ $scope.expiryyear.val,
 
              "room" : {
                 "roomNo": parseInt(angular.element('#roomNumber').val()),
