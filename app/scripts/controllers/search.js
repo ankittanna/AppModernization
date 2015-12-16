@@ -12,9 +12,10 @@ angular.module('appModernizationApp')
       $scope.breadcrumbs = breadcrumbs;
       angular.element('.userInfo').css('display', 'none');
       
-      $("input[type=text]").keydown(function(){
+      $("input[type=text]").keyup(function(){
         $(this).val( $(this).val().toUpperCase() );
-        console.log("FirstName  value :"+angular.element($('#lastName')).val());
+        this.searchLastName = $(this).val().toUpperCase();
+        //console.log("FirstName  value :"+angular.element($('#lastName')).val());
       });
       
       $scope.responseMsg = "";
@@ -50,7 +51,8 @@ angular.module('appModernizationApp')
     };
       
     this.searchReservations = function()
-    {
+    {   
+        this.searchLastName = this.searchLastName.toUpperCase();
         
         if(this.validateSearchCriteria())
         {
