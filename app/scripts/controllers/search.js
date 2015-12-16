@@ -12,9 +12,9 @@ angular.module('appModernizationApp')
       $scope.breadcrumbs = breadcrumbs;
       angular.element('.userInfo').css('display', 'none');
       
-      $("input[type=text]").keyup(function(){
+      $("input[type=text]").keydown(function(){
         $(this).val( $(this).val().toUpperCase() );
-        console.log("FirstName  value :"+angular.element($('#firstName')).val());
+        console.log("FirstName  value :"+angular.element($('#lastName')).val());
       });
       
       $scope.responseMsg = "";

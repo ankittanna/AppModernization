@@ -15,6 +15,16 @@ angular.module('appModernizationApp')
         $(this).val( $(this).val().toUpperCase() );
         console.log("FirstName  value :"+angular.element($('#firstName')).val());
       });
+      $scope.lateArrival = "false";
+      $('#lateArrival').click(function(){
+            if($(this).prop("checked") == true){
+                $scope.lateArrival = "true";
+            }
+            else if($(this).prop("checked") == false){
+                $scope.lateArrival = "false";
+            }
+          console.log($scope.lateArrival);
+      });
 
 $scope.roomDetails = [ ];
       
@@ -26,6 +36,7 @@ this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag){
     $scope.roomDescTemp = roomDesc;
     $scope.smokingFlagTemp = smokingFlag;
    // $scope.lateArrivalTemp = lateArrival;
+    
 }
     
 this.selectRoom = function(){
@@ -54,6 +65,7 @@ this.searchRooms = function(){
 this.storeDetails = function(){
     $scope.arrivalDate = angular.element($('#arrivalDate')).val();
     $scope.departureDate = angular.element($('#departureDate')).val();
+    $scope.roomNumber = angular.element($('#roomNumber')).val();
     $scope.roomType = angular.element($('#roomType')).val();
     $scope.firstName = angular.element($('#firstName')).val();
     $scope.middleName = angular.element($('#middleName')).val();
@@ -63,17 +75,22 @@ this.storeDetails = function(){
     $scope.addressLine3 = angular.element($('#addressLine3')).val();
     $scope.companyName = angular.element($('#companyName')).val();
     $scope.phoneNumber = angular.element($('#phoneNumber')).val();
-    $scope.lateArrival = angular.element($('#lateArrival')).val();
+    //$scope.lateArrival = angular.element($('#lateArrival')).val();
     $scope.cardType = angular.element($('#cardType')).val();
     $scope.cardNumber = angular.element($('#cardNumber')).val();
-    $scope.expiryMonth = $scope.expirymonth.val //angular.element($('#expiryMonth')).val();
-    $scope.expiryYear = $scope.expiryyear.val //angular.element($('#expiryYear')).val();
+    $scope.expiryMonth = $scope.expirymonth.val;//angular.element($('#expiryMonth')).val();
+    console.log("Expirymonth"+$scope.expirymonth.val);
+    $scope.expiryYear = $scope.expiryyear.val; //angular.element($('#expiryYear')).val();
     $scope.comments = angular.element($('#comments')).val();
     
     $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
     $scope.departureDate = $scope.departureDate.replace(/-/g,'');
     
     console.log("Name"+angular.element($('#firstName')).val());
+    
+    console.log("LAteArrival"+angular.element($('#lateArrival')).val())
+    console.log("flag"+$('#lateArrival').hasClass('checked'));
+    
 
 
 
@@ -101,7 +118,7 @@ this.storeDetails = function(){
   "expiryDate": $scope.expiryMonth +"/"+ $scope.expiryYear,
   
  "room" : {
-    "roomNo": parseInt(angular.element('#roomNumber').val()),
+    "roomNo": $scope.roomNumber,
     "smokeFlag": $scope.smokingFlag == "Yes" ? true:false,
     "roomType": $scope.roomType,
     "rateCode": $scope.rateCode,
