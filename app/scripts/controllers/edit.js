@@ -10,6 +10,11 @@
 angular.module('appModernizationApp')
   .controller('EditCtrl', ['$scope','$http','HRS','$location','$routeParams','breadcrumbs',function ($scope,$http,HRS,$location,$routeParams,breadcrumbs) {
       
+      $("input[type=text]").keyup(function(){
+        $(this).val( $(this).val().toUpperCase() );
+        console.log("FirstName  value :"+angular.element($('#firstName')).val());
+      });
+      
       $scope.breadcrumbs = breadcrumbs;
       
       $scope.roomtype = ['AS-ANNIVERSARY SUITE',

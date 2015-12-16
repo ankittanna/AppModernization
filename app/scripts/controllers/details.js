@@ -10,6 +10,11 @@
 angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
       $scope.breadcrumbs = breadcrumbs;
+      
+      $("input[type=text]").keyup(function(){
+        $(this).val( $(this).val().toUpperCase() );
+        console.log("FirstName  value :"+angular.element($('#firstName')).val());
+      });
 
 $scope.roomDetails = [ ];
       
