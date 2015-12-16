@@ -12,7 +12,10 @@ angular.module('appModernizationApp')
       
       $("input[type=text]").keyup(function(){
         $(this).val( $(this).val().toUpperCase() );
-        console.log("FirstName  value :"+angular.element($('#firstName')).val());
+      });
+      
+      $("textarea").keyup(function(){
+        $(this).val( $(this).val().toUpperCase() );
       });
       
       $scope.breadcrumbs = breadcrumbs;
@@ -159,21 +162,21 @@ angular.module('appModernizationApp')
 
                 var reservationDetails = {
                 "customer": {
-                "firstName": $scope.firstName,
-                "lastName": $scope.lastName,
-                "middleName": $scope.middleName,
-                "addressLine1": $scope.addressLine1,
-                "addressLine2": $scope.addressLine2,
-                "addressLine3": $scope.addressLine3,
+                "firstName": $scope.firstName.toUpperCase(),
+                "lastName": $scope.lastName.toUpperCase(),
+                "middleName": $scope.middleName.toUpperCase(),
+                "addressLine1": $scope.addressLine1.toUpperCase(),
+                "addressLine2": $scope.addressLine2.toUpperCase(),
+                "addressLine3": $scope.addressLine3.toUpperCase(),
                 "phoneNumber": $scope.phoneNumber,
-                "companyName": $scope.companyName
+                "companyName": $scope.companyName.toUpperCase()
               },
 
               "arrivalDate": parseInt($scope.arrivalDate),
               "departureDate": parseInt($scope.departureDate),
               "cardNumber": $scope.cardNumber,
               "cardType": $scope.cardType,
-              "comments1": $scope.comments1,
+              "comments1": $scope.comments1.toUpperCase(),
               "comments2": "",
               "lateArrivalFlag": $scope.lateArrivalFlag,
               "expiryDate": $scope.expirymonth.val +"/"+ $scope.expiryyear.val,

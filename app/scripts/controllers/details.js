@@ -13,7 +13,10 @@ angular.module('appModernizationApp')
       
       $("input[type=text]").keyup(function(){
         $(this).val( $(this).val().toUpperCase() );
-        console.log("FirstName  value :"+angular.element($('#firstName')).val());
+      });
+      
+      $("textarea").keyup(function(){
+        $(this).val( $(this).val().toUpperCase() );
       });
       $scope.lateArrival = "false";
       $('#lateArrival').click(function(){
@@ -67,13 +70,13 @@ this.storeDetails = function(){
     $scope.departureDate = angular.element($('#departureDate')).val();
     $scope.roomNumber = angular.element($('#roomNumber')).val();
     $scope.roomType = angular.element($('#roomType')).val();
-    $scope.firstName = angular.element($('#firstName')).val();
-    $scope.middleName = angular.element($('#middleName')).val();
-    $scope.lastName = angular.element($('#lastName')).val();
-    $scope.addressLine1 = angular.element($('#addressLine1')).val();
-    $scope.addressLine2 = angular.element($('#addressLine2')).val();
-    $scope.addressLine3 = angular.element($('#addressLine3')).val();
-    $scope.companyName = angular.element($('#companyName')).val();
+    $scope.firstName = angular.element($('#firstName')).val().toUpperCase();
+    $scope.middleName = angular.element($('#middleName')).val().toUpperCase();
+    $scope.lastName = angular.element($('#lastName')).val().toUpperCase();
+    $scope.addressLine1 = angular.element($('#addressLine1')).val().toUpperCase();
+    $scope.addressLine2 = angular.element($('#addressLine2')).val().toUpperCase();
+    $scope.addressLine3 = angular.element($('#addressLine3')).val().toUpperCase();
+    $scope.companyName = angular.element($('#companyName')).val().toUpperCase();
     $scope.phoneNumber = angular.element($('#phoneNumber')).val();
     //$scope.lateArrival = angular.element($('#lateArrival')).val();
     $scope.cardType = angular.element($('#cardType')).val();
@@ -81,20 +84,11 @@ this.storeDetails = function(){
     $scope.expiryMonth = $scope.expirymonth.val;//angular.element($('#expiryMonth')).val();
     console.log("Expirymonth"+$scope.expirymonth.val);
     $scope.expiryYear = $scope.expiryyear.val; //angular.element($('#expiryYear')).val();
-    $scope.comments = angular.element($('#comments')).val();
+    $scope.comments = angular.element($('#comments')).val().toUpperCase();
     
     $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
     $scope.departureDate = $scope.departureDate.replace(/-/g,'');
     
-    console.log("Name"+angular.element($('#firstName')).val());
-    
-    console.log("LAteArrival"+angular.element($('#lateArrival')).val())
-    console.log("flag"+$('#lateArrival').hasClass('checked'));
-    
-
-
-
-
     
     var reservationDetails = {
     "customer": {
