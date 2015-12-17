@@ -345,7 +345,7 @@ input::-webkit-inner-spin-button {
     margin-top:5px;
     font-size:14px;
 }
-#errorMsg{
-    
- display:hidden;   
+
+#registerationError{
+    display:hidden;   
 }
