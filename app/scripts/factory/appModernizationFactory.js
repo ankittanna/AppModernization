@@ -4,7 +4,7 @@ angular.module('appModernizationApp')
 
 hotelReservationServices.$inject = ['$http'];
 
-function hotelReservationServices($http)
+function hotelReservationServices($http){
 
     var baseUrl = 'http://172.31.28.248:9001/am/v1';
     var reservedData = "";
