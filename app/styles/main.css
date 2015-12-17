@@ -272,6 +272,13 @@ thead {
     tbody:nth-child(even) { background: #f9f9f9; }
  }
 
+
+@media (max-width: 1000px) { 
+.marginTop{
+    margin-top:10px;   
+}
+}
+
  .container{
   padding-right: 0;
   padding-left: 0;
@@ -334,21 +341,7 @@ input::-webkit-inner-spin-button {
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-input[type="text"]{
-       margin-top:10px;
-}
 
-input[type="number"]{
-       margin-top:10px;
-}
-
-select {
-       margin-top:10px;
-}
-
-input[type="date"]{
-       margin-top:10px;
-}
 
 #systemId{
     margin-top:5px;
@@ -358,3 +351,4 @@ input[type="date"]{
     
  display:hidden;   
 }
+

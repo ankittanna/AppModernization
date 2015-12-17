@@ -29,11 +29,11 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date">
+                <input type="date" id="arrivalDate" class="form-control marginTop" ng-model="arrivalDate" placeholder="Date">
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date">
+                <input type="date" id="departureDate" class="form-control marginTop" ng-model="departureDate" placeholder="Date">
             </div>
         </div>
         <div class="form-group">
@@ -45,7 +45,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <a>
-                    <button type="button" class="btn btn-default btn-md form-control" ng-click="details.searchRooms()">
+                    <button type="button" class="btn btn-default btn-md form-control marginTop" ng-click="details.searchRooms()">
                         Search Rooms
                     </button>
                 </a>
@@ -159,42 +159,42 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text"id="firstName" class="form-control" placeholder="First Name">
+                <input type="text"id="firstName" class="form-control marginTop" placeholder="First Name">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="middleName" class="form-control " maxlength="1" placeholder="Middle Name">
+                <input type="text" id="middleName" class="form-control marginTop" maxlength="1" placeholder="Middle Name">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="lastName" class="form-control " placeholder="Last Name">
+                <input type="text" id="lastName" class="form-control marginTop" placeholder="Last Name">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine1" class="form-control " placeholder="Address Line 1">
+                <input type="text" id="addressLine1" class="form-control marginTop" placeholder="Address Line 1">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine2" class="form-control " placeholder="Address Line 2">
+                <input type="text" id="addressLine2" class="form-control marginTop" placeholder="Address Line 2">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="addressLine3" class="form-control " placeholder="Address Line 3">
+                <input type="text" id="addressLine3" class="form-control marginTop" placeholder="Address Line 3">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Company Name:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="text" id="companyName" class="form-control " placeholder="Company Name">
+                <input type="text" id="companyName" class="form-control marginTop" placeholder="Company Name">
             </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Phone Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="phoneNumber" class="form-control" placeholder="Phone Number">
+                <input type="number" id="phoneNumber" class="form-control marginTop" placeholder="Phone Number">
             </div>
         </div>
         <br/>
         <h4>Payment Details:</h4>
         <hr>
         <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 ">Card Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
                 <select id="cardType" class="form-control">
                     <option>Master Card</option>
@@ -207,14 +207,14 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Month:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 ">Expiry Month:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
                  <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth"> <option value="" disabled selected>Month</option></select>     
             </div>
 
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Year:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Expiry Year:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
-               <select id="expiryYear" class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear"> <option value="" disabled selected>Year</option></select>     
+               <select id="expiryYear" class="form-control marginTop" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear"> <option value="" disabled selected>Year</option></select>     
             </div>
         </div>
         <hr>
