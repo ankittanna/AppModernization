@@ -306,3 +306,41 @@ text-align: center;
   padding-left: 0;
   font-weight: bold;
 }
+
+.facebookButton
+{
+    background-color: #3b5998;
+}
+
+.facebookButton:hover
+{
+    color: #FFFFFF;
+    background-color: #3b5998;
+    border-color: cornflowerblue;
+}
+
+.facebookButton:active
+{
+    color: #FFFFFF;
+    background-color: #3b5998;
+    border-color: cornflowerblue;
+}
+
+body
+{
+    font-family: SansSerifBold !important;
+}
+
+@font-face {
+  font-family: 'SansSerifBold';
+  src: url('fonts/rotis_sans_serif_bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SansSerifLight';
+  src: url('fonts/rotis_sans_serif_light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
