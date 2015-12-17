@@ -6,7 +6,8 @@ hotelReservationServices.$inject = ['$http'];
 
 function hotelReservationServices($http)
 {   
-    var baseUrl = 'http://10.168.11.33:8080/authrestserv-war';
+    //var baseUrl = 'http://10.168.11.33:8080/authrestserv-war';
+    var baseUrl = 'http://172.31.28.248:9001/am/v1';
     var reservedData = "";
     // Object Map of functions
     return {
@@ -77,7 +78,9 @@ function hotelReservationServices($http)
         .catch(failure);
 
           function success(response) {
-            console.log('reaching success function');
+           // alert(JSON.stringify(response));  
+            console.log('reaching success function ' + JSON.stringify(response));
+              console.log('reaching success function ' + JSON.stringify(response.data));
             return response.data;
           }
 
