@@ -325,24 +325,7 @@ text-align: center;
     border-color: cornflowerblue;
 }
 
-body
-{
-    font-family: SansSerifBold !important;
-}
-
-@font-face {
-  font-family: 'SansSerifBold';
-  src: url('fonts/rotis_sans_serif_bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'SansSerifLight';
-  src: url('fonts/rotis_sans_serif_light.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+body { font-family: 'AgfaRotisSemisansLight' !important; }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
