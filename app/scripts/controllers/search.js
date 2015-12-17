@@ -63,12 +63,24 @@ angular.module('appModernizationApp')
             
             HRS.searchReservations(postSearchCriteria.lastName, postSearchCriteria.arrivalDate).then(function(response){
 
-                $scope.reservations = response.data;
+                
+                      if(response.status == 200)    
+     {
+         $scope.reservations = response.data;
                 console.log(JSON.stringify(response))
 
                 if($scope.reservations.length == 0) {
                     $scope.responseMsg = "No reseravation found matching criteria.";
                 }
+         
+     
+         
+     } else 
+     {
+         $scope.responseMsg = response.data.errormessage;
+     }  
+
+
             });
             
            // alert(JSON.stringify(postSearchCriteria));

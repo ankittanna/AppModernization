@@ -80,7 +80,7 @@ function hotelReservationServices($http){
            // alert(JSON.stringify(response));  
             console.log('reaching success function ' + JSON.stringify(response));
               console.log('reaching success function ' + JSON.stringify(response.data));
-            return response.data;
+            return response;
           }
 
           function failure(error) {

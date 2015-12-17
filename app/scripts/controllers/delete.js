@@ -48,19 +48,34 @@ angular.module('appModernizationApp')
       
       this.deleteReservation = function(){
           console.log("Inside Delte reservation");
-          HRS.cancleReservation($scope.reservationId).then(success)
-        .catch(failure);
+          HRS.cancleReservation($scope.reservationId).then(function (data){
 
-          function success(response) {
-            console.log('reaching success function');
-            $location.path('/search');
-            return response;
-          }
+             if(data.status == 200)    
+     {
+        angular.element('#registerationError').css('display', 'none');
+        var reservationId = data.reservationId;
 
-          function failure(error) {
-            console.log('XHR Failed for deleteReservation' + JSON.stringify(error));
-            return error;
-          };
+         console.log("Detail Data  "  + JSON.stringify(data));
+       $location.path('/search');
+         
+     } else 
+     {
+  if(data.data === null || data.data===undefined){
+     angular.element('#registerationError').val("Unknown Error")
+  }
+  else{
+        angular.element('#registerationError').val(data.data.errormessage);
+ }
+        angular.element('#registerationError').css('display', 'block');
+
+
+
+     }
+            
+
+          });
+      
+       
       }
       
   }]);

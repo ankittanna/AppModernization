@@ -144,8 +144,26 @@ angular.module('appModernizationApp')
                             parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')),
                             angular.element($('#roomType')).val().slice(0,2)).then(function(data){
                               console.log(JSON.stringify(data));
-              $scope.roomDetails = data;
-              angular.element('.roomDetails').css('display', 'block');
+             if(data.status == 200)    
+     {
+         $scope.roomDetails = data.data;
+         
+         if($scope.roomDetails.length ==0 ){
+        angular.element('.roomDetails').css('display', 'none');
+        angular.element('.unavailableroom').val('No Room Available with given Criteria. Please change the search criteria and search again.');
+        angular.element('.unavailableroom').css('display', 'block');
+          }
+          else{
+            angular.element('.unavailableroom').css('display', 'none');
+            angular.element('.roomDetails').css('display', 'block');
+
+          }
+         
+     } else 
+     {
+         angular.element('.unavailableroom').val(data.data.errormessage);
+         angular.element('.unavailableroom').css('display', 'block');
+     }
             });
 
             
@@ -194,19 +212,33 @@ angular.module('appModernizationApp')
 
             console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
                    
-            HRS.editReservation(reservationDetails,$scope.reservationId).then(success)
-            .catch(failure);
+            HRS.editReservation(reservationDetails,$scope.reservationId).then( function(data){
 
-          function success(response) {
-            console.log('reaching success function');
-            $location.path('/search/view/'+$scope.reservationId + "/fromedit");
-            return response;
-          }
+               if(data.status == 200)    
+     {
+        angular.element('#registerationError').css('display', 'none');
+        var reservationId = data.reservationId;
 
-          function failure(error) {
-            console.log('XHR Failed for searchReservation' + JSON.stringify(error));
-            return error;
-          }
+         console.log("Detail Data  "  + JSON.stringify(data));
+        $location.path('/search/view/'+$scope.reservationId + "/fromedit");
+         
+     } else 
+     {
+  if(data.data === null || data.data===undefined){
+     angular.element('#registerationError').val("Unknown Error")
+  }
+  else{
+        angular.element('#registerationError').val(data.data.errormessage);
+ }
+        angular.element('#registerationError').css('display', 'block');
+
+
+
+     }
+
+            });
+
+
       };
       
   }]);

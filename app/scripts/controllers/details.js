@@ -60,7 +60,7 @@ this.searchRooms = function(){
                       console.log(JSON.stringify(data));
      if(data.status == 200)    
      {
-         $scope.roomDetails = data;
+         $scope.roomDetails = data.data;
          
          if($scope.roomDetails.length ==0 ){
         angular.element('.roomDetails').css('display', 'none');
@@ -76,6 +76,7 @@ this.searchRooms = function(){
      } else 
      {
          angular.element('.unavailableroom').val(data.data.errormessage);
+         angular.element('.unavailableroom').css('display', 'block');
      }
     });
 
@@ -154,8 +155,14 @@ this.storeDetails = function(){
          
      } else 
      {
-         angular.element('#registerationError').val(data.data.errormessage);
+  if(data.data === null || data.data===undefined){
+     angular.element('#registerationError').val("Unknown Error")
+  }
+  else{
+        angular.element('#registerationError').val(data.data.errormessage);
+ }
         angular.element('#registerationError').css('display', 'block');
+
 
 
      }
