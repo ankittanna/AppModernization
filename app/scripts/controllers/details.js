@@ -58,9 +58,7 @@ this.searchRooms = function(){
                     parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')),
                     angular.element($('#roomType')).val().slice(0,2)).then(function(data){
                       console.log(JSON.stringify(data));
-    
-
-      if(data.status == 200)    
+     if(data.status == 200)    
      {
          $scope.roomDetails = data;
          
@@ -79,6 +77,9 @@ this.searchRooms = function(){
      {
          angular.element('.unavailableroom').val(data.data.errormessage);
      }
+    });
+
+    
 };
       
 this.storeDetails = function(){
@@ -141,10 +142,23 @@ this.storeDetails = function(){
     console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
     
     HRS.saveReservations(reservationDetails).then(function(data){
-        var reservationId = data.reservationId;
+       
+
+     if(data.status == 200)    
+     {
+        angular.element('#registerationError').css('display', 'none');
+        var reservationId = data.reservationId;
 
          console.log("Detail Data  "  + JSON.stringify(data));
         $location.path('/search/view/'+reservationId + "/fromadd");
+         
+     } else 
+     {
+         angular.element('#registerationError').val(data.data.errormessage);
+        angular.element('#registerationError').css('display', 'block');
+
+
+     }
         
     });/*.catch(function(data){
             angular.element('#errorMsg').css('display', 'block');
