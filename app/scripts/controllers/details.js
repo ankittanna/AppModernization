@@ -29,7 +29,7 @@ angular.module('appModernizationApp')
           console.log($scope.lateArrival);
       });
 
-$scope.roomDetails = [ ];
+$scope.roomDetails = [];
       
 this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag){
     console.log(" Data :"+roomno+rateCode+roomRate+roomDesc+smokingFlag);
