@@ -139,7 +139,10 @@ this.storeDetails = function(){
          console.log("Detail Data  "  + JSON.stringify(data));
         $location.path('/search/view/'+reservationId + "/fromadd");
         
-    });
+    });/*.catch(function(data){
+            angular.element('#errorMsg').css('display', 'block');
+           $scope.registrationError = JSON.stringify(data);
+    });*/
     
     // dont use this. Use $location for changing the view.
     //window.location.href="http://localhost:9000/#/view";
