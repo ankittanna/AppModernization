@@ -244,10 +244,10 @@ module.exports = function (grunt) {
         flow: {
           html: {
             steps: {
-              //js: ['concat', 'uglifyjs'],
-              //css: ['cssmin']
-              js: ['concat'],
-              css: ['concat']
+              js: ['concat', 'uglifyjs'],
+              css: ['cssmin']
+             // js: ['concat'],
+             // css: ['concat']
             },
             post: {}
           }
@@ -467,11 +467,12 @@ module.exports = function (grunt) {
     'ngAnnotate',
     'copy:dist',
     'cdnify',
-    //'cssmin',
-    //'uglify',
+    'cssmin',
+    'imagemin',
+    'uglify',
     'filerev',
     'usemin',
-    //'htmlmin'
+    'htmlmin'
   ]);
 
   grunt.registerTask('default', [
