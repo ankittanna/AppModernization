@@ -140,7 +140,7 @@ body {
     height:50px;
     overflow: auto
 }
-.roomDetails{
+.roomDetails,.unavailableroom{
     display:none;
 }
 
@@ -222,8 +222,7 @@ body {
 .ab-nav{
     
     font-size:18px;  
-    font-family: AgfaRotis sans-serif  ;
-    
+        
     padding-top:22px;
 }
 
