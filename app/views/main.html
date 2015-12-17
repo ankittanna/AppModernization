@@ -9,12 +9,12 @@
     
     <div class="col-xs-12">
         <div class="jumbotron">
-            <h4>Reservation System</h4>
+            <h3>Reservation System</h3>
              <br/>
             <br/>
 
             <div class="row">
-                <label class="control-label col-xs-12 col-sm-3 col-md-offset-2 col-md-2">Backend System:</label>
+                <label class="control-label col-xs-12 col-sm-3 col-md-offset-2 col-md-2"><h4>Backend System:</h4></label>
             <div class="col-xs-12 col-sm-9 col-md-4">
                 <select id="systemId" class="form-control">
                     <option ng-repeat="system in backendSystems" value="{{system}}">{{system}}</option>
@@ -36,7 +36,7 @@
              Login via Facebook
             </button></a>-->
             
-            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+            <fb:login-button size="xlarge" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 
             <div id="status">
             </div>
