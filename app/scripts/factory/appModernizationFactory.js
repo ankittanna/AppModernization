@@ -58,7 +58,7 @@ function hotelReservationServices($http){
 
             console.log("reservedData  "  + JSON.stringify(reservedData));
 
-            return reservedData;
+            return response;
           }
 
           function failure(error) {

@@ -148,9 +148,9 @@ this.storeDetails = function(){
      if(data.status == 200)    
      {
         angular.element('#registerationError').css('display', 'none');
-        var reservationId = data.reservationId;
+        var reservationId = data.data.reservationId;
 
-         console.log("Detail Data  "  + JSON.stringify(data));
+         console.log("Detail Data  "  + JSON.stringify(data.data));
         $location.path('/search/view/'+reservationId + "/fromadd");
          
      } else 
