@@ -5,7 +5,7 @@ angular.module('appModernizationApp')
 hotelReservationServices.$inject = ['$http'];
 
 function hotelReservationServices($http)
-{   
+
     var baseUrl = 'http://172.31.28.248:9001/am/v1';
     var reservedData = "";
     // Object Map of functions
@@ -77,7 +77,9 @@ function hotelReservationServices($http)
         .catch(failure);
 
           function success(response) {
-            console.log('reaching success function');
+           // alert(JSON.stringify(response));  
+            console.log('reaching success function ' + JSON.stringify(response));
+              console.log('reaching success function ' + JSON.stringify(response.data));
             return response.data;
           }
 

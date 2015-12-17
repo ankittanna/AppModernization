@@ -107,36 +107,41 @@
                     </button>
                 </div>
             </div>
+
+            <div class="unavailableroom errorMsg">
+                <label class="control-label col-xs-12 col-sm-3 col-md-12">No Room Available with given Criteria.
+                Please change the search criteria and search again.</label>
+            </div>
         </div>
         <h4>Room Details:</h4>
         <hr>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
+            <div class="col-xs-12 col-sm-3 col-md-4">
                 <label id="roomNumber" class="control-label"> {{roomNumber}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
-            <div class="col-xs-12 col-sm-9 col-md-3">
+            <div class="col-xs-12 col-sm-3 col-md-3">
                 <label id="smokingFlag" class="control-label"> {{smokingFlag}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
+            <div class="col-xs-12 col-sm-3 col-md-4">
                 <label id="rateCode" class="control-label"> {{rateCode}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
+            <div class="col-xs-12 col-sm-3 col-md-4">
                 <label id="roomRate" class="control-label"> {{roomRate}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
+            <div class="col-xs-12 col-sm-3 col-md-4">
                  <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
-            <div class="col-xs-12 col-sm-9 col-md-2">
+            <div class="col-xs-12 col-sm-3 col-md-2">
                 <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="lateArrival">
                 <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
             </div>
@@ -195,12 +200,12 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Month:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
                  <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth"> <option value="" disabled selected>Month</option></select>     
             </div>
 
-            
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Year:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
                <select id="expiryYear" class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear"> <option value="" disabled selected>Year</option></select>     
             </div>

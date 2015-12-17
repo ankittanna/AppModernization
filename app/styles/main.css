@@ -140,7 +140,7 @@ body {
     height:50px;
     overflow: auto
 }
-.roomDetails{
+.roomDetails,.unavailableroom{
     display:none;
 }
 
@@ -222,8 +222,7 @@ body {
 .ab-nav{
     
     font-size:18px;  
-    font-family: AgfaRotis sans-serif  ;
-    
+        
     padding-top:22px;
 }
 
@@ -343,4 +342,27 @@ body
   src: url('fonts/rotis_sans_serif_light.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="text"]{
+       margin-top:10px;
+}
+
+input[type="number"]{
+       margin-top:10px;
+}
+
+select {
+       margin-top:10px;
+}
+
+input[type="date"]{
+       margin-top:10px;
 }

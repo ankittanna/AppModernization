@@ -32,12 +32,11 @@
              Login via Accenture ID
             </button></a>
            
-            <a ng-click="main.checkLoginState()"><button type="button" class="btn btn-default btn-lg btn-md">
+            <!--<a scope="public_profile,email" onclick="checkLoginState()"><button type="button" class="btn btn-default btn-lg btn-md facebookButton">
              Login via Facebook
-            </button></a>
+            </button></a>-->
             
-            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-            </fb:login-button>
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
 
             <div id="status">
             </div>

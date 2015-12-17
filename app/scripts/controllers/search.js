@@ -79,13 +79,7 @@ angular.module('appModernizationApp')
     };
       
       
-  	$scope.reservations = [{"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
-    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
-    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
-    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
-    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"},
-    {"reservationId":11,"arrivalDate":20151215,"departureDate":20151216,"firstName":"h","lastName":"h"}
-];
+  	$scope.reservations = [];
 
 
    
