@@ -273,7 +273,7 @@ thead {
  }
 
 @media (max-width: 1000px) { 
-    marginTop{
+    .marginTop{
         margin-top:10px;   
     }
 }
