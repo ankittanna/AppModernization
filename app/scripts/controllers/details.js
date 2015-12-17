@@ -58,20 +58,27 @@ this.searchRooms = function(){
                     parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')),
                     angular.element($('#roomType')).val().slice(0,2)).then(function(data){
                       console.log(JSON.stringify(data));
-      $scope.roomDetails = data;
-
-      if($scope.roomDetails.length ==0 ){
-        angular.element('.roomDetails').css('display', 'none');
-        angular.element('.unavailableroom').css('display', 'block');
-      }
-      else{
-        angular.element('.unavailableroom').css('display', 'none');
-        angular.element('.roomDetails').css('display', 'block');
-        
-      }
-    });
-
     
+
+      if(data.status == 200)    
+     {
+         $scope.roomDetails = data;
+         
+         if($scope.roomDetails.length ==0 ){
+        angular.element('.roomDetails').css('display', 'none');
+        angular.element('.unavailableroom').val('No Room Available with given Criteria. Please change the search criteria and search again.');
+        angular.element('.unavailableroom').css('display', 'block');
+          }
+          else{
+            angular.element('.unavailableroom').css('display', 'none');
+            angular.element('.roomDetails').css('display', 'block');
+
+          }
+         
+     } else 
+     {
+         angular.element('.unavailableroom').val(data.data.errormessage);
+     }
 };
       
 this.storeDetails = function(){
