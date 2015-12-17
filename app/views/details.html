@@ -29,17 +29,17 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date">
+                <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date" required>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date">
+                <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="roomType" class="form-control">
+                <select id="roomType" class="form-control" required>
                     <option ng-repeat="type in roomtype" ng-model="roomType" value="{{type}}">{{type}}</option>
                 </select>
             </div>
@@ -159,25 +159,25 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text"id="firstName" class="form-control" placeholder="First Name">
+                <input type="text"id="firstName" class="form-control" placeholder="First Name" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <input type="text" id="middleName" class="form-control " maxlength="1" placeholder="Middle Name">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="lastName" class="form-control " placeholder="Last Name">
+                <input type="text" id="lastName" class="form-control " placeholder="Last Name" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine1" class="form-control " placeholder="Address Line 1">
+                <input type="text" id="addressLine1" class="form-control " placeholder="Address Line 1" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine2" class="form-control " placeholder="Address Line 2">
+                <input type="text" id="addressLine2" class="form-control " placeholder="Address Line 2" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="addressLine3" class="form-control " placeholder="Address Line 3">
+                <input type="text" id="addressLine3" class="form-control " placeholder="Address Line 3" required>
             </div>
         </div>
         <div class="form-group">
@@ -187,7 +187,7 @@
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="phoneNumber" class="form-control" placeholder="Phone Number">
+                <input type="number" id="phoneNumber" class="form-control" placeholder="Phone Number" required>
             </div>
         </div>
         <br/>
@@ -196,25 +196,25 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="cardType" class="form-control">
+                <select id="cardType" class="form-control" required>
                     <option>Master Card</option>
                     <option>Visa Card</option>
                 </select>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="cardNumber" class="form-control" placeholder="Card Number">
+                <input type="number" id="cardNumber" class="form-control" placeholder="Card Number" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Month:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
-                 <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth"> <option value="" disabled selected>Month</option></select>     
+                 <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth" required> <option value="" disabled selected>Month</option></select>     
             </div>
 
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Year:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
-               <select id="expiryYear" class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear"> <option value="" disabled selected>Year</option></select>     
+               <select id="expiryYear" class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear" required> <option value="" disabled selected>Year</option></select>     
             </div>
         </div>
         <hr>
