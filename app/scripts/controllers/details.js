@@ -59,7 +59,16 @@ this.searchRooms = function(){
                     angular.element($('#roomType')).val().slice(0,2)).then(function(data){
                       console.log(JSON.stringify(data));
       $scope.roomDetails = data;
+
+      if($scope.roomDetails.length ==0 ){
+        angular.element('.roomDetails').css('display', 'none');
+        angular.element('.unavailableroom').css('display', 'block');
+      }
+      else{
+        angular.element('.unavailableroom').css('display', 'none');
         angular.element('.roomDetails').css('display', 'block');
+        
+      }
     });
 
     
@@ -68,7 +77,7 @@ this.searchRooms = function(){
 this.storeDetails = function(){
     $scope.arrivalDate = angular.element($('#arrivalDate')).val();
     $scope.departureDate = angular.element($('#departureDate')).val();
-    $scope.roomNumber = angular.element($('#roomNumber')).val();
+    //$scope.roomNumber = angular.element($('#roomNumber')).val();
     $scope.roomType = angular.element($('#roomType')).val();
     $scope.firstName = angular.element($('#firstName')).val().toUpperCase();
     $scope.middleName = angular.element($('#middleName')).val().toUpperCase();
