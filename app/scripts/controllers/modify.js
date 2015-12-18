@@ -141,7 +141,7 @@ angular.module('appModernizationApp')
 
             HRS.getRoomList(parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')),  
                             parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')), 
-                            angular.element($('#roomType')).val().slice(0,2)).then(function(data){ 
+                            $scope.roomtype.val).then(function(data){ 
                               console.log(JSON.stringify(data)); 
              if(data.status == 200)     
      { 
@@ -227,7 +227,7 @@ angular.module('appModernizationApp')
      angular.element('#registerationError').html("Unknown Error"); 
   } 
   else{ 
-        angular.element('#registerationError').html(data.data.errormessage); 
+        angular.element('#registerationError').html(data.data.errorMessage); 
  } 
         angular.element('#registerationError').css('display', 'block'); 
 
