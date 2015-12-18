@@ -82,8 +82,6 @@ angular.module('appModernizationApp')
                 arrivalDate: fullYear + fullMonth + fullDate
             };
             
-            alert(postSearchCriteria.arrivalDate);
-            
             HRS.searchReservations(postSearchCriteria.lastName, postSearchCriteria.arrivalDate).then(function(response){
 
                 
