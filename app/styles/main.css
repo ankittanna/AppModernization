@@ -110,7 +110,7 @@ form .form-group label.control-label {
 
 body {
   color: #000;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -130,7 +130,7 @@ body {
 
 .form-control {
   font-size: 1em;
-  height: 28px;
+  height: 30px;
 }
 
 .roomDetailsTable{
@@ -348,4 +348,8 @@ input::-webkit-inner-spin-button {
 
 #registerationError{
     display:hidden;   
+}
+
+.reservationnumber {
+  font-size: 1.2em;
 }
