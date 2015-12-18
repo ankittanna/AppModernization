@@ -148,7 +148,7 @@ angular.module('appModernizationApp')
      {
          $scope.roomDetails = data.data;
          
-         if($scope.roomDetails.length ==0 ){
+         if($scope.roomDetails.length == 0 ){
         angular.element('.roomDetails').css('display', 'none');
         angular.element('.unavailableroom').val('No Room Available with given Criteria. Please change the search criteria and search again.');
         angular.element('.unavailableroom').css('display', 'block');
@@ -176,7 +176,7 @@ angular.module('appModernizationApp')
 
 
                 $scope.arrivalDate = angular.element($('#arrivalDate')).val().replace(/-/g,'');
-                $scope.departureDate = angular.element($('#departureDate')).val().replace(/-/g,'')
+                $scope.departureDate = angular.element($('#departureDate')).val().replace(/-/g,'');
 
                 var reservationDetails = {
                 "customer": {
@@ -225,7 +225,7 @@ angular.module('appModernizationApp')
      } else 
      {
   if(data.data === null || data.data===undefined){
-     angular.element('#registerationError').val("Unknown Error")
+     angular.element('#registerationError').val("Unknown Error");
   }
   else{
         angular.element('#registerationError').val(data.data.errormessage);
