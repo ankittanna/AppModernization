@@ -64,7 +64,7 @@ this.searchRooms = function(){
          
          if($scope.roomDetails.length ==0 ){
         angular.element('.roomDetails').css('display', 'none');
-        angular.element('.unavailableroom').val('No Room Available with given Criteria. Please change the search criteria and search again.');
+        angular.element('.unavailableroom label').html('No Room Available with given Criteria. Please change the search criteria and search again.');
         angular.element('.unavailableroom').css('display', 'block');
           }
           else{
@@ -75,7 +75,7 @@ this.searchRooms = function(){
          
      } else 
      {
-         angular.element('.unavailableroom').val(data.data.errormessage);
+         angular.element('.unavailableroom label').html(data.data.errormessage);
          angular.element('.unavailableroom').css('display', 'block');
      }
     });
