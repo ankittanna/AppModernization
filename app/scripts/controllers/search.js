@@ -79,7 +79,7 @@ angular.module('appModernizationApp')
             
             var postSearchCriteria = {
                 lastName: this.searchLastName.trim(),
-                arrivalDate: fullYear + fullMonth + fullDate
+                arrivalDate: "" + fullYear + "" + fullMonth + "" + fullDate +""
             };
             
             HRS.searchReservations(postSearchCriteria.lastName, postSearchCriteria.arrivalDate).then(function(response){
