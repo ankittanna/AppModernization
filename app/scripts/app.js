@@ -24,6 +24,7 @@ angular
         .when('/about', { controller: 'AboutCtrl', templateUrl:'views/about.html', label:'About'})
         .when('/search', { controller: 'SearchCtrl', templateUrl: 'views/search.html', label:'Home'})
         .when('/search/details', { controller: 'DetailsCtrl',templateUrl: 'views/details.html',label: 'New Reservation'})
+        .when('/search/view/:param1', { controller: 'ViewCtrl', templateUrl:'views/view.html', label:'View Reservation'})
         .when('/search/view/:param1/:param2', { controller: 'ViewCtrl', templateUrl:'views/view.html', label:'View Reservation'})
         .when('/search/delete', { controller: 'DeleteCtrl', templateUrl:'views/delete.html', label:''})
         .when('/search/delete/:param1', {controller: 'DeleteCtrl',templateUrl: 'views/delete.html',label:'Cancel Reservation'})
