@@ -89,9 +89,14 @@ angular.module('appModernizationApp')
      {
          $scope.reservations = response.data;
                 console.log(JSON.stringify(response))
-
+                
+                $scope.responseMsg = "";
+                
                 if($scope.reservations.length == 0) {
                     $scope.responseMsg = "No reseravation found matching criteria.";
+                } else 
+                {
+                    $scope.responseMsg = "";
                 }
          
      
