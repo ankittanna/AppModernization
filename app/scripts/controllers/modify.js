@@ -20,30 +20,29 @@ angular.module('appModernizationApp')
 
       $scope.breadcrumbs = breadcrumbs; 
 
-      $scope.roomtype = ['AS-ANNIVERSARY SUITE', 
-'BD-BUDGET DOUBLE', 
-'BS-BUDGET SINGLE', 
-'DB-TWO DOUBLE BEDS', 
-'KI-SINGLE KING BED', 
-'MA-MID SIZE SUITE', 
-'PS-PRESIDENTIAL SUITE', 
-'QU-SINGLE QUEEN BED', 
-'SB-EDDY BARCLAY SUITE', 
-'SM-BUDGET SMALL', 
-'SO-ORIENTAL SUITE', 
-'SS-SWIMINGPOOL SUITE', 
-'ST-DONALD TRUMP SUITE', 
-'S1-ONE BED SUITE', 
-'S2-TWO BED SUITE', 
-'S3-THREE BED SUITE', 
-'S4-FOUR BED SUITE', 
-'S5-FIVE BED SUITE', 
-'S6-SIX BED SUITE ', 
-'S7-SEVEN BED SUITE', 
-'S8-EIGHT BED SUITE ', 
-'TW-TWO TWIN BEDS', 
-'WS-WEDDING SUITE' 
- ]; 
+      $scope.roomtype = [{roomtype: 'AS-ANNIVERSARY SUITE', val: 'AS'},
+      {roomtype: 'BD-BUDGET DOUBLE', val: 'BD'},
+      {roomtype: 'BS-BUDGET SINGLE', val: 'BS'},
+      {roomtype: 'DB-TWO DOUBLE BEDS', val: 'DB'},
+      {roomtype: 'KI-SINGLE KING BED', val: 'KI'},
+      {roomtype: 'MA-MID SIZE SUITE', val: 'MA'},
+      {roomtype: 'PS-PRESIDENTIAL SUITE', val: 'PS'},
+      {roomtype: 'QU-SINGLE QUEEN BED', val: 'QU'},
+      {roomtype: 'SB-EDDY BARCLAY SUITE', val: 'SB'},
+      {roomtype: 'SM-BUDGET SMALL', val: 'SM'},      
+      {roomtype: 'SO-ORIENTAL SUITE', val: 'SO'},
+      {roomtype: 'SS-SWIMINGPOOL SUITE', val: 'SS'},
+      {roomtype: 'ST-DONALD TRUMP SUITE', val: 'ST'},
+      {roomtype: 'S1-ONE BED SUITE', val: 'S1'},
+      {roomtype: 'S2-TWO BED SUITE', val: 'S2'},
+      {roomtype: 'S3-THREE BED SUITE', val: 'S3'},
+      {roomtype: 'S4-FOUR BED SUITE', val: 'S4'},
+      {roomtype: 'S5-FIVE BED SUITE', val: 'S5'},
+      {roomtype: 'S6-SIX BED SUITE', val: 'S6'},
+      {roomtype: 'S7-SEVEN BED SUITE', val: 'S7'},
+      {roomtype: 'S8-EIGHT BED SUITE', val: 'S8'},
+      {roomtype: 'TW-TWO TWIN BEDS', val: 'TW'},
+      {roomtype: 'WS-WEDDING SUITE', val: 'WS'}]; 
 
   $scope.expirymonth = [ 
      {month: 'Jan', val: '01'}, 
@@ -200,7 +199,7 @@ angular.module('appModernizationApp')
               "expiryDate": $scope.expirymonth.val +"/"+ $scope.expiryyear.val, 
 
              "room" : { 
-                "roomNo": parseInt(angular.element('#roomNumber').val()), 
+                "roomNo": parseInt(angular.element('#roomNumber').html()), 
                 "smokeFlag": $scope.smokingFlag, 
                 "roomType": $scope.roomType, 
                 "rateCode": $scope.rateCode, 
