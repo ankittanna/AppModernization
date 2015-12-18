@@ -23,23 +23,20 @@ angular.module('appModernizationApp')
 
             if(param2 == 'fromsearch'){
                $scope.responseMsg = "";
-               this.getRegisteredData($scope.reservationId);
+               HRS.getRegisteredData($scope.reservationId).then(function(data) {
+            reservedData = data;
+            console.log(JSON.stringify(reservedData));
+        })
             }
             else if  (param2 == 'fromadd'){
                 $scope.responseMsg = "Congratulations: Reservation Successfully Done.";
-                reservedData = HRS.reservedData;
+                reservedData = HRS.getReservedRoomData();
+                
             }
              else if  (param2 == 'fromedit'){
                  $scope.responseMsg = "Reservation Successfully Updated";
-                 reservedData = HRS.reservedData;
+                 reservedData = HRS.getReservedRoomData();
             }
-        }
-
-        this.getRegisteredData = function (){
-
-            HRS.getRegisteredData($scope.reservationId).then(function(data) {
-            reservedData = data;
-            console.log(JSON.stringify(reservedData));
         }
 
        
@@ -67,7 +64,7 @@ angular.module('appModernizationApp')
             $scope.expiryDate = reservedData.expiryDate;
             $scope.comments = reservedData.comments1;
 
-        });
+    
 
 
     }]);
