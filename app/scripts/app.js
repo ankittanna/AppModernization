@@ -27,8 +27,8 @@ angular
         .when('/search/view/:param1/:param2', { controller: 'ViewCtrl', templateUrl:'views/view.html', label:'View Reservation'})
         .when('/search/delete', { controller: 'DeleteCtrl', templateUrl:'views/delete.html', label:''})
         .when('/search/delete/:param1', {controller: 'DeleteCtrl',templateUrl: 'views/delete.html',label:'Cancel Reservation'})
-        .when('/search/edit', {controller: 'EditCtrl',templateUrl: 'views/edit.html',label: ''})
-        .when('/search/edit/:param1', {controller: 'EditCtrl',templateUrl: 'views/edit.html',label: 'Edit Reservation'})
+        .when('/search/edit', {controller: 'ModifyCtrl',templateUrl: 'views/edit.html',label: ''})
+        .when('/search/edit/:param1', {controller: 'ModifyCtrl',templateUrl: 'views/edit.html',label: 'Edit Reservation'})
         .otherwise({ redirectTo: '/' });
 }]);
 
