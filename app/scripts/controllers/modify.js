@@ -87,7 +87,7 @@ angular.module('appModernizationApp')
 
           $scope.arrivalDate = arrivalDate; 
           $scope.departureDate = departureDate; 
-          $scope.roomType = reservedData.room.roomType; 
+          $scope.roomtype.val = reservedData.room.roomType; 
           $scope.roomNumber = reservedData.room.roomNo; 
           $scope.roomDesc =  reservedData.room.roomDescription; 
           $scope.roomRate = reservedData.room.rate; 
@@ -201,7 +201,7 @@ angular.module('appModernizationApp')
              "room" : { 
                 "roomNo": parseInt(angular.element('#roomNumber').html()), 
                 "smokeFlag": $scope.smokingFlag, 
-                "roomType": $scope.roomType, 
+                "roomType": $scope.roomtype.val, 
                 "rateCode": $scope.rateCode, 
                 "roomDescription": $scope.roomDesc, 
                 "rate": parseInt($scope.roomRate) 
