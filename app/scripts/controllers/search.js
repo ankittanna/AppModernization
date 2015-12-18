@@ -56,10 +56,33 @@ angular.module('appModernizationApp')
         
         if(this.validateSearchCriteria())
         {
+            var fullYear = this.searchArrivalDate.getFullYear();
+            var fullMonth;
+            var fullDate;
+            if((this.searchArrivalDate.getMonth() + 1) < 10)
+            {
+                fullMonth = "0"+(this.searchArrivalDate.getMonth() + 1); 
+            } else
+            {
+                fullMonth = this.searchArrivalDate.getMonth() + 1;
+            }
+            
+            if(this.searchArrivalDate.getDate() < 10)
+            {
+                fullDate = "0"+(this.searchArrivalDate.getDate());
+            } else
+            {
+                fullDate = this.searchArrivalDate.getDate();
+            }
+            
+            
+            
             var postSearchCriteria = {
                 lastName: this.searchLastName.trim(),
-                arrivalDate: (this.searchArrivalDate).getFullYear() + "" + ((this.searchArrivalDate).getMonth()+1) + "" + (this.searchArrivalDate).getDate() +""
+                arrivalDate: fullYear + fullMonth + fullDate
             };
+            
+            alert(postSearchCriteria.arrivalDate);
             
             HRS.searchReservations(postSearchCriteria.lastName, postSearchCriteria.arrivalDate).then(function(response){
 
