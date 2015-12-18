@@ -149,7 +149,7 @@ angular.module('appModernizationApp')
 
          if($scope.roomDetails.length == 0 ){ 
         angular.element('.roomDetails').css('display', 'none'); 
-        angular.element('.unavailableroom').val('No Room Available with given Criteria. Please change the search criteria and search again.'); 
+        angular.element('.unavailableroom label').html('No Room Available with given Criteria. Please change the search criteria and search again.'); 
         angular.element('.unavailableroom').css('display', 'block'); 
           } 
           else{ 
@@ -160,7 +160,7 @@ angular.module('appModernizationApp')
 
      } else  
      { 
-         angular.element('.unavailableroom').val(data.data.errormessage); 
+         angular.element('.unavailableroom label').html(data.data.errormessage); 
          angular.element('.unavailableroom').css('display', 'block'); 
      } 
             }); 
@@ -224,10 +224,10 @@ angular.module('appModernizationApp')
      } else  
      { 
   if(data.data === null || data.data===undefined){ 
-     angular.element('#registerationError').val("Unknown Error"); 
+     angular.element('#registerationError').html("Unknown Error"); 
   } 
   else{ 
-        angular.element('#registerationError').val(data.data.errormessage); 
+        angular.element('#registerationError').html(data.data.errormessage); 
  } 
         angular.element('#registerationError').css('display', 'block'); 
 

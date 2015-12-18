@@ -61,10 +61,10 @@ angular.module('appModernizationApp')
      } else 
      {
   if(data.data === null || data.data===undefined){
-     angular.element('#registerationError').val("Unknown Error")
+     angular.element('#registerationError').html("Unknown Error")
   }
   else{
-        angular.element('#registerationError').val(data.data.errormessage);
+        angular.element('#registerationError').html(data.data.errormessage);
  }
         angular.element('#registerationError').css('display', 'block');
 
