@@ -10,7 +10,12 @@
 angular.module('appModernizationApp')
     .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', function($scope, $http, HRS, $location, $routeParams, breadcrumbs) {
 
-        $scope.breadcrumbs = breadcrumbs;
+        //$scope.breadcrumbs = breadcrumbs;
+         //$('.breadcrumb li').eq(1).remove();
+        if(breadcrumbs.breadcrumbs.length >= 3){
+            breadcrumbs.breadcrumbs.splice(1,1);
+        }     
+        $scope.breadcrumbs = breadcrumbs;  
 
         var reservedData = [];
 
