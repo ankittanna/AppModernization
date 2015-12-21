@@ -78,6 +78,8 @@ this.selectRoom = function(){
 
 this.searchRooms = function(){
 
+    angular.element('.roomDetails').css('display', 'none');
+    angular.element('.unavailableroom').css('display', 'none');
     HRS.getRoomList(parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')), 
                     parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')),
                     angular.element($('#roomType')).val().slice(0,2)).then(function(data){

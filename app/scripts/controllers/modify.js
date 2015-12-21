@@ -161,7 +161,9 @@ angular.module('appModernizationApp')
 
         this.searchRooms = function() 
         { 
-
+            
+            angular.element('.roomDetails').css('display', 'none');
+            angular.element('.unavailableroom').css('display', 'none');
             HRS.getRoomList(parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')),  
                             parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')), 
                             $scope.roomtype.val).then(function(data){ 
