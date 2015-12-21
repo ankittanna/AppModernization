@@ -15,7 +15,7 @@ angular.module('appModernizationApp')
         this.searchLastName = '';
         this.searchArrivalDate = '';
         
-        $scope.isSearchResultVisible = false;
+        $scope.isSearchResultVisible = true;
         
         angular.element('#appNavBar').css('display', 'block');
         angular.element('.userInfo').css('display', 'block');
@@ -56,10 +56,9 @@ angular.module('appModernizationApp')
                 HRS.searchReservations(this.searchLastName, arrivalDate).then(function(response) {
 
                     if (response.status === 200)  {     
+                        $scope.isSearchResultVisible = true;
                         $scope.reservations = response.data;
                         $scope.responseMsg = "";
-                        
-                        $scope.isSearchResultVisible = true;
                         
                         if ($scope.reservations.length === 0) {
                             $scope.isSearchResultVisible = false;
