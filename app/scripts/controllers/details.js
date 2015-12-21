@@ -28,6 +28,29 @@ angular.module('appModernizationApp')
             }
           console.log($scope.lateArrival);
       });
+      $('#bookRoomForm').submit(function(evt) {
+  if (! $('#bookRoomForm').validate()) {
+    evt.preventDefault();
+  }
+});
+
+this.validateDetails = function()
+{
+      if($scope.arrivalDate === '' || $scope.departureDate ===''  || $scope.firstName ==='' || $scope.lastName ==='' 
+    || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === '')
+      {
+        angular.element('#registerationError').html("Required Field is Blank");
+        return false;
+      } 
+      else if($scope.phoneNumber.length < 10)
+      {
+        angular.element('#registerationError').html("PhoneNumber should have atleast 10 Digits");
+        return false;
+      } else 
+      {
+        return true;
+      }
+};
 
 $scope.roomDetails = [];
       
@@ -142,39 +165,33 @@ this.storeDetails = function(){
 
     console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
     
-    HRS.saveReservations(reservationDetails).then(function(data){
-       
 
-     if(data.status == 200)    
-     {
-        angular.element('#registerationError').css('display', 'none');
-        var reservationId = data.data.reservationId;
+    if(this.validateDetails())
+    {
+          HRS.saveReservations(reservationDetails).then(function(data){
+             
 
-         console.log("Detail Data  "  + JSON.stringify(data.data));
-        $location.path('/search/view/'+reservationId + "/fromadd");
-         
-     } else 
-     {
-  if(data.data === null || data.data===undefined){
-     angular.element('#registerationError').html("Unknown Error")
-  }
-  else{
-        angular.element('#registerationError').html(data.data.errorMessage);
- }
-        angular.element('#registerationError').css('display', 'block');
+           if(data.status == 200)    
+           {
+              angular.element('#registerationError').css('display', 'none');
+              var reservationId = data.data.reservationId;
 
-
-
-     }
+               console.log("Detail Data  "  + JSON.stringify(data.data));
+              $location.path('/search/view/'+reservationId + "/fromadd");
+               
+           } else 
+           {
+              if(data.data === null || data.data===undefined){
+                 angular.element('#registerationError').html("Unknown Error")
+              }
+              else{
+                    angular.element('#registerationError').html(data.data.errorMessage);
+             }
+              angular.element('#registerationError').css('display', 'block');
+         }
         
-    });/*.catch(function(data){
-            angular.element('#errorMsg').css('display', 'block');
-           $scope.registrationError = JSON.stringify(data);
-    });*/
-    
-    // dont use this. Use $location for changing the view.
-    //window.location.href="http://localhost:9000/#/view";
-    //$location.path('/view');
+    });
+    }
 }
 
       
