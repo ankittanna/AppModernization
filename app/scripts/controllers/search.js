@@ -12,6 +12,7 @@ angular.module('appModernizationApp')
         $scope.breadcrumbs = breadcrumbs;
         $scope.responseMsg = "";
         $scope.reservations = [];
+        $scope.searchValidated = true;
         this.searchLastName = '';
         this.searchArrivalDate = '';
         angular.element('#appNavBar').css('display', 'block');
@@ -33,9 +34,11 @@ angular.module('appModernizationApp')
             var selectedDate = new Date(this.searchArrivalDate);
 
             if (lastName.length === 0) {
+                angular.element('#roomTable').css('display', 'none');
                 $scope.responseMsg = 'Name cannot be blank';
                 return false;
             } else if (selectedDate == 'Invalid Date' || todayDate.notPreviousDay(selectedDate)) {
+                angular.element('#roomTable').css('display', 'none');
                  $scope.responseMsg ='Date Cannot be blank or less then current date.';
                 return false;
             }
@@ -57,9 +60,11 @@ angular.module('appModernizationApp')
                         $scope.responseMsg = "";
 
                         if ($scope.reservations.length === 0) {
+                            angular.element('#roomTable').css('display', 'none');
                             $scope.responseMsg = "No reseravation found matching criteria.";
                         }
-                    } else  {     
+                    } else  {    
+                        angular.element('#roomTable').css('display', 'none'); 
                         $scope.responseMsg = response.data.errormessage;   
                     }
                 });
