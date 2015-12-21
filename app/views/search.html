@@ -78,7 +78,7 @@
                 </tbody>
             </table>
             
-             <table class="table textAlignLeft visible-xs xs-table" ng-show="search.isSearchResultVisible">
+             <table class="table textAlignLeft visible-xs xs-table" ng-show="{{isSearchResultVisible}}">
                 <tbody ng-repeat="(index, reservation) in reservations">
                     <tr>
                         <th>S. No</th>
