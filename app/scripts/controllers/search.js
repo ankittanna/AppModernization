@@ -8,28 +8,31 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('SearchCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
+    .controller('SearchCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, breadcrumbs, DateService) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.responseMsg = "";
         $scope.reservations = [];
         this.searchLastName = '';
         this.searchArrivalDate = '';
+        angular.element('#appNavBar').css('display', 'block');
+        angular.element('.userInfo').css('display', 'block');
 
         $("input[type=text]").keyup(function() {
             $(this).val($(this).val().toUpperCase());
             this.searchLastName = $(this).val().toUpperCase();
         });
 
-        // Tab Visibility Logic
-        angular.element('#appNavBar').css('display', 'block');
-        angular.element('.userInfo').css('display', 'block');
+        this.getFormattedDate = function(rawDate) {
+            var formatDate = DateService.convertToFormat(rawDate);
+            return formatDate;
+        };
 
         this.validateSearchCriteria = function() {
             var lastName = this.searchLastName.trim();
             var todayDate = new Date();
             var selectedDate = new Date(this.searchArrivalDate);
 
-            if (lastName.length === 0 ) {
+            if (lastName.length === 0) {
                 alert('Name cannot be blank');
                 return false;
             } else if (selectedDate == 'Invalid Date' || todayDate.notPreviousDay(selectedDate)) {
@@ -45,11 +48,11 @@ angular.module('appModernizationApp')
                 var fullYear = (this.searchArrivalDate).getFullYear();
                 var fullMonth = ("00" + (this.searchArrivalDate.getMonth() + 1)).slice(-2);
                 var fullDate = ("00" + this.searchArrivalDate.getDate()).slice(-2);
-                var arrivalDate =  "" + fullYear + "" + fullMonth + "" + fullDate + "";
-                
+                var arrivalDate = "" + fullYear + "" + fullMonth + "" + fullDate + "";
+
                 HRS.searchReservations(this.searchLastName, arrivalDate).then(function(response) {
 
-                    if (response.status === 200) {     
+                    if (response.status === 200)  {     
                         $scope.reservations = response.data;
                         $scope.responseMsg = "";
 
@@ -61,8 +64,6 @@ angular.module('appModernizationApp')
                     }
                 });
 
-            } else {
-                //alert('Please enter proper name or date.');
             }
         };
     }]);

@@ -29,12 +29,16 @@ angular.module('appModernizationApp')
             if(param2 == 'fromsearch'){
                $scope.responseMsg = "";
                HRS.getRegisteredData($scope.reservationId).then(function(data) {
-            reservedData = data;
+         reservedData = data;
 
                 $scope.reservationId = reservedData.reservationId;
 
-            $scope.arrivalDate = reservedData.arrivalDate;
-            $scope.departureDate = reservedData.departureDate;
+            var arrival = reservedData.arrivalDate.toString();
+            var departure = reservedData.departureDate.toString();
+            $scope.arrivalDate = arrival.slice(6,8)+"/"+arrival.slice(4,6)+"/"+arrival.slice(0,4);
+            $scope.departureDate = departure.slice(6,8)+"/"+departure.slice(4,6)+"/"+departure.slice(0,4);
+           // $scope.arrivalDate = reservedData.arrivalDate;
+            //$scope.departureDate = reservedData.departureDate;
             $scope.roomType = reservedData.room.roomType;
             $scope.roomNumber = reservedData.room.roomNo;
             $scope.roomDesc = reservedData.room.roomDescription;
