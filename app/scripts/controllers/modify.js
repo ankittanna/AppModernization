@@ -11,11 +11,11 @@ angular.module('appModernizationApp')
   .controller('ModifyCtrl', ['$scope','$http','HRS','$location','breadcrumbs','$routeParams',function ($scope,$http,HRS,$location,breadcrumbs,$routeParams) {
       
       $("input[type=text]").keyup(function(){ 
-        $(this).val( $(this).val().toUpperCase() ); 
+        $(this).val( $(this).val().toString().toUpperCase() ); 
       }); 
 
       $("textarea").keyup(function(){ 
-        $(this).val( $(this).val().toUpperCase() ); 
+        $(this).val( $(this).val().toString().toUpperCase() ); 
       }); 
 
       $scope.breadcrumbs = breadcrumbs; 
@@ -179,21 +179,21 @@ angular.module('appModernizationApp')
 
                 var reservationDetails = { 
                 "customer": { 
-                "firstName": $scope.firstName.toUpperCase(), 
-                "lastName": $scope.lastName.toUpperCase(), 
-                "middleName": $scope.middleName.toUpperCase(), 
-                "addressLine1": $scope.addressLine1.toUpperCase(), 
-                "addressLine2": $scope.addressLine2.toUpperCase(), 
-                "addressLine3": $scope.addressLine3.toUpperCase(), 
+                "firstName": $scope.firstName.toString().toUpperCase(), 
+                "lastName": $scope.lastName.toString().toUpperCase(), 
+                "middleName": $scope.middleName.toString().toUpperCase(), 
+                "addressLine1": $scope.addressLine1.toString().toUpperCase(), 
+                "addressLine2": $scope.addressLine2.toString().toUpperCase(), 
+                "addressLine3": $scope.addressLine3.toString().toUpperCase(), 
                 "phoneNumber": $scope.phoneNumber, 
-                "companyName": $scope.companyName.toUpperCase() 
+                "companyName": $scope.companyName.toString().toUpperCase() 
               }, 
 
               "arrivalDate": parseInt($scope.arrivalDate), 
               "departureDate": parseInt($scope.departureDate), 
               "cardNumber": $scope.cardNumber, 
               "cardType": $scope.cardType, 
-              "comments1": $scope.comments1.toUpperCase(), 
+              "comments1": $scope.comments1.toString().toUpperCase(), 
               "comments2": "", 
               "lateArrivalFlag": $scope.lateArrivalFlag, 
               "expiryDate": $scope.expirymonth.val +"/"+ $scope.expiryyear.val, 
