@@ -159,7 +159,7 @@ this.storeDetails = function(){
      angular.element('#registerationError').html("Unknown Error")
   }
   else{
-        angular.element('#registerationError').html(data.data.errormessage);
+        angular.element('#registerationError').html(data.data.errorMessage);
  }
         angular.element('#registerationError').css('display', 'block');
 
