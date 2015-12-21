@@ -28,20 +28,21 @@ angular.module('appModernizationApp')
             }
           console.log($scope.lateArrival);
       });
-      $('#bookRoomForm').submit(function(evt) {
-  if (! $('#bookRoomForm').validate()) {
-    evt.preventDefault();
-  }
-});
+  
 
 this.validateDetails = function()
 {
       if($scope.arrivalDate === '' || $scope.departureDate ===''  || $scope.firstName ==='' || $scope.lastName ==='' 
-    || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === '')
+    || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === ''
+       || $scope.cardType === '')
       {
         angular.element('#registerationError').html("Required Field is Blank");
         return false;
-      } 
+      }
+      else if($scope.expirymonth.val === undefined || $scope.expiryyear.val === undefined )
+      {
+          angular.element('#registerationError').html("Please select value from dropdown");
+      }
       else if($scope.phoneNumber.length < 10)
       {
         angular.element('#registerationError').html("PhoneNumber should have atleast 10 Digits");

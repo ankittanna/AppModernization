@@ -65,8 +65,8 @@
                         <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch">{{reservation.reservationId}}</a></td>
                         <td>{{reservation.firstName}}</td>
                         <td>{{reservation.lastName}}</td>
-                        <td>{{reservation.arrivalDate}}</td>
-                        <td>{{reservation.departureDate}}</td>
+                        <td>{{search.getFormattedDate(reservation.arrivalDate)}}</td>
+                        <td>{{search.getFormattedDate(reservation.departureDate)}}</td>
 
                         <td id="actions">
                             <a id="editsrch" ng-href="#/search/edit/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png" ></a>
@@ -112,7 +112,7 @@
                     </tr> 
                     <tr>
                         <th>Departure Date</th>
-                        <td>{{reservation.departureDate}}</td>
+                        <td>{{search.getFormattedDate(reservation.departureDate)}}</td>
                         <td></td>
                     </tr>
 

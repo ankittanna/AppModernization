@@ -112,7 +112,30 @@ angular.module('appModernizationApp')
           $scope.expiryyear.val = expiryDate.slice(expiryDate.length-2, expiryDate.length); 
 
           $scope.comments1 = reservedData.comments1; 
-      }); 
+      });
+      
+      this.validateDetails = function()
+      {
+          if($scope.arrivalDate === '' || $scope.departureDate ===''  || $scope.firstName ==='' || $scope.lastName ==='' 
+            || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === ''
+            || $scope.cardType === '')
+          {
+            angular.element('#registerationError').html("Required Field is Blank");
+            return false;
+          }
+          else if($scope.expirymonth.val === undefined || $scope.expiryyear.val === undefined )
+          {
+              angular.element('#registerationError').html("Please select value from dropdown");
+          }
+          else if($scope.phoneNumber.length < 10)
+          {
+            angular.element('#registerationError').html("PhoneNumber should have atleast 10 Digits");
+            return false;
+          } else 
+          {
+            return true;
+          }
+      };
 
       this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag) 
       { 
@@ -176,7 +199,8 @@ angular.module('appModernizationApp')
 
                 $scope.arrivalDate = angular.element($('#arrivalDate')).val().replace(/-/g,''); 
                 $scope.departureDate = angular.element($('#departureDate')).val().replace(/-/g,''); 
-
+                 if(this.validateDetails())
+                {
                 var reservationDetails = { 
                 "customer": { 
                 "firstName": $scope.firstName.toString().toUpperCase(), 
@@ -208,39 +232,30 @@ angular.module('appModernizationApp')
               } 
             }; 
 
-
             console.log("-----> "+JSON.stringify(reservationDetails) + '*******'); 
-
+                      
             HRS.editReservation(reservationDetails,$scope.reservationId).then( function(data){ 
 
                if(data.status == 200)     
-     { 
-        angular.element('#registerationError').css('display', 'none'); 
-        var reservationId = data.reservationId; 
+               { 
+                    angular.element('#registerationError').css('display', 'none'); 
+                    var reservationId = data.reservationId; 
 
-         console.log("Detail Data  "  + JSON.stringify(data)); 
-        $location.path('/search/view/'+$scope.reservationId + "/fromedit"); 
-
-     } else  
-     { 
-  if(data.data === null || data.data===undefined){ 
-     angular.element('#registerationError').html("Unknown Error"); 
-  } 
-  else{ 
-        angular.element('#registerationError').html(data.data.errorMessage); 
- } 
-        angular.element('#registerationError').css('display', 'block'); 
-
-
-
-     } 
-
+                     console.log("Detail Data  "  + JSON.stringify(data)); 
+                    $location.path('/search/view/'+$scope.reservationId + "/fromedit"); 
+               } 
+              else  
+              { 
+                  if(data.data === null || data.data===undefined){ 
+                     angular.element('#registerationError').html("Unknown Error"); 
+                  } 
+                  else{ 
+                        angular.element('#registerationError').html(data.data.errorMessage); 
+                 } 
+                        angular.element('#registerationError').css('display', 'block'); 
+             } 
+            
             }); 
-
-
-      }; 
-
-
-      
-      
+        }
+      };      
   }]);

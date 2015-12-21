@@ -35,12 +35,12 @@
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             
        <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date" ng-model="arrivalDate">
+          <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date" ng-model="arrivalDate" required>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-          <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date" ng-model="departureDate">
+          <input type="date" id="departureDate" class="form-control" ng-model="departureDate" placeholder="Date" ng-model="departureDate" required>
         </div>
     </div>
     
@@ -137,38 +137,38 @@
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="firstName" class="form-control " placeholder="First Name" ng-model="firstName">
+            <input type="text" id="firstName" class="form-control " placeholder="First Name" ng-model="firstName" required>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3">
             <input type="text" id="middleName" class="form-control " maxlength="1" placeholder="Middle Name" ng-model="middleName">
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <input type="text" id="lastName" class="form-control " placeholder="Last Name" ng-model="lastName">
+            <input type="text" id="lastName" class="form-control " placeholder="Last Name" ng-model="lastName" required>
         </div>
     </div>
 
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="addressLine1" class="form-control " placeholder="Address Line 1" ng-model="addressLine1">
+            <input type="text" id="addressLine1" class="form-control " placeholder="Address Line 1" ng-model="addressLine1" required>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <input type="text" id="addressLine2" class="form-control " placeholder="Address Line 2" ng-model="addressLine2">
+            <input type="text" id="addressLine2" class="form-control " placeholder="Address Line 2" ng-model="addressLine2" required>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <input type="text" id="addressLine3" class="form-control " placeholder="Address Line 3" ng-model="addressLine3">
+            <input type="text" id="addressLine3" class="form-control " placeholder="Address Line 3" ng-model="addressLine3" required>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="text" id="companyName" class="form-control " placeholder="Company Name" ng-model="companyName">
+           <input type="text" id="companyName" class="form-control " placeholder="Company Name" ng-model="companyName" required>
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="number" id="phoneNumber" class="form-control" placeholder="Phone Number" ng-model="phoneNumber">
+           <input type="number" id="phoneNumber" class="form-control" placeholder="Phone Number" ng-model="phoneNumber" required>
         </div>
     </div>
 
@@ -183,7 +183,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <select id="cardType" class="form-control" ng-model="cardType">
+           <select id="cardType" class="form-control" ng-model="cardType" required>
             <option value="Ma">Master Card</option> 
                <option value="Vi">Visa Card</option>
            </select>
@@ -191,19 +191,19 @@
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <input type="number" id="cardNumber" class="form-control" placeholder="Card Number" ng-model="cardNumber">
+           <input type="number" id="cardNumber" class="form-control" placeholder="Card Number" ng-model="cardNumber" required>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
        <div class="col-xs-12 col-sm-9 col-md-2">
-                 <select class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth"><option value="" disabled selected>Month</option></select>     
+                 <select class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth" required><option value="" disabled selected>Month</option></select>     
             </div>
 
             
             <div class="col-xs-12 col-sm-9 col-md-2">
-               <select class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear"><option value="" disabled selected>Year</option></select>     
+               <select class="form-control" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear" required><option value="" disabled selected>Year</option></select>     
             </div>
     </div>
 
@@ -222,7 +222,7 @@
     <div class="form-group">
        <div class="col-xs-12 col-sm-6 col-md-3">
     <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"--></a>
-            <a><button type="button" ng-click="edit.editReservation()" class="btn btn-default btn-md form-control">
+            <a><button type="submit" ng-click="edit.editReservation()" class="btn btn-default btn-md form-control">
               Update Reservation
             </button></a>
        </div>
