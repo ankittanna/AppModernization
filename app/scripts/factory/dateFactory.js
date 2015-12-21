@@ -16,7 +16,7 @@ function dateService(){
         var formattedDate;
         
         formattedDate = rawDate.toString();
-        formattedDate = rawDate.slice(6,8)+"/"+rawDate.slice(4,6)+"/"+rawDate.slice(0,4);
+        formattedDate = formattedDate.slice(6,8)+"/"+formattedDate.slice(4,6)+"/"+formattedDate.slice(0,4);
         
         return formattedDate;
     }
@@ -26,7 +26,7 @@ function dateService(){
         var rawDate;
         
         rawDate = formattedDate.toString();
-        rawDate = formattedDate.replace(/\//g, '');
+        rawDate = rawDate.replace(/\//g, '');
         
         return rawDate;
     }
