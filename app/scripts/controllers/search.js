@@ -8,7 +8,7 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('SearchCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) { 
+  .controller('SearchCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs', 'DateService',function ($scope, $http, HRS,$location,breadcrumbs, DateService) { 
       $scope.breadcrumbs = breadcrumbs;
       angular.element('.userInfo').css('display', 'none');
       
@@ -49,6 +49,14 @@ angular.module('appModernizationApp')
             return true;
         }
     };
+    
+    this.getFormattedDate = function(rawDate)
+    {
+        var formatDate = DateService.convertToFormat(rawDate);
+        
+        return formatDate;
+    };
+      
       
     this.searchReservations = function()
     {   
