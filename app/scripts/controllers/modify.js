@@ -116,9 +116,9 @@ angular.module('appModernizationApp')
       
       this.validateDetails = function()
       {
-          if($scope.arrivalDate === '' || $scope.departureDate ===''  || $scope.firstName ==='' || $scope.lastName ==='' 
-            || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === ''
-            || $scope.cardType === '')
+          if($scope.arrivalDate === undefined || $scope.departureDate === undefined || $scope.firstName ===undefined || $scope.lastName ===undefined
+            || $scope.addressLine1 === undefined || $scope.addressLine2 === undefined || $scope.addressLine3 === undefined || $scope.phoneNumber === undefined || $scope.companyName === undefined
+            || $scope.cardType === undefined)
           {
             angular.element('#registerationError').html("Required Field is Blank");
             return false;

@@ -33,10 +33,10 @@ angular.module('appModernizationApp')
             var selectedDate = new Date(this.searchArrivalDate);
 
             if (lastName.length === 0) {
-                alert('Name cannot be blank');
+                $scope.responseMsg = 'Name cannot be blank';
                 return false;
             } else if (selectedDate == 'Invalid Date' || todayDate.notPreviousDay(selectedDate)) {
-                alert('Date Cannot be blank or less then current date.');
+                 $scope.responseMsg ='Date Cannot be blank or less then current date.';
                 return false;
             }
             return true;
