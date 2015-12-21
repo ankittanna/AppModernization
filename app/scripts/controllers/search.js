@@ -14,6 +14,9 @@ angular.module('appModernizationApp')
         $scope.reservations = [];
         this.searchLastName = '';
         this.searchArrivalDate = '';
+        
+        this.isSearchResultVisible = false;
+        
         angular.element('#appNavBar').css('display', 'block');
         angular.element('.userInfo').css('display', 'block');
 
@@ -55,11 +58,15 @@ angular.module('appModernizationApp')
                     if (response.status === 200)  {     
                         $scope.reservations = response.data;
                         $scope.responseMsg = "";
-
+                        
+                        this.isSearchResultVisible = true;
+                        
                         if ($scope.reservations.length === 0) {
+                            this.isSearchResultVisible = false;
                             $scope.responseMsg = "No reseravation found matching criteria.";
                         }
-                    } else  {     
+                    } else  {
+                        this.isSearchResultVisible = false;
                         $scope.responseMsg = response.data.errormessage;   
                     }
                 });
