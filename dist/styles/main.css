@@ -365,6 +365,11 @@ input::-webkit-inner-spin-button {
 .loginpage .form-control {
 height: 40px;
 }
+
+.fontWeightBold
+{
+    font-weight: bold;
+}
 /*
 @font-face {
   font-family: 'RotisSansSerif-Bold';
