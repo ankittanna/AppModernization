@@ -33,7 +33,7 @@ angular.module('appModernizationApp')
 this.validateDetails = function()
 {
       if($scope.arrivalDate === '' || $scope.departureDate ===''  || $scope.firstName ==='' || $scope.lastName ==='' 
-    || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === '')
+    || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ===undefined || $scope.companyName === '' || $scope.cardNumber === undefined)
       {
         angular.element('#registerationError').html("Required Field is Blank");
         return false;
@@ -114,11 +114,11 @@ this.storeDetails = function(){
     $scope.addressLine2 = angular.element($('#addressLine2')).val().toUpperCase();
     $scope.addressLine3 = angular.element($('#addressLine3')).val().toUpperCase();
     $scope.companyName = angular.element($('#companyName')).val().toUpperCase();
-    $scope.phoneNumber = angular.element($('#phoneNumber')).val();
+    //$scope.phoneNumber = angular.element($('#phoneNumber')).val();
     //$scope.lateArrival = angular.element($('#lateArrival')).val();
     console.log("card type :"+$scope.cardtype.val);
     $scope.cardType = $scope.cardtype.val;//angular.element($('#cardType')).val();
-    $scope.cardNumber = angular.element($('#cardNumber')).val();
+    //$scope.cardNumber = angular.element($('#cardNumber')).val();
     $scope.expiryMonth = $scope.expirymonth.val;//angular.element($('#expiryMonth')).val();
     $scope.expiryYear = $scope.expiryyear.val; //angular.element($('#expiryYear')).val();
     $scope.comments = angular.element($('#comments')).val().toUpperCase();
@@ -126,7 +126,8 @@ this.storeDetails = function(){
     $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
     $scope.departureDate = $scope.departureDate.replace(/-/g,'');
     
-    
+     if(this.validateDetails())
+    {
     var reservationDetails = {
     "customer": {
     "firstName": $scope.firstName,
@@ -135,13 +136,13 @@ this.storeDetails = function(){
     "addressLine1": $scope.addressLine1,
     "addressLine2": $scope.addressLine2,
     "addressLine3": $scope.addressLine3,
-    "phoneNumber": $scope.phoneNumber,
+    "phoneNumber": $scope.phoneNumber.toString(),
     "companyName": $scope.companyName
   },
  
   "arrivalDate": parseInt($scope.arrivalDate),
   "departureDate": parseInt($scope.departureDate),
-  "cardNumber": $scope.cardNumber,
+  "cardNumber": $scope.cardNumber.toString(),
   "cardType": $scope.cardType,
   "comments1": $scope.comments,
   "comments2": "",
@@ -162,8 +163,7 @@ this.storeDetails = function(){
     console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
     
 
-    if(this.validateDetails())
-    {
+   
         HRS.saveReservations(reservationDetails).then(function(data){
        
               angular.element('#registerationError').css('display', 'none');
