@@ -53,21 +53,18 @@ angular.module('appModernizationApp')
                 var fullDate = ("00" + this.searchArrivalDate.getDate()).slice(-2);
                 var arrivalDate = "" + fullYear + "" + fullMonth + "" + fullDate + "";
 
-                HRS.searchReservations(this.searchLastName, arrivalDate).then(function(response) {
-
-                    if (response.status === 200)  {     
-                        $scope.reservations = response.data;
-                        $scope.responseMsg = "";
-
-                        if ($scope.reservations.length === 0) {
-                            angular.element('#roomTable').css('display', 'none');
-                            $scope.responseMsg = "No reseravation found matching criteria.";
-                        }
-                    } else  {    
-                        angular.element('#roomTable').css('display', 'none'); 
-                        $scope.responseMsg = response.data.errormessage;   
+                HRS.searchReservations(this.searchLastName, arrivalDate).then(function(data) {
+                    $scope.reservations = data;
+                    $scope.responseMsg = "";
+                    angular.element('#roomTable').css('display', 'block');
+                    if ($scope.reservations.length === 0) {
+                        angular.element('#roomTable').css('display', 'none');
+                        $scope.responseMsg = "No reseravation found matching criteria.";
                     }
-                });
+                }).catch(function(response) {
+                    angular.element('#roomTable').css('display', 'none'); 
+                        $scope.responseMsg = response.data.errormessage;
+                  });
 
             }
         };

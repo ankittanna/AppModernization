@@ -77,34 +77,28 @@ this.selectRoom = function(){
 }
 
 this.searchRooms = function(){
-
     angular.element('.roomDetails').css('display', 'none');
     angular.element('.unavailableroom').css('display', 'none');
-    HRS.getRoomList(parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,'')), 
-                    parseInt(angular.element($('#departureDate')).val().replace(/-/g,'')),
-                    angular.element($('#roomType')).val().slice(0,2)).then(function(data){
-                      console.log(JSON.stringify(data));
-     if(data.status == 200)    
-     {
-         $scope.roomDetails = data.data;
+    var arrivalDateFormatted = parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,''));
+    var departureDateFormatted = parseInt(angular.element($('#departureDate')).val().replace(/-/g,''));
+    var roomTypeFormatted = angular.element($('#roomType')).val().slice(0,2);
+    HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data){
+         $scope.roomDetails = data;
          
          if($scope.roomDetails.length ==0 ){
-        angular.element('.roomDetails').css('display', 'none');
-        angular.element('.unavailableroom label').html('No Room Available with given Criteria. Please change the search criteria and search again.');
-        angular.element('.unavailableroom').css('display', 'block');
+            angular.element('.roomDetails').css('display', 'none');
+            angular.element('.unavailableroom label').html('No Room Available with given Criteria. Please change the search criteria and search again.');
+            angular.element('.unavailableroom').css('display', 'block');
           }
           else{
             angular.element('.unavailableroom').css('display', 'none');
             angular.element('.roomDetails').css('display', 'block');
-
           }
-         
-     } else 
-     {
-         angular.element('.unavailableroom label').html(data.data.errormessage);
+
+    }).catch(function(response) {
+         angular.element('.unavailableroom label').html(response.data.errormessage);
          angular.element('.unavailableroom').css('display', 'block');
-     }
-    });
+      });
 
     
 };
@@ -171,29 +165,17 @@ this.storeDetails = function(){
 
     if(this.validateDetails())
     {
-          HRS.saveReservations(reservationDetails).then(function(data){
-             
-
-           if(data.status == 200)    
-           {
+        HRS.saveReservations(reservationDetails).then(function(data){
+       
               angular.element('#registerationError').css('display', 'none');
-              var reservationId = data.data.reservationId;
+              var reservationId = data.reservationId;
 
-               console.log("Detail Data  "  + JSON.stringify(data.data));
+               console.log("Detail Data  "  + JSON.stringify(data));
               $location.path('/search/view/'+reservationId + "/fromadd");
-               
-           } else 
-           {
-              if(data.data === null || data.data===undefined){
-                 angular.element('#registerationError').html("Unknown Error")
-              }
-              else{
-                    angular.element('#registerationError').html(data.data.errorMessage);
-             }
-              angular.element('#registerationError').css('display', 'block');
-         }
-        
-    });
+        }).catch(function(response) {
+                angular.element('#registerationError').css('display', 'block');
+                angular.element('#registerationError').html(response.data.errorMessage);
+            });
     }
 }
 

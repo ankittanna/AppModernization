@@ -21,72 +21,35 @@ function hotelReservationServices($http){
     
     function searchReservations(lastName, arrivalDate)
     {
-       // alert(lastName + ' ' + arrivalDate)
-        
-          return $http({
-          method: 'GET',
-          url: baseUrl + '/reservation?lastName='+lastName+'&arrivalDate='+arrivalDate
-          })
-            .then(success)
-            .catch(failure);
-
-          function success(response) {
-            return response;
-          }
-
-          function failure(error) {
-            console.log('XHR Failed for searchReservation' + error.data);
-            return error;
-          }
+        var url = baseUrl + '/reservation?lastName='+lastName+'&arrivalDate='+arrivalDate ; 
+        return $http.get(url).then(function(response) {    
+             return response.data;
+        });
     }
     
     function saveReservations(reservationDetails)
     {  
-       // reservedData = reservationDetails;
-         return $http({
+        return $http({
           method: 'POST',
           url: baseUrl + '/reservation',
           headers: {
             'Content-Type': 'application/json'
           },
           data: reservationDetails
-        }).then(success)
-        .catch(failure);
-
-          function success(response) {
-            reservedData = response.data;
-
-            console.log("reservedData  "  + JSON.stringify(reservedData));
-
-            return response;
-          }
-
-          function failure(error) {
-            console.log('XHR Failed for searchReservation' + JSON.stringify(error));
-            return error;
-          }
+        }).then(function(response) { 
+             reservedData = response.data;   
+             return response.data;
+        });
     }
 
     function getRoomList(arrivalDate, departureDate, roomType)
-    {   
-          return $http({
-          method: 'GET',
-          url: baseUrl + '/rooms?arrivalDate='+arrivalDate + '&departureDate=' + departureDate + '&roomType=' + roomType
-              
-        }).then(success)
-        .catch(failure);
+    { 
 
-          function success(response) {
-           // alert(JSON.stringify(response));  
-            console.log('reaching success function ' + JSON.stringify(response));
-              console.log('reaching success function ' + JSON.stringify(response.data));
-            return response;
-          }
+        var url = baseUrl + '/rooms?arrivalDate='+arrivalDate + '&departureDate=' + departureDate + '&roomType=' + roomType ; 
+        return $http.get(url).then(function(response) {    
+             return response.data;
+        });
 
-          function failure(error) {
-            console.log('XHR Failed for searchReservation' + JSON.stringify(error));
-            return error;
-          }
     }
 
      function cancleReservation(reservationId)
@@ -137,30 +100,16 @@ function hotelReservationServices($http){
     
     function editReservation(reservationDetails,reservationId)
     {
-        // reservedData = reservationDetails;
-         return $http({
+        return $http({
           method: 'PUT',
           url: baseUrl + '/reservation/'+reservationId,
           headers: {
             'Content-Type': 'application/json'
           },
           data: reservationDetails
-        }).then(success)
-        .catch(failure);
-
-          function success(response) {
-            reservedData = response.data;
-
-            console.log("response  "  + JSON.stringify(response));
-            console.log("response Data  "  + JSON.stringify(response.data));
-            console.log("reservedData  "  + JSON.stringify(reservedData));
-
-            return response;
-          }
-
-          function failure(error) {
-            console.log('XHR Failed for searchReservation' + JSON.stringify(error));
-            return error;
-          }
+        }).then(function(response) { 
+             reservedData = response.data;   
+             return response.data;
+        });
     }
 }
