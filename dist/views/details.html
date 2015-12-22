@@ -146,7 +146,7 @@
             <div class="col-xs-12 col-sm-3 col-md-4">
                  <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
             </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arrival:</label>
             <div class="col-xs-12 col-sm-3 col-md-2">
                 <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="lateArrival">
                 <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
@@ -195,10 +195,11 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="cardType" class="form-control" required ng-model="cardType">
-                    <option>Master Card</option>
+                <select id="cardType" class="form-control" ng-model="type.val" ng-options="type.val as type.type for type in cardtype" required> <option value="" disabled selected>Card Type</option></select>  
+              <!--  <select id="cardType" class="form-control" required ng-model="cardType">
+                    <option selected="selected">Master Card</option>
                     <option>Visa Card</option>
-                </select>
+                </select> -->
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Card Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">

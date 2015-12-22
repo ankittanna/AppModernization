@@ -155,13 +155,12 @@ angular.module('appModernizationApp')
 this.validateDetails = function()
 {
       if($scope.arrivalDate === '' || $scope.departureDate ===''  || $scope.firstName ==='' || $scope.lastName ==='' 
-    || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === ''
-       || $scope.cardType === '')
+    || $scope.addressLine1 ==='' || $scope.addressLine2 ==='' || $scope.addressLine3 ==='' || $scope.phoneNumber ==='' || $scope.companyName === '')
       {
         angular.element('#registerationError').html("Required Field is Blank");
         return false;
       }
-      else if($scope.expirymonth.val === undefined || $scope.expiryyear.val === undefined )
+      else if($scope.expirymonth.val === undefined || $scope.expiryyear.val === undefined || $scope.cardtype.val === undefined)
       {
           angular.element('#registerationError').html("Please select value from dropdown");
       }
@@ -239,10 +238,9 @@ this.storeDetails = function(){
     $scope.companyName = angular.element($('#companyName')).val().toUpperCase();
     $scope.phoneNumber = angular.element($('#phoneNumber')).val();
     //$scope.lateArrival = angular.element($('#lateArrival')).val();
-    $scope.cardType = angular.element($('#cardType')).val();
+    $scope.cardType = $scope.cardtype.val;//angular.element($('#cardType')).val();
     $scope.cardNumber = angular.element($('#cardNumber')).val();
     $scope.expiryMonth = $scope.expirymonth.val;//angular.element($('#expiryMonth')).val();
-    console.log("Expirymonth"+$scope.expirymonth.val);
     $scope.expiryYear = $scope.expiryyear.val; //angular.element($('#expiryYear')).val();
     $scope.comments = angular.element($('#comments')).val().toUpperCase();
     
@@ -341,6 +339,11 @@ this.storeDetails = function(){
      {month: 'Oct', val: '10'},
      {month: 'Nov', val: '11'},
      {month: 'Dec', val: '12'}
+ ];
+      
+ $scope.cardtype = [
+     {type: 'MasterCard', val: 'Ma'},
+     {type: 'VisaCard', val: 'Vi'}
  ];
 
  $scope.expiryyear = [
