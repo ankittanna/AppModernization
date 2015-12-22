@@ -26,43 +26,50 @@ function hotelReservationServices($http) {
         });
     }
 
-    function saveReservations(reservationDetails) {
-        return $http({
-            method: 'POST',
-            url: baseUrl + '/reservation',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: reservationDetails
-        }).then(function(response) {
-            reservedData = response.data;
-            return response.data;
-        });
-    }
-
     function getRoomList(arrivalDate, departureDate, roomType) {
-
         var url = baseUrl + '/rooms?arrivalDate=' + arrivalDate + '&departureDate=' + departureDate + '&roomType=' + roomType;
         return $http.get(url).then(function(response) {
             return response.data;
         });
+    }
 
+    function saveReservations(reservationDetails) {
+        
+        var url = baseUrl + '/reservation/' + reservationId;
+        var config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+
+        return $http.put(url, reservationDetails, config).then(function(response) {
+            return response.data;
+        });
+
+
+
+        // return $http({
+        //     method: 'POST',
+        //     url: baseUrl + '/reservation',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     data: reservationDetails
+        // }).then(function(response) {
+        //     reservedData = response.data;
+        //     return response.data;
+        // });
+    }
+    function getRegisteredData(reservationId) {
+        var url = baseUrl + '/reservation/' + reservationId;
+        return $http.get(url).then(function(response) {
+            return response.data;
+        });
     }
 
     function cancleReservation(reservationId) {
         var url = baseUrl + '/reservation/' + reservationId;
         return $http.delete(url).then(function(response) {
-            return response.data;
-        });
-    }
-
-    function getReservedRoomData() {
-        return reservedData;
-    }
-
-    function getRegisteredData(reservationId) {
-        var url = baseUrl + '/reservation/' + reservationId;
-        return $http.get(url).then(function(response) {
             return response.data;
         });
     }
@@ -79,5 +86,9 @@ function hotelReservationServices($http) {
             reservedData = response.data;
             return response.data;
         });
+    }
+
+    function getReservedRoomData() {
+        return reservedData;
     }
 }

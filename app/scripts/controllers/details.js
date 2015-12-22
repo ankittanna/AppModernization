@@ -180,7 +180,7 @@ this.storeDetails = function(){
 }
 
       
-    $scope.roomnumbers = ['101','102','103','104','105'];
+    
        $scope.roomtype = ['AS-ANNIVERSARY SUITE',
 'BD-BUDGET DOUBLE',
 'BS-BUDGET SINGLE',
