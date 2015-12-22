@@ -238,6 +238,7 @@ this.storeDetails = function(){
     $scope.companyName = angular.element($('#companyName')).val().toUpperCase();
     $scope.phoneNumber = angular.element($('#phoneNumber')).val();
     //$scope.lateArrival = angular.element($('#lateArrival')).val();
+    console.log("card type :"+$scope.cardtype.val);
     $scope.cardType = $scope.cardtype.val;//angular.element($('#cardType')).val();
     $scope.cardNumber = angular.element($('#cardNumber')).val();
     $scope.expiryMonth = $scope.expirymonth.val;//angular.element($('#expiryMonth')).val();
