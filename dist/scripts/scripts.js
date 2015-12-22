@@ -113,7 +113,6 @@ angular
 angular.module('appModernizationApp')
   .controller('MainCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) {
     $scope.breadcrumbs = breadcrumbs;
-    angular.element('#appNavBar').css('display', 'none');
     angular.element('.userInfo').css('display', 'none');
 
      $scope.backendSystems = ["LegStar"];
@@ -368,12 +367,6 @@ this.storeDetails = function(){
 'KW - KING SIZE WEST EXPOSURE',
 'DB - TWO DOUBLE BEDS WEST',
 ];
-    // Tab Visibility  Logic
-      
-    angular.element('#appNavBar').css('display', 'block');
-    // Tab Active Logic
-    angular.element('#bookTab').addClass('active');
-    angular.element('#searchTab').removeClass('active'); 
     
   }]);
 
@@ -395,7 +388,7 @@ angular.module('appModernizationApp')
         $scope.searchValidated = true;
         this.searchLastName = '';
         this.searchArrivalDate = '';
-        angular.element('#appNavBar').css('display', 'block');
+        
         angular.element('.userInfo').css('display', 'block');
 
         $("input[type=text]").keyup(function() {
@@ -461,8 +454,6 @@ angular.module('appModernizationApp')
  */
 angular.module('appModernizationApp')
   .controller('AboutCtrl', function () {
-    
-    angular.element('#appNavBar').css('display', 'block');
     
     this.awesomeThings = [
       'HTML5 Boilerplate',

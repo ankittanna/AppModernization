@@ -246,12 +246,6 @@ this.storeDetails = function(){
 'KW - KING SIZE WEST EXPOSURE',
 'DB - TWO DOUBLE BEDS WEST',
 ];
-    // Tab Visibility  Logic
-      
-    angular.element('#appNavBar').css('display', 'block');
-    // Tab Active Logic
-    angular.element('#bookTab').addClass('active');
-    angular.element('#searchTab').removeClass('active'); 
     
   }]);
 
