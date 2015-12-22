@@ -382,7 +382,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '*.html',
             'images/**/*',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'views/*'  
           ]
         }, {
           expand: true,
@@ -469,7 +470,7 @@ module.exports = function (grunt) {
     //'cdnify',
     //'cssmin',
     //'uglify',
-    'filerev',
+    //'filerev',
     'usemin',
     'htmlmin'
   ]);
