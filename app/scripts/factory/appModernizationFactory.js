@@ -34,31 +34,17 @@ function hotelReservationServices($http) {
     }
 
     function saveReservations(reservationDetails) {
-        
-        var url = baseUrl + '/reservation/' + reservationId;
-        var config = {
+        return $http({
+            method: 'POST',
+            url: baseUrl + '/reservation',
             headers: {
                 'Content-Type': 'application/json'
-            }
-        };
-
-        return $http.put(url, reservationDetails, config).then(function(response) {
+            },
+            data: reservationDetails
+        }).then(function(response) {
+            reservedData = response.data;
             return response.data;
         });
-
-
-
-        // return $http({
-        //     method: 'POST',
-        //     url: baseUrl + '/reservation',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     data: reservationDetails
-        // }).then(function(response) {
-        //     reservedData = response.data;
-        //     return response.data;
-        // });
     }
     function getRegisteredData(reservationId) {
         var url = baseUrl + '/reservation/' + reservationId;
