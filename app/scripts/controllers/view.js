@@ -8,7 +8,7 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', function($scope, $http, HRS, $location, $routeParams, breadcrumbs) {
+    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs,DateService) {
 
         //$scope.breadcrumbs = breadcrumbs;
          //$('.breadcrumb li').eq(1).remove();
@@ -17,7 +17,9 @@ angular.module('appModernizationApp')
         }     
         $scope.breadcrumbs = breadcrumbs;  
 
-        var reservedData = [];
+        $scope.reservationDetails = [];
+
+        var reservedData = {};
 
         $scope.responseMsg = "";
 
@@ -29,99 +31,28 @@ angular.module('appModernizationApp')
             if(param2 == 'fromsearch'){
                $scope.responseMsg = "";
                HRS.getRegisteredData($scope.reservationId).then(function(data) {
-         reservedData = data;
+             reservedData = data;
+             
+             reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
+             reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+             $scope.reservationDetails = reservedData;
 
-                $scope.reservationId = reservedData.reservationId;
-
-            var arrival = reservedData.arrivalDate.toString();
-            var departure = reservedData.departureDate.toString();
-            $scope.arrivalDate = arrival.slice(6,8)+"/"+arrival.slice(4,6)+"/"+arrival.slice(0,4);
-            $scope.departureDate = departure.slice(6,8)+"/"+departure.slice(4,6)+"/"+departure.slice(0,4);
-           // $scope.arrivalDate = reservedData.arrivalDate;
-            //$scope.departureDate = reservedData.departureDate;
-            $scope.roomType = reservedData.room.roomType;
-            $scope.roomNumber = reservedData.room.roomNo;
-            $scope.roomDesc = reservedData.room.roomDescription;
-            $scope.roomRate = reservedData.room.rate;
-            $scope.rateCode = reservedData.room.rateCode;
-            $scope.smokingFlag = reservedData.room.smokeFlag;
-            $scope.lateArrivalFlag = reservedData.lateArrivalFlag;
-            $scope.firstName = reservedData.customer.firstName;
-            $scope.lastName = reservedData.customer.lastName;
-            $scope.middleName = reservedData.customer.middleName;
-            $scope.addressLine1 = reservedData.customer.addressLine1;
-            $scope.addressLine2 = reservedData.customer.addressLine2;
-            $scope.addressLine3 = reservedData.customer.addressLine3;
-            $scope.companyName = reservedData.customer.companyName;
-            $scope.phoneNumber = reservedData.customer.phoneNumber;
-            $scope.cardType = reservedData.cardType;
-            $scope.cardNumber = reservedData.cardNumber;
-            $scope.expiryDate = reservedData.expiryDate;
-            $scope.comments = reservedData.comments1;
-            console.log(JSON.stringify(reservedData));
         })
             }
             else if  (param2 == 'fromadd'){
                 $scope.responseMsg = "Congratulations: Reservation Successfully Done.";
                 reservedData = HRS.getReservedRoomData();
-                 $scope.reservationId = reservedData.reservationId;
-
-            $scope.arrivalDate = reservedData.arrivalDate;
-            $scope.departureDate = reservedData.departureDate;
-            $scope.roomType = reservedData.room.roomType;
-            $scope.roomNumber = reservedData.room.roomNo;
-            $scope.roomDesc = reservedData.room.roomDescription;
-            $scope.roomRate = reservedData.room.rate;
-            $scope.rateCode = reservedData.room.rateCode;
-            $scope.smokingFlag = reservedData.room.smokeFlag;
-            $scope.lateArrivalFlag = reservedData.lateArrivalFlag;
-            $scope.firstName = reservedData.customer.firstName;
-            $scope.lastName = reservedData.customer.lastName;
-            $scope.middleName = reservedData.customer.middleName;
-            $scope.addressLine1 = reservedData.customer.addressLine1;
-            $scope.addressLine2 = reservedData.customer.addressLine2;
-            $scope.addressLine3 = reservedData.customer.addressLine3;
-            $scope.companyName = reservedData.customer.companyName;
-            $scope.phoneNumber = reservedData.customer.phoneNumber;
-            $scope.cardType = reservedData.cardType;
-            $scope.cardNumber = reservedData.cardNumber;
-            $scope.expiryDate = reservedData.expiryDate;
-            $scope.comments = reservedData.comments1;
+                 reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
+                 reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                 $scope.reservationDetails = reservedData;
                 
             }
              else if  (param2 == 'fromedit'){
                  $scope.responseMsg = "Reservation Successfully Updated";
                  reservedData = HRS.getReservedRoomData();
-                  $scope.reservationId = reservedData.reservationId;
-
-            $scope.arrivalDate = reservedData.arrivalDate;
-            $scope.departureDate = reservedData.departureDate;
-            $scope.roomType = reservedData.room.roomType;
-            $scope.roomNumber = reservedData.room.roomNo;
-            $scope.roomDesc = reservedData.room.roomDescription;
-            $scope.roomRate = reservedData.room.rate;
-            $scope.rateCode = reservedData.room.rateCode;
-            $scope.smokingFlag = reservedData.room.smokeFlag;
-            $scope.lateArrivalFlag = reservedData.lateArrivalFlag;
-            $scope.firstName = reservedData.customer.firstName;
-            $scope.lastName = reservedData.customer.lastName;
-            $scope.middleName = reservedData.customer.middleName;
-            $scope.addressLine1 = reservedData.customer.addressLine1;
-            $scope.addressLine2 = reservedData.customer.addressLine2;
-            $scope.addressLine3 = reservedData.customer.addressLine3;
-            $scope.companyName = reservedData.customer.companyName;
-            $scope.phoneNumber = reservedData.customer.phoneNumber;
-            $scope.cardType = reservedData.cardType;
-            $scope.cardNumber = reservedData.cardNumber;
-            $scope.expiryDate = reservedData.expiryDate;
-            $scope.comments = reservedData.comments1;
+                 reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
+                 reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                 $scope.reservationDetails = reservedData;
             }
         }
-
-       
-           
-
-    
-
-
     }]);

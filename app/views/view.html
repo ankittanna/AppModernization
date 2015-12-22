@@ -1,4 +1,4 @@
-<div class="container" ng-controller="ViewCtrl as view">
+<div class="container">
     
     <!--<ol class="ab-nav breadcrumb">
     <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
@@ -25,7 +25,7 @@
 
     <div class="form-group">
          <label class="control-label col-xs-12 col-sm-3 col-md-3 fontWeightBold">Reseravation Id:</label>
-         <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationId}}</b></label>
+         <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationDetails.reservationId}}</b></label>
     </div>
    <br/>
     
@@ -35,14 +35,14 @@
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Check-in Date:</label>
             
        <div class="col-xs-12 col-sm-9 col-md-4">
-           <label class="control-label" ng-model="arrivalDate">{{arrivalDate}}</label>
+           <label class="control-label" ng-model="arrivalDate">{{reservationDetails.arrivalDate}}</label>
            
           <!--<input type="text" id="arrivalDate" class="form-control labels" placeholder="Date" ng-model="arrivalDate" readonly> -->
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Check-out Date:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label class="control-label"> {{departureDate}}</label>
+            <label class="control-label"> {{reservationDetails.departureDate}}</label>
           <!--<input type="text" id="departureDate" class="form-control labels" placeholder="Date" ng-model="departureDate" readonly>-->
         </div>
     </div>
@@ -50,12 +50,12 @@
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Room Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label id="roomType" class="control-label"> {{roomType}}</label>
+            <label id="roomType" class="control-label"> {{reservationDetails.room.roomType}}</label>
             <!--<input type="text" id="roomType" class="form-control labels" ng-model="roomType" readonly>-->
         </div>
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Room Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label id="roomNumber" class="control-label"> {{roomNumber}}</label>
+            <label id="roomNumber" class="control-label"> {{reservationDetails.room.roomNo}}</label>
             <!--<input type="text" id="roomNumber" class="form-control" ng-model="roomNumber" readonly>-->
         </div>
          
@@ -68,7 +68,7 @@
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Room Desc:</label>
         <div class="col-xs-12 col-sm-9 col-md-9">
-            <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
+            <label id="roomDesc" class="control-label"> {{reservationDetails.room.roomDescription}}</label>
              <!--<textarea class="form-control" rows="3" id="roomdescription" placeholder="Room Desc" ng-model="roomDesc" readonly></textarea>-->
         </div>
 
@@ -77,13 +77,13 @@
    <div class="form-group">
        <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Room Rate:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label id="roomRate" class="control-label"> {{roomRate}}</label>
+            <label id="roomRate" class="control-label"> {{reservationDetails.room.rate}}</label>
           <!-- <input type="text" class="form-control" placeholder="Room Rate" ng-model="roomRate" readonly>-->
         </div>
        
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Rating Code:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label id="rateCode" class="control-label"> {{rateCode}}</label>
+            <label id="rateCode" class="control-label"> {{reservationDetails.room.rateCode}}</label>
            <!--<input type="text" class="form-control" placeholder="Rating Code" ng-model="rateCode" readonly>-->
         </div>  
   </div>
@@ -91,13 +91,13 @@
   <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Smoking:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-             <label id="smokingFlag" class="control-label"> {{smokingFlag}}</label>
+             <label id="smokingFlag" class="control-label"> {{reservationDetails.room.smokeFlag}}</label>
            <!--<input type="text" class="form-control" placeholder="Smoking Flag" ng-model="smokingFlag" readonly>-->
         </div>
          
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Late Arriaval:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label id="lateArrival" class="control-label"> {{lateArrivalFlag}}</label>
+            <label id="lateArrival" class="control-label"> {{reservationDetails.lateArrivalFlag}}</label>
            <!--<input type="text" class="form-control" id="lateArrival" ng-model="lateArrivalFlag" readonly>-->
         </div>
   </div>
@@ -110,15 +110,15 @@
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Guest Name:</label>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <label id="firstName" class="control-label"> {{firstName}}</label>
+            <label id="firstName" class="control-label"> {{reservationDetails.customer.firstName}}</label>
             <!--<input type="text" id="firstName" class="form-control" placeholder="First Name" ng-model = "firstName" readonly>-->
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3">
-             <label id="middleName" class="control-label"> {{middleName}}</label>
+             <label id="middleName" class="control-label"> {{reservationDetails.customer.middleName}}</label>
             <!--<input type="text" id="middleName" class="form-control" placeholder="Middle Name" ng-model = "middleName" readonly>-->
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <label id="lastName" class="control-label"> {{lastName}}</label>
+            <label id="lastName" class="control-label"> {{reservationDetails.customer.lastName}}</label>
            <!-- <input type="text" id="lastName" class="form-control" placeholder="Last Name" ng-model="lastName" readonly>-->
         </div>
     </div>
@@ -126,15 +126,15 @@
      <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Address:</label>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <label id="addressLine1" class="control-label"> {{addressLine1}}</label>
+            <label id="addressLine1" class="control-label"> {{reservationDetails.customer.addressLine1}}</label>
             <!--<input type="text" id="addressLine1" class="form-control" placeholder="Address Line 1" ng-model="addressLine1" readonly>-->
         </div>
         <div class="col-xs-12 col-sm-12 col-md-3">
-            <label id="addressLine2" class="control-label"> {{addressLine2}}</label>
+            <label id="addressLine2" class="control-label"> {{reservationDetails.customer.addressLine2}}</label>
             <!--<input type="text" id="addressLine2" class="form-control" placeholder="Address Line 2" ng-model="addressLine1" readonly>-->
         </div>
         <div class="col-xs-12 col-sm-12 col-md-4">
-            <label id="addressLine3" class="control-label"> {{addressLine3}}</label>
+            <label id="addressLine3" class="control-label"> {{reservationDetails.customer.addressLine3}}</label>
            <!-- <input type="text" id="addressLine3" class="form-control" placeholder="Address Line 3" ng-model="addressLine1" readonly>-->
         </div>
     </div>
@@ -142,13 +142,13 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Company Name:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label id="companyName" class="control-label"> {{companyName}}</label>
+            <label id="companyName" class="control-label"> {{reservationDetails.customer.companyName}}</label>
            <!---<input type="text" id="companyName" class="form-control" placeholder="Company Name" ng-model="companyName" readonly>-->
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Phone Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-           <label id="phoneNumber" class="control-label"> {{phoneNumber}}</label> 
+           <label id="phoneNumber" class="control-label"> {{reservationDetails.customer.phoneNumber}}</label> 
           <!-- <input type="text" id="phoneNumber" class="form-control" placeholder="Phone Number" ng-model="phoneNumber" readonly>-->
         </div>
     </div>
@@ -160,13 +160,13 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Card Type:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-             <label id="cardType" class="control-label"> {{cardType}}</label> 
+             <label id="cardType" class="control-label"> {{reservationDetails.cardType}}</label> 
            <!--<input type="text" id="cardType" class="form-control" placeholder="Card Type" ng-model="cardType" readonly> -->
         </div>
 
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Card Number:</label>
         <div class="col-xs-12 col-sm-9 col-md-4">
-            <label id="cardNumber" class="control-label"> {{cardNumber}}</label> 
+            <label id="cardNumber" class="control-label"> {{reservationDetails.cardNumber}}</label> 
            <!--<input type="text" id="cardNumber" class="form-control" placeholder="Card Number" ng-model="cardNumber" readonly>-->
         </div>
     </div>
@@ -174,7 +174,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Expiry:</label>
        <div class="col-xs-12 col-sm-9 col-md-2">
-           <label id="expiryDate" class="control-label"> {{expiryDate}}</label> 
+           <label id="expiryDate" class="control-label"> {{reservationDetails.expiryDate}}</label> 
             <!--<input type="text" id="expiryDate" class="form-control" placeholder="Expiry Date" ng-model="expiryDate" readonly>    -->
          </div>
         <div class="col-xs-12 col-sm-9 col-md-2">            
@@ -189,7 +189,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3 col-md-2 fontWeightBold">Coments:</label>
         <div class="col-xs-12 col-sm-9 col-md-10">
-            <label id="comments" class="control-label"> {{comments}}</label> 
+            <label id="comments" class="control-label"> {{reservationDetails.comments1}}</label> 
            <!--<textarea id="comments" class="form-control" rows="3" id="comments" placeholder="Comments" ng-model="comments" readonly></textarea>-->
         </div>
     </div>
