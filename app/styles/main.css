@@ -104,6 +104,11 @@ form .form-group label.control-label {
   text-align: left;
 }
 
+form .form-group label.control-label.fontWeightBold {
+  font-weight: bold;
+  text-align: left;
+}
+
 .navbar {
   background-color: #66AA45;
 }
