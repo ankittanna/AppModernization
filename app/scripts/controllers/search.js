@@ -37,9 +37,9 @@ angular.module('appModernizationApp')
                 angular.element('#roomTable').css('display', 'none');
                 $scope.responseMsg = 'Name cannot be blank';
                 return false;
-            } else if (selectedDate == 'Invalid Date' || todayDate.notPreviousDay(selectedDate)) {
+            } else if (selectedDate == 'Invalid Date') {
                 angular.element('#roomTable').css('display', 'none');
-                $scope.responseMsg = 'Date Cannot be blank or less then current date.';
+                $scope.responseMsg = 'Date Cannot be blank.';
                 return false;
             }
             return true;
