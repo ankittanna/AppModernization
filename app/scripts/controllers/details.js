@@ -11,6 +11,16 @@ angular.module('appModernizationApp')
   .controller('DetailsCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
       $scope.breadcrumbs = breadcrumbs;
       
+      var reservationDetails = [];
+      
+      $http.get('../../data/dropdown-data.json').success(function(data){
+         console.log("Data:"+JSON.stringify(data.dropdownData));
+           $scope.roomtype = data.dropdownData.roomtype;
+          $scope.expirymonth = data.dropdownData.expirymonth;
+          $scope.expiryyear = data.dropdownData.expiryyear;
+           $scope.cardtype = data.dropdownData.cardtype;
+      });
+      
       $("input[type=text]").keyup(function(){
         $(this).val( $(this).val().toUpperCase() );
       });
@@ -106,7 +116,7 @@ this.storeDetails = function(){
     $scope.arrivalDate = angular.element($('#arrivalDate')).val();
     $scope.departureDate = angular.element($('#departureDate')).val();
     //$scope.roomNumber = angular.element($('#roomNumber')).val();
-    $scope.roomType = angular.element($('#roomType')).val();
+    $scope.roomType = $scope.roomtype.val;
     $scope.firstName = angular.element($('#firstName')).val().toUpperCase();
     $scope.middleName = angular.element($('#middleName')).val().toUpperCase();
     $scope.lastName = angular.element($('#lastName')).val().toUpperCase();
@@ -116,7 +126,6 @@ this.storeDetails = function(){
     $scope.companyName = angular.element($('#companyName')).val().toUpperCase();
     //$scope.phoneNumber = angular.element($('#phoneNumber')).val();
     //$scope.lateArrival = angular.element($('#lateArrival')).val();
-    console.log("card type :"+$scope.cardtype.val);
     $scope.cardType = $scope.cardtype.val;//angular.element($('#cardType')).val();
     //$scope.cardNumber = angular.element($('#cardNumber')).val();
     $scope.expiryMonth = $scope.expirymonth.val;//angular.element($('#expiryMonth')).val();
@@ -125,7 +134,6 @@ this.storeDetails = function(){
     
     $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
     $scope.departureDate = $scope.departureDate.replace(/-/g,'');
-    
      if(this.validateDetails())
     {
     var reservationDetails = {
@@ -176,76 +184,6 @@ this.storeDetails = function(){
                 angular.element('#registerationError').html(response.data.errorMessage);
             });
     }
-}
-
-      
-    
-       $scope.roomtype = ['AS-ANNIVERSARY SUITE',
-'BD-BUDGET DOUBLE',
-'BS-BUDGET SINGLE',
-'DB-TWO DOUBLE BEDS',
-'KI-SINGLE KING BED',
-'MA-MID SIZE SUITE',
-'PS-PRESIDENTIAL SUITE',
-'QU-SINGLE QUEEN BED',
-'SB-EDDY BARCLAY SUITE',
-'SM-BUDGET SMALL',
-'SO-ORIENTAL SUITE',
-'SS-SWIMINGPOOL SUITE',
-'ST-DONALD TRUMP SUITE',
-'S1-ONE BED SUITE',
-'S2-TWO BED SUITE',
-'S3-THREE BED SUITE',
-'S4-FOUR BED SUITE',
-'S5-FIVE BED SUITE',
-'S6-SIX BED SUITE ',
-'S7-SEVEN BED SUITE',
-'S8-EIGHT BED SUITE ',
-'TW-TWO TWIN BEDS',
-'WS-WEDDING SUITE'
- ];
-
- $scope.expirymonth = [
-     {month: 'Jan', val: '01'},
-     {month: 'Feb', val: '02'},
-     {month: 'Mar', val: '03'},
-     {month: 'Apr', val: '04'},
-     {month: 'May', val: '05'},
-     {month: 'Jun', val: '06'},
-     {month: 'Jul', val: '07'},
-     {month: 'Aug', val: '08'},
-     {month: 'Sep', val: '09'},
-     {month: 'Oct', val: '10'},
-     {month: 'Nov', val: '11'},
-     {month: 'Dec', val: '12'}
- ];
-      
- $scope.cardtype = [
-     {type: 'MasterCard', val: 'Ma'},
-     {type: 'VisaCard', val: 'Vi'}
- ];
-
- $scope.expiryyear = [
-     {year: '2015', val:'15'},
-     {year: '2016', val:'16'},
-     {year: '2017', val:'17'},
-     {year: '2018', val:'18'},
-     {year: '2019', val:'19'},
-     {year: '2020', val:'20'},
-     {year: '2021', val:'21'},
-     {year: '2022', val:'22'},
-     {year: '2023', val:'23'}
- ];
-
-
-    $scope.ratecode = ['TW - TWIN ROOM EAST EXPOSURE',
-'AN - SINGLE ROOM EAST',
-'KN - KING SIZE NORTH EXPOSURE',
-'KS - KING SIZE SOUTH EXPOSURE',
-'KE - KING SIZE EAST EXPOSURE',
-'KW - KING SIZE WEST EXPOSURE',
-'DB - TWO DOUBLE BEDS WEST',
-];
-    
-  }]);
+}   
+}]);
 

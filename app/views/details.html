@@ -32,9 +32,12 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="roomType" class="form-control" required>
-                    <option ng-repeat="type in roomtype" ng-model="roomType" value="{{type}}">{{type}}</option>
+                <select id="roomType" class="form-control" ng-model="roomtype.val" ng-options="roomtype.val as roomtype.roomtype for roomtype in roomtype" required>
+                    <option value="" disabled selected>Room Type</option>
                 </select>
+                <!--<select id="roomType" class="form-control" required>
+                    <option ng-repeat="type in roomtype" ng-model="roomType" value="{{type}}">{{type}}</option>
+                </select> -->
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <a>
