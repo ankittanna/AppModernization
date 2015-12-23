@@ -303,7 +303,7 @@ angular.module('appModernizationApp')
         this.searchLastName = '';
         this.searchArrivalDate = '';
         
-        $scope.isRoomTableVisible = true;
+        $scope.isRoomTableVisible = false;
         
         angular.element('.userInfo').css('display', 'block');
          
