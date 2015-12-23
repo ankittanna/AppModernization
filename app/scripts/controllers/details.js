@@ -12,6 +12,7 @@ angular.module('appModernizationApp')
         $scope.breadcrumbs = breadcrumbs;
         $scope.reservationDetails = {};
         $scope.registerationErrorMsg = "";
+        $scope.roomSearchErrorMsg = "";
         $scope.roomDetails = [];
 
         $http.get('../../data/dropdown-data.json').success(function(data) {
@@ -82,25 +83,22 @@ angular.module('appModernizationApp')
 
         this.searchRooms = function() {
             angular.element('.roomDetails').css('display', 'none');
-            angular.element('.unavailableroom').css('display', 'none');
+            $scope.roomSearchErrorMsg = "";
             var arrivalDateFormatted = DateService.formatMMDDYYYY($scope.reservationDetails.arrivalDate);
             var departureDateFormatted = DateService.formatMMDDYYYY($scope.reservationDetails.departureDate);
             var roomTypeFormatted = $scope.reservationDetails.room.roomType;
             HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data) { 
                 $scope.roomDetails = data;          
                 if ($scope.roomDetails.length == 0) {    
-                    angular.element('.roomDetails').css('display', 'none');    
-                    angular.element('.unavailableroom label').html('No Room Available with given Criteria. Please change the search criteria and search again.');    
-                    angular.element('.unavailableroom').css('display', 'block');     
-                }     
+                    angular.element('.roomDetails').css('display', 'none');                        
+                    $scope.roomSearchErrorMsg = "No Room Available with given Criteria. Please change the search criteria and search again.";
+               }     
                 else {      
-                    angular.element('.unavailableroom').css('display', 'none');      
                     angular.element('.roomDetails').css('display', 'block');     
                 }
 
             }).catch(function(response) {
-                angular.element('.unavailableroom label').html(response.data.errormessage);
-                angular.element('.unavailableroom').css('display', 'block');
+                $scope.roomSearchErrorMsg = response.data.errormessage;
             });
         };
 
