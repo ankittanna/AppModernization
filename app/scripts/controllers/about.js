@@ -8,11 +8,11 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('AboutCtrl', function () {
-    
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('AboutCtrl', function() {
+
+        this.awesomeThings = [
+            'HTML5 Boilerplate',
+            'AngularJS',
+            'Karma'
+        ];
+    });

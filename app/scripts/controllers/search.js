@@ -15,7 +15,7 @@ angular.module('appModernizationApp')
         $scope.searchValidated = true;
         this.searchLastName = '';
         this.searchArrivalDate = '';
-        
+
         angular.element('.userInfo').css('display', 'block');
 
         $("input[type=text]").keyup(function() {

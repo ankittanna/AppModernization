@@ -8,10 +8,10 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('MainCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) {
-    $scope.breadcrumbs = breadcrumbs;
-    angular.element('.userInfo').css('display', 'none');
+    .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
+        $scope.breadcrumbs = breadcrumbs;
+        angular.element('.userInfo').css('display', 'none');
 
-     $scope.backendSystems = ["LegStar"];
+        $scope.backendSystems = ["LegStar"];
 
-  }]);
+    }]);

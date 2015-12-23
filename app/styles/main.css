@@ -1,121 +1,136 @@
 .browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
 }
 
 body {
-  padding: 0;
+    padding: 0;
 }
 
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
+
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
+
 
 /* Custom page header */
+
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
-  padding-bottom: 19px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px;
 }
 
+
+/* Make the masthead heading the same height as the navigation */
+
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+}
+
+
 /* Custom page footer */
+
 .footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
-  margin: 30px 0;
+    margin: 30px 0;
 }
+
 
 /* Main marketing message and sign up button */
+
 .jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
 }
+
 .jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+    font-size: 21px;
+    padding: 14px 24px;
 }
+
 
 /* Supporting marketing content */
+
 .marketing {
-  margin: 40px 0;
+    margin: 40px 0;
 }
+
 .marketing p + h4 {
-  margin-top: 28px;
+    margin-top: 28px;
 }
+
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 730px;
+    }
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
 }
 
-.textAlignLeft
-{
+.textAlignLeft {
     text-align: left;
 }
-form hr
-{
-    border:1px solid #ccc;
-    margin-top:0px;
-    margin-bottom:15px;
+
+form hr {
+    border: 1px solid #ccc;
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 
 form h4 {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-bottom: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 form .form-group label.control-label {
-  font-weight: normal;
-  text-align: left;
+    font-weight: normal;
+    text-align: left;
 }
 
 form .form-group label.control-label.fontWeightBold {
-  font-weight: bold;
-  text-align: left;
+    font-weight: bold;
+    text-align: left;
 }
 
 .navbar {
-  background-color: #66AA45;
+    background-color: #66AA45;
 }
 
 body {
-  color: #000;
-  font-size: 1.4em;
+    color: #000;
+    font-size: 1.4em;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -123,122 +138,128 @@ body {
     font-weight: bold;
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
     color: #000 !important;
     background-color: #FFDD00;
 }
 
 .btn-md {
-  background-color: #337722;
-  color:#fff;
+    background-color: #337722;
+    color: #fff;
 }
 
 .form-control {
-  font-size: 1em;
-  height: 30px;
+    font-size: 1em;
+    height: 30px;
 }
 
-.roomDetailsTable{
-    width:100%;
-    text-align:center;
-    margin-top:20px;
-    height:50px;
+.roomDetailsTable {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    height: 50px;
     overflow: auto
 }
-.roomDetails,.unavailableroom{
-    display:none;
+
+.roomDetails,
+.unavailableroom {
+    display: none;
 }
 
-.roomDetailsTable th{
-    background-color: #337722;  
+.roomDetailsTable th {
+    background-color: #337722;
 }
-.footer{
+
+.footer {
     background-color: #282828;
 }
 
-.footer p{
-    text-align: right; 
-    color:#E7E7E7;
-   
+.footer p {
+    text-align: right;
+    color: #E7E7E7;
 }
 
-.title{
-    background-color: #337722; 
-    height:4%;
+.title {
+    background-color: #337722;
+    height: 4%;
 }
 
-.title h3{
-    padding-top:35px;
-    color:#E7E7E7;
+.title h3 {
+    padding-top: 35px;
+    color: #E7E7E7;
 }
 
-.title #logo{
-    padding-top:30px;
+.title #logo {
+    padding-top: 30px;
 }
-
-
-
 
 #serchreservationform button.form-control {
-  width:auto;
+    width: auto;
 }
 
-#reservationform,#serchreservationform {
-  padding: 10px;
-  border: 1px solid #ccc;
+#reservationform,
+#serchreservationform {
+    padding: 10px;
+    border: 1px solid #ccc;
     margin-bottom: 10px;
 }
 
-#serchreservationform  .form-group{
-  padding: 10px;
-
+#serchreservationform .form-group {
+    padding: 10px;
 }
-.big-checkbox {width: 30px; height: 30px;background: white}
-#roomDetailsContainer{
-    max-height:300px;
+
+.big-checkbox {
+    width: 30px;
+    height: 30px;
+    background: white
+}
+
+#roomDetailsContainer {
+    max-height: 300px;
     overflow-y: auto;
     margin-bottom: 10px;
 }
+
+
 /*#editsrch{
     padding-right: 20px;
 }*/
-#actions{
+
+#actions {
     width: 70px;
     padding: 10px 0 0 0 !important;
     text-align: center;
 }
 
-.userInfo{
-    height:70px; 
+.userInfo {
+    height: 70px;
     background-color: #F0F5EF;
-    display:none;
+    display: none;
 }
 
-.userInfo img{
-    padding-top:6px;
-
+.userInfo img {
+    padding-top: 6px;
 }
 
-
-#userName{
-       color:#CDAC4F;
-    
+#userName {
+    color: #CDAC4F;
 }
-.ab-nav{
-    
-    font-size:18px;  
-        
-    padding-top:22px;
+
+.ab-nav {
+    font-size: 18px;
+    padding-top: 22px;
 }
 
 thead {
-  background-color: #337722;
-  color:#fff;
+    background-color: #337722;
+    color: #fff;
 }
 
 #serchreservationform img {
-  width: 22px;
-  height: 22px;
+    width: 22px;
+    height: 22px;
 }
 
 .breadcrumb > li + li:before {
@@ -251,127 +272,118 @@ thead {
     color: #000;
 }
 
-
-
-
-
-@media (max-width: 480px) { 
+@media (max-width: 480px) {
     #logo {
-      margin-bottom: 10px;
+        margin-bottom: 10px;
     }
     .form-control {
-      margin-bottom: 15px;
+        margin-bottom: 15px;
     }
-
-    tbody{
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
+    tbody {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
     }
-
-    .ab-nav{
-    
-    font-size:14px;  
-  
+    .ab-nav {
+        font-size: 14px;
     }
-
-    tbody:nth-child(even) { background: #f9f9f9; }
- }
-
-@media (max-width: 1000px) { 
-    .marginTop{
-        margin-top:10px;   
+    tbody:nth-child(even) {
+        background: #f9f9f9;
     }
 }
 
- .container{
-  padding-right: 0;
-  padding-left: 0;
- }
+@media (max-width: 1000px) {
+    .marginTop {
+        margin-top: 10px;
+    }
+}
 
- .breadcrumb {
-  padding: 22px 0;
- }
+.container {
+    padding-right: 0;
+    padding-left: 0;
+}
 
- .jumbotron .btn {
+.breadcrumb {
+    padding: 22px 0;
+}
+
+.jumbotron .btn {
     width: 275px;
 }
 
 .roomDetailsTable thead tr {
-  height:35px;
-  padding-left: 4px;
+    height: 35px;
+    padding-left: 4px;
 }
 
 .roomDetailsTable thead tr th {
-text-align: center;
+    text-align: center;
 }
 
 .successMsg {
-  color: #337722;
-  padding-left: 0;
-  font-weight: bold;
+    color: #337722;
+    padding-left: 0;
+    font-weight: bold;
 }
 
 .errorMsg {
-  color: red;
-  padding-left: 0;
-  font-weight: bold;
+    color: red;
+    padding-left: 0;
+    font-weight: bold;
 }
 
-.facebookButton
-{
+.facebookButton {
     background-color: #3b5998;
 }
 
-.facebookButton:hover
-{
+.facebookButton:hover {
     color: #FFFFFF;
     background-color: #3b5998;
     border-color: cornflowerblue;
 }
 
-.facebookButton:active
-{
+.facebookButton:active {
     color: #FFFFFF;
     background-color: #3b5998;
     border-color: cornflowerblue;
 }
 
-body { font-family: 'Calibri' !important; }
+body {
+    font-family: 'Calibri' !important;
+}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    margin: 0;
+    /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-
-#systemId{
-    margin-top:5px;
-    font-size:14px;
+#systemId {
+    margin-top: 5px;
+    font-size: 14px;
 }
 
-#registerationError{
-    display:hidden;   
+#registerationError {
+    display: hidden;
 }
 
 .reservationnumber {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 .loginpage .jumbotron .btn {
-  width:auto;
-  padding: 4px 10px;
-  font-weight: bold;
-  vertical-align: top;
-  margin-right: 20px;
+    width: auto;
+    padding: 4px 10px;
+    font-weight: bold;
+    vertical-align: top;
+    margin-right: 20px;
 }
 
 .loginpage .form-control {
-height: 40px;
+    height: 40px;
 }
 
-.fontWeightBold
-{
+.fontWeightBold {
     font-weight: bold;
 }

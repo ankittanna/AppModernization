@@ -10,19 +10,12 @@
             <h3>Reservation Details</h3>
         </div>
     </div>
-    
     <div class="row">
         <div class="col-xs-12">
             <label id="registerationError" class="errorMsg  col-xs-12 col-sm-10 col-md-12"></label>
         </div>
     </div>
-    
     <form name="bookRoomForm" id="bookRoomForm" class="form-horizontal">
-        <!--
-    <div class="form-group">
-         <label class="control-label col-xs-12 col-sm-3 col-md-3">Reseravation Number:</label>
-         <label class="control-label col-xs-12 col-sm-3 col-md-1">23214</label>
-    </div>-->
         <br/>
         <h3>Search for a Room:</h3>
         <hr>
@@ -31,7 +24,7 @@
             <div class="col-xs-12 col-sm-9 col-md-4">
                 <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date" required>
             </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop" >Check-out Date:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Check-out Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
                 <input type="date" id="departureDate" class="form-control marginTop" ng-model="departureDate" placeholder="Date" required>
             </div>
@@ -77,33 +70,28 @@
                             <tr>
                                 <th>Select Room</th>
                                 <td>
-                                <input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change="details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')">
-                            </td>
+                                    <input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change="details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')">
+                                </td>
                             </tr>
                             <tr>
                                 <th>Room Number</th>
                                 <td>{{rooms.roomNo}}</td>
-                                
                             </tr>
                             <tr>
                                 <th>Rate Code</th>
-                               <td>{{rooms.rateCode}}</td>
-                               
+                                <td>{{rooms.rateCode}}</td>
                             </tr>
                             <tr>
                                 <th>Room Rate</th>
                                 <td>{{rooms.rate}}</td>
-                               
                             </tr>
                             <tr>
                                 <th>Smoking</th>
                                 <td>{{rooms.smokeFlag}}</td>
-                               
                             </tr>
                             <tr>
-                               <th>Room Desc.</th>
+                                <th>Room Desc.</th>
                                 <td>{{rooms.roomDescription}}</td>
-                                
                             </tr>
                         </tbody>
                     </table>
@@ -114,7 +102,6 @@
                     </button>
                 </div>
             </div>
-
             <div class="unavailableroom errorMsg">
                 <label class="control-label col-xs-12 col-sm-3 col-md-12"></label>
             </div>
@@ -144,7 +131,7 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
             <div class="col-xs-12 col-sm-3 col-md-4">
-                 <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
+                <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arrival:</label>
             <div class="col-xs-12 col-sm-3 col-md-2">
@@ -158,7 +145,7 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text"id="firstName" class="form-control marginTop" placeholder="First Name" ng-model="firstName" required>
+                <input type="text" id="firstName" class="form-control marginTop" placeholder="First Name" ng-model="firstName" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <input type="text" id="middleName" class="form-control marginTop" maxlength="1" placeholder="Middle Name" ng-model="middleName">
@@ -186,7 +173,7 @@
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Phone Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="phoneNumber" class="form-control marginTop" placeholder="Phone Number" ng-model="phoneNumber" required >
+                <input type="number" id="phoneNumber" class="form-control marginTop" placeholder="Phone Number" ng-model="phoneNumber" required>
             </div>
         </div>
         <br/>
@@ -195,8 +182,10 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="cardType" class="form-control" ng-model="cardtype.val" ng-options="type.val as type.type for type in cardtype" required> <option value="" disabled selected>Card Type</option></select>  
-              <!--  <select id="cardType" class="form-control" required ng-model="cardType">
+                <select id="cardType" class="form-control" ng-model="cardtype.val" ng-options="type.val as type.type for type in cardtype" required>
+                    <option value="" disabled selected>Card Type</option>
+                </select>
+                <!--  <select id="cardType" class="form-control" required ng-model="cardType">
                     <option selected="selected">Master Card</option>
                     <option>Visa Card</option>
                 </select> -->
@@ -209,12 +198,15 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Month:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
-                 <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth" required> <option value="" disabled selected>Month</option></select>     
+                <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth" required>
+                    <option value="" disabled selected>Month</option>
+                </select>
             </div>
-
-            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop" >Expiry Year:</label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Expiry Year:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
-               <select id="expiryYear" class="form-control marginTop" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear" required> <option value="" disabled selected>Year</option></select>     
+                <select id="expiryYear" class="form-control marginTop" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear" required>
+                    <option value="" disabled selected>Year</option>
+                </select>
             </div>
         </div>
         <hr>
@@ -228,11 +220,9 @@
         <div class="form-group">
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"</a>-->
-                
-                    <button type="submit" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
-                        Request Reservation
-                    </button>
-                
+                <button type="submit" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
+                    Request Reservation
+                </button>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <a href="#/search">
