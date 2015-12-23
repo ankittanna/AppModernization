@@ -16,6 +16,8 @@ angular.module('appModernizationApp')
         this.searchLastName = '';
         this.searchArrivalDate = '';
         
+        $scope.isRoomTableVisible = false;
+        
         angular.element('.userInfo').css('display', 'block');
          
         $("input[type=text]").keyup(function() {
@@ -34,11 +36,13 @@ angular.module('appModernizationApp')
             var selectedDate = new Date(this.searchArrivalDate);
 
             if (lastName.length === 0) {
-                angular.element('#roomTable').css('display', 'none');
+                //angular.element('#roomTable').css('display', 'none');
+                $scope.isRoomTableVisible = false;
                 $scope.responseMsg = 'Name cannot be blank';
                 return false;
             } else if (selectedDate == 'Invalid Date') {
-                angular.element('#roomTable').css('display', 'none');
+                //angular.element('#roomTable').css('display', 'none');
+                $scope.isRoomTableVisible = false;
                 $scope.responseMsg = 'Date Cannot be blank.';
                 return false;
             }
@@ -56,13 +60,16 @@ angular.module('appModernizationApp')
                 HRS.searchReservations(this.searchLastName, arrivalDate).then(function(data) {
                     $scope.reservations = data;
                     $scope.responseMsg = "";
-                    angular.element('#roomTable').css('display', 'block');
+                    //angular.element('#roomTable').css('display', 'block');
+                    $scope.isRoomTableVisible = true;
                     if ($scope.reservations.length === 0) {
-                        angular.element('#roomTable').css('display', 'none');
+                        //angular.element('#roomTable').css('display', 'none');
+                        $scope.isRoomTableVisible = false;
                         $scope.responseMsg = "No reseravation found matching criteria.";
                     }
                 }).catch(function(response) {
-                    angular.element('#roomTable').css('display', 'none'); 
+                    // angular.element('#roomTable').css('display', 'none'); 
+                    $scope.isRoomTableVisible = false;
                     $scope.responseMsg = response.data.errormessage;
                 });
 
