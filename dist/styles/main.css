@@ -364,7 +364,7 @@ input::-webkit-inner-spin-button {
 }
 
 #registerationError {
-    display: hidden;
+    display: block;
 }
 
 .reservationnumber {

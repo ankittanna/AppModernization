@@ -12,7 +12,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <label id="registerationError" class="errorMsg  col-xs-12 col-sm-10 col-md-12"></label>
+            <label class="errorMsg  col-xs-12 col-sm-10 col-md-12">{{registerationErrorMsg}}</label>
         </div>
     </div>
     <form name="bookRoomForm" id="bookRoomForm" class="form-horizontal">
@@ -22,17 +22,17 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="arrivalDate" class="form-control" ng-model="arrivalDate" placeholder="Date" required>
+                <input type="date" id="arrivalDate" class="form-control" ng-model="reservationDetails.arrivalDate" placeholder="Date" required>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Check-out Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="departureDate" class="form-control marginTop" ng-model="departureDate" placeholder="Date" required>
+                <input type="date" id="departureDate" class="form-control marginTop" ng-model="reservationDetails.departureDate" placeholder="Date" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="roomType" class="form-control" ng-model="roomtype.val" ng-options="roomtype.val as roomtype.roomtype for roomtype in roomtype" required>
+                <select id="roomType" class="form-control" ng-model="reservationDetails.room.roomType" ng-options="roomType.val as roomType.roomtype for roomType in roomTypes" required>
                     <option value="" disabled selected>Room Type</option>
                 </select>
                 <!--<select id="roomType" class="form-control" required>
@@ -114,31 +114,31 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
             <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="roomNumber" class="control-label"> {{roomNumber}}</label>
+                <label id="roomNumber" class="control-label" ng-model="reservationDetails.room.roomNo"> {{reservationDetails.room.roomNo}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
             <div class="col-xs-12 col-sm-3 col-md-3">
-                <label id="smokingFlag" class="control-label"> {{smokingFlag}}</label>
+                <label id="smokingFlag" class="control-label" ng-model="reservationDetails.room.smokeFlag"> {{reservationDetails.room.smokeFlag}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
             <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="rateCode" class="control-label"> {{rateCode}}</label>
+                <label id="rateCode" class="control-label" ng-model="reservationDetails.room.rateCode"> {{reservationDetails.room.rateCode}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
             <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="roomRate" class="control-label"> {{roomRate}}</label>
+                <label id="roomRate" class="control-label" ng-model="reservationDetails.room.rate"> {{reservationDetails.room.rate}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
             <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
+                <label id="roomDesc" class="control-label" ng-model="reservationDetails.room.roomDescription"> {{reservationDetails.room.roomDescription}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arrival:</label>
             <div class="col-xs-12 col-sm-3 col-md-2">
-                <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="lateArrival">
+                <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="reservationDetails.lateArrivalFlag">
                 <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
             </div>
         </div>
@@ -148,35 +148,35 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="firstName" class="form-control marginTop" placeholder="First Name" ng-model="firstName" required>
+                <input type="text" id="firstName" class="form-control marginTop" placeholder="First Name" ng-model="reservationDetails.customer.firstName" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="middleName" class="form-control marginTop" maxlength="1" placeholder="Middle Name" ng-model="middleName">
+                <input type="text" id="middleName" class="form-control marginTop" maxlength="1" placeholder="Middle Name" ng-model="reservationDetails.customer.middleName">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="lastName" class="form-control marginTop" placeholder="Last Name" ng-model="lastName" required>
+                <input type="text" id="lastName" class="form-control marginTop" placeholder="Last Name" ng-model="reservationDetails.customer.lastName" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine1" class="form-control marginTop" placeholder="Address Line 1" ng-model="addressLine1" required>
+                <input type="text" id="addressLine1" class="form-control marginTop" placeholder="Address Line 1" ng-model="reservationDetails.customer.addressLine1" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine2" class="form-control marginTop" placeholder="Address Line 2" ng-model="addressLine2" required>
+                <input type="text" id="addressLine2" class="form-control marginTop" placeholder="Address Line 2" ng-model="reservationDetails.customer.addressLine2" required>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="addressLine3" class="form-control marginTop" placeholder="Address Line 3" ng-model="addressLine3" required>
+                <input type="text" id="addressLine3" class="form-control marginTop" placeholder="Address Line 3" ng-model="reservationDetails.customer.addressLine3" required>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="text" id="companyName" class="form-control " placeholder="Company Name" ng-model="companyName">
+                <input type="text" id="companyName" class="form-control " placeholder="Company Name" ng-model="reservationDetails.customer.companyName">
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Phone Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="phoneNumber" class="form-control marginTop" placeholder="Phone Number" ng-model="phoneNumber" required>
+                <input type="number" id="phoneNumber" class="form-control marginTop" placeholder="Phone Number" ng-model="reservationDetails.customer.phoneNumber" required>
             </div>
         </div>
         <br/>
@@ -185,7 +185,7 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="cardType" class="form-control" ng-model="cardtype.val" ng-options="type.val as type.type for type in cardtype" required>
+                <select id="cardType" class="form-control" ng-model="reservationDetails.cardType" ng-options="type.val as type.type for type in cardtype" required>
                     <option value="" disabled selected>Card Type</option>
                 </select>
                 <!--  <select id="cardType" class="form-control" required ng-model="cardType">
@@ -195,7 +195,7 @@
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Card Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="cardNumber" class="form-control marginTop" placeholder="Card Number" ng-model="cardNumber" required>
+                <input type="number" id="cardNumber" class="form-control marginTop" placeholder="Card Number" ng-model="reservationDetails.cardNumber" required>
             </div>
         </div>
         <div class="form-group">
@@ -216,7 +216,7 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
             <div class="col-xs-12 col-sm-9 col-md-10">
-                <textarea id="comments" class="form-control " rows="3" id="comments" placeholder="Comments" ng-model="comments"></textarea>
+                <textarea id="comments" class="form-control " rows="3" id="comments" placeholder="Comments" ng-model="reservationDetails.comments1"></textarea>
             </div>
         </div>
         <br/>
