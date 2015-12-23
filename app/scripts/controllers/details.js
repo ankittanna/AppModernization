@@ -83,8 +83,8 @@ angular.module('appModernizationApp')
         this.searchRooms = function() {
             angular.element('.roomDetails').css('display', 'none');
             angular.element('.unavailableroom').css('display', 'none');
-            var arrivalDateFormatted = parseInt(angular.element($('#arrivalDate')).val().replace(/-/g, ''));
-            var departureDateFormatted = parseInt(angular.element($('#departureDate')).val().replace(/-/g, ''));
+            var arrivalDateFormatted = DateService.formatMMDDYYYY($scope.reservationDetails.arrivalDate);
+            var departureDateFormatted = DateService.formatMMDDYYYY($scope.reservationDetails.departureDate);
             var roomTypeFormatted = $scope.reservationDetails.room.roomType;
             HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data) { 
                 $scope.roomDetails = data;          
