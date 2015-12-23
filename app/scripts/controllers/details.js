@@ -51,7 +51,6 @@ angular.module('appModernizationApp')
                 $scope.reservationDetails.customer.companyName === '' || 
                 $scope.reservationDetails.cardNumber === undefined) {
                 $scope.registerationErrorMsg = "Required Field is Blank";
-                //angular.element('#registerationError').html("Required Field is Blank");
                 return false;
             } else if (
               $scope.expirymonth.val === undefined || 
@@ -59,11 +58,9 @@ angular.module('appModernizationApp')
               $scope.reservationDetails.cardType === undefined) {
               $scope.registerationErrorMsg = "Please select value from dropdown";
                return false;
-              //angular.element('#registerationError').html("Please select value from dropdown");
             } else if (
               $scope.reservationDetails.customer.phoneNumber.length < 10) {
                 $scope.registerationErrorMsg = "PhoneNumber should have atleast 10 Digits";
-                //angular.element('#registerationError').html("PhoneNumber should have atleast 10 Digits");
                 return false;
             } else {
                 return true;
@@ -132,16 +129,11 @@ angular.module('appModernizationApp')
 
                 console.log("-----> " + JSON.stringify(reservationDetailsInp) + '*******');
                 HRS.saveReservations(reservationDetailsInp).then(function(data) {
-
-                    //angular.element('#registerationError').css('display', 'none');    
                     var reservationId = data.reservationId;
-
                     console.log("Detail Data  " + JSON.stringify(data));
                     $location.path('/search/view/' + reservationId + "/fromadd");
                 }).catch(function(response) {
-                    //angular.element('#registerationError').css('display', 'block');
                     $scope.registerationErrorMsg = response.data.errorMessage;
-                    //angular.element('#registerationError').html(response.data.errorMessage);
                 });
             }
         };
