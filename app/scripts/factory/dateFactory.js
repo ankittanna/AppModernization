@@ -8,7 +8,8 @@ function dateService(){
 
     return {
         convertToFormat: convertToFormat,
-        convertToRaw: convertToRaw
+        convertToRaw: convertToRaw,
+        formatMMDDYYYY:formatMMDDYYYY
     };  
     
     function convertToFormat(rawDate)
@@ -29,5 +30,10 @@ function dateService(){
         rawDate = rawDate.replace(/\//g, '');
         
         return rawDate;
+    }
+
+    function formatMMDDYYYY(date){
+        return parseInt( date.getFullYear()+ "" + (date.getMonth() + 1) + 
+        "" +  date.getDate());
     }
 }

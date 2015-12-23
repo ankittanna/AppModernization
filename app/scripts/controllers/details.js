@@ -8,14 +8,14 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('DetailsCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
+  .controller('DetailsCtrl', ['$scope','$http','HRS','$location','breadcrumbs', 'DateService',function ($scope,$http,HRS,$location,breadcrumbs,DateService) {
       $scope.breadcrumbs = breadcrumbs;
       
-      var reservationDetails = [];
+      $scope.reservationDetails = {};
       
       $http.get('../../data/dropdown-data.json').success(function(data){
          console.log("Data:"+JSON.stringify(data.dropdownData));
-           $scope.roomtype = data.dropdownData.roomtype;
+           $scope.roomTypes = data.dropdownData.roomtype;
           $scope.expirymonth = data.dropdownData.expirymonth;
           $scope.expiryyear = data.dropdownData.expiryyear;
            $scope.cardtype = data.dropdownData.cardtype;
@@ -71,17 +71,15 @@ this.fillRoomDetails = function(roomno,rateCode,roomRate,roomDesc,smokingFlag){
     $scope.roomRateTemp = roomRate;
     $scope.roomDescTemp = roomDesc;
     $scope.smokingFlagTemp = smokingFlag;
-   // $scope.lateArrivalTemp = lateArrival;
-    
 }
     
 this.selectRoom = function(){
-    $scope.roomNumber = $scope.roomNumberTemp;
-    $scope.rateCode = $scope.rateCodeTemp;
-    $scope.roomRate = $scope.roomRateTemp;
-    $scope.roomDesc = $scope.roomDescTemp;
-    $scope.smokingFlag = $scope.smokingFlagTemp;
-    $scope.lateArrival = $scope.lateArrivalTemp;
+    $scope.reservationDetails.room.roomNo = $scope.roomNumberTemp;
+     $scope.reservationDetails.room.rateCode = $scope.rateCodeTemp;
+     $scope.reservationDetails.room.rate = $scope.roomRateTemp;
+     $scope.reservationDetails.room.roomDescription = $scope.roomDescTemp;
+     $scope.reservationDetails.room.smokeFlag = $scope.smokingFlagTemp;
+    
     angular.element('.roomDetails').css('display', 'none');
 }
 
@@ -90,7 +88,7 @@ this.searchRooms = function(){
     angular.element('.unavailableroom').css('display', 'none');
     var arrivalDateFormatted = parseInt(angular.element($('#arrivalDate')).val().replace(/-/g,''));
     var departureDateFormatted = parseInt(angular.element($('#departureDate')).val().replace(/-/g,''));
-    var roomTypeFormatted = angular.element($('#roomType')).val().slice(0,2);
+    var roomTypeFormatted =  $scope.reservationDetails.room.roomType;
     HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data){
          $scope.roomDetails = data;
          
@@ -113,66 +111,23 @@ this.searchRooms = function(){
 };
       
 this.storeDetails = function(){
-    $scope.arrivalDate = angular.element($('#arrivalDate')).val();
-    $scope.departureDate = angular.element($('#departureDate')).val();
-    //$scope.roomNumber = angular.element($('#roomNumber')).val();
-    $scope.roomType = $scope.roomtype.val;
-    $scope.firstName = angular.element($('#firstName')).val().toUpperCase();
-    $scope.middleName = angular.element($('#middleName')).val().toUpperCase();
-    $scope.lastName = angular.element($('#lastName')).val().toUpperCase();
-    $scope.addressLine1 = angular.element($('#addressLine1')).val().toUpperCase();
-    $scope.addressLine2 = angular.element($('#addressLine2')).val().toUpperCase();
-    $scope.addressLine3 = angular.element($('#addressLine3')).val().toUpperCase();
-    $scope.companyName = angular.element($('#companyName')).val().toUpperCase();
-    //$scope.phoneNumber = angular.element($('#phoneNumber')).val();
-    //$scope.lateArrival = angular.element($('#lateArrival')).val();
-    $scope.cardType = $scope.cardtype.val;//angular.element($('#cardType')).val();
-    //$scope.cardNumber = angular.element($('#cardNumber')).val();
-    $scope.expiryMonth = $scope.expirymonth.val;//angular.element($('#expiryMonth')).val();
-    $scope.expiryYear = $scope.expiryyear.val; //angular.element($('#expiryYear')).val();
-    $scope.comments = angular.element($('#comments')).val().toUpperCase();
-    
-    $scope.arrivalDate = $scope.arrivalDate.replace(/-/g,'');
-    $scope.departureDate = $scope.departureDate.replace(/-/g,'');
-     if(this.validateDetails())
-    {
-    var reservationDetails = {
-    "customer": {
-    "firstName": $scope.firstName,
-    "lastName": $scope.lastName,
-    "middleName": $scope.middleName,
-    "addressLine1": $scope.addressLine1,
-    "addressLine2": $scope.addressLine2,
-    "addressLine3": $scope.addressLine3,
-    "phoneNumber": $scope.phoneNumber.toString(),
-    "companyName": $scope.companyName
-  },
- 
-  "arrivalDate": parseInt($scope.arrivalDate),
-  "departureDate": parseInt($scope.departureDate),
-  "cardNumber": $scope.cardNumber.toString(),
-  "cardType": $scope.cardType,
-  "comments1": $scope.comments,
-  "comments2": "",
-  "lateArrivalFlag": $scope.lateArrival,
-  "expiryDate": $scope.expiryMonth +"/"+ $scope.expiryYear,
-  
- "room" : {
-    "roomNo": $scope.roomNumber,
-    "smokeFlag": $scope.smokingFlag == "Yes" ? true:false,
-    "roomType": $scope.roomType,
-    "rateCode": $scope.rateCode,
-    "roomDescription": $scope.roomDesc,
-    "rate": parseInt($scope.roomRate)
-  }
-};
-
-
-    console.log("-----> "+JSON.stringify(reservationDetails) + '*******');
-    
+    var reservationDetailsInp = $scope.reservationDetails;
+    reservationDetailsInp.arrivalDate = DateService.formatMMDDYYYY(reservationDetailsInp.arrivalDate);
+    reservationDetailsInp.departureDate = DateService.formatMMDDYYYY(reservationDetailsInp.departureDate);
 
    
-        HRS.saveReservations(reservationDetails).then(function(data){
+    $scope.expiryMonth = $scope.expirymonth.val;
+    $scope.expiryYear = $scope.expiryyear.val; 
+    reservationDetailsInp.expiryDate = $scope.expiryMonth +"/"+ $scope.expiryYear;
+
+    reservationDetailsInp.customer.phoneNumber = reservationDetailsInp.customer.phoneNumber.toString();
+    reservationDetailsInp.cardNumber = reservationDetailsInp.cardNumber.toString();
+
+
+     if(this.validateDetails())
+    {
+        console.log("-----> "+JSON.stringify(reservationDetailsInp) + '*******');
+        HRS.saveReservations(reservationDetailsInp).then(function(data){
        
               angular.element('#registerationError').css('display', 'none');
               var reservationId = data.reservationId;
@@ -184,6 +139,6 @@ this.storeDetails = function(){
                 angular.element('#registerationError').html(response.data.errorMessage);
             });
     }
-}   
+    };
 }]);
 
