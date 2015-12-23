@@ -56,11 +56,12 @@ angular.module('appModernizationApp')
             } else if (
               $scope.expirymonth.val === undefined || 
               $scope.expiryyear.val === undefined || 
-              $scope.reservationDetails.cardtype === undefined) {
+              $scope.reservationDetails.cardType === undefined) {
               $scope.registerationErrorMsg = "Please select value from dropdown";
+               return false;
               //angular.element('#registerationError').html("Please select value from dropdown");
             } else if (
-              $scope.reservationDetails.cutomer.phoneNumber.length < 10) {
+              $scope.reservationDetails.customer.phoneNumber.length < 10) {
                 $scope.registerationErrorMsg = "PhoneNumber should have atleast 10 Digits";
                 //angular.element('#registerationError').html("PhoneNumber should have atleast 10 Digits");
                 return false;
