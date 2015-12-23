@@ -89,8 +89,7 @@ angular
 angular.module('appModernizationApp')
     .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
         $scope.breadcrumbs = breadcrumbs;
-        angular.element('.userInfo').css('display', 'none');
-       // $scope.displayProperties.isUserInfoVisible = false;
+        $scope.displayProperties.isUserInfoVisible = false;
         $scope.backendSystems = ["LegStar"];
 
     }]);
@@ -256,7 +255,7 @@ angular.module('appModernizationApp')
         
         $scope.isRoomTableVisible = false;
         
-        angular.element('.userInfo').css('display', 'block');
+        $scope.displayProperties.isUserInfoVisible = true;
          
         $("input[type=text]").keyup(function() {
             $(this).val($(this).val().toUpperCase());
@@ -713,7 +712,8 @@ angular.module('appModernizationApp')
         $scope.uesrName = "John Doe";
         $scope.breadcrumbs = breadcrumbs;
         
-        angular.element('.userInfo').css('display', 'none');
+        $scope.displayProperties = {};
+        $scope.displayProperties.isUserInfoVisible = false;
     }]);
 
 // Tab Switch Logic

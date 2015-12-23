@@ -18,7 +18,7 @@ angular.module('appModernizationApp')
         
         $scope.isRoomTableVisible = false;
         
-        angular.element('.userInfo').css('display', 'block');
+        $scope.displayProperties.isUserInfoVisible = true;
          
         $("input[type=text]").keyup(function() {
             $(this).val($(this).val().toUpperCase());
