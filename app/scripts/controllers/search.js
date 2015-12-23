@@ -16,7 +16,7 @@ angular.module('appModernizationApp')
         this.searchLastName = '';
         this.searchArrivalDate = '';
         
-        $scope.isRoomTableVisible = false;
+        $scope.isRoomTableVisible = true;
         
         angular.element('.userInfo').css('display', 'block');
          
