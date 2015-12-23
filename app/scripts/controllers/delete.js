@@ -45,22 +45,23 @@ angular.module('appModernizationApp')
             $scope.expiryDate = reservedData.expiryDate;
             $scope.comments = reservedData.comments1;
         }).catch(function(response) {
-            angular.element('#roomTable').css('display', 'none'); 
+            // TODO: Is this really required?
+            // angular.element('#roomTable').css('display', 'none'); 
             console.log(JSON.stringify(response));
         });
 
-
+        this.registrationErrorMessage = '';
 
         this.deleteReservation = function() {
             console.log("Inside Delte reservation");
             HRS.cancleReservation($scope.reservationId).then(function(data) {
-                angular.element('#registerationError').css('display', 'none');    
+                this.registrationErrorMessage = '';
+                
                 var reservationId = data.reservationId;
                 console.log("Detail Data  " + JSON.stringify(data));
                 $location.path('/search');     
             }).catch(function(response) {
-                angular.element('#registerationError').css('display', 'block');
-                angular.element('#registerationError').html(response.data.errormessage);
+                this.registrationErrorMessage = response.data.errormessage;
             });
         }
 
