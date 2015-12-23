@@ -69,20 +69,14 @@ angular.module('appModernizationApp')
 
         this.fillRoomDetails = function(roomno, rateCode, roomRate, roomDesc, smokingFlag) {
             console.log(" Data :" + roomno + rateCode + roomRate + roomDesc + smokingFlag);
-            $scope.roomNumberTemp = roomno;
-            $scope.rateCodeTemp = rateCode + " ";
-            $scope.roomRateTemp = roomRate;
-            $scope.roomDescTemp = roomDesc;
-            $scope.smokingFlagTemp = smokingFlag;
+            $scope.reservationDetails.room.roomNo = roomno;
+            $scope.reservationDetails.room.rateCode = rateCode + " ";
+            $scope.reservationDetails.room.rate = roomRate;
+            $scope.reservationDetails.room.roomDescription = roomDesc;
+            $scope.reservationDetails.room.smokeFlag = smokingFlag;
         }
 
         this.selectRoom = function() {
-            $scope.reservationDetails.room.roomNo = $scope.roomNumberTemp;
-            $scope.reservationDetails.room.rateCode = $scope.rateCodeTemp;
-            $scope.reservationDetails.room.rate = $scope.roomRateTemp;
-            $scope.reservationDetails.room.roomDescription = $scope.roomDescTemp;
-            $scope.reservationDetails.room.smokeFlag = $scope.smokingFlagTemp;
-
             angular.element('.roomDetails').css('display', 'none');
         }
 
