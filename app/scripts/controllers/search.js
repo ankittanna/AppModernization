@@ -15,9 +15,9 @@ angular.module('appModernizationApp')
         $scope.searchValidated = true;
         this.searchLastName = '';
         this.searchArrivalDate = '';
-
+        
         angular.element('.userInfo').css('display', 'block');
-
+         
         $("input[type=text]").keyup(function() {
             $(this).val($(this).val().toUpperCase());
             this.searchLastName = $(this).val().toUpperCase();

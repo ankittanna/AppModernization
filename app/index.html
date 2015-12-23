@@ -18,12 +18,12 @@
     <!-- endbuild -->
 </head>
 
-<body ng-app="appModernizationApp">
+<body ng-app="appModernizationApp" ng-controller="IndexCtrl as index">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <div class="header" ng-controller="IndexCtrl as index">
+    <div class="header">
         <div class="title container-fluid">
             <div class="col-xs-12 col-sm-3 col-md-2">
                 <img id="logo" src="images/AccLogo.png">
@@ -34,6 +34,7 @@
                 <img src="images/AccGTSymbol.png">
             </div>
         </div>
+        
         <div class="userInfo container-fluid">
             <div class="col-xs-9 col-sm-7 col-md-9">
                 <ol class="ab-nav breadcrumb">
@@ -49,6 +50,8 @@
                 <h4>[LegStar]</h4>
             </div>
         </div>
+        
+        
         <!--
           <div class="navbar navbar-default" role="navigation">
             <div class="container-fluid">

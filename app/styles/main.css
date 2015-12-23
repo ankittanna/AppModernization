@@ -236,7 +236,6 @@ body {
 .userInfo {
     height: 70px;
     background-color: #F0F5EF;
-    display: none;
 }
 
 .userInfo img {

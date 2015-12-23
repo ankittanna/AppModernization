@@ -9,98 +9,74 @@
  * Main module of the application.
  */
 angular
-  .module('appModernizationApp', ['ng-breadcrumbs',
-    'ngAnimate',
-    'ngAria',
-    'ngCookies',
-    'ngMessages',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ]).config(['$routeProvider', function($routeProvider,$httpProvider) {
-      $routeProvider
-        .when('/', { templateUrl: 'views/main.html', label: '' })
-        .when('/about', { controller: 'AboutCtrl', templateUrl:'views/about.html', label:'About'})
-        .when('/search', { controller: 'SearchCtrl', templateUrl: 'views/search.html', label:'Home'})
-        .when('/search/details', { controller: 'DetailsCtrl',templateUrl: 'views/details.html',label: 'New Reservation'})
-        .when('/search/view/:param1', { controller: 'ViewCtrl', templateUrl:'views/view.html'})
-        .when('/search/view/:param1/:param2', { controller: 'ViewCtrl', templateUrl:'views/view.html', label:'View Reservation'})
-        .when('/search/delete', { controller: 'DeleteCtrl', templateUrl:'views/delete.html', label:''})
-        .when('/search/delete/:param1', {controller: 'DeleteCtrl',templateUrl: 'views/delete.html',label:'Cancel Reservation'})
-        .when('/search/edit', {controller: 'ModifyCtrl',templateUrl: 'views/edit.html',label: ''})
-        .when('/search/edit/:param1', {controller: 'ModifyCtrl',templateUrl: 'views/edit.html',label: 'Edit Reservation'})
-        .otherwise({ redirectTo: '/' });
-}]);
-
-
-    
-    
-    
-
-
-
-
-/*
-  .config(function ($routeProvider, $httpProvider) {
-    $httpProvider.defaults.headers.common = {};
-    $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
-    $httpProvider.defaults.headers.patch = {};
-    
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main',
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-    .when('/search', {
-        templateUrl: 'views/search.html',
-        controller: 'SearchCtrl',
-        controllerAs: 'search'
-      })
-    .when('/details', {
-        templateUrl: 'views/details.html',
-        controller: 'DetailsCtrl',
-        controllerAs: 'details'
-      })
-    .when('/view', {
-        templateUrl: 'views/view.html',
-        controller: 'ViewCtrl',
-        controllerAs: 'view'
-      })
-    .when('/delete', {
-        templateUrl: 'views/delete.html',
-        controller: 'DeleteCtrl',
-        controllerAs: 'delete'
-      })
-    .when('/delete/:param1', {
-            templateUrl: 'views/delete.html',
-            controller: 'DeleteCtrl',
-            controllerAs: 'delete'
+    .module('appModernizationApp', ['ng-breadcrumbs',
+        'ngAnimate',
+        'ngAria',
+        'ngCookies',
+        'ngMessages',
+        'ngResource',
+        'ngRoute',
+        'ngSanitize',
+        'ngTouch'
+    ]).config(['$routeProvider', function($routeProvider, $httpProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                label: ''
             })
-    .when('/edit', {
-            templateUrl: 'views/edit.html',
-            controller: 'EditCtrl',
-            controllerAs: 'edit'
+            .when('/about', {
+                controller: 'AboutCtrl',
+                templateUrl: 'views/about.html',
+                label: 'About'
             })
-    .when('/edit/:param1', {
-            templateUrl: 'views/edit.html',
-            controller: 'EditCtrl',
-            controllerAs: 'edit'
+            .when('/search', {
+                controller: 'SearchCtrl',
+                controllerAs: 'search',
+                templateUrl: 'views/search.html',
+                label: 'Home'
             })
-      .otherwise({
-        redirectTo: '/'
-      });
-      
+            .when('/search/details', {
+                controller: 'DetailsCtrl',
+                controllerAs: 'details',
+                templateUrl: 'views/details.html',
+                label: 'New Reservation'
+            })
+            //.when('/search/view/:param1', { controller: 'ViewCtrl', templateUrl:'views/view.html'})
+            .when('/search/view/:param1/:param2', {
+                controller: 'ViewCtrl',
+                controllerAs: 'view',
+                templateUrl: 'views/view.html',
+                label: 'View Reservation'
+            })
+            .when('/search/delete', {
+                controller: 'DeleteCtrl',
+                controllerAs: 'delete',
+                templateUrl: 'views/delete.html',
+                label: ''
+            })
+            .when('/search/delete/:param1', {
+                controller: 'DeleteCtrl',
+                controllerAs: 'delete',
+                templateUrl: 'views/delete.html',
+                label: 'Cancel Reservation'
+            })
+            .when('/search/edit', {
+                controller: 'ModifyCtrl',
+                controllerAs: 'edit',
+                templateUrl: 'views/edit.html',
+                label: ''
+            })
+            .when('/search/edit/:param1', {
+                controller: 'ModifyCtrl',
+                controllerAs: 'edit',
+                templateUrl: 'views/edit.html',
+                label: 'Edit Reservation'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    }]);
 
-  });
-*/
 'use strict';
 
 /**
@@ -111,13 +87,13 @@ angular
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('MainCtrl', ['$scope', '$http', 'HRS','$location', 'breadcrumbs',function ($scope, $http, HRS,$location,breadcrumbs) {
-    $scope.breadcrumbs = breadcrumbs;
-    angular.element('.userInfo').css('display', 'none');
+    .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
+        $scope.breadcrumbs = breadcrumbs;
+        angular.element('.userInfo').css('display', 'none');
+        $scope.displayProperties.isUserInfoVisible = false;
+        $scope.backendSystems = ["LegStar"];
 
-     $scope.backendSystems = ["LegStar"];
-
-  }]);
+    }]);
 
 'use strict';
 
@@ -390,7 +366,7 @@ angular.module('appModernizationApp')
         this.searchArrivalDate = '';
         
         angular.element('.userInfo').css('display', 'block');
-
+         
         $("input[type=text]").keyup(function() {
             $(this).val($(this).val().toUpperCase());
             this.searchLastName = $(this).val().toUpperCase();
@@ -410,9 +386,9 @@ angular.module('appModernizationApp')
                 angular.element('#roomTable').css('display', 'none');
                 $scope.responseMsg = 'Name cannot be blank';
                 return false;
-            } else if (selectedDate == 'Invalid Date' || todayDate.notPreviousDay(selectedDate)) {
+            } else if (selectedDate == 'Invalid Date') {
                 angular.element('#roomTable').css('display', 'none');
-                $scope.responseMsg = 'Date Cannot be blank or less then current date.';
+                $scope.responseMsg = 'Date Cannot be blank.';
                 return false;
             }
             return true;
@@ -453,14 +429,15 @@ angular.module('appModernizationApp')
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('AboutCtrl', function () {
-    
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+    .controller('AboutCtrl', function() {
+
+        this.awesomeThings = [
+            'HTML5 Boilerplate',
+            'AngularJS',
+            'Karma'
+        ];
+    });
+
 'use strict';
 
 /**
@@ -471,122 +448,42 @@ angular.module('appModernizationApp')
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', function($scope, $http, HRS, $location, $routeParams, breadcrumbs) {
+    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, DateService) {
 
-        //$scope.breadcrumbs = breadcrumbs;
-         //$('.breadcrumb li').eq(1).remove();
-        if(breadcrumbs.breadcrumbs.length >= 3){
-            breadcrumbs.breadcrumbs.splice(1,1);
-        }     
-        $scope.breadcrumbs = breadcrumbs;  
-
-        var reservedData = [];
-
-        $scope.responseMsg = "";
-
-
-        $scope.reservationId = $routeParams.param1;
-        if($routeParams.param2 != undefined){
-            var param2 = $routeParams.param2;   
-
-            if(param2 == 'fromsearch'){
-               $scope.responseMsg = "";
-               HRS.getRegisteredData($scope.reservationId).then(function(data) {
-         reservedData = data;
-
-                $scope.reservationId = reservedData.reservationId;
-
-            var arrival = reservedData.arrivalDate.toString();
-            var departure = reservedData.departureDate.toString();
-            $scope.arrivalDate = arrival.slice(6,8)+"/"+arrival.slice(4,6)+"/"+arrival.slice(0,4);
-            $scope.departureDate = departure.slice(6,8)+"/"+departure.slice(4,6)+"/"+departure.slice(0,4);
-           // $scope.arrivalDate = reservedData.arrivalDate;
-            //$scope.departureDate = reservedData.departureDate;
-            $scope.roomType = reservedData.room.roomType;
-            $scope.roomNumber = reservedData.room.roomNo;
-            $scope.roomDesc = reservedData.room.roomDescription;
-            $scope.roomRate = reservedData.room.rate;
-            $scope.rateCode = reservedData.room.rateCode;
-            $scope.smokingFlag = reservedData.room.smokeFlag;
-            $scope.lateArrivalFlag = reservedData.lateArrivalFlag;
-            $scope.firstName = reservedData.customer.firstName;
-            $scope.lastName = reservedData.customer.lastName;
-            $scope.middleName = reservedData.customer.middleName;
-            $scope.addressLine1 = reservedData.customer.addressLine1;
-            $scope.addressLine2 = reservedData.customer.addressLine2;
-            $scope.addressLine3 = reservedData.customer.addressLine3;
-            $scope.companyName = reservedData.customer.companyName;
-            $scope.phoneNumber = reservedData.customer.phoneNumber;
-            $scope.cardType = reservedData.cardType;
-            $scope.cardNumber = reservedData.cardNumber;
-            $scope.expiryDate = reservedData.expiryDate;
-            $scope.comments = reservedData.comments1;
-            console.log(JSON.stringify(reservedData));
-        })
-            }
-            else if  (param2 == 'fromadd'){
-                $scope.responseMsg = "Congratulations: Reservation Successfully Done.";
-                reservedData = HRS.getReservedRoomData();
-                 $scope.reservationId = reservedData.reservationId;
-
-            $scope.arrivalDate = reservedData.arrivalDate;
-            $scope.departureDate = reservedData.departureDate;
-            $scope.roomType = reservedData.room.roomType;
-            $scope.roomNumber = reservedData.room.roomNo;
-            $scope.roomDesc = reservedData.room.roomDescription;
-            $scope.roomRate = reservedData.room.rate;
-            $scope.rateCode = reservedData.room.rateCode;
-            $scope.smokingFlag = reservedData.room.smokeFlag;
-            $scope.lateArrivalFlag = reservedData.lateArrivalFlag;
-            $scope.firstName = reservedData.customer.firstName;
-            $scope.lastName = reservedData.customer.lastName;
-            $scope.middleName = reservedData.customer.middleName;
-            $scope.addressLine1 = reservedData.customer.addressLine1;
-            $scope.addressLine2 = reservedData.customer.addressLine2;
-            $scope.addressLine3 = reservedData.customer.addressLine3;
-            $scope.companyName = reservedData.customer.companyName;
-            $scope.phoneNumber = reservedData.customer.phoneNumber;
-            $scope.cardType = reservedData.cardType;
-            $scope.cardNumber = reservedData.cardNumber;
-            $scope.expiryDate = reservedData.expiryDate;
-            $scope.comments = reservedData.comments1;
-                
-            }
-             else if  (param2 == 'fromedit'){
-                 $scope.responseMsg = "Reservation Successfully Updated";
-                 reservedData = HRS.getReservedRoomData();
-                  $scope.reservationId = reservedData.reservationId;
-
-            $scope.arrivalDate = reservedData.arrivalDate;
-            $scope.departureDate = reservedData.departureDate;
-            $scope.roomType = reservedData.room.roomType;
-            $scope.roomNumber = reservedData.room.roomNo;
-            $scope.roomDesc = reservedData.room.roomDescription;
-            $scope.roomRate = reservedData.room.rate;
-            $scope.rateCode = reservedData.room.rateCode;
-            $scope.smokingFlag = reservedData.room.smokeFlag;
-            $scope.lateArrivalFlag = reservedData.lateArrivalFlag;
-            $scope.firstName = reservedData.customer.firstName;
-            $scope.lastName = reservedData.customer.lastName;
-            $scope.middleName = reservedData.customer.middleName;
-            $scope.addressLine1 = reservedData.customer.addressLine1;
-            $scope.addressLine2 = reservedData.customer.addressLine2;
-            $scope.addressLine3 = reservedData.customer.addressLine3;
-            $scope.companyName = reservedData.customer.companyName;
-            $scope.phoneNumber = reservedData.customer.phoneNumber;
-            $scope.cardType = reservedData.cardType;
-            $scope.cardNumber = reservedData.cardNumber;
-            $scope.expiryDate = reservedData.expiryDate;
-            $scope.comments = reservedData.comments1;
-            }
+        if (breadcrumbs.breadcrumbs.length >= 3) {
+            breadcrumbs.breadcrumbs.splice(1, 1);
         }
 
-       
-           
+        $scope.breadcrumbs = breadcrumbs;
+        $scope.reservationDetails = [];
+        $scope.responseMsg = "";
+        var reservedData = {};
 
-    
+        $scope.reservationId = $routeParams.param1;
+        if ($routeParams.param2 != undefined) {
+            var param2 = $routeParams.param2;
 
+            if (param2 == 'fromsearch') {
+                $scope.responseMsg = "";
+                HRS.getRegisteredData($scope.reservationId).then(function(data) {
+                    reservedData = data;
+                    reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
+                    reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                    $scope.reservationDetails = reservedData;
 
+                })
+            } else {
+                if (param2 == 'fromadd') {
+                    $scope.responseMsg = "Congratulations: Reservation Successfully Done.";
+                } else if (param2 == 'fromedit') {
+                    $scope.responseMsg = "Reservation Successfully Updated";
+                }
+                reservedData = HRS.getReservedRoomData();
+                reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
+                reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                $scope.reservationDetails = reservedData;
+            }
+        }
     }]);
 
 'use strict';
@@ -614,8 +511,8 @@ angular.module('appModernizationApp')
 
             var arrival = reservedData.arrivalDate.toString();
             var departure = reservedData.departureDate.toString();
-            $scope.arrivalDate = arrival.slice(6,8)+"/"+arrival.slice(4,6)+"/"+arrival.slice(0,4);
-            $scope.departureDate = departure.slice(6,8)+"/"+departure.slice(4,6)+"/"+departure.slice(0,4);
+            $scope.arrivalDate = arrival.slice(6, 8) + "/" + arrival.slice(4, 6) + "/" + arrival.slice(0, 4);
+            $scope.departureDate = departure.slice(6, 8) + "/" + departure.slice(4, 6) + "/" + departure.slice(0, 4);
             $scope.roomType = reservedData.room.roomType;
             $scope.roomNumber = reservedData.room.roomNo;
             $scope.roomDesc = reservedData.room.roomDescription;
@@ -920,13 +817,14 @@ angular.module('appModernizationApp')
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-  .controller('IndexCtrl', ['$scope','$http','HRS','$location','breadcrumbs',function ($scope,$http,HRS,$location,breadcrumbs) {
-    
-    $scope.uesrName = "John Doe";
-    $scope.breadcrumbs = breadcrumbs;
-    angular.element('.userInfo').css('display', 'none');
-    
-  }]);
+    .controller('IndexCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
+
+        $scope.uesrName = "John Doe";
+        $scope.breadcrumbs = breadcrumbs;
+        
+        angular.element('.userInfo').css('display', 'none');
+    }]);
+
 // Tab Switch Logic
 function switchTabStyle(tab)
 {
