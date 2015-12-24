@@ -41,6 +41,12 @@ angular
                 templateUrl: 'views/details.html',
                 label: 'New Reservation'
             })
+            .when('/search/details/:param1', {
+                controller: 'DetailsCtrl',
+                controllerAs: 'details',
+                templateUrl: 'views/details.html',
+                label: 'Edit Reservation'
+            })
             //.when('/search/view/:param1', { controller: 'ViewCtrl', templateUrl:'views/view.html'})
             .when('/search/view/:param1/:param2', {
                 controller: 'ViewCtrl',
