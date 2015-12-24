@@ -65,19 +65,7 @@ angular
                 controllerAs: 'delete',
                 templateUrl: 'views/delete.html',
                 label: 'Cancel Reservation'
-            })
-            .when('/search/edit', {
-                controller: 'ModifyCtrl',
-                controllerAs: 'edit',
-                templateUrl: 'views/edit.html',
-                label: ''
-            })
-            .when('/search/edit/:param1', {
-                controller: 'ModifyCtrl',
-                controllerAs: 'edit',
-                templateUrl: 'views/edit.html',
-                label: 'Edit Reservation'
-            })
+            })           
             .otherwise({
                 redirectTo: '/'
             });
