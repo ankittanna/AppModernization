@@ -104,7 +104,10 @@ angular.module('appModernizationApp')
         $scope.registerationErrorMsg = "";
         $scope.roomSearchErrorMsg = "";
         $scope.roomDetails = [];
-
+        
+        $scope.isRoomDetailsVisible == false;
+        
+        
         if (breadcrumbs.breadcrumbs.length >= 3) {
             breadcrumbs.breadcrumbs.splice(1, 1);
         }
@@ -192,11 +195,13 @@ angular.module('appModernizationApp')
         }
 
         this.selectRoom = function() {
-            angular.element('.roomDetails').css('display', 'none');
+            // angular.element('.roomDetails').css('display', 'none');
+            $scope.isRoomDetailsVisible == false;
         }
 
         this.searchRooms = function() {
-            angular.element('.roomDetails').css('display', 'none');
+            // angular.element('.roomDetails').css('display', 'none');
+            $scope.isRoomDetailsVisible == false;
             $scope.roomSearchErrorMsg = "";
             
             var currentDate = new Date();
@@ -211,11 +216,13 @@ angular.module('appModernizationApp')
                 HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data) { 
                     $scope.roomDetails = data;          
                     if ($scope.roomDetails.length == 0) {    
-                        angular.element('.roomDetails').css('display', 'none');    
+                        // angular.element('.roomDetails').css('display', 'none');    
+                        $scope.isRoomDetailsVisible == false;
                         $scope.roomSearchErrorMsg = "No Room Available with given Criteria. Please change the search criteria and search again.";
                     }     
                     else {      
-                        angular.element('.roomDetails').css('display', 'block');     
+                        // angular.element('.roomDetails').css('display', 'block');     
+                        $scope.isRoomDetailsVisible == true;
                     }
 
                 }).catch(function(response) {
