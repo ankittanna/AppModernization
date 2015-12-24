@@ -30,16 +30,13 @@ angular.module('appModernizationApp')
             console.log(JSON.stringify(response));
         });
 
-        this.registrationErrorMessage = '';
-
         this.deleteReservation = function() {
             HRS.cancleReservation($scope.reservationId).then(function(data) {
-                this.registrationErrorMessage = '';                
                 var reservationId = data.reservationId;
                 console.log("Detail Data  " + JSON.stringify(data));
                 $location.path('/search');     
             }).catch(function(response) {
-                this.registrationErrorMessage = response.data.errormessage;
+                //this.registrationErrorMessage = response.data.errormessage;
             });
         }
 
