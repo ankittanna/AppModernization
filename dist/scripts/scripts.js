@@ -109,7 +109,7 @@ angular.module('appModernizationApp')
             breadcrumbs.breadcrumbs.splice(1, 1);
         }
 
-        $http.get('../data/dropdown-data.json').success(function(data) {
+        $http.get('AppModernization/dist/data/dropdown-data.json').success(function(data) {
             console.log("Data:" + JSON.stringify(data.dropdownData));
             $scope.roomTypes = data.dropdownData.roomtype;
             $scope.expirymonth = data.dropdownData.expirymonth;
