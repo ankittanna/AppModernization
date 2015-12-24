@@ -459,7 +459,6 @@ angular.module('appModernizationApp')
         $scope.displayProperties.isUserInfoVisible = false;
     }]);
 
-
 // Factory HRS - Collection of all services
 angular.module('appModernizationApp')
     .factory('HRS', hotelReservationServices);
