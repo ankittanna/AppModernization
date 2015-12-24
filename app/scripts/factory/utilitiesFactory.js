@@ -5,12 +5,19 @@ angular.module('appModernizationApp')
 // utilitiesService.$inject = ['$http'];
 
 function utilitiesService(){
-
+    
+    Date.prototype.notPreviousDay = function(d) {
+      return !(d.getFullYear() >= this.getFullYear()
+        && d.getDate() >= this.getDate()
+        && d.getMonth() >= this.getMonth());
+    };
+    
     return {
         convertToFormat: convertToFormat,
         convertToRaw: convertToRaw,
         formatMMDDYYYY:formatMMDDYYYY,
-        keyUpEvent: keyUpEvent
+        keyUpEvent: keyUpEvent,
+        isPreviousDay: isPreviousDay
     };  
     
     function convertToFormat(rawDate)
@@ -41,5 +48,13 @@ function utilitiesService(){
     function keyUpEvent(event)
     {
         event.currentTarget.value = event.currentTarget.value.toUpperCase();
+    }
+    
+    function isPreviousDay(todaysDate, selectedDate)
+    {
+        // Usage: todaysDate.notPreviousDay(selectedDate)
+        var isSelectedDateValid = todaysDate.notPreviousDay(selectedDate);
+        
+        return isSelectedDateValid;
     }
 }

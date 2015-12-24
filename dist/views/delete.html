@@ -18,7 +18,7 @@
     <form name="bookRoomForm" class="form-horizontal">
         <div class="form-group reservationnumber">
             <label class="control-label col-xs-12 col-sm-3 col-md-3"><b>Reseravation Id:</b></label>
-            <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationId}}</b></label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationDetails.reservationId}}</b></label>
         </div>
         <br/>
         <h4>Room Details</h4>
@@ -26,47 +26,47 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label class="control-label" ng-model="arrivalDate">{{arrivalDate}}</label>
+                <label class="control-label" ng-model="arrivalDate">{{reservationDetails.arrivalDate}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label class="control-label"> {{departureDate}}</label>
+                <label class="control-label">{{reservationDetails.departureDate}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="roomType" class="control-label"> {{roomType}}</label>
+                <label id="roomType" class="control-label"> {{reservationDetails.room.roomType}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="roomNumber" class="control-label"> {{roomNumber}}</label>
+                <label id="roomNumber" class="control-label"> {{reservationDetails.room.roomNo}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
             <div class="col-xs-12 col-sm-9 col-md-9">
-                <label id="roomDesc" class="control-label"> {{roomDesc}}</label>
+                <label id="roomDesc" class="control-label">{{reservationDetails.room.roomDescription}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="roomRate" class="control-label"> {{roomRate}}</label>
+                <label id="roomRate" class="control-label">{{reservationDetails.room.rate}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="rateCode" class="control-label"> {{rateCode}}</label>
+                <label id="rateCode" class="control-label">{{reservationDetails.room.rateCode}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="smokingFlag" class="control-label"> {{smokingFlag}}</label>
+                <label id="smokingFlag" class="control-label">{{reservationDetails.room.smokeFlag}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="lateArrival" class="control-label"> {{lateArrivalFlag}}</label>
+                <label id="lateArrival" class="control-label"> {{reservationDetails.lateArrivalFlag}}</label>
             </div>
         </div>
         <br/>
@@ -75,35 +75,35 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <label id="firstName" class="control-label"> {{firstName}}</label>
+                <label id="firstName" class="control-label">{{reservationDetails.customer.firstName}}</label>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <label id="middleName" class="control-label"> {{middleName}}</label>
+                <label id="middleName" class="control-label"> {{reservationDetails.customer.middleName}}</label>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <label id="lastName" class="control-label"> {{lastName}}</label>
+                <label id="lastName" class="control-label">{{reservationDetails.customer.lastName}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <label id="addressLine1" class="control-label"> {{addressLine1}}</label>
+                <label id="addressLine1" class="control-label"> {{reservationDetails.customer.addressLine1}}</label>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <label id="addressLine2" class="control-label"> {{addressLine2}}</label>
+                <label id="addressLine2" class="control-label"> {{reservationDetails.customer.addressLine2}}</label>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-                <label id="addressLine3" class="control-label"> {{addressLine3}}</label>
+                <label id="addressLine3" class="control-label"> {{reservationDetails.customer.addressLine3}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="companyName" class="control-label"> {{companyName}}</label>
+                <label id="companyName" class="control-label"> {{reservationDetails.customer.companyName}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="phoneNumber" class="control-label"> {{phoneNumber}}</label>
+                <label id="phoneNumber" class="control-label"> {{reservationDetails.customer.phoneNumber}}</label>
             </div>
         </div>
         <br/>
@@ -112,17 +112,17 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="cardType" class="control-label"> {{cardType}}</label>
+                <label id="cardType" class="control-label"> {{reservationDetails.cardType}}</label>
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
             <div class="col-xs-12 col-sm-9 col-md-4">
-                <label id="cardNumber" class="control-label"> {{cardNumber}}</label>
+                <label id="cardNumber" class="control-label"> {{reservationDetails.cardNumber}}</label>
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
             <div class="col-xs-12 col-sm-9 col-md-2">
-                <label id="expiryDate" class="control-label"> {{expiryDate}}</label>
+                <label id="expiryDate" class="control-label"> {{reservationDetails.expiryDate}}</label>
             </div>
             <div class="col-xs-12 col-sm-9 col-md-2">
             </div>
@@ -131,7 +131,7 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
             <div class="col-xs-12 col-sm-9 col-md-10">
-                <label id="comments" class="control-label"> {{comments}}</label>
+                <label id="comments" class="control-label"> {{reservationDetails.comments1}}</label>
             </div>
         </div>
         <br/>
