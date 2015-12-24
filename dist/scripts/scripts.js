@@ -229,9 +229,6 @@ angular.module('appModernizationApp')
                 } else if(dateComparison === true)
                 {
                     $scope.roomSearchErrorMsg = "Departure date cannot be less than arrival date.";
-                } else if(isSelectedDateValid === true && dateComparison === true)
-                {
-                    $scope.roomSearchErrorMsg = "Departure date cannot be less than today's date. Departure date cannot be less than arrival date.";
                 }
             }
         };
