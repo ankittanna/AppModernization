@@ -23,7 +23,7 @@
         <div class="form-group">
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Last Name:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" class="form-control " placeholder="Last Name" ng-model="search.searchLastName">
+                <input type="text" class="form-control " placeholder="Last Name" ng-model="search.searchLastName" ng-keyup="search.utilities.keyUpEvent($event)">
             </div>
             <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -59,10 +59,10 @@
                             <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch">{{reservation.reservationId}}</a></td>
                             <td>{{reservation.firstName}}</td>
                             <td>{{reservation.lastName}}</td>
-                            <td>{{search.getFormattedDate(reservation.arrivalDate)}}</td>
-                            <td>{{search.getFormattedDate(reservation.departureDate)}}</td>
+                            <td>{{search.utilities.convertToFormat(reservation.arrivalDate)}}</td>
+                            <td>{{search.utilities.convertToFormat(reservation.departureDate)}}</td>
                             <td id="actions">
-                                <a id="editsrch" ng-href="#/search/edit/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png"></a>
+                                <a id="editsrch" ng-href="#/search/details/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png"></a>
                                 <a ng-href="#/search/delete/{{reservation.reservationId}}" title="delete"><img ng-src="images/Icon_Delete.png"></a>
                             </td>
                         </tr>
@@ -74,7 +74,7 @@
                             <th>S. No</th>
                             <td>{{index+1}}</td>
                             <td id="actions">
-                                <a id="editsrch" ng-href="#/search/edit/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png"></a>
+                                <a id="editsrch" ng-href="#/search/details/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png"></a>
                                 <a ng-href="#/search/delete/{{reservation.reservationId}}" title="delete"><img ng-src="images/Icon_Delete.png"></a>
                             </td>
                         </tr>

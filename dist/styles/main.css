@@ -163,8 +163,7 @@ body {
     overflow: auto
 }
 
-.roomDetails,
-.unavailableroom {
+.roomDetails{
     display: none;
 }
 

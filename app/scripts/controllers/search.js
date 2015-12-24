@@ -8,7 +8,7 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('SearchCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, breadcrumbs, DateService) {
+    .controller('SearchCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, breadcrumbs, UtilitiesService) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.responseMsg = "";
         $scope.reservations = [];
@@ -19,16 +19,13 @@ angular.module('appModernizationApp')
         $scope.isRoomTableVisible = false;
         
         $scope.displayProperties.isUserInfoVisible = true;
-         
-        $("input[type=text]").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-            this.searchLastName = $(this).val().toUpperCase();
-        });
 
-        this.getFormattedDate = function(rawDate) {
-            var formatDate = DateService.convertToFormat(rawDate);
+        this.utilities = UtilitiesService;
+        
+        /*this.getFormattedDate = function(rawDate) {
+            var formatDate = UtilitiesService.convertToFormat(rawDate);
             return formatDate;
-        };
+        };*/
 
         this.validateSearchCriteria = function() {
             var lastName = this.searchLastName.trim();

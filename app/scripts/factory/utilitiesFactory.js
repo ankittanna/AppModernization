@@ -1,15 +1,16 @@
 // Factory HRS - Collection of all services
 angular.module('appModernizationApp')
-    .factory('DateService', dateService);
+    .factory('UtilitiesService', utilitiesService);
 
-// dateService.$inject = ['$http'];
+// utilitiesService.$inject = ['$http'];
 
-function dateService(){
+function utilitiesService(){
 
     return {
         convertToFormat: convertToFormat,
         convertToRaw: convertToRaw,
-        formatMMDDYYYY:formatMMDDYYYY
+        formatMMDDYYYY:formatMMDDYYYY,
+        keyUpEvent: keyUpEvent
     };  
     
     function convertToFormat(rawDate)
@@ -35,5 +36,10 @@ function dateService(){
     function formatMMDDYYYY(date){
         return parseInt( date.getFullYear()+ "" + (date.getMonth() + 1) + 
         "" +  date.getDate());
+    }
+    
+    function keyUpEvent(event)
+    {
+        event.currentTarget.value = event.currentTarget.value.toUpperCase();
     }
 }

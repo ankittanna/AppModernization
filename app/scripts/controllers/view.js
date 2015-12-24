@@ -8,7 +8,7 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, DateService) {
+    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
 
         if (breadcrumbs.breadcrumbs.length >= 3) {
             breadcrumbs.breadcrumbs.splice(1, 1);
@@ -27,8 +27,8 @@ angular.module('appModernizationApp')
                 $scope.responseMsg = "";
                 HRS.getRegisteredData($scope.reservationId).then(function(data) {
                     reservedData = data;
-                    reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
-                    reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                    reservedData.arrivalDate = UtilitiesService.convertToFormat(reservedData.arrivalDate);
+                    reservedData.departureDate = UtilitiesService.convertToFormat(reservedData.departureDate);
                     $scope.reservationDetails = reservedData;
 
                 })
@@ -39,8 +39,8 @@ angular.module('appModernizationApp')
                     $scope.responseMsg = "Reservation Successfully Updated";
                 }
                 reservedData = HRS.getReservedRoomData();
-                reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
-                reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                reservedData.arrivalDate = UtilitiesService.convertToFormat(reservedData.arrivalDate);
+                reservedData.departureDate = UtilitiesService.convertToFormat(reservedData.departureDate);
                 $scope.reservationDetails = reservedData;
             }
         }

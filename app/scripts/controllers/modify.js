@@ -10,14 +10,14 @@
 angular.module('appModernizationApp')
   .controller('ModifyCtrl', ['$scope','$http','HRS','$location','breadcrumbs','$routeParams',function ($scope,$http,HRS,$location,breadcrumbs,$routeParams) {
       
-      $("input[type=text]").keyup(function(){ 
+     /* $("input[type=text]").keyup(function(){ 
         $(this).val( $(this).val().toString().toUpperCase() ); 
       }); 
 
       $("textarea").keyup(function(){ 
         $(this).val( $(this).val().toString().toUpperCase() ); 
-      }); 
-
+      }); */
+      
       $scope.breadcrumbs = breadcrumbs; 
 
       $scope.roomtype = [{roomtype: 'AS-ANNIVERSARY SUITE', val: 'AS'},

@@ -8,7 +8,7 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams','breadcrumbs', 'DateService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, DateService) {
+    .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams','breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.reservationDetails = {};
         $scope.registerationErrorMsg = "";
@@ -26,15 +26,9 @@ angular.module('appModernizationApp')
             $scope.expiryyear = data.dropdownData.expiryyear;
             $scope.cardtype = data.dropdownData.cardtype;
         });
-
-        $("input[type=text]").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-        });
-
-        $("textarea").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-        });
-
+        
+        this.utilities = UtilitiesService;
+        
         $scope.lateArrival = "false";
         $('#lateArrival').click(function() {
             if ($(this).prop("checked") == true) {
@@ -108,8 +102,8 @@ angular.module('appModernizationApp')
         this.searchRooms = function() {
             angular.element('.roomDetails').css('display', 'none');
             $scope.roomSearchErrorMsg = "";
-            var arrivalDateFormatted = DateService.formatMMDDYYYY($scope.reservationDetails.arrivalDate);
-            var departureDateFormatted = DateService.formatMMDDYYYY($scope.reservationDetails.departureDate);
+            var arrivalDateFormatted = UtilitiesService.formatMMDDYYYY($scope.reservationDetails.arrivalDate);
+            var departureDateFormatted = UtilitiesService.formatMMDDYYYY($scope.reservationDetails.departureDate);
             var roomTypeFormatted = $scope.reservationDetails.room.roomType;
             HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data) { 
                 $scope.roomDetails = data;          
@@ -133,8 +127,8 @@ angular.module('appModernizationApp')
 
                 var reservationDetailsInp = {};
                 angular.copy($scope.reservationDetails, reservationDetailsInp);
-                reservationDetailsInp.arrivalDate = DateService.formatMMDDYYYY(reservationDetailsInp.arrivalDate);
-                reservationDetailsInp.departureDate = DateService.formatMMDDYYYY(reservationDetailsInp.departureDate);
+                reservationDetailsInp.arrivalDate = UtilitiesService.formatMMDDYYYY(reservationDetailsInp.arrivalDate);
+                reservationDetailsInp.departureDate = UtilitiesService.formatMMDDYYYY(reservationDetailsInp.departureDate);
 
 
                 $scope.expiryMonth = $scope.expirymonth.val;

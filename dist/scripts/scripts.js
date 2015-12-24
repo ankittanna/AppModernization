@@ -41,6 +41,12 @@ angular
                 templateUrl: 'views/details.html',
                 label: 'New Reservation'
             })
+            .when('/search/details/:param1', {
+                controller: 'DetailsCtrl',
+                controllerAs: 'details',
+                templateUrl: 'views/details.html',
+                label: 'Edit Reservation'
+            })
             //.when('/search/view/:param1', { controller: 'ViewCtrl', templateUrl:'views/view.html'})
             .when('/search/view/:param1/:param2', {
                 controller: 'ViewCtrl',
@@ -104,11 +110,16 @@ angular.module('appModernizationApp')
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, breadcrumbs, DateService) {
+    .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams','breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.reservationDetails = {};
         $scope.registerationErrorMsg = "";
+        $scope.roomSearchErrorMsg = "";
         $scope.roomDetails = [];
+
+        if (breadcrumbs.breadcrumbs.length >= 3) {
+            breadcrumbs.breadcrumbs.splice(1, 1);
+        }
 
         $http.get('../../data/dropdown-data.json').success(function(data) {
             console.log("Data:" + JSON.stringify(data.dropdownData));
@@ -117,14 +128,9 @@ angular.module('appModernizationApp')
             $scope.expiryyear = data.dropdownData.expiryyear;
             $scope.cardtype = data.dropdownData.cardtype;
         });
-
-        $("input[type=text]").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-        });
-
-        $("textarea").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-        });
+        
+        this.utilities = UtilitiesService;
+        
         $scope.lateArrival = "false";
         $('#lateArrival').click(function() {
             if ($(this).prop("checked") == true) {
@@ -134,28 +140,47 @@ angular.module('appModernizationApp')
             }
             console.log($scope.lateArrival);
         });
-        
+
+
+        $scope.reservationId = $routeParams.param1;
+
+        if ($scope.reservationId != undefined) {
+            HRS.getRegisteredData($scope.reservationId).then(function(data) {
+                var reservedData = data;
+
+                var arrivalDateStr = reservedData.arrivalDate + "";
+                var departureDateStr = reservedData.departureDate + "";
+                reservedData.arrivalDate = new Date(arrivalDateStr.slice(0, 4), arrivalDateStr.slice(4, 6) - 1, arrivalDateStr.slice(6, 8));
+                reservedData.departureDate = new Date(departureDateStr.slice(0, 4), departureDateStr.slice(4, 6) - 1, departureDateStr.slice(6, 8));               
+                var expiryDate = reservedData.expiryDate + "";
+                $scope.expirymonth.val = expiryDate.slice(0, expiryDate.length - 3);
+                $scope.expiryyear.val = expiryDate.slice(expiryDate.length - 2, expiryDate.length);
+
+                $scope.reservationDetails = reservedData;
+            });
+        }
+
         this.validateDetails = function() {
-            if ($scope.reservationDetails.arrivalDate === '' || 
-                $scope.reservationDetails.departureDate === '' || 
-                $scope.reservationDetails.customer.firstName === '' || 
-                $scope.reservationDetails.customer.lastName === '' || 
-                $scope.reservationDetails.customer.addressLine1 === '' || 
-                $scope.reservationDetails.customer.addressLine2 === '' || 
-                $scope.reservationDetails.customer.addressLine3 === '' || 
-                $scope.reservationDetails.customer.phoneNumber === undefined || 
-                $scope.reservationDetails.customer.companyName === '' || 
+            if ($scope.reservationDetails.arrivalDate === '' ||
+                $scope.reservationDetails.departureDate === '' ||
+                $scope.reservationDetails.customer.firstName === '' ||
+                $scope.reservationDetails.customer.lastName === '' ||
+                $scope.reservationDetails.customer.addressLine1 === '' ||
+                $scope.reservationDetails.customer.addressLine2 === '' ||
+                $scope.reservationDetails.customer.addressLine3 === '' ||
+                $scope.reservationDetails.customer.phoneNumber === undefined ||
+                $scope.reservationDetails.customer.companyName === '' ||
                 $scope.reservationDetails.cardNumber === undefined) {
                 $scope.registerationErrorMsg = "Required Field is Blank";
                 return false;
             } else if (
-              $scope.expirymonth.val === undefined || 
-              $scope.expiryyear.val === undefined || 
-              $scope.reservationDetails.cardType === undefined) {
-              $scope.registerationErrorMsg = "Please select value from dropdown";
-               return false;
+                $scope.expirymonth.val === undefined ||
+                $scope.expiryyear.val === undefined ||
+                $scope.reservationDetails.cardType === undefined) {
+                $scope.registerationErrorMsg = "Please select value from dropdown";
+                return false;
             } else if (
-              $scope.reservationDetails.customer.phoneNumber.length < 10) {
+                $scope.reservationDetails.customer.phoneNumber.length < 10) {
                 $scope.registerationErrorMsg = "PhoneNumber should have atleast 10 Digits";
                 return false;
             } else {
@@ -178,25 +203,22 @@ angular.module('appModernizationApp')
 
         this.searchRooms = function() {
             angular.element('.roomDetails').css('display', 'none');
-            angular.element('.unavailableroom').css('display', 'none');
-            var arrivalDateFormatted = parseInt(angular.element($('#arrivalDate')).val().replace(/-/g, ''));
-            var departureDateFormatted = parseInt(angular.element($('#departureDate')).val().replace(/-/g, ''));
+            $scope.roomSearchErrorMsg = "";
+            var arrivalDateFormatted = UtilitiesService.formatMMDDYYYY($scope.reservationDetails.arrivalDate);
+            var departureDateFormatted = UtilitiesService.formatMMDDYYYY($scope.reservationDetails.departureDate);
             var roomTypeFormatted = $scope.reservationDetails.room.roomType;
             HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data) { 
                 $scope.roomDetails = data;          
                 if ($scope.roomDetails.length == 0) {    
                     angular.element('.roomDetails').css('display', 'none');    
-                    angular.element('.unavailableroom label').html('No Room Available with given Criteria. Please change the search criteria and search again.');    
-                    angular.element('.unavailableroom').css('display', 'block');     
+                    $scope.roomSearchErrorMsg = "No Room Available with given Criteria. Please change the search criteria and search again.";
                 }     
                 else {      
-                    angular.element('.unavailableroom').css('display', 'none');      
                     angular.element('.roomDetails').css('display', 'block');     
                 }
 
             }).catch(function(response) {
-                angular.element('.unavailableroom label').html(response.data.errormessage);
-                angular.element('.unavailableroom').css('display', 'block');
+                $scope.roomSearchErrorMsg = response.data.errormessage;
             });
         };
 
@@ -205,26 +227,38 @@ angular.module('appModernizationApp')
             if (this.validateDetails()) {
                 $scope.registerationErrorMsg = "";
 
-                var reservationDetailsInp = $scope.reservationDetails;
-                reservationDetailsInp.arrivalDate = DateService.formatMMDDYYYY(reservationDetailsInp.arrivalDate);
-                reservationDetailsInp.departureDate = DateService.formatMMDDYYYY(reservationDetailsInp.departureDate);
+                var reservationDetailsInp = {};
+                angular.copy($scope.reservationDetails, reservationDetailsInp);
+                reservationDetailsInp.arrivalDate = UtilitiesService.formatMMDDYYYY(reservationDetailsInp.arrivalDate);
+                reservationDetailsInp.departureDate = UtilitiesService.formatMMDDYYYY(reservationDetailsInp.departureDate);
 
 
                 $scope.expiryMonth = $scope.expirymonth.val;
                 $scope.expiryYear = $scope.expiryyear.val;
                 reservationDetailsInp.expiryDate = $scope.expiryMonth + "/" + $scope.expiryYear;
 
-                reservationDetailsInp.customer.phoneNumber = reservationDetailsInp.customer.phoneNumber.toString();
-                reservationDetailsInp.cardNumber = reservationDetailsInp.cardNumber.toString();
+               
 
                 console.log("-----> " + JSON.stringify(reservationDetailsInp) + '*******');
-                HRS.saveReservations(reservationDetailsInp).then(function(data) {
-                    var reservationId = data.reservationId;
-                    console.log("Detail Data  " + JSON.stringify(data));
-                    $location.path('/search/view/' + reservationId + "/fromadd");
-                }).catch(function(response) {
-                    $scope.registerationErrorMsg = response.data.errorMessage;
-                });
+                if ($scope.reservationId == undefined) {
+                     reservationDetailsInp.customer.phoneNumber = reservationDetailsInp.customer.phoneNumber.toString();
+                     reservationDetailsInp.cardNumber = reservationDetailsInp.cardNumber.toString();
+                    HRS.saveReservations(reservationDetailsInp).then(function(data) {
+                        var reservationId = data.reservationId;
+                        console.log("Detail Data  " + JSON.stringify(data));
+                        $location.path('/search/view/' + reservationId + "/fromadd");
+                    }).catch(function(response) {
+                        $scope.registerationErrorMsg = response.data.errorMessage;
+                    });
+                } else {
+                    HRS.editReservation(reservationDetailsInp, $scope.reservationId).then(function(data) {
+                        var reservationId = data.reservationId;
+                        console.log("Detail Data  " + JSON.stringify(data));
+                        $location.path('/search/view/' + reservationId + "/fromedit");
+                    }).catch(function(response) {
+                        $scope.registerationErrorMsg = response.data.errorMessage;
+                    });
+                }
             }
         };
     }]);
@@ -239,7 +273,7 @@ angular.module('appModernizationApp')
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('SearchCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, breadcrumbs, DateService) {
+    .controller('SearchCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, breadcrumbs, UtilitiesService) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.responseMsg = "";
         $scope.reservations = [];
@@ -250,16 +284,13 @@ angular.module('appModernizationApp')
         $scope.isRoomTableVisible = false;
         
         $scope.displayProperties.isUserInfoVisible = true;
-         
-        $("input[type=text]").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-            this.searchLastName = $(this).val().toUpperCase();
-        });
 
-        this.getFormattedDate = function(rawDate) {
-            var formatDate = DateService.convertToFormat(rawDate);
+        this.utilities = UtilitiesService;
+        
+        /*this.getFormattedDate = function(rawDate) {
+            var formatDate = UtilitiesService.convertToFormat(rawDate);
             return formatDate;
-        };
+        };*/
 
         this.validateSearchCriteria = function() {
             var lastName = this.searchLastName.trim();
@@ -332,7 +363,7 @@ angular.module('appModernizationApp')
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', 'DateService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, DateService) {
+    .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
 
         if (breadcrumbs.breadcrumbs.length >= 3) {
             breadcrumbs.breadcrumbs.splice(1, 1);
@@ -351,8 +382,8 @@ angular.module('appModernizationApp')
                 $scope.responseMsg = "";
                 HRS.getRegisteredData($scope.reservationId).then(function(data) {
                     reservedData = data;
-                    reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
-                    reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                    reservedData.arrivalDate = UtilitiesService.convertToFormat(reservedData.arrivalDate);
+                    reservedData.departureDate = UtilitiesService.convertToFormat(reservedData.departureDate);
                     $scope.reservationDetails = reservedData;
 
                 })
@@ -363,8 +394,8 @@ angular.module('appModernizationApp')
                     $scope.responseMsg = "Reservation Successfully Updated";
                 }
                 reservedData = HRS.getReservedRoomData();
-                reservedData.arrivalDate = DateService.convertToFormat(reservedData.arrivalDate);
-                reservedData.departureDate = DateService.convertToFormat(reservedData.departureDate);
+                reservedData.arrivalDate = UtilitiesService.convertToFormat(reservedData.arrivalDate);
+                reservedData.departureDate = UtilitiesService.convertToFormat(reservedData.departureDate);
                 $scope.reservationDetails = reservedData;
             }
         }
@@ -451,14 +482,14 @@ angular.module('appModernizationApp')
 angular.module('appModernizationApp')
   .controller('ModifyCtrl', ['$scope','$http','HRS','$location','breadcrumbs','$routeParams',function ($scope,$http,HRS,$location,breadcrumbs,$routeParams) {
       
-      $("input[type=text]").keyup(function(){ 
+     /* $("input[type=text]").keyup(function(){ 
         $(this).val( $(this).val().toString().toUpperCase() ); 
       }); 
 
       $("textarea").keyup(function(){ 
         $(this).val( $(this).val().toString().toUpperCase() ); 
-      }); 
-
+      }); */
+      
       $scope.breadcrumbs = breadcrumbs; 
 
       $scope.roomtype = [{roomtype: 'AS-ANNIVERSARY SUITE', val: 'AS'},
@@ -817,16 +848,17 @@ function hotelReservationServices($http) {
 
 // Factory HRS - Collection of all services
 angular.module('appModernizationApp')
-    .factory('DateService', dateService);
+    .factory('UtilitiesService', utilitiesService);
 
-// dateService.$inject = ['$http'];
+// utilitiesService.$inject = ['$http'];
 
-function dateService(){
+function utilitiesService(){
 
     return {
         convertToFormat: convertToFormat,
         convertToRaw: convertToRaw,
-        formatMMDDYYYY:formatMMDDYYYY
+        formatMMDDYYYY:formatMMDDYYYY,
+        keyUpEvent: keyUpEvent
     };  
     
     function convertToFormat(rawDate)
@@ -852,5 +884,10 @@ function dateService(){
     function formatMMDDYYYY(date){
         return parseInt( date.getFullYear()+ "" + (date.getMonth() + 1) + 
         "" +  date.getDate());
+    }
+    
+    function keyUpEvent(event)
+    {
+        event.currentTarget.value = event.currentTarget.value.toUpperCase();
     }
 }
