@@ -45,7 +45,7 @@ angular.module('appModernizationApp')
 
         $scope.reservationId = $routeParams.param1;
 
-        if ($scope.reservationId != undefined) {
+        if ($scope.reservationId) {
             HRS.getRegisteredData($scope.reservationId).then(function(data) {
                 var reservedData = data;
 
@@ -65,6 +65,9 @@ angular.module('appModernizationApp')
             var currentDate = new Date();
             var isSelectedDateValid = UtilitiesService.isPreviousDay(currentDate, $scope.reservationDetails.departureDate);
             var dateComparison = UtilitiesService.isPreviousDay($scope.reservationDetails.arrivalDate, $scope.reservationDetails.departureDate);
+            if($scope.reservationId) {
+                 dateComparison = false;
+            }
             
             if ($scope.reservationDetails.arrivalDate === '' ||
                 $scope.reservationDetails.departureDate === '' ||
