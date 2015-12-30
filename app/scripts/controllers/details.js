@@ -15,6 +15,8 @@ angular.module('appModernizationApp')
         $scope.roomSearchErrorMsg = "";
         $scope.roomDetails = [];
         $scope.submitted = false;
+        $scope.reservationId = $routeParams.param1;
+        
 
         //Date Picker Options
         $scope.minDate = $scope.reservationId ? null : new Date();
@@ -54,7 +56,7 @@ angular.module('appModernizationApp')
         });
 
 
-        $scope.reservationId = $routeParams.param1;
+        
 
         if ($scope.reservationId) {
             HRS.getRegisteredData($scope.reservationId).then(function(data) {
