@@ -1,13 +1,26 @@
 'use strict';
 
 /**
- * @ngdoc overview
- * @name appModernizationApp
- * @description
- * # appModernizationApp
+ * @ngdoc directive
+ * @name rfx.directive:rAutogrow
+ * @element textarea
+ * @function
  *
- * Main module of the application.
+ * @description
+ * Resize textarea automatically to the size of its text content.
+ *
+ * **Note:** ie<9 needs pollyfill for window.getComputedStyle
+ *
+ * @example
+   <example module="rfx">
+     <file name="index.html">
+         <textarea ng-model="text" r-autogrow class="input-block-level"></textarea>
+         <pre>{{text}}</pre>
+     </file>
+   </example>
  */
+
+
 angular
     .module('appModernizationApp', ['ng-breadcrumbs',
         'ngAnimate',
@@ -105,7 +118,7 @@ angular.module('appModernizationApp')
         $scope.roomSearchErrorMsg = "";
         $scope.roomDetails = [];
         
-        $scope.isRoomDetailsVisible == false;
+        $scope.isRoomDetailsVisible = false;
         
         
         if (breadcrumbs.breadcrumbs.length >= 3) {
@@ -135,7 +148,7 @@ angular.module('appModernizationApp')
 
         $scope.reservationId = $routeParams.param1;
 
-        if ($scope.reservationId != undefined) {
+        if ($scope.reservationId) {
             HRS.getRegisteredData($scope.reservationId).then(function(data) {
                 var reservedData = data;
 
@@ -155,6 +168,9 @@ angular.module('appModernizationApp')
             var currentDate = new Date();
             var isSelectedDateValid = UtilitiesService.isPreviousDay(currentDate, $scope.reservationDetails.departureDate);
             var dateComparison = UtilitiesService.isPreviousDay($scope.reservationDetails.arrivalDate, $scope.reservationDetails.departureDate);
+            if($scope.reservationId) {
+                 dateComparison = false;
+            }
             
             if ($scope.reservationDetails.arrivalDate === '' ||
                 $scope.reservationDetails.departureDate === '' ||
@@ -196,12 +212,12 @@ angular.module('appModernizationApp')
 
         this.selectRoom = function() {
             // angular.element('.roomDetails').css('display', 'none');
-            $scope.isRoomDetailsVisible == false;
+            $scope.isRoomDetailsVisible = false;
         }
 
         this.searchRooms = function() {
             // angular.element('.roomDetails').css('display', 'none');
-            $scope.isRoomDetailsVisible == false;
+            $scope.isRoomDetailsVisible = false;
             $scope.roomSearchErrorMsg = "";
             
             var currentDate = new Date();
@@ -217,12 +233,12 @@ angular.module('appModernizationApp')
                     $scope.roomDetails = data;          
                     if ($scope.roomDetails.length == 0) {    
                         // angular.element('.roomDetails').css('display', 'none');    
-                        $scope.isRoomDetailsVisible == false;
+                        $scope.isRoomDetailsVisible = false;
                         $scope.roomSearchErrorMsg = "No Room Available with given Criteria. Please change the search criteria and search again.";
                     }     
                     else {      
                         // angular.element('.roomDetails').css('display', 'block');     
-                        $scope.isRoomDetailsVisible == true;
+                        $scope.isRoomDetailsVisible = true;
                     }
 
                 }).catch(function(response) {
