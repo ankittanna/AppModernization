@@ -8,12 +8,23 @@
  * Controller of the appModernizationApp
  */
 angular.module('appModernizationApp')
-    .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams','breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
+    .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams','breadcrumbs', 'UtilitiesService',function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.reservationDetails = {};
         $scope.registerationErrorMsg = "";
         $scope.roomSearchErrorMsg = "";
         $scope.roomDetails = [];
+        $scope.submitted = false;
+
+        //Date Picker Options
+        $scope.minDate = $scope.reservationId ? null : new Date();
+        $scope.open = function($event,opened) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope[opened] = true;
+        };
+
         
         $scope.isRoomDetailsVisible = false;
         
@@ -61,42 +72,42 @@ angular.module('appModernizationApp')
             });
         }
 
-        this.validateDetails = function() {
-            var currentDate = new Date();
-            var isSelectedDateValid = UtilitiesService.isPreviousDay(currentDate, $scope.reservationDetails.departureDate);
-            var dateComparison = UtilitiesService.isPreviousDay($scope.reservationDetails.arrivalDate, $scope.reservationDetails.departureDate);
-            if($scope.reservationId) {
-                 dateComparison = false;
-            }
+        // this.validateDetails = function() {
+        //     var currentDate = new Date();
+        //     var isSelectedDateValid = UtilitiesService.isPreviousDay(currentDate, $scope.reservationDetails.departureDate);
+        //     var dateComparison = UtilitiesService.isPreviousDay($scope.reservationDetails.arrivalDate, $scope.reservationDetails.departureDate);
+        //     if($scope.reservationId) {
+        //          dateComparison = false;
+        //     }
             
-            if ($scope.reservationDetails.arrivalDate === '' ||
-                $scope.reservationDetails.departureDate === '' ||
-                $scope.reservationDetails.customer.firstName === '' ||
-                $scope.reservationDetails.customer.lastName === '' ||
-                $scope.reservationDetails.customer.addressLine1 === '' ||
-                $scope.reservationDetails.customer.addressLine2 === '' ||
-                $scope.reservationDetails.customer.addressLine3 === '' ||
-                $scope.reservationDetails.customer.phoneNumber === undefined ||
-                $scope.reservationDetails.customer.companyName === '' ||
-                $scope.reservationDetails.cardNumber === undefined) {
-                $scope.registerationErrorMsg = "Required Field is Blank";
-                return false;
-            } else if (
-                $scope.expirymonth.val === undefined ||
-                $scope.expiryyear.val === undefined ||
-                $scope.reservationDetails.cardType === undefined) {
-                $scope.registerationErrorMsg = "Please select value from dropdown";
-                return false;
-            } else if (
-                $scope.reservationDetails.customer.phoneNumber.length < 10) {
-                $scope.registerationErrorMsg = "PhoneNumber should have atleast 10 Digits";
-                return false;
-            } else if(isSelectedDateValid === true || dateComparison === true){
-                return false;
-            } else {
-                return true;
-            }
-        };
+        //     if ($scope.reservationDetails.arrivalDate === '' ||
+        //         $scope.reservationDetails.departureDate === '' ||
+        //         $scope.reservationDetails.customer.firstName === '' ||
+        //         $scope.reservationDetails.customer.lastName === '' ||
+        //         $scope.reservationDetails.customer.addressLine1 === '' ||
+        //         $scope.reservationDetails.customer.addressLine2 === '' ||
+        //         $scope.reservationDetails.customer.addressLine3 === '' ||
+        //         $scope.reservationDetails.customer.phoneNumber === undefined ||
+        //         $scope.reservationDetails.customer.companyName === '' ||
+        //         $scope.reservationDetails.cardNumber === undefined) {
+        //         $scope.registerationErrorMsg = "Required Field is Blank";
+        //         return false;
+        //     } else if (
+        //         $scope.expirymonth.val === undefined ||
+        //         $scope.expiryyear.val === undefined ||
+        //         $scope.reservationDetails.cardType === undefined) {
+        //         $scope.registerationErrorMsg = "Please select value from dropdown";
+        //         return false;
+        //     } else if (
+        //         $scope.reservationDetails.customer.phoneNumber.length < 10) {
+        //         $scope.registerationErrorMsg = "PhoneNumber should have atleast 10 Digits";
+        //         return false;
+        //     } else if(isSelectedDateValid === true || dateComparison === true){
+        //         return false;
+        //     } else {
+        //         return true;
+        //     }
+        // };
 
         this.fillRoomDetails = function(roomno, rateCode, roomRate, roomDesc, smokingFlag) {
             console.log(" Data :" + roomno + rateCode + roomRate + roomDesc + smokingFlag);
@@ -153,9 +164,10 @@ angular.module('appModernizationApp')
             }
         };
 
-        this.storeDetails = function() {
+        this.storeDetails = function(isValid) {
+            $scope.submitted = true;
 
-            if (this.validateDetails()) {
+            if (isValid) {
                 $scope.registerationErrorMsg = "";
 
                 var reservationDetailsInp = {};
@@ -192,7 +204,7 @@ angular.module('appModernizationApp')
                 }
             } else
             {
-                $scope.registerationErrorMsg = "Details filled are invalid.";
+                $scope.registerationErrorMsg = "Please fill all required details correctly.";
             }
         };
     }]);

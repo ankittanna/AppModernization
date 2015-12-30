@@ -26,18 +26,18 @@
                   {"roomtype": "WS-WEDDING SUITE", "val": "WS"}
                 ],
              "expirymonth": [
-                 {"month": "Jan", "val": "01"},
-                 {"month": "Feb", "val": "02"},
-                 {"month": "Mar", "val": "03"},
-                 {"month": "Apr", "val": "04"},
+                 {"month": "January", "val": "01"},
+                 {"month": "February", "val": "02"},
+                 {"month": "March", "val": "03"},
+                 {"month": "April", "val": "04"},
                  {"month": "May", "val": "05"},
-                 {"month": "Jun", "val": "06"},
-                 {"month": "Jul", "val": "07"},
-                 {"month": "Aug", "val": "08"},
-                 {"month": "Sep", "val": "09"},
-                 {"month": "Oct", "val": "10"},
-                 {"month": "Nov", "val": "11"},
-                 {"month": "Dec", "val": "12"}
+                 {"month": "June", "val": "06"},
+                 {"month": "July", "val": "07"},
+                 {"month": "August", "val": "08"},
+                 {"month": "September", "val": "09"},
+                 {"month": "October", "val": "10"},
+                 {"month": "November", "val": "11"},
+                 {"month": "December", "val": "12"}
              ],
             "cardtype": [
                  {"type": "MasterCard", "val": "Ma"},

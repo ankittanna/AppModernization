@@ -15,226 +15,341 @@
             <label class="errorMsg  col-xs-12 col-sm-10 col-md-12">{{registerationErrorMsg}}</label>
         </div>
     </div>
-    <form name="bookRoomForm" id="bookRoomForm" class="form-horizontal">
-         <div class="form-group reservationnumber">
+    <form name="bookRoomForm" id="bookRoomForm" class="form-horizontal" novalidate>
+        <div class="form-group reservationnumber">
             <label class="control-label col-xs-12 col-sm-3 col-md-3"><b>Reseravation Number:</b></label>
             <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationId}}</b></label>
         </div>
         <br/>
-       
-        <h3>Search for a Room:</h3>
-        <hr>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="arrivalDate" class="form-control" ng-model="reservationDetails.arrivalDate" placeholder="Date" required>
+        <fieldset>
+            <legend>Search for a Room:</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error': bookRoomForm.arrivaldate.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4">Check-in Date:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 arrivalDate">
+                            <!--  <input type="text" id="arrivalDate" class="form-control" ng-model="reservationDetails.arrivalDate" uib-datepicker-popup min-date="minDate" placeholder="Date" required> -->
+                            <p class="input-group">
+                                <input type="date" name="arrivaldate" class="form-control" ng-model="reservationDetails.arrivalDate" uib-datepicker-popup="MM/dd/yyyy" show-weeks="false" show-button-bar="false" is-open="opened1" min-date="minDate" placeholder="mm/dd/yyyy" ng-required="true" close-text="Close" readonly/>
+                                <span class="input-group-btn">
+                <button type="button" class="btn btn-default form-control" ng-click="open($event, 'opened1')"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                            </p>
+                        </div>
+                        <p ng-show="bookRoomForm.arrivaldate.$invalid && submitted" class="help-block col-md-offset-4 col-md-8">Check-In Date is required.</p>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group"  ng-class="{'has-error': bookRoomForm.arrivaldate.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 marginTop">Check-out Date:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 departureDate" >
+                            <!-- <input type="date" id="departureDate" class="form-control marginTop" ng-model="reservationDetails.departureDate" placeholder="Date" required> -->
+                            <p class="input-group">
+                                <input type="date" name="departuredate" class="form-control" ng-model="reservationDetails.departureDate" uib-datepicker-popup="MM/dd/yyyy" show-weeks="false" show-button-bar="false" is-open="opened2" min-date="minDate" placeholder="mm/dd/yyyy" ng-required="true" close-text="Close" readonly/>
+                                <span class="input-group-btn">
+                <button type="button" class="btn btn-default form-control" ng-click="open($event, 'opened2')"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+                            </p>
+
+                        </div>
+                        <p ng-show="bookRoomForm.arrivaldate.$invalid && submitted" class="help-block col-md-offset-4 col-md-8">Check-Out Date is required.</p>
+                    </div>
+                </div>
             </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Check-out Date:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="date" id="departureDate" class="form-control marginTop" ng-model="reservationDetails.departureDate" placeholder="Date" required>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="roomType" class="form-control" ng-model="reservationDetails.room.roomType" ng-options="roomType.val as roomType.roomtype for roomType in roomTypes" required>
-                    <option value="" disabled selected>Room Type</option>
-                </select>
-                <!--<select id="roomType" class="form-control" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.roomtype.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4">Room Type:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8">
+                            <select id="roomType" name="roomtype" class="form-control" ng-model="reservationDetails.room.roomType" ng-options="roomType.val as roomType.roomtype for roomType in roomTypes" required>
+                                <option value="" disabled selected>Room Type</option>
+                            </select>
+                            <!--<select id="roomType" class="form-control" required>
                     <option ng-repeat="type in roomtype" ng-model="roomType" value="{{type}}">{{type}}</option>
                 </select> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3">
+                    <a>
+                        <button type="button" class="btn btn-default btn-md form-control marginTop" ng-click="details.searchRooms()">
+                            Search Rooms
+                        </button>
+                    </a>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a>
-                    <button type="button" class="btn btn-default btn-md form-control marginTop" ng-click="details.searchRooms()">
-                        Search Rooms
-                    </button>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 roomDetails" ng-show="isRoomDetailsVisible == true">
-                <div id="roomDetailsContainer">
-                    <table class="table-bordered table-striped roomDetailsTable hidden-xs">
-                        <thead>
-                            <th>Select Room</th>
-                            <th>Room Number</th>
-                            <th>Rate Code</th>
-                            <th>Room Rate</th>
-                            <th>Smoking</th>
-                            <th>Room Desc.</th>
-                        </thead>
-                        <tr ng-repeat="rooms in roomDetails">
-                            <td>
-                                <input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change="details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')">
-                            </td>
-                            <td>{{rooms.roomNo}}</td>
-                            <td>{{rooms.rateCode}}</td>
-                            <td>{{rooms.rate}}</td>
-                            <td>{{rooms.smokeFlag}}</td>
-                            <td>{{rooms.roomDescription}}</td>
-                        </tr>
-                    </table>
-                    <table class="table textAlignLeft visible-xs xs-table">
-                        <tbody ng-repeat="(index, rooms) in roomDetails">
-                            <tr>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 roomDetails" ng-show="isRoomDetailsVisible == true">
+                    <div id="roomDetailsContainer">
+                        <table class="table-bordered table-striped roomDetailsTable hidden-xs">
+                            <thead>
                                 <th>Select Room</th>
+                                <th>Room Number</th>
+                                <th>Rate Code</th>
+                                <th>Room Rate</th>
+                                <th>Smoking</th>
+                                <th>Room Desc.</th>
+                            </thead>
+                            <tr ng-repeat="rooms in roomDetails">
                                 <td>
                                     <input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change="details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')">
                                 </td>
-                            </tr>
-                            <tr>
-                                <th>Room Number</th>
                                 <td>{{rooms.roomNo}}</td>
-                            </tr>
-                            <tr>
-                                <th>Rate Code</th>
                                 <td>{{rooms.rateCode}}</td>
-                            </tr>
-                            <tr>
-                                <th>Room Rate</th>
                                 <td>{{rooms.rate}}</td>
-                            </tr>
-                            <tr>
-                                <th>Smoking</th>
                                 <td>{{rooms.smokeFlag}}</td>
-                            </tr>
-                            <tr>
-                                <th>Room Desc.</th>
                                 <td>{{rooms.roomDescription}}</td>
                             </tr>
-                        </tbody>
-                    </table>
+                        </table>
+                        <table class="table textAlignLeft visible-xs xs-table">
+                            <tbody ng-repeat="(index, rooms) in roomDetails">
+                                <tr>
+                                    <th>Select Room</th>
+                                    <td>
+                                        <input type="radio" name="selectRoom" ng-model="value" value={{rooms.roomNo}} ng-change="details.fillRoomDetails({{rooms.roomNo}},'{{rooms.rateCode}}',{{rooms.rate}},'{{rooms.roomDescription}}','{{rooms.smokeFlag}}')">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Room Number</th>
+                                    <td>{{rooms.roomNo}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Rate Code</th>
+                                    <td>{{rooms.rateCode}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Room Rate</th>
+                                    <td>{{rooms.rate}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Smoking</th>
+                                    <td>{{rooms.smokeFlag}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Room Desc.</th>
+                                    <td>{{rooms.roomDescription}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <button type="button" class="btn btn-default btn-md form-control" ng-click="details.selectRoom()">
+                            Select Room
+                        </button>
+                    </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-4">
-                    <button type="button" class="btn btn-default btn-md form-control" ng-click="details.selectRoom()">
-                        Select Room
-                    </button>
+                <div class="unavailableroom errorMsg">
+                    <label class="control-label col-xs-12 col-sm-3 col-md-12">{{roomSearchErrorMsg}}</label>
                 </div>
             </div>
-            <div class="unavailableroom errorMsg">
-                <label class="control-label col-xs-12 col-sm-3 col-md-12">{{roomSearchErrorMsg}}</label>
-            </div>
-        </div>
-        <h4>Room Details:</h4>
-        <hr>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
-            <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="roomNumber" class="control-label" ng-model="reservationDetails.room.roomNo"> {{reservationDetails.room.roomNo}}</label>
-            </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
-            <div class="col-xs-12 col-sm-3 col-md-3">
-                <label id="smokingFlag" class="control-label" ng-model="reservationDetails.room.smokeFlag"> {{reservationDetails.room.smokeFlag}}</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
-            <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="rateCode" class="control-label" ng-model="reservationDetails.room.rateCode"> {{reservationDetails.room.rateCode}}</label>
-            </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
-            <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="roomRate" class="control-label" ng-model="reservationDetails.room.rate"> {{reservationDetails.room.rate}}</label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
-            <div class="col-xs-12 col-sm-3 col-md-4">
-                <label id="roomDesc" class="control-label" ng-model="reservationDetails.room.roomDescription"> {{reservationDetails.room.roomDescription}}</label>
-            </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arrival:</label>
-            <div class="col-xs-12 col-sm-3 col-md-2">
-                <input id="lateArrival" class="big-checkbox" type="checkbox" ng-model="reservationDetails.lateArrivalFlag">
-                <!--<input id="lateArrival" type="text" class="form-control" placeholder="Late Arrival Flag" ng-model="lateArrival" readonly> -->
-            </div>
-        </div>
+        </fieldset>
         <br/>
-        <h4>Personal Details:</h4>
-        <hr>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="firstName" class="form-control marginTop" placeholder="First Name" ng-model="reservationDetails.customer.firstName" required ng-keyup="details.utilities.keyUpEvent($event)">
+        <fieldset>
+            <legend>Room Details:</legend>
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <div class="form-group ">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Room Number:</label>
+                        <div class="col-xs-12 col-sm-3 col-md-8 ">
+                            <label id="roomNumber " class="control-label " ng-model="reservationDetails.room.roomNo "> {{reservationDetails.room.roomNo}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group ">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4">Smoking:</label>
+                        <div class="col-xs-12 col-sm-3 col-md-8 ">
+                            <label id="smokingFlag " class="control-label " ng-model="reservationDetails.room.smokeFlag "> {{reservationDetails.room.smokeFlag}}</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="middleName" class="form-control marginTop" maxlength="1" placeholder="Middle Name" ng-model="reservationDetails.customer.middleName" ng-keyup="details.utilities.keyUpEvent($event)">
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <div class="form-group ">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Rating Code:</label>
+                        <div class="col-xs-12 col-sm-3 col-md-8 ">
+                            <label id="rateCode " class="control-label " ng-model="reservationDetails.room.rateCode "> {{reservationDetails.room.rateCode}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group ">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Room Rate:</label>
+                        <div class="col-xs-12 col-sm-3 col-md-8 ">
+                            <label id="roomRate " class="control-label " ng-model="reservationDetails.room.rate "> {{reservationDetails.room.rate}}</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="lastName" class="form-control marginTop" placeholder="Last Name" ng-model="reservationDetails.customer.lastName" required ng-keyup="details.utilities.keyUpEvent($event)">
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <div class="form-group ">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Room Desc:</label>
+                        <div class="col-xs-12 col-sm-3 col-md-8 ">
+                            <label id="roomDesc " class="control-label " ng-model="reservationDetails.room.roomDescription "> {{reservationDetails.room.roomDescription}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="form-group ">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Late Arrival:</label>
+                        <div class="col-xs-12 col-sm-3 col-md-8 ">
+                            <input id="lateArrival " class="big-checkbox " type="checkbox" ng-model="reservationDetails.lateArrivalFlag ">
+                            <!--<input id="lateArrival " type="text " class="form-control " placeholder="Late Arrival Flag " ng-model="lateArrival " readonly> -->
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine1" class="form-control marginTop" placeholder="Address Line 1" ng-model="reservationDetails.customer.addressLine1" required ng-keyup="details.utilities.keyUpEvent($event)">
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <input type="text" id="addressLine2" class="form-control marginTop" placeholder="Address Line 2" ng-model="reservationDetails.customer.addressLine2" required ng-keyup="details.utilities.keyUpEvent($event)">
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <input type="text" id="addressLine3" class="form-control marginTop" placeholder="Address Line 3" ng-model="reservationDetails.customer.addressLine3" required ng-keyup="details.utilities.keyUpEvent($event)">
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="text" id="companyName" class="form-control " placeholder="Company Name" ng-model="reservationDetails.customer.companyName" ng-keyup="details.utilities.keyUpEvent($event)">
-            </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Phone Number:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="phoneNumber" class="form-control marginTop" placeholder="Phone Number" ng-model="reservationDetails.customer.phoneNumber" required>
-            </div>
-        </div>
+        </fieldset>
         <br/>
-        <h4>Payment Details:</h4>
-        <hr>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
-                <select id="cardType" class="form-control" ng-model="reservationDetails.cardType" ng-options="type.val as type.type for type in cardtype" required>
-                    <option value="" disabled selected>Card Type</option>
-                </select>
-                <!--  <select id="cardType" class="form-control" required ng-model="cardType">
-                    <option selected="selected">Master Card</option>
-                    <option>Visa Card</option>
-                </select> -->
+        <fieldset>
+            <legend>Personal Details:</legend>
+            <div class="row">
+                <div class="col-md-5 ">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.firstname.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Guest Name:</label>
+                        <div class="col-xs-12 col-sm-12 col-md-8 ">
+                            <input type="text " id="firstName " name="firstname" class="form-control marginTop " placeholder="First Name " ng-model="reservationDetails.customer.firstName " ng-required="true" ng-keyup="details.utilities.keyUpEvent($event) " ng-pattern="/^[a-zA-Z]*$/">
+                        </div>
+                        <p ng-show="bookRoomForm.firstname.$error.pattern" class="help-block col-md-offset-4 col-md-8">Only Alphabate are required.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 ">
+                    <div class="form-group " ng-class="{'has-error' : bookRoomForm.middlename.$invalid && submitted}">
+                        <div class="col-xs-12 col-sm-12 col-md-12 ">
+                            <input type="text " id="middleName " name="middlename"class="form-control marginTop " maxlength="1 " placeholder="Middle Name " ng-model="reservationDetails.customer.middleName " ng-keyup="details.utilities.keyUpEvent($event) " ng-pattern="/^[a-zA-Z]*$/">
+                        </div>
+                         <p ng-show="bookRoomForm.middlename.$error.pattern" class="help-block col-md-12">Only Alphabates are required.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 ">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.lastname.$invalid && submitted}">
+                        <div class="col-xs-12 col-sm-12 col-md-12 ">
+                            <input type="text " id="lastName " name="lastname" class="form-control marginTop " placeholder="Last Name " ng-model="reservationDetails.customer.lastName " ng-required="true" ng-keyup="details.utilities.keyUpEvent($event) " ng-pattern="/^[a-zA-Z]*$/">
+                        </div>
+                         <p ng-show="bookRoomForm.lastname.$error.pattern" class="help-block col-md-12">Only Alphabate are required.</p>
+                    </div>
+                </div>
             </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Card Number:</label>
-            <div class="col-xs-12 col-sm-9 col-md-4">
-                <input type="number" id="cardNumber" class="form-control marginTop" placeholder="Card Number" ng-model="reservationDetails.cardNumber" required>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.addressline1.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Address:</label>
+                        <div class="col-xs-12 col-sm-12 col-md-8 ">
+                            <input type="text " id="addressLine1 " name="addressline1" class="form-control marginTop " placeholder="Address Line 1 " ng-model="reservationDetails.customer.addressLine1 " ng-required="true" ng-keyup="details.utilities.keyUpEvent($event) ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.addressline2.$invalid && submitted}">
+                        <div class="col-xs-12 col-sm-12 col-md-12 ">
+                            <input type="text " id="addressLine2 " name="addressline2" class="form-control marginTop " placeholder="Address Line 2 " ng-model="reservationDetails.customer.addressLine2 " ng-required="true" ng-keyup="details.utilities.keyUpEvent($event) ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.addressline3.$invalid && submitted}">
+                        <div class="col-xs-12 col-sm-12 col-md-12 ">
+                            <input type="text " id="addressLine3 " name="addressline3" class="form-control marginTop " placeholder="Address Line 3 " ng-model="reservationDetails.customer.addressLine3 " ng-required="true" ng-keyup="details.utilities.keyUpEvent($event) ">
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry Month:</label>
-            <div class="col-xs-12 col-sm-9 col-md-2">
-                <select id="expiryMonth" class="form-control" ng-model="expirymonth.val" ng-options="month.val as month.month for month in expirymonth" required>
-                    <option value="" disabled selected>Month</option>
-                </select>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.companyname.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Company Name:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 ">
+                            <input type="text " id="companyName " name="companyname" class="form-control " placeholder="Company Name " ng-model="reservationDetails.customer.companyName " ng-keyup="details.utilities.keyUpEvent($event)" ng-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.phonenumber.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 marginTop ">Phone Number:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 ">
+                            <input type="number" id="phoneNumber" name="phonenumber" class="form-control marginTop" placeholder="Phone Number" ng-model="reservationDetails.customer.phoneNumber" ng-required="true" ng-minlength="10" ng-maxlength="10">
+                        </div>
+                        <p ng-show="bookRoomForm.phonenumber.$error.minlength" class="help-block col-md-12 col-md-offset-4">PhoneNumber should have 10 Digits</p>
+                        <p ng-show="bookRoomForm.phonenumber.$error.maxlength" class="help-block col-md-12 col-md-offset-4">PhoneNumber should have 10 Digits</p>
+                    </div>
+                </div>
             </div>
-            <label class="control-label col-xs-12 col-sm-3 col-md-2 marginTop">Expiry Year:</label>
-            <div class="col-xs-12 col-sm-9 col-md-2">
-                <select id="expiryYear" class="form-control marginTop" ng-model="expiryyear.val" ng-options="year.val as year.year for year in expiryyear" required>
-                    <option value="" disabled selected>Year</option>
-                </select>
-            </div>
-        </div>
-        <hr>
-        <div class="form-group">
-            <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
-            <div class="col-xs-12 col-sm-9 col-md-10">
-                <textarea id="comments" class="form-control " rows="3" id="comments" placeholder="Comments" ng-model="reservationDetails.comments1" ng-keyup="details.utilities.keyUpEvent($event)"></textarea>
-            </div>
-        </div>
+        </fieldset>
         <br/>
-        <div class="form-group">
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <!--<a><input type="submit" value="Request Reservation" class="btn btn-default btn-md form-control"</a>-->
-                <button type="submit" ng-click="details.storeDetails()" class="btn btn-default btn-md form-control">
+        <fieldset>
+            <legend>Payment Details:</legend>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : bookRoomForm.cardtype.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Card Type:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 ">
+                            <select id="cardType " name="cardtype" class="form-control " ng-model="reservationDetails.cardType " ng-options="type.val as type.type for type in cardtype " ng-required="true">
+                                <option value=" " disabled selected>Card Type</option>
+                            </select>
+                            <!--  <select id="cardType " class="form-control " required ng-model="cardType ">
+                                                <option selected="selected ">Master Card</option>
+                                                <option>Visa Card</option>
+                                            </select> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group " ng-class="{'has-error' : bookRoomForm.cardnumber.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 marginTop ">Card Number:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 ">
+                            <input type="number" id="cardNumber " name="cardnumber" class="form-control marginTop " placeholder="Card Number " ng-model="reservationDetails.cardNumber " ng-required="true">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group " ng-class="{'has-error' : bookRoomForm.expirymonth.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Expiry Month:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 ">
+                            <select id="expiryMonth " name="expirymonth" class="form-control " ng-model="expirymonth.val " ng-options="month.val as month.month for month in expirymonth " ng-required="true">
+                                <option value=" " disabled selected>Month</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group " ng-class="{'has-error' : bookRoomForm.expiryyear.$invalid && submitted}">
+                        <label class="control-label col-xs-12 col-sm-3 col-md-4 marginTop ">Expiry Year:</label>
+                        <div class="col-xs-12 col-sm-9 col-md-8 ">
+                            <select id="expiryYear " name="expiryyear" class="form-control marginTop " ng-model="expiryyear.val " ng-options="year.val as year.year for year in expiryyear " ng-required="true">
+                                <option value=" " disabled selected>Year</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+
+        <br/>
+        <hr>
+
+        <div class="form-group ">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2 ">Coments:</label>
+            <div class="col-xs-12 col-sm-9 col-md-10 ">
+                <textarea id="comments " class="form-control " rows="3 " id="comments " placeholder="Comments " ng-model="reservationDetails.comments1 " ng-keyup="details.utilities.keyUpEvent($event) "></textarea>
+            </div>
+        </div>
+
+        <br/>
+
+        <div class="form-group  ">
+            <div class="col-xs-12 col-sm-6 col-md-3 ">
+                <!--<a><input type="submit " value="Request Reservation " class="btn btn-default btn-md form-control "</a>-->
+                <button type="submit " ng-click="details.storeDetails(bookRoomForm.$valid) " class="btn btn-default btn-md form-control ">
                     Request Reservation
                 </button>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <a href="#/search">
-                    <button type="button" class="btn btn-default btn-md form-control">
+            <div class="col-xs-12 col-sm-6 col-md-3 ">
+                <a href="#/search ">
+                    <button type="button " class="btn btn-default btn-md form-control ">
                         Close
                     </button>
                 </a>

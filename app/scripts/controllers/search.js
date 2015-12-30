@@ -15,6 +15,13 @@ angular.module('appModernizationApp')
         $scope.searchValidated = true;
         this.searchLastName = '';
         this.searchArrivalDate = '';
+
+         $scope.open = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope.opened = true;
+        };
+
         
         $scope.isRoomTableVisible = false;
         
