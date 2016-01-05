@@ -12,5 +12,15 @@
   "unused": true,
   "globals": {
     "angular": true
-  }
+  },
+  "eqnull": true,
+  "expr": true,
+  "onevar": true,
+  "trailing": true,
+  "forin": true,
+  "freeze": false,
+  "maxcomplexity": true,
+  "maxdepth": 3,
+  "maxparams": 5,
+  "maxstatements": 20
 }
