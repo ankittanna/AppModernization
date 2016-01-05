@@ -118,12 +118,14 @@ module.exports = function (grunt) {
         }
       }
     },
-
+    
     // Make sure there are no obvious mistakes
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
+        // reporter: require('jshint-stylish'),
+        reporter: require('jshint-html-reporter'),
+        reporterOutput: 'jshint_report/jshint-report.html'
       },
       all: {
         src: [
@@ -495,8 +497,8 @@ grunt.loadNpmTasks('grunt-ngdocs');
   ]);
 
   grunt.registerTask('default', [
-    //'newer:jshint',
-    //'newer:jscs',
+    'newer:jshint',
+    'newer:jscs',
     'test',
     'build',
     'ngdocs'
