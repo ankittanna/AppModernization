@@ -1,4 +1,4 @@
-// Factory HRS - Collection of all services
+/* Factory HRS - Collection of all services */
 function hotelReservationServices($http) {
     'use strict';
     var baseUrl = 'http://172.31.28.248:9001/am/v1';

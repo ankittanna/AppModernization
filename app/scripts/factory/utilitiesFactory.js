@@ -1,4 +1,4 @@
-// Factory HRS - Collection of all services
+/* Factory UtilitiesService - Collection of all utility functions */
 function utilitiesService(){
     'use strict';
     

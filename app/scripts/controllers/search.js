@@ -10,7 +10,7 @@
 angular.module('appModernizationApp')
     .controller('SearchCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, breadcrumbs, UtilitiesService) {
         $scope.breadcrumbs = breadcrumbs;
-        $scope.responseMsg = "";
+        $scope.responseMsg = '';
         $scope.reservations = [];
         $scope.searchValidated = true;
         this.searchLastName = '';
@@ -55,17 +55,17 @@ angular.module('appModernizationApp')
             this.searchLastName = this.searchLastName.toUpperCase().trim();
             if (this.validateSearchCriteria()) {
                 var fullYear = (this.searchArrivalDate).getFullYear();
-                var fullMonth = ("00" + (this.searchArrivalDate.getMonth() + 1)).slice(-2);
-                var fullDate = ("00" + this.searchArrivalDate.getDate()).slice(-2);
-                var arrivalDate = "" + fullYear + "" + fullMonth + "" + fullDate + "";
+                var fullMonth = ('00' + (this.searchArrivalDate.getMonth() + 1)).slice(-2);
+                var fullDate = ('00' + this.searchArrivalDate.getDate()).slice(-2);
+                var arrivalDate = '' + fullYear + '' + fullMonth + '' + fullDate + '';
 
                 HRS.searchReservations(this.searchLastName, arrivalDate).then(function(data) {
                     $scope.reservations = data;
-                    $scope.responseMsg = "";
+                    $scope.responseMsg = '';
                     $scope.isRoomTableVisible = true;
                     if ($scope.reservations.length === 0) {
                         $scope.isRoomTableVisible = false;
-                        $scope.responseMsg = "No reseravation found matching criteria.";
+                        $scope.responseMsg = 'No reseravation found matching criteria.';
                     }
                 }).catch(function(response) {
                     $scope.isRoomTableVisible = false;

@@ -11,8 +11,8 @@ angular.module('appModernizationApp')
     .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams','breadcrumbs', 'UtilitiesService',function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.reservationDetails = {};
-        $scope.registerationErrorMsg = "";
-        $scope.roomSearchErrorMsg = "";
+        $scope.registerationErrorMsg = '';
+        $scope.roomSearchErrorMsg = '';
         $scope.roomDetails = [];
         $scope.submitted = false;
         $scope.reservationId = $routeParams.param1;
@@ -20,7 +20,7 @@ angular.module('appModernizationApp')
 
         //Date Picker Options
         $scope.minDate = $scope.reservationId ? null : new Date();
-        $scope.open = function($event,opened) {
+        $scope.open = function($event, opened) {
             $event.preventDefault();
             $event.stopPropagation();
 
@@ -36,7 +36,7 @@ angular.module('appModernizationApp')
         }
 
         $http.get('data/dropdown-data.json').success(function(data) {
-            console.log("Data:" + JSON.stringify(data.dropdownData));
+            console.log('Data:' + JSON.stringify(data.dropdownData));
             $scope.roomTypes = data.dropdownData.roomtype;
             $scope.expirymonth = data.dropdownData.expirymonth;
             $scope.expiryyear = data.dropdownData.expiryyear;
@@ -45,28 +45,28 @@ angular.module('appModernizationApp')
         
         this.utilities = UtilitiesService;
         
-        $scope.lateArrival = "false";
+        /* $scope.lateArrival = 'false';
         $('#lateArrival').click(function() {
-            if ($(this).prop("checked") === true) {
-                $scope.lateArrival = "true";
-            } else if ($(this).prop("checked") === false) {
-                $scope.lateArrival = "false";
+            if ($(this).prop('checked') === true) {
+                $scope.lateArrival = 'true';
+            } else if ($(this).prop('checked') === false) {
+                $scope.lateArrival = 'false';
             }
             console.log($scope.lateArrival);
-        });
+        }); */
 
 
-        
+        // reservationDetails.lateArrivalFlag
 
         if ($scope.reservationId) {
             HRS.getRegisteredData($scope.reservationId).then(function(data) {
                 var reservedData = data;
 
-                var arrivalDateStr = reservedData.arrivalDate + "";
-                var departureDateStr = reservedData.departureDate + "";
+                var arrivalDateStr = reservedData.arrivalDate + '';
+                var departureDateStr = reservedData.departureDate + '';
                 reservedData.arrivalDate = new Date(arrivalDateStr.slice(0, 4), arrivalDateStr.slice(4, 6) - 1, arrivalDateStr.slice(6, 8));
                 reservedData.departureDate = new Date(departureDateStr.slice(0, 4), departureDateStr.slice(4, 6) - 1, departureDateStr.slice(6, 8));               
-                var expiryDate = reservedData.expiryDate + "";
+                var expiryDate = reservedData.expiryDate + '';
                 $scope.expirymonth.val = expiryDate.slice(0, expiryDate.length - 3);
                 $scope.expiryyear.val = expiryDate.slice(expiryDate.length - 2, expiryDate.length);
 
@@ -112,9 +112,9 @@ angular.module('appModernizationApp')
         // };
 
         this.fillRoomDetails = function(roomno, rateCode, roomRate, roomDesc, smokingFlag) {
-            console.log(" Data :" + roomno + rateCode + roomRate + roomDesc + smokingFlag);
+            console.log(' Data :' + roomno + rateCode + roomRate + roomDesc + smokingFlag);
             $scope.reservationDetails.room.roomNo = roomno;
-            $scope.reservationDetails.room.rateCode = rateCode + " ";
+            $scope.reservationDetails.room.rateCode = rateCode + ' ';
             $scope.reservationDetails.room.rate = roomRate;
             $scope.reservationDetails.room.roomDescription = roomDesc;
             $scope.reservationDetails.room.smokeFlag = smokingFlag;
@@ -128,7 +128,7 @@ angular.module('appModernizationApp')
         this.searchRooms = function() {
             // angular.element('.roomDetails').css('display', 'none');
             $scope.isRoomDetailsVisible = false;
-            $scope.roomSearchErrorMsg = "";
+            $scope.roomSearchErrorMsg = '';
             
             var currentDate = new Date();
             var isSelectedDateValid = UtilitiesService.isPreviousDay(currentDate, $scope.reservationDetails.departureDate);
@@ -144,7 +144,7 @@ angular.module('appModernizationApp')
                     if ($scope.roomDetails.length === 0) {
                         // angular.element('.roomDetails').css('display', 'none');    
                         $scope.isRoomDetailsVisible = false;
-                        $scope.roomSearchErrorMsg = "No Room Available with given Criteria. Please change the search criteria and search again.";
+                        $scope.roomSearchErrorMsg = 'No Room Available with given Criteria. Please change the search criteria and search again.';
                     }     
                     else {      
                         // angular.element('.roomDetails').css('display', 'block');     
@@ -180,33 +180,33 @@ angular.module('appModernizationApp')
 
                 $scope.expiryMonth = $scope.expirymonth.val;
                 $scope.expiryYear = $scope.expiryyear.val;
-                reservationDetailsInp.expiryDate = $scope.expiryMonth + "/" + $scope.expiryYear;
+                reservationDetailsInp.expiryDate = $scope.expiryMonth + '/' + $scope.expiryYear;
 
                
 
-                console.log("-----> " + JSON.stringify(reservationDetailsInp) + '*******');
+                console.log('-----> ' + JSON.stringify(reservationDetailsInp) + '*******');
                 if ($scope.reservationId === undefined) {
                      reservationDetailsInp.customer.phoneNumber = reservationDetailsInp.customer.phoneNumber.toString();
                      reservationDetailsInp.cardNumber = reservationDetailsInp.cardNumber.toString();
                     HRS.saveReservations(reservationDetailsInp).then(function(data) {
                         var reservationId = data.reservationId;
-                        console.log("Detail Data  " + JSON.stringify(data));
-                        $location.path('/search/view/' + reservationId + "/fromadd");
+                        console.log('Detail Data  ' + JSON.stringify(data));
+                        $location.path('/search/view/' + reservationId + '/fromadd');
                     }).catch(function(response) {
                         $scope.registerationErrorMsg = response.data.errorMessage;
                     });
                 } else {
                     HRS.editReservation(reservationDetailsInp, $scope.reservationId).then(function(data) {
                         var reservationId = data.reservationId;
-                        console.log("Detail Data  " + JSON.stringify(data));
-                        $location.path('/search/view/' + reservationId + "/fromedit");
+                        console.log('Detail Data  ' + JSON.stringify(data));
+                        $location.path('/search/view/' + reservationId + '/fromedit');
                     }).catch(function(response) {
                         $scope.registerationErrorMsg = response.data.errorMessage;
                     });
                 }
             } else
             {
-                $scope.registerationErrorMsg = "Please fill all required details correctly.";
+                $scope.registerationErrorMsg = 'Please fill all required details correctly.';
             }
         };
     }]);

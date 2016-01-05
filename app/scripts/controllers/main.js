@@ -11,6 +11,6 @@ angular.module('appModernizationApp')
     .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.displayProperties.isUserInfoVisible = false;
-        $scope.backendSystems = ["LegStar"];
+        $scope.backendSystems = ['LegStar'];
 
     }]);

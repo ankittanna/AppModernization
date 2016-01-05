@@ -16,7 +16,7 @@ angular.module('appModernizationApp')
 
         $scope.breadcrumbs = breadcrumbs;
         $scope.reservationDetails = [];
-        $scope.responseMsg = "";
+        $scope.responseMsg = '';
         var reservedData = {};
 
         $scope.reservationId = $routeParams.param1;
