@@ -37,7 +37,6 @@ angular.module('appModernizationApp')
                 $location.path('/search');     
             }).catch(function(response) {
                 console.log('Response ' + JSON.stringify(response));
-                //this.registrationErrorMessage = response.data.errormessage;
             });
         };
 
