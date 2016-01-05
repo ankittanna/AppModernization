@@ -20,23 +20,23 @@ angular.module('appModernizationApp')
         var reservedData = {};
 
         $scope.reservationId = $routeParams.param1;
-        if ($routeParams.param2 != undefined) {
+        if ($routeParams.param2 !== undefined) {
             var param2 = $routeParams.param2;
 
-            if (param2 == 'fromsearch') {
-                $scope.responseMsg = "";
+            if (param2 === 'fromsearch') {
+                $scope.responseMsg = '';
                 HRS.getRegisteredData($scope.reservationId).then(function(data) {
                     reservedData = data;
                     reservedData.arrivalDate = UtilitiesService.convertToFormat(reservedData.arrivalDate);
                     reservedData.departureDate = UtilitiesService.convertToFormat(reservedData.departureDate);
                     $scope.reservationDetails = reservedData;
 
-                })
+                });
             } else {
-                if (param2 == 'fromadd') {
-                    $scope.responseMsg = "Congratulations: Reservation Successfully Done.";
-                } else if (param2 == 'fromedit') {
-                    $scope.responseMsg = "Reservation Successfully Updated";
+                if (param2 === 'fromadd') {
+                    $scope.responseMsg = 'Congratulations: Reservation Successfully Done.';
+                } else if (param2 === 'fromedit') {
+                    $scope.responseMsg = 'Reservation Successfully Updated';
                 }
                 reservedData = HRS.getReservedRoomData();
                 reservedData.arrivalDate = UtilitiesService.convertToFormat(reservedData.arrivalDate);
