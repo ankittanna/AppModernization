@@ -1,4 +1,4 @@
-// Generated on 2015-12-01 using generator-angular 0.14.0
+/* Generated on 2015-12-01 using generator-angular 0.14.0 */
 'use strict';
 
 // # Globbing
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-        // files: ['app/scripts/**/*.js'],
+        //all: ['app/scripts/**/*.js'],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -126,7 +126,8 @@ module.exports = function (grunt) {
         jshintrc: '.jshintrc',
         // reporter: require('jshint-stylish'),
         reporter: require('jshint-html-reporter'),
-        reporterOutput: 'jshint_report/jshint-report.html'
+        reporterOutput: 'jshint_report/jshint-report.html',
+        node: true
       },
       all: {
         src: [
@@ -136,7 +137,8 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          jshintrc: 'test/.jshintrc'
+          jshintrc: 'test/.jshintrc',
+          node: true
         },
         src: ['test/spec/{,*/}*.js']
       }
@@ -146,7 +148,11 @@ module.exports = function (grunt) {
     jscs: {
       options: {
         config: '.jscsrc',
-        verbose: true
+        verbose: true,
+        node: true,
+        reporter: require('jscs-html-reporter').path,
+        reporterOutput: 'jshint_report/jscs-html-report.html',
+        fix: true
       },
       all: {
         src: [
@@ -437,7 +443,7 @@ module.exports = function (grunt) {
         scripts: ['bower_components/angular/angular.js', 'bower_components/angular-animate/angular-animate.js'],
         html5Mode: false,
         startPage: '/api',
-        title: "HRS AngularJS Documentation"
+        title: 'HRS AngularJS Documentation'
       },
       api: {
         src: ['../app/scripts/app.js'],
@@ -448,6 +454,7 @@ module.exports = function (grunt) {
   });
 
 grunt.loadNpmTasks('grunt-ngdocs');
+grunt.loadNpmTasks('grunt-contrib-jshint');
     
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {

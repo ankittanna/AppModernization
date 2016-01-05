@@ -2,5 +2,8 @@
   "requireCamelCaseOrUpperCaseIdentifiers": true,
   "requireCapitalizedConstructors": true,
   "requireParenthesesAroundIIFE": true,
-  "validateQuoteMarks": "'"
+  "validateQuoteMarks": "'",
+  "validateParameterSeparator": ", ",
+  "requireVarDeclFirst": true,
+  "requireSemicolons": true
 }
