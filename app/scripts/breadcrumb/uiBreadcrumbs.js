@@ -8,7 +8,7 @@
 
 
 (function() {
-
+    'use strict';
     /**
      * Config
      */
@@ -38,13 +38,6 @@
                 },
                 link: function(scope) {
                     scope.breadcrumbs = [];
-                    if ($state.$current.name !== '') {
-                        updateBreadcrumbsArray();
-                    }
-                    scope.$on('$stateChangeSuccess', function() {
-                        updateBreadcrumbsArray();
-                    });
-
                     /**
                      * Start with the current state and traverse up the path to build the
                      * array of breadcrumbs that can be used in an ng-repeat in the template.
@@ -72,6 +65,13 @@
                         breadcrumbs.reverse();
                         scope.breadcrumbs = breadcrumbs;
                     }
+                    
+                    if ($state.$current.name !== '') {
+                        updateBreadcrumbsArray();
+                    }
+                    scope.$on('$stateChangeSuccess', function() {
+                        updateBreadcrumbsArray();
+                    });
 
                     /**
                      * Get the state to put in the breadcrumbs array, taking into account that if the current state is abstract,

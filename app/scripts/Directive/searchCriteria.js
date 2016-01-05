@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('appModernizationApp')
     .directive('searchCriteria', function () {
     return {
@@ -9,5 +11,5 @@ angular.module('appModernizationApp')
         templateUrl: '../../template/searchcriteria.html',
         controller: 'DetailsCtrl' //Embed a custom controller in the directive
         //link: function ($scope, element, attrs) { } //DOM manipulation
-    }
+    };
 });

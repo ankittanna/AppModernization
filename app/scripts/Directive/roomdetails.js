@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('appModernizationApp')
     .directive('roomDetails', function () {
     return {
@@ -9,5 +11,5 @@ angular.module('appModernizationApp')
         templateUrl: '../../template/roomdetails.html',
         controller: 'ViewCtrl' //Embed a custom controller in the directive
         //link: function ($scope, element, attrs) { } //DOM manipulation
-    }
+    };
 });
