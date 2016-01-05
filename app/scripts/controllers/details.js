@@ -47,9 +47,9 @@ angular.module('appModernizationApp')
         
         $scope.lateArrival = "false";
         $('#lateArrival').click(function() {
-            if ($(this).prop("checked") == true) {
+            if ($(this).prop("checked") === true) {
                 $scope.lateArrival = "true";
-            } else if ($(this).prop("checked") == false) {
+            } else if ($(this).prop("checked") === false) {
                 $scope.lateArrival = "false";
             }
             console.log($scope.lateArrival);
@@ -118,12 +118,12 @@ angular.module('appModernizationApp')
             $scope.reservationDetails.room.rate = roomRate;
             $scope.reservationDetails.room.roomDescription = roomDesc;
             $scope.reservationDetails.room.smokeFlag = smokingFlag;
-        }
+        };
 
         this.selectRoom = function() {
             // angular.element('.roomDetails').css('display', 'none');
             $scope.isRoomDetailsVisible = false;
-        }
+        };
 
         this.searchRooms = function() {
             // angular.element('.roomDetails').css('display', 'none');
@@ -141,7 +141,7 @@ angular.module('appModernizationApp')
                 var roomTypeFormatted = $scope.reservationDetails.room.roomType;
                 HRS.getRoomList(arrivalDateFormatted, departureDateFormatted, roomTypeFormatted).then(function(data) { 
                     $scope.roomDetails = data;          
-                    if ($scope.roomDetails.length == 0) {    
+                    if ($scope.roomDetails.length === 0) {
                         // angular.element('.roomDetails').css('display', 'none');    
                         $scope.isRoomDetailsVisible = false;
                         $scope.roomSearchErrorMsg = "No Room Available with given Criteria. Please change the search criteria and search again.";
@@ -158,10 +158,10 @@ angular.module('appModernizationApp')
             {   
                 if(isSelectedDateValid === true)
                 {
-                    $scope.roomSearchErrorMsg = "Departure date cannot be less than today's date.";
+                    $scope.roomSearchErrorMsg = 'Departure date cannot be less than today\'s date.';
                 } else if(dateComparison === true)
                 {
-                    $scope.roomSearchErrorMsg = "Departure date cannot be less than arrival date.";
+                    $scope.roomSearchErrorMsg = 'Departure date cannot be less than arrival date.';
                 }
             }
         };
@@ -170,7 +170,7 @@ angular.module('appModernizationApp')
             $scope.submitted = true;
 
             if (isValid) {
-                $scope.registerationErrorMsg = "";
+                $scope.registerationErrorMsg = '';
 
                 var reservationDetailsInp = {};
                 angular.copy($scope.reservationDetails, reservationDetailsInp);
@@ -185,7 +185,7 @@ angular.module('appModernizationApp')
                
 
                 console.log("-----> " + JSON.stringify(reservationDetailsInp) + '*******');
-                if ($scope.reservationId == undefined) {
+                if ($scope.reservationId === undefined) {
                      reservationDetailsInp.customer.phoneNumber = reservationDetailsInp.customer.phoneNumber.toString();
                      reservationDetailsInp.cardNumber = reservationDetailsInp.cardNumber.toString();
                     HRS.saveReservations(reservationDetailsInp).then(function(data) {
