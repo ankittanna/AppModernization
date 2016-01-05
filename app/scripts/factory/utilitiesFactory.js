@@ -1,31 +1,17 @@
 // Factory HRS - Collection of all services
-angular.module('appModernizationApp')
-    .factory('UtilitiesService', utilitiesService);
-
-// utilitiesService.$inject = ['$http'];
-
 function utilitiesService(){
+    'use strict';
     
     Date.prototype.notPreviousDay = function(d) {
-      return !(d.getFullYear() >= this.getFullYear()
-        && d.getDate() >= this.getDate()
-        && d.getMonth() >= this.getMonth());
-    };
-    
-    return {
-        convertToFormat: convertToFormat,
-        convertToRaw: convertToRaw,
-        formatMMDDYYYY:formatMMDDYYYY,
-        keyUpEvent: keyUpEvent,
-        isPreviousDay: isPreviousDay
-    };  
+      return !(d.getFullYear() >= this.getFullYear() && d.getDate() >= this.getDate() && d.getMonth() >= this.getMonth());
+    }; 
     
     function convertToFormat(rawDate)
     {
         var formattedDate;
         
         formattedDate = rawDate.toString();
-        formattedDate = formattedDate.slice(6,8)+"/"+formattedDate.slice(4,6)+"/"+formattedDate.slice(0,4);
+        formattedDate = formattedDate.slice(6,8)+'/'+formattedDate.slice(4,6)+'/'+formattedDate.slice(0,4);
         
         return formattedDate;
     }
@@ -41,8 +27,8 @@ function utilitiesService(){
     }
 
     function formatMMDDYYYY(date){
-        return parseInt( date.getFullYear()+ "" + (date.getMonth() + 1) + 
-        "" +  date.getDate());
+        return parseInt( date.getFullYear()+ '' + (date.getMonth() + 1) + 
+        '' +  date.getDate());
     }
     
     function keyUpEvent(event)
@@ -57,4 +43,17 @@ function utilitiesService(){
         
         return isSelectedDateValid;
     }
+    
+    return {
+        convertToFormat: convertToFormat,
+        convertToRaw: convertToRaw,
+        formatMMDDYYYY:formatMMDDYYYY,
+        keyUpEvent: keyUpEvent,
+        isPreviousDay: isPreviousDay
+    }; 
 }
+
+angular.module('appModernizationApp')
+    .factory('UtilitiesService', utilitiesService);
+
+// utilitiesService.$inject = ['$http'];

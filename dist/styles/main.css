@@ -163,10 +163,6 @@ body {
     overflow: auto
 }
 
-.roomDetails{
-    display: none;
-}
-
 .roomDetailsTable th {
     background-color: #337722;
 }

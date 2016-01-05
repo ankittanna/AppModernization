@@ -6,11 +6,12 @@
 // 'test/spec/{,*/}*.js'
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
-
+// grunt.loadNpmTasks('grunt-ngdocs');
 module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+  //require('grunt-ngdocs')(grunt);
 
   // Automatically load required Grunt tasks
   require('jit-grunt')(grunt, {
@@ -24,7 +25,7 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-
+    
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -39,6 +40,7 @@ module.exports = function (grunt) {
       },
       js: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        // files: ['app/scripts/**/*.js'],
         tasks: ['newer:jshint:all', 'newer:jscs:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -117,12 +119,14 @@ module.exports = function (grunt) {
         }
       }
     },
-
+    
     // Make sure there are no obvious mistakes
     jshint: {
       options: {
         jshintrc: '.jshintrc',
-        reporter: require('jshint-stylish')
+        // reporter: require('jshint-stylish'),
+        reporter: require('jshint-html-reporter'),
+        reporterOutput: 'jshint_report/jshint-report.html'
       },
       all: {
         src: [
@@ -425,10 +429,26 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+      
+    ngdocs: {
+      options: {
+        dest: 'docs',
+        scripts: ['bower_components/angular/angular.js', 'bower_components/angular-animate/angular-animate.js'],
+        html5Mode: false,
+        startPage: '/api',
+        title: "HRS AngularJS Documentation"
+      },
+      api: {
+        src: ['../app/scripts/app.js'],
+        title: 'HRS Code Documentation'
+      },
+      all: ['app/**/*.js']
     }
   });
 
-
+grunt.loadNpmTasks('grunt-ngdocs');
+    
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -455,7 +475,7 @@ module.exports = function (grunt) {
     'concurrent:test',
     'postcss',
     'connect:test',
-    'karma'
+    // 'karma'
   ]);
 
   grunt.registerTask('build', [
@@ -473,13 +493,15 @@ module.exports = function (grunt) {
     //'uglify',
     //'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'ngdocs'
   ]);
 
   grunt.registerTask('default', [
     'newer:jshint',
     'newer:jscs',
     'test',
-    'build'
+    'build',
+    'ngdocs'
   ]);
 };

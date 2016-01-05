@@ -1,0 +1,51 @@
+<h1><code ng:non-bindable="">config</code>
+<div><span class="hint">service in module <code ng:non-bindable="">appModernizationApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="appmodernizationapp-config-page"><p>This module of the app allows you to configure the application with different parameters as well as define routes and associated templates.</p>
+<p>The config function uses $routeProvider to define the routes for the application</p>
+</div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$routeProvider">$routeProvider</a></code>
+</li>
+</ul>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_routeprovider">routeProvider('/', '/about', '/search', '/search/details', '/search/details/:param1', '/search/view/:param1/:param2', '/search/delete', '/search/delete/:param1')</h3>
+<div class="routeprovider"><div class="appmodernizationapp-config-routeprovider-page"><h4 id="methods_routeprovider_routeprovider">routeProvider</h4>
+<p>This configuration is present in the JavaScript file app.js.</p>
+<p>This configuration is responsible for defining the routes of the application.</p>
+</div><h5 id="methods_routeprovider_routeprovider_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>'/'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/main.html, no controller</li>
+</ul>
+</div></td></tr><tr><td>'/about'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/about.html, AboutCtrl</li>
+</ul>
+</div></td></tr><tr><td>'/search'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/search.html, SearchCtrl</li>
+</ul>
+</div></td></tr><tr><td>'/search/details'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/details.html, DetailsCtrl</li>
+</ul>
+</div></td></tr><tr><td>'/search/details/:param1'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/details.html, DetailsCtrl - Edit Mode, param1: reservation id</li>
+</ul>
+</div></td></tr><tr><td>'/search/view/:param1/:param2'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/view.html, ViewCtrl - View Mode</li>
+</ul>
+</div></td></tr><tr><td>'/search/delete'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/delete.html, DeleteCtrl</li>
+</ul>
+</div></td></tr><tr><td>'/search/delete/:param1'</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><ul>
+<li>views/delete.html, DeleteCtrl - Cancel Reservation</li>
+</ul>
+</div></td></tr></tbody></table><h5 id="methods_routeprovider_routeprovider_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-config-routeprovider-page"><p>Returns nothing.</p>
+</div></td></tr></table><h4 id="methods_routeprovider_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-config-routeprovider-page"><p>config([&#39;$routeProvider&#39;, function($routeProvider, $httpProvider){});</p>
+</div></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

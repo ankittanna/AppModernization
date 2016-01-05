@@ -36,14 +36,14 @@ angular.module('appModernizationApp')
 
         this.validateSearchCriteria = function() {
             var lastName = this.searchLastName.trim();
-            var todayDate = new Date();
+            // var todayDate = new Date();
             var selectedDate = new Date(this.searchArrivalDate);
 
             if (lastName.length === 0) {
                 $scope.isRoomTableVisible = false;
                 $scope.responseMsg = 'Name cannot be blank';
                 return false;
-            } else if (selectedDate == 'Invalid Date') {
+            } else if (selectedDate === 'Invalid Date') {
                 $scope.isRoomTableVisible = false;
                 $scope.responseMsg = 'Date Cannot be blank.';
                 return false;

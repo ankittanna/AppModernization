@@ -32,12 +32,11 @@ angular.module('appModernizationApp')
 
         this.deleteReservation = function() {
             HRS.cancleReservation($scope.reservationId).then(function(data) {
-                //var reservationId = data.reservationId;
                 console.log("Detail Data  " + JSON.stringify(data));
                 $location.path('/search');     
             }).catch(function(response) {
-                //this.registrationErrorMessage = response.data.errormessage;
+                console.log('Response ' + JSON.stringify(response));
             });
-        }
+        };
 
     }]);
