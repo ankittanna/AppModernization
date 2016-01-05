@@ -148,7 +148,7 @@ angular
         'ngSanitize',
         'ngTouch',
         'ui.bootstrap'
-    ]).config(['$routeProvider', function($routeProvider, $httpProvider) {
+    ]).config(['$routeProvider', function($routeProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
