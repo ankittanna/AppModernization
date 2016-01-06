@@ -58,9 +58,16 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      "PhantomJS"
+      "PhantomJS",
+      "Chrome",
+      "ChromeCanary",
+      "Firefox",
+      "Safari"
     ],
-
+    browserDisconnectTimeout: 5000,
+    browserDisconnectTolerance: 5,
+    browserNoActivityTimeout: 15000,
+    captureTimeout: 60000,
     // Which plugins to enable
     plugins: [
       "karma-phantomjs-launcher",
