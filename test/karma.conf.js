@@ -64,7 +64,10 @@ module.exports = function(config) {
       "Firefox",
       "Safari"
     ],
-
+    browserDisconnectTimeout: 5000,
+    browserDisconnectTolerance: 5,
+    browserNoActivityTimeout: 15000,
+    captureTimeout: 60000,
     // Which plugins to enable
     plugins: [
       "karma-phantomjs-launcher",
