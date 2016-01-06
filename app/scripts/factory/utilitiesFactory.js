@@ -27,8 +27,15 @@ function utilitiesService(){
     }
 
     function formatMMDDYYYY(date){
-        return parseInt( date.getFullYear()+ '' + (date.getMonth() + 1) + 
-        '' +  date.getDate());
+        // return parseInt( date.getFullYear()+ '' + (date.getMonth() + 1) + 
+        // '' +  date.getDate());
+
+        var fullYear = date.getFullYear();
+        var fullMonth = ('00' + (date.getMonth() + 1)).slice(-2);
+        var fullDate = ('00' + date.getDate()).slice(-2);
+        var formattedDate = '' + fullYear + '' + fullMonth + '' + fullDate + '';
+
+        return parseInt(formattedDate);
     }
     
     function keyUpEvent(event)
