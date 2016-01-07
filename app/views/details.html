@@ -195,7 +195,7 @@
                     <div class="form-group ">
                         <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Late Arrival:</label>
                         <div class="col-xs-12 col-sm-3 col-md-8 ">
-                            <input id="lateArrival " class="big-checkbox " type="checkbox" ng-model="reservationDetails.lateArrivalFlag">
+                            <input id="lateArrival " class="big-checkbox " type="checkbox" ng-model="reservationDetails.lateArrivalFlag" ng-init="reservationDetails.lateArrivalFlag=false">
                             <!--<input id="lateArrival " type="text " class="form-control " placeholder="Late Arrival Flag " ng-model="lateArrival " readonly> -->
                         </div>
                     </div>
@@ -261,7 +261,7 @@
                     <div class="form-group" ng-class="{'has-error' : bookRoomForm.companyname.$invalid && submitted}">
                         <label class="control-label col-xs-12 col-sm-3 col-md-4 ">Company Name:</label>
                         <div class="col-xs-12 col-sm-9 col-md-8 ">
-                            <input type="text " id="companyName " name="companyname" class="form-control " placeholder="Company Name " ng-model="reservationDetails.customer.companyName " ng-keyup="details.utilities.keyUpEvent($event)" ng-required="true">
+                            <input type="text " id="companyName " name="companyname" class="form-control " placeholder="Company Name " ng-model="reservationDetails.customer.companyName " ng-required="true" uppercased>
                         </div>
                     </div>
                 </div>
