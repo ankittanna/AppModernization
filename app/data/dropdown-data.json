@@ -54,6 +54,30 @@
                  {"year": "2022", "val":"22"},
                  {"year": "2023", "val":"23"}
              ]
-}
+},
+
+"dummyreservation" : {
+  "lateArrivalFlag":false,
+  "arrivalDate":"",
+  "departureDate":"",
+  "room":{
+    "roomType":"KI"
+    },
+    "customer":{
+      "firstName":"Vinod",
+      "middleName":"K",
+      "lastName":"Khandelwal",
+      "addressLine1":"Tower 5, Magarpatta City",
+      "addressLine2":"Hadapsar, Pune",
+      "addressLine3":"Maharashtra - 411028",
+      "companyName":"Accenture",
+      "phoneNumber":9999999999
+    },
+    "cardType":"Ma",
+    "cardNumber":1111222233334444,
+    "comments1":"Put your comments here.",
+    "expiryMonth":"06",
+    "expiryYear":"19"
+  }
 }
 

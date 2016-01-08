@@ -41,6 +41,13 @@ angular.module('appModernizationApp')
             $scope.expirymonth = data.dropdownData.expirymonth;
             $scope.expiryyear = data.dropdownData.expiryyear;
             $scope.cardtype = data.dropdownData.cardtype;
+
+            //To Insert Dummy Data
+            if (!$scope.reservationId) {
+                $scope.reservationDetails =data.dummyreservation;
+                $scope.expirymonth.val = $scope.reservationDetails.expiryMonth;
+                $scope.expiryyear.val = $scope.reservationDetails.expiryYear;
+            } 
         });
         
         this.utilities = UtilitiesService;
