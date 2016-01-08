@@ -396,3 +396,30 @@ legend {
     font-size:1.25em;
     font-weight: bold;
 }
+
+
+.loginpage .form-control {
+    margin-bottom: 10px;
+}
+
+.loginpage form {
+    border: 1px solid #ccc;
+}
+
+.loginpage h3 {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.loginpage .login-button {
+    text-align: right;
+    margin-bottom: 20px
+}
+
+.loginpage .jumbotron .btn {
+    margin-right: 0;
+}
+
+.loginpage .jumbotron .btn {
+    padding: 2px 10px;
+}
