@@ -109,12 +109,7 @@
     <script src="scripts/factory/utilitiesFactory.js"></script>
     <!-- endbuild -->
 </body>
-<script>
-    
-  function fb_login(){
-    FB.login( function() {}, { scope: 'email,public_profile' } );
-}
-    
+<script> 
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -146,7 +141,7 @@
       statusChangeCallback(response);
     });
   }
-
+    
   window.fbAsyncInit = function() {
   FB.init({
     appId      : '823760887743090',
@@ -193,6 +188,10 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+    
+$('#facebookLogin').on('click', function(){
+    FB.login(function() {}, { scope: 'email,public_profile' });
+});
 </script>    
     
     
