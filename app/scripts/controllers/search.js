@@ -16,6 +16,11 @@ angular.module('appModernizationApp')
         this.searchLastName = '';
         this.searchArrivalDate = '';
 
+        $http.defaults.headers.common['X-AUTH-TOKEN'] = HRS.authToken;
+        $http.defaults.headers.common['X-AUTH-TYPE'] = HRS.authType;
+        $http.defaults.headers.common['X-BACK-END'] = HRS.backendSystem;
+
+
          $scope.open = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
