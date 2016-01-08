@@ -8,16 +8,14 @@ module.exports = function(config) {
 
   config.set({
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    // autoWatch: true,
 
     // base path, that will be used to resolve files and exclude
     basePath: '../',
 
     // testing framework to use (jasmine/mocha/qunit/...)
     // as well as any additional frameworks (requirejs/chai/sinon/...)
-    frameworks: [
-      "jasmine"
-    ],
+    frameworks: ["jasmine"],
 
     // list of files / patterns to load in the browser
     files: [
@@ -37,15 +35,32 @@ module.exports = function(config) {
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
+      'app/scripts/app.js',
       "app/scripts/**/*.js",
-      "test/mock/**/*.js",
+      //"test/mock/**/*.js",
       "test/spec/**/*.js"
     ],
 
     // list of files / patterns to exclude
     exclude: [
     ],
-
+    reporters: ['progress', 'html'],
+ 
+    // the default configuration 
+    htmlReporter: {
+      //outputDir: 'test/report/', // where to put the reports  
+      outputFile: 'test/report/ReportSummary/units.html',
+      templatePath: null, // set if you moved jasmine_template.html 
+      focusOnFailures: false, // reports show failures on start 
+      namedFiles: false, // name files instead of creating sub-directories 
+      pageTitle: 'App Modernization Test Report', // page title for reports; browser info by default 
+      urlFriendlyName: false, // simply replaces spaces with _ for files/dirs 
+      reportName: 'ReportSummary', // report summary filename; browser info by default 
+      'subPageTitle': 'A sample project description',
+      // experimental 
+      preserveDescribeNesting: false, // folded suites stay folded  
+      foldAll: false, // reports start folded (only with preserveDescribeNesting) 
+    },
     // web server port
     port: 8080,
 
@@ -58,11 +73,9 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      "PhantomJS",
       "Chrome",
-      "ChromeCanary",
-      "Firefox",
-      "Safari"
+      "Safari",
+      "PhantomJS"
     ],
     browserDisconnectTimeout: 5000,
     browserDisconnectTolerance: 5,
@@ -70,8 +83,11 @@ module.exports = function(config) {
     captureTimeout: 60000,
     // Which plugins to enable
     plugins: [
+      "karma-chrome-launcher",
+      "karma-safari-launcher",
       "karma-phantomjs-launcher",
-      "karma-jasmine"
+      "karma-jasmine",
+      "karma-htmlfile-reporter"
     ],
 
     // Continuous Integration mode
@@ -82,7 +98,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
-    logLevel: [config.LOG_INFO, config.LOG_DISABLE, config.LOG_ERROR, config.LOG_WARN, config.LOG_DEBUG],
+    logLevel: config.LOG_INFO,
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {

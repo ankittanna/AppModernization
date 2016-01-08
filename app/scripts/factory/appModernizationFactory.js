@@ -67,6 +67,11 @@ function hotelReservationServices($http) {
         return reservedData;
     }
     
+    function greetingFunction(name)
+    {
+        return "Hello " + name;
+    }
+    
     // Object Map of functions
     return {
         backendSystem: backendSystem,
@@ -78,7 +83,8 @@ function hotelReservationServices($http) {
         getReservedRoomData: getReservedRoomData,
         cancleReservation: cancleReservation,
         getRegisteredData: getRegisteredData,
-        editReservation: editReservation
+        editReservation: editReservation,
+        greetingFunction: greetingFunction
     };
 }
 
