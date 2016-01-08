@@ -254,10 +254,10 @@ module.exports = function (grunt) {
         flow: {
           html: {
             steps: {
-             // js: ['concat', 'uglifyjs'],
-             // css: ['cssmin']
-              js: ['concat'],
-              css: ['concat']
+            js: ['concat', 'uglifyjs'],
+              css: ['cssmin']
+             // js: ['concat'],
+            //  css: ['concat']
             },
             post: {}
           }
@@ -398,12 +398,19 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
+          dot: true,
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
         }, {
           expand: true,
           cwd: 'bower_components/bootstrap/dist',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        },
+        {
+          expand: true,
+          cwd: 'bower_components/font-awesome',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]
@@ -495,10 +502,10 @@ grunt.loadNpmTasks('grunt-contrib-jshint');
     'concat',
     'ngAnnotate',
     'copy:dist',
-    //'cdnify',
-    //'cssmin',
-    //'uglify',
-    //'filerev',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
     'usemin',
     'htmlmin',
     'ngdocs'
