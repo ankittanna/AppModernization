@@ -1,3 +1,16 @@
+/**
+ * @ngdoc directive
+ * @name appModernizationApp.directive:searchCriteria
+ * @function
+ * 
+ * @description
+ * This directive loads a template searchcriteria along with controller DetailsCtrl
+ * 
+ * <b>Restricted:</b> Element, Attribute
+ *
+ * @returns {Object} Object with directive configurations like template, controller, restriction.
+ */
+
 'use strict';
 
 angular.module('appModernizationApp')

@@ -1,3 +1,16 @@
+/**
+ * @ngdoc directive
+ * @name appModernizationApp.directive:roomDetails
+ * @function
+ * 
+ * @description
+ * This directive just loads template. It is not in implementation currently.
+ * 
+ * <b>Restricted:</b> Element, Attribute
+ *
+ * @returns {Object} Object with directive configurations like template.
+ */
+
 'use strict';
 angular.module('appModernizationApp')
     .directive('roomDetails', function () {

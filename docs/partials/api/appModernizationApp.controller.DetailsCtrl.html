@@ -5,9 +5,120 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><h3 id="description_detailsctrl">DetailsCtrl</h3>
-<p>Controller of the appModernizationApp</p>
+<p>Controller of the appModernizationApp
+This controller is responsible for showing the details of the page.
+It gets initialized by requesting the JSON for types of rooms which is hosted on the server.
+It also requests for the details of the room for an existing reservation if the reservation id is present in the route using <b>HRS.getRegisteredData(reservationId)</b>.</p>
 </div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$scope">$scope</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$http">$http</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/HRS">HRS</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$location">$location</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$routeParams">$routeParams</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/breadcrumbs">breadcrumbs</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/UtilitiesService">UtilitiesService</a></code>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <div class="usage"><pre class="prettyprint linenums">new DetailsCtrl();</pre>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_httpgetroomtypes">HTTPGetRoomTypes()</h3>
+<div class="httpgetroomtypes"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-httpgetroomtypes-page"><p><b>$http.get(&#39;data/dropdown-data.json&#39;)</b> fetches the JSON from the server and fills them in the scope properties.</p>
+</div><h5 id="methods_httpgetroomtypes_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-httpgetroomtypes-page"><p>Returns nothing.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_fillroomdetails">fillRoomDetails()</h3>
+<div class="fillroomdetails"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-fillroomdetails-page"><p>This function helps to fill room details in the View-Model for the selected room. This gets invoked when the radio button changes from the view model.</p>
+</div><h5 id="methods_fillroomdetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-fillroomdetails-page"><p>Returns nothing.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_open">open()</h3>
+<div class="open"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-open-page"><p>Controls the opening and closing of the date picker.</p>
+</div><h5 id="methods_open_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-open-page"><p>Returns nothing. Sets the date picker #1 and #2 open status.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_searchrooms">searchRooms()</h3>
+<div class="searchrooms"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-searchrooms-page"><p>Helps you search rooms based on parameters entered. Uses services of <b>HRS</b> and <b>UtilitiesService</b>
+Controls the visibility of RoomDetails using <b>$scope.isRoomDetailsVisible</b>
+Uses HRS Service <b>HRS.getRoomList</b> with the parameters of search criteria.</p>
+</div><h5 id="methods_searchrooms_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-searchrooms-page"><p>Returns nothing.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_selectroom">selectRoom()</h3>
+<div class="selectroom"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-selectroom-page"><p>Controls the visibility of Room details using <b>$scope.isRoomDetailsVisible</b></p>
+</div><h5 id="methods_selectroom_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-selectroom-page"><p>Returns nothing.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_storedetails">storeDetails()</h3>
+<div class="storedetails"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-storedetails-page"><p>Saves the reservation based on valid data entry in the form.
+Uses <b>HRS</b> Services
+Provides 2 Functionality:</p>
+<ul><li>Save New Reservation: <b>HRS.saveReservations</b></li><li>Edit/Update Existing Reservation: <b>HRS.editReservation</b></li></ul></div><h5 id="methods_storedetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-storedetails-page"><p>Returns nothing.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_breadcrumbsobject">breadcrumbs:object</h3>
+<div class="breadcrumbsobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>breadcrumbs Handles the page level/navigation at the top.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reservationdetailsarray">reservationDetails:array</h3>
+<div class="reservationdetailsarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>This holds the reservation details of the current/selected reservation.</p>
+</div></div>
+</li>
+<li><h3 id="properties_registerationerrormsgstring">registerationErrorMsg:string</h3>
+<div class="registerationerrormsgstring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>This variable holds the error message for all registration services.</p>
+</div></div>
+</li>
+<li><h3 id="properties_roomsearcherrormsgstring">roomSearchErrorMsg:string</h3>
+<div class="roomsearcherrormsgstring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>This variable holds the error message for all room search services.</p>
+</div></div>
+</li>
+<li><h3 id="properties_roomdetailsarray">roomDetails:array</h3>
+<div class="roomdetailsarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>This holds the room details object. This will be a fresh object coming from service response and will be manipulated as per the view model.</p>
+</div></div>
+</li>
+<li><h3 id="properties_submittedboolean">submitted:boolean</h3>
+<div class="submittedboolean"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Holds the submitted boolean flag. Initialized with false. Changes to true when we store the details.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reservationidnumber">reservationId:number</h3>
+<div class="reservationidnumber"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Gets the reservation id from the route params.</p>
+</div></div>
+</li>
+<li><h3 id="properties_mindatedate">minDate:date</h3>
+<div class="mindatedate"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Date filled in the minimum date vatiable</p>
+</div></div>
+</li>
+<li><h3 id="properties_isroomdetailsvisibleboolean">isRoomDetailsVisible:boolean</h3>
+<div class="isroomdetailsvisibleboolean"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Controls the boolean flag for visibility of room details. Initialized with false.</p>
+</div></div>
+</li>
+<li><h3 id="properties_roomtypesarray">roomTypes:array</h3>
+<div class="roomtypesarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Holds types of rooms from JSON.</p>
+</div></div>
+</li>
+<li><h3 id="properties_expirymontharray">expirymonth:array</h3>
+<div class="expirymontharray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Months from Jan to Dec</p>
+</div></div>
+</li>
+<li><h3 id="properties_expiryyeararray">expiryYear:array</h3>
+<div class="expiryyeararray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Years of a particular range</p>
+</div></div>
+</li>
+<li><h3 id="properties_cardtypearray">cardtype:array</h3>
+<div class="cardtypearray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-detailsctrl-page"><p>Type of cards</p>
+</div></div>
+</li>
+</ul>
 </div>
 </div>

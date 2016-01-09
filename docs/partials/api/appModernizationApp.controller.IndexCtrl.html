@@ -5,9 +5,35 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-indexctrl-page"><h3 id="description_indexctrl">IndexCtrl</h3>
-<p>Controller of the appModernizationApp</p>
+<p>Controller of the appModernizationApp
+This is the parent controller for all. Inheritence can be applied here. Visiblity of user info is handled here.</p>
 </div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$scope">$scope</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/breadcrumbs">breadcrumbs</a></code>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <div class="usage"><pre class="prettyprint linenums">new IndexCtrl();</pre>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_uesrnamestring">uesrName:string</h3>
+<div class="uesrnamestring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-indexctrl-page"><p>Static String for Username.</p>
+</div></div>
+</li>
+<li><h3 id="properties_breadcrumbsobject">breadcrumbs:object</h3>
+<div class="breadcrumbsobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-indexctrl-page"><p>Page Navigation/Level</p>
+</div></div>
+</li>
+<li><h3 id="properties_displaypropertiesobject">displayProperties:object</h3>
+<div class="displaypropertiesobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-indexctrl-page"><p>Holds if user info should be visible or not.</p>
+</div></div>
+</li>
+<li><h3 id="properties_displaypropertiesisuserinfovisibleboolean">displayProperties.isUserInfoVisible:boolean</h3>
+<div class="displaypropertiesisuserinfovisibleboolean"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-indexctrl-page"><p>Holds boolean flag if the user info is visible or not.</p>
+</div></div>
+</li>
+</ul>
 </div>
 </div>

@@ -50,7 +50,7 @@
  * 
  * @requires $routeProvider
  * @requires $httpProvider
- * @param {object} '/' - views/main.html, no controller
+ * @param {object} '/' - views/main.html, MainCtrl
  * @param {object} '/about' - views/about.html, AboutCtrl
  * @param {object} '/search' - views/search.html, SearchCtrl
  * @param {object} '/search/details' - views/details.html, DetailsCtrl
@@ -61,25 +61,6 @@
  * @returns {null} Returns nothing.
  * @example
  * config(['$routeProvider', function($routeProvider, $httpProvider){});
- */
-
-
-/**
- * @ngdoc directive
- * @name rfx.directive:rAutogrow
- * @element textarea
- * @function
- *
- * @description
- * Resize textarea automatically to the size of its text content.
- *
- * @example
-   <example module="rfx">
-     <file name="index.html">
-         <textarea ng-model="text" r-autogrow class="input-block-level"></textarea>
-         <pre>{{text}}</pre>
-     </file>
-   </example>
  */
 
 /**

@@ -6,6 +6,30 @@
  * @description
  * # DetailsCtrl
  * Controller of the appModernizationApp
+ * This controller is responsible for showing the details of the page.
+ * It gets initialized by requesting the JSON for types of rooms which is hosted on the server.
+ * It also requests for the details of the room for an existing reservation if the reservation id is present in the route using <b>HRS.getRegisteredData(reservationId)</b>.
+ * @requires $scope
+ * @requires $http
+ * @requires HRS
+ * @requires $location
+ * @requires $routeParams
+ * @requires breadcrumbs
+ * @requires UtilitiesService
+ * 
+ * @property {object} breadcrumbs:object breadcrumbs Handles the page level/navigation at the top.
+ * @property {array} reservationDetails:array This holds the reservation details of the current/selected reservation.
+ * @property {string} registerationErrorMsg:string This variable holds the error message for all registration services.
+ * @property {string} roomSearchErrorMsg:string This variable holds the error message for all room search services.
+ * @property {array} roomDetails:array This holds the room details object. This will be a fresh object coming from service response and will be manipulated as per the view model.
+ * @property {boolean} submitted:boolean Holds the submitted boolean flag. Initialized with false. Changes to true when we store the details.
+ * @property {number} reservationId:number Gets the reservation id from the route params.
+ * @property {date} minDate:date Date filled in the minimum date vatiable
+ * @property {boolean} isRoomDetailsVisible:boolean Controls the boolean flag for visibility of room details. Initialized with false.
+ * @property {array} roomTypes:array Holds types of rooms from JSON.
+ * @property {array} expirymonth:array Months from Jan to Dec
+ * @property {array} expiryYear:array Years of a particular range
+ * @property {array} cardtype:array Type of cards
  */
 angular.module('appModernizationApp')
     .controller('DetailsCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams','breadcrumbs', 'UtilitiesService',function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {
@@ -20,6 +44,18 @@ angular.module('appModernizationApp')
 
         //Date Picker Options
         $scope.minDate = $scope.reservationId ? null : new Date();
+        
+/**
+ * @ngdoc function
+ * @name appModernizationApp.controller:DetailsCtrl#open
+ * @methodOf appModernizationApp.controller:DetailsCtrl
+ * 
+ * @description
+ * Controls the opening and closing of the date picker.
+ *
+ * @returns {null} Returns nothing. Sets the date picker #1 and #2 open status.
+ */        
+        
         $scope.open = function($event, opened) {
             $event.preventDefault();
             $event.stopPropagation();
@@ -35,6 +71,17 @@ angular.module('appModernizationApp')
             breadcrumbs.breadcrumbs.splice(1, 1);
         }
 
+/**
+ * @ngdoc function
+ * @name appModernizationApp.controller:DetailsCtrl#HTTPGetRoomTypes
+ * @methodOf appModernizationApp.controller:DetailsCtrl
+ * 
+ * @description
+ * <b>$http.get('data/dropdown-data.json')</b> fetches the JSON from the server and fills them in the scope properties.
+ *
+ * @returns {null} Returns nothing.
+ */        
+        
         $http.get('data/dropdown-data.json').success(function(data) {
             console.log('Data:' + JSON.stringify(data.dropdownData));
             $scope.roomTypes = data.dropdownData.roomtype;
@@ -118,6 +165,17 @@ angular.module('appModernizationApp')
         //     }
         // };
 
+/**
+ * @ngdoc function
+ * @name appModernizationApp.controller:DetailsCtrl#fillRoomDetails
+ * @methodOf appModernizationApp.controller:DetailsCtrl
+ * 
+ * @description
+ * This function helps to fill room details in the View-Model for the selected room. This gets invoked when the radio button changes from the view model.
+ *
+ * @returns {null} Returns nothing.
+ */        
+        
         this.fillRoomDetails = function(roomno, rateCode, roomRate, roomDesc, smokingFlag) {
             console.log(' Data :' + roomno + rateCode + roomRate + roomDesc + smokingFlag);
             $scope.reservationDetails.room.roomNo = roomno;
@@ -127,11 +185,35 @@ angular.module('appModernizationApp')
             $scope.reservationDetails.room.smokeFlag = smokingFlag;
         };
 
+/**
+ * @ngdoc function
+ * @name appModernizationApp.controller:DetailsCtrl#selectRoom
+ * @methodOf appModernizationApp.controller:DetailsCtrl
+ * 
+ * @description
+ * Controls the visibility of Room details using <b>$scope.isRoomDetailsVisible</b>
+ *
+ * @returns {null} Returns nothing.
+ */        
+        
         this.selectRoom = function() {
             // angular.element('.roomDetails').css('display', 'none');
             $scope.isRoomDetailsVisible = false;
         };
 
+/**
+ * @ngdoc function
+ * @name appModernizationApp.controller:DetailsCtrl#searchRooms
+ * @methodOf appModernizationApp.controller:DetailsCtrl
+ * 
+ * @description
+ * Helps you search rooms based on parameters entered. Uses services of <b>HRS</b> and <b>UtilitiesService</b>
+ * Controls the visibility of RoomDetails using <b>$scope.isRoomDetailsVisible</b>
+ * Uses HRS Service <b>HRS.getRoomList</b> with the parameters of search criteria.
+ *
+ * @returns {null} Returns nothing.
+ */        
+        
         this.searchRooms = function() {
             // angular.element('.roomDetails').css('display', 'none');
             $scope.isRoomDetailsVisible = false;
@@ -173,6 +255,20 @@ angular.module('appModernizationApp')
             }
         };
 
+/**
+ * @ngdoc function
+ * @name appModernizationApp.controller:DetailsCtrl#storeDetails
+ * @methodOf appModernizationApp.controller:DetailsCtrl
+ * 
+ * @description
+ * Saves the reservation based on valid data entry in the form.
+ * Uses <b>HRS</b> Services
+ * Provides 2 Functionality:
+ * <ul><li>Save New Reservation: <b>HRS.saveReservations</b></li><li>Edit/Update Existing Reservation: <b>HRS.editReservation</b></li></ul>
+ *
+ * @returns {null} Returns nothing.
+ */        
+        
         this.storeDetails = function(isValid) {
             $scope.submitted = true;
 

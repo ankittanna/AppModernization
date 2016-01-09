@@ -42,7 +42,7 @@ function hotelReservationServices($http) {
         });
     }
 
-    function cancleReservation(reservationId) {
+    function cancelReservation(reservationId) {
         var url = baseUrl + '/reservation/' + reservationId;
         return $http.delete(url).then(function(response) {
             return response.data;
@@ -81,7 +81,7 @@ function hotelReservationServices($http) {
         saveReservations: saveReservations,
         getRoomList: getRoomList,
         getReservedRoomData: getReservedRoomData,
-        cancleReservation: cancleReservation,
+        cancelReservation: cancelReservation,
         getRegisteredData: getRegisteredData,
         editReservation: editReservation,
         greetingFunction: greetingFunction

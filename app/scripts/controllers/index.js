@@ -6,9 +6,19 @@
  * @description
  * # IndexCtrl
  * Controller of the appModernizationApp
+ * This is the parent controller for all. Inheritence can be applied here. Visiblity of user info is handled here.
+ * 
+ * @requires $scope
+ * @requires breadcrumbs
+ * 
+ * @property {string} uesrName:string Static String for Username.
+ * @property {object} breadcrumbs:object Page Navigation/Level
+ * @property {object} displayProperties:object Holds if user info should be visible or not.
+ * @property {boolean} displayProperties.isUserInfoVisible:boolean Holds boolean flag if the user info is visible or not.
+ *
  */
 angular.module('appModernizationApp')
-    .controller('IndexCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
+    .controller('IndexCtrl', ['$scope', 'breadcrumbs', function($scope, breadcrumbs) {
 
         $scope.uesrName = 'John Doe';
         $scope.breadcrumbs = breadcrumbs;

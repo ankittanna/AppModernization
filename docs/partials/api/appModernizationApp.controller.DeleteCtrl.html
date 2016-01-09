@@ -5,9 +5,58 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-deletectrl-page"><h3 id="description_deletectrl">DeleteCtrl</h3>
-<p>Controller of the appModernizationApp</p>
+<p>Controller of the appModernizationApp
+This controller handles the view model of the delete/cancel reservation. This is responsible for cancelling the existing reservations.</p>
+<p>It initially fetches the details of the reservation by requesting the data based on reservationId. The reservationId is then used to cancel the reservation.
+This fetching is done using <b>HRS.getRegisteredData(reservationID)</b> which fetches the data and stores the data in <b>reservedData</b> and manipulates the data using <b>UtilitiesService</b> to make it usable for the View-Model binding. Finally, when all the manipulations is done the reservation details are stored in <b>$scope.reservationDetails</b></p>
 </div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$scope">$scope</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$http">$http</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$routeProvider">$routeProvider</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/HRS">HRS</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$location">$location</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$routeParams">$routeParams</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/breadcrumbs">breadcrumbs</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/UtilitiesService">UtilitiesService</a></code>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <div class="usage"><pre class="prettyprint linenums">new DeleteCtrl();</pre>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_deletereservation">deleteReservation()</h3>
+<div class="deletereservation"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-deletectrl-deletereservation-page"><p>This method calls the service <b>HRS.cancelReservation(reservationId)</b> for cancelling the reservation. It picks the reservation id on the scope variable and calls the service for cancelling the reservation.
+Once the cancel reservation service is called successfully it then moves back to search reservations page.</p>
+</div><h5 id="methods_deletereservation_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-deletectrl-deletereservation-page"><p>Returns nothing.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_breadcrumbsobject">breadcrumbs:object</h3>
+<div class="breadcrumbsobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-deletectrl-page"><p>breadcrumbs Handles the page level/navigation at the top.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reservationdetailsarray">reservationDetails:array</h3>
+<div class="reservationdetailsarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-deletectrl-page"><p>This holds the reservation details of the current/selected reservation.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reserveddataarray">reservedData:array</h3>
+<div class="reserveddataarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-deletectrl-page"><p>This holds the reservation details of the current/selected reservation.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reservationidarray">reservationId:array</h3>
+<div class="reservationidarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-deletectrl-page"><p>Holds the reservationId of the current/selected booking.</p>
+</div></div>
+</li>
+</ul>
 </div>
 </div>
