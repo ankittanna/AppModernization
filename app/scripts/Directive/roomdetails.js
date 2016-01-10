@@ -1,6 +1,7 @@
 /**
  * @ngdoc directive
  * @name appModernizationApp.directive:roomDetails
+ * @restrict EA
  * @function
  * 
  * @description

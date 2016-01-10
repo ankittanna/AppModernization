@@ -1,6 +1,7 @@
 /**
  * @ngdoc directive
  * @name appModernizationApp.directive:searchCriteria
+ * @restrict EA
  * @function
  * 
  * @description

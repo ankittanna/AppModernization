@@ -1,6 +1,7 @@
 /**
  * @ngdoc directive
  * @name appModernizationApp.directive:uppercased
+ * @restrict EA
  * @element input
  * @function
  * 
