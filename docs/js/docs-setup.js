@@ -82,7 +82,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "appModernizationApp",
       "shortDescription": "This directive just loads template. It is not in implementation currently.",
-      "keywords": "api appmodernizationapp attribute configurations currently directive element implementation loads object template"
+      "keywords": "api appmodernizationapp attribute configurations currently directive ea element implementation loads object template"
     },
     {
       "section": "api",
@@ -91,7 +91,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "appModernizationApp",
       "shortDescription": "This directive loads a template searchcriteria along with controller DetailsCtrl",
-      "keywords": "api appmodernizationapp attribute configurations controller detailsctrl directive element loads object restriction searchcriteria template"
+      "keywords": "api appmodernizationapp attribute configurations controller detailsctrl directive ea element loads object restriction searchcriteria template"
     },
     {
       "section": "api",
@@ -100,7 +100,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "appModernizationApp",
       "shortDescription": "This directive is used to convert whatever typed in the input type text or text area into an uppercase format. ",
-      "keywords": "api appmodernizationapp area associated attributes attrs case controller convert converts directive element format function input link linker method model modelctrl ngmodel object passed required returns scope string template text type typed upper uppercase"
+      "keywords": "api appmodernizationapp area associated attributes attrs case controller convert converts directive ea element format function input link linker method model modelctrl ngmodel object passed required returns scope string template text type typed upper uppercase"
     },
     {
       "section": "api",

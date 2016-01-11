@@ -61,7 +61,7 @@ angular.module('appModernizationApp')
  * @returns {null} Returns nothing.
  */        
         
-        this.deleteReserv   ation = function() {
+        this.deleteReservation = function() {
             HRS.cancelReservation($scope.reservationId).then(function(data) {
                 // var reservationId = data.reservationId;
                 console.log('Detail Data  ' + JSON.stringify(data));
