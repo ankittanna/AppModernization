@@ -109,8 +109,8 @@
     <!-- endbuild -->
 </body>
 <script> 
+    var fbAccessToken;
   // This is called with the results from from FB.getLoginStatus().
-  var facebookAccessToken;
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -164,10 +164,10 @@
   // These three cases are handled in the callback function.
 
   FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-            facebookAccessToken = response.authResponse.accessToken;
-            statusChangeCallback(response);
-        }  
+if (response.status === 'connected') {
+    fbAccessToken = response.authResponse.accessToken;
+  }
+    statusChangeCallback(response);
   });
 
   };
@@ -191,6 +191,11 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+    
+window.fb_login = function()
+    {
+        FB.login(function() {}, { scope: 'email,public_profile' });
+    }
     
 </script>    
     
