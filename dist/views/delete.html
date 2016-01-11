@@ -1,0 +1,155 @@
+<div class="container">
+    <!--<ol class="ab-nav breadcrumb">
+    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
+      <a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
+      <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+    </li>
+    </ol>-->
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Reservation Details</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <label id="registerationError" class="errorMsg  col-xs-12 col-sm-10 col-md-12">{{delete.registrationErrorMessage}}</label>
+        </div>
+    </div>
+    <form name="bookRoomForm" class="form-horizontal">
+        <div class="form-group reservationnumber">
+            <label class="control-label col-xs-12 col-sm-3 col-md-3"><b>Reseravation Id:</b></label>
+            <label class="control-label col-xs-12 col-sm-3 col-md-1"><b>{{reservationDetails.reservationId}}</b></label>
+        </div>
+        <br/>
+        <h4>Room Details</h4>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-in Date:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label class="control-label" ng-model="arrivalDate">{{reservationDetails.arrivalDate}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Check-out Date:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label class="control-label">{{reservationDetails.departureDate}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Type:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="roomType" class="control-label"> {{reservationDetails.room.roomType}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Number:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="roomNumber" class="control-label"> {{reservationDetails.room.roomNo}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Desc:</label>
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <label id="roomDesc" class="control-label">{{reservationDetails.room.roomDescription}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Room Rate:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="roomRate" class="control-label">{{reservationDetails.room.rate}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Rating Code:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="rateCode" class="control-label">{{reservationDetails.room.rateCode}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Smoking:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="smokingFlag" class="control-label">{{reservationDetails.room.smokeFlag}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Late Arriaval:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="lateArrival" class="control-label"> {{reservationDetails.lateArrivalFlag}}</label>
+            </div>
+        </div>
+        <br/>
+        <h4>Personal Details:</h4>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Guest Name:</label>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <label id="firstName" class="control-label">{{reservationDetails.customer.firstName}}</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <label id="middleName" class="control-label"> {{reservationDetails.customer.middleName}}</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <label id="lastName" class="control-label">{{reservationDetails.customer.lastName}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Address:</label>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <label id="addressLine1" class="control-label"> {{reservationDetails.customer.addressLine1}}</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <label id="addressLine2" class="control-label"> {{reservationDetails.customer.addressLine2}}</label>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <label id="addressLine3" class="control-label"> {{reservationDetails.customer.addressLine3}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Company Name:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="companyName" class="control-label"> {{reservationDetails.customer.companyName}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Phone Number:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="phoneNumber" class="control-label"> {{reservationDetails.customer.phoneNumber}}</label>
+            </div>
+        </div>
+        <br/>
+        <h4>Payment Details:</h4>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Type:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="cardType" class="control-label"> {{reservationDetails.cardType}}</label>
+            </div>
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Card Number:</label>
+            <div class="col-xs-12 col-sm-9 col-md-4">
+                <label id="cardNumber" class="control-label"> {{reservationDetails.cardNumber}}</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Expiry:</label>
+            <div class="col-xs-12 col-sm-9 col-md-2">
+                <label id="expiryDate" class="control-label"> {{reservationDetails.expiryDate}}</label>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-2">
+            </div>
+        </div>
+        <hr>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-2">Coments:</label>
+            <div class="col-xs-12 col-sm-9 col-md-10">
+                <label id="comments" class="control-label"> {{reservationDetails.comments1}}</label>
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <a>
+                    <button type="button" ng-click="delete.deleteReservation()" class="btn btn-default btn-md form-control">
+                        Cancel Reservation
+                    </button>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <a href="#/search">
+                    <button type="button" class="btn btn-default btn-md form-control">
+                        Close
+                    </button>
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

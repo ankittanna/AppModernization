@@ -1,0 +1,136 @@
+<div class="container">
+    <!-- <ol class="ab-nav breadcrumb">
+    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
+      <a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
+      <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+    </li>
+    </ol>-->
+    <form id="reservationform" name="reservedRoomForm" class="form-horizontal">
+        <h4>New Room Reservation: </h4>
+        <div class="form-group">
+            <label class="control-label col-xs-12 col-sm-3 col-md-3 col-md-offset-2">Reserve a Room:</label>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <a href="#/search/details">
+                    <button type="button" class="btn btn-default btn-md form-control"> Reserve Room
+                    </button>
+                </a>
+            </div>
+        </div>
+    </form>
+    <hr>
+    <form id="serchreservationform" name="searchReservedRoomForm" class="form-horizontal">
+        <h4>Search Reserved Rooms: </h4>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-3 col-md-4">Last Name:</label>
+                    <div class="col-xs-12 col-sm-12 col-md-8">
+                        <input type="text" class="form-control " placeholder="Last Name" ng-model="search.searchLastName" ng-keyup="search.utilities.keyUpEvent($event)">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label col-xs-12 col-sm-3 col-md-4">Check-in Date:</label>
+                    <!-- <div class="col-xs-12 col-sm-12 col-md-3">
+                                  <input type="date" class="form-control" placeholder="Date" ng-model="search.searchArrivalDate">
+                              </div> -->
+                    <div class="col-xs-12 col-sm-12 col-md-8">
+                        <p class="input-group">
+                            <input type="date" name="arrivaldate" class="form-control" ng-model="search.searchArrivalDate" uib-datepicker-popup="MM/dd/yyyy" show-weeks="false" show-button-bar="false" is-open="opened" placeholder="mm/dd/yyyy" ng-required="true" close-text="Close" readonly/>
+                            <span class="input-group-btn">
+                                                     <button type="button" class="btn btn-default form-control" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                   </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+         <div class="col-md-5">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <a>
+                    <button type="button" class="btn btn-default btn-md form-control" ng-click="search.searchReservations()">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search
+                    </button>
+                </a>
+            </div>
+        </div>
+        </div>
+        <br/>
+        <hr>
+        <div class="form-group">
+            <div id="roomTable" ng-show="isRoomTableVisible == true">
+                <table class="table table-striped table-bordered textAlignLeft hidden-xs">
+                    <thead>
+                        <tr>
+                            <th>S. No</th>
+                            <th>Res No.</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Arrival Date</th>
+                            <th>Departure Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(index, reservation) in reservations">
+                            <td>{{index+1}}</td>
+                            <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch">{{reservation.reservationId}}</a></td>
+                            <td>{{reservation.firstName}}</td>
+                            <td>{{reservation.lastName}}</td>
+                            <td>{{search.utilities.convertToFormat(reservation.arrivalDate)}}</td>
+                            <td>{{search.utilities.convertToFormat(reservation.departureDate)}}</td>
+                            <td id="actions">
+                                <a id="editsrch" ng-href="#/search/details/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png"></a>
+                                <a ng-href="#/search/delete/{{reservation.reservationId}}" title="delete"><img ng-src="images/Icon_Delete.png"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table textAlignLeft visible-xs xs-table">
+                    <tbody ng-repeat="(index, reservation) in reservations">
+                        <tr>
+                            <th>S. No</th>
+                            <td>{{index+1}}</td>
+                            <td id="actions">
+                                <a id="editsrch" ng-href="#/search/details/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png"></a>
+                                <a ng-href="#/search/delete/{{reservation.reservationId}}" title="delete"><img ng-src="images/Icon_Delete.png"></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Res No.</th>
+                            <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch">{{reservation.reservationId}}</a></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>First Name</th>
+                            <td>{{reservation.firstName}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Last Name</th>
+                            <td>{{reservation.lastName}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Arrival Date</th>
+                            <td>{{search.getFormattedDate(reservation.arrivalDate)}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Departure Date</th>
+                            <td>{{search.getFormattedDate(reservation.departureDate)}}</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label class="errorMsg col-xs-12 col-sm-10 col-md-12"><b>{{responseMsg}}</b></label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
