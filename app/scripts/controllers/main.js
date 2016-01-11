@@ -38,7 +38,6 @@ angular.module('appModernizationApp')
  *
  * @returns {null} Returns nothing.
  */           
-        
         this.onHRSGLogin = function(authType){
         	HRS.backendSystem = $scope.selectedSystem;
         	HRS.authType = authType;

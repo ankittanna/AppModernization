@@ -109,7 +109,8 @@
     <!-- endbuild -->
 </body>
 <script> 
-    var fbAccessToken;
+  var fbAccessToken = '';
+  window.fbAccessToken = '';
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -188,13 +189,22 @@ if (response.status === 'connected') {
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        '' + response.name + '!';
     });
   }
     
 window.fb_login = function()
     {
-        FB.login(function() {}, { scope: 'email,public_profile' });
+        FB.login(function() {
+            console.log("Logged In Via Facebook");
+            FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                fbAccessToken = response.authResponse.accessToken;
+                window.fbAccessToken = fbAccessToken;
+              }
+                statusChangeCallback(response);
+              });
+        }, { scope: 'email,public_profile' });
     }
     
 </script>    
