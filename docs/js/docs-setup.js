@@ -55,7 +55,7 @@ NG_DOCS={
       "type": "function",
       "moduleName": "appModernizationApp",
       "shortDescription": "MainCtrl",
-      "keywords": "api appmodernizationapp controller function mainctrl"
+      "keywords": "$http $location $scope allows api appmodernizationapp appmodernizationapp-controller-mainctrl-page appmodernizationapp-controller-page authentication backend backendsystems breadcrumbs chose class controller controls displayproperties function hit holds hrs info list login main mainctrl navigation onhrsglogin returns saves selected selectedsystem server system systems token type view visibility"
     },
     {
       "section": "api",
@@ -64,7 +64,7 @@ NG_DOCS={
       "type": "function",
       "moduleName": "appModernizationApp",
       "shortDescription": "SearchCtrl",
-      "keywords": "api appmodernizationapp controller function searchctrl"
+      "keywords": "$http $location $scope api appmodernizationapp appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page arriaval arrival based breadcrumbs calls class closing controller controls criteria format function functionality functions holds hrs lastname message navigation object open opening picker reservation reservations response responsemsg returns room rooms search searcharrivaldate searchctrl searching searchlastname searchreservations searchvalidated selected selecteddate server service sets status string true type utilities utilitiesservice valid validates validatesearchcriteria"
     },
     {
       "section": "api",
@@ -73,7 +73,7 @@ NG_DOCS={
       "type": "function",
       "moduleName": "appModernizationApp",
       "shortDescription": "ViewCtrl",
-      "keywords": "api appmodernizationapp controller function viewctrl"
+      "keywords": "$http $location $routeparams $scope api app appmodernizationapp appmodernizationapp-controller-page appmodernizationapp-controller-viewctrl-page based breadcrumbs class controller current data definition details fetches function holds hrs js listed message mode navigation parameter reservation reservationdetails reservationid reservations reserved reserveddata response responsemsg route screen server services utilitiesservice view viewctrl"
     },
     {
       "section": "api",
@@ -82,7 +82,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "appModernizationApp",
       "shortDescription": "This directive just loads template. It is not in implementation currently.",
-      "keywords": "api appmodernizationapp attribute configurations currently directive element implementation loads object template"
+      "keywords": "api appmodernizationapp attribute configurations currently directive ea element implementation loads object template"
     },
     {
       "section": "api",
@@ -91,7 +91,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "appModernizationApp",
       "shortDescription": "This directive loads a template searchcriteria along with controller DetailsCtrl",
-      "keywords": "api appmodernizationapp attribute configurations controller detailsctrl directive element loads object restriction searchcriteria template"
+      "keywords": "api appmodernizationapp attribute configurations controller detailsctrl directive ea element loads object restriction searchcriteria template"
     },
     {
       "section": "api",
@@ -100,34 +100,25 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "appModernizationApp",
       "shortDescription": "This directive is used to convert whatever typed in the input type text or text area into an uppercase format. ",
-      "keywords": "api appmodernizationapp area associated attributes attrs case controller convert converts directive element format function input link linker method model modelctrl ngmodel object passed required returns scope string template text type typed upper uppercase"
+      "keywords": "api appmodernizationapp area associated attributes attrs case controller convert converts directive ea element format function input link linker method model modelctrl ngmodel object passed required returns scope string template text type typed upper uppercase"
     },
     {
       "section": "api",
-      "id": "rfx.controller:rAutogrow",
-      "shortName": "rAutogrow",
-      "type": "controller",
-      "moduleName": "rfx",
-      "shortDescription": "Resize textarea automatically to the size of its text content.",
-      "keywords": "api automatically content controller resize rfx size text textarea"
-    },
-    {
-      "section": "api",
-      "id": "rfx.errorServices",
-      "shortName": "rfx.errorServices",
+      "id": "appModernizationApp.HRS",
+      "shortName": "appModernizationApp.HRS",
       "type": "service",
-      "moduleName": "rfx",
+      "moduleName": "appModernizationApp",
       "shortDescription": "AVAILABLE SERVICES",
-      "keywords": "$rootscope accross api application box call class consist dependency details entity error errordetails errorheader errorservices file functions generic header holds list listed maps method named rfx rfx-errorservices-page service services single string throwerror works"
+      "keywords": "$http accross adfs allows api application appmodernizationapp appmodernizationapp-hrs-page arrivaldate authentication authtoken authtype backend backendsystem base based baseurl call cancel cancelreservation class consist crud data database delete departuredate dependency description details edit editreservation error fails fetched file form function functions getregistereddata getreservedroomdata getroomlist hit holds hrs http list listed maps method object operations parameters post required reservation reservationdetails reservations reserved reserveddata resolve room rooms roomtype sample savereservations search searchreservations server service services system token type url works"
     },
     {
       "section": "api",
-      "id": "rfx.rest",
-      "shortName": "rfx.rest",
+      "id": "appModernizationApp.UtilitiesService",
+      "shortName": "appModernizationApp.UtilitiesService",
       "type": "service",
-      "moduleName": "rfx",
-      "shortDescription": "rest",
-      "keywords": "api backend data description entity error fails fetched form method resolve rest rfx service talk"
+      "moduleName": "appModernizationApp",
+      "shortDescription": "AVAILABLE SERVICES",
+      "keywords": "accross api app application appmodernizationapp call case checks common consist convert converts converttoformat converttoraw current dependency file format formatmmddyyyy formatted formatteddate function functionalities functions input ispreviousday keyupevent list listed maps method mmddyyyy operations parameters previous provided raw required selecteddate service services string true upper utilitiesservice works"
     }
   ],
   "apis": {

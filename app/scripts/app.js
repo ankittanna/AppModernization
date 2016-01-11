@@ -63,61 +63,6 @@
  * config(['$routeProvider', function($routeProvider, $httpProvider){});
  */
 
-/**
- * @ngdoc controller
- * @name rfx.controller:rAutogrow
- * @element textarea
- * @function
- *
- * @description
- * Resize textarea automatically to the size of its text content.
- *
- */
-
-/**
- * @ngdoc service 
- * @name rfx.errorServices
- * @description
- * # AVAILABLE SERVICES
- *
- * The errorServices consist of a single error service named throwError. This is a very generic error service which works accross the application and it just needs a dependency of <strong>errorServices</strong> and a call to <strong>throwError</strong> method of the services.
- *
- * These are the list of services available within errorServices.
- * <ul>
- * <li>throwError</li>
- * </ul>
- * @property {string} errorHeader Holds the Error Box Header String
- * @property {string} errorDetails Holds the Error Box Details String
- * @param {int} entity id
- * @param {string} entity name
- * @requires $rootScope
- * @returns {servicesMapObject} services This maps the services with the functions listed in the file.
-**/
-
-
-
-/**
- * @ngdoc service
- * @name rfx.rest
- * @description
- * # rest
- * Service to talk with backend api.
- */
-
-/**
-     * @ngdoc
-     * @name rfx.rest#get
-     * @methodOf rfx.rest
-     *
-     * @description
-     * Method to get data form the backend api
-     * @example
-     * rest.get(id);
-     * @param {int} entity id
-     * @returns {httpPromise} resolve with fetched data, or fails with error description.
-     */
-
-
 angular
     .module('appModernizationApp', ['ng-breadcrumbs',
         'ngAnimate',

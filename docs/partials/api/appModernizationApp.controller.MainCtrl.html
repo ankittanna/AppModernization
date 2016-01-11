@@ -5,9 +5,49 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-mainctrl-page"><h3 id="description_mainctrl">MainCtrl</h3>
-<p>Controller of the appModernizationApp</p>
+<p>Controller of the appModernizationApp
+This controller is the main view page controller. Controls the login page. Allows you to chose which server/backend system you wish to hit.</p>
 </div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$scope">$scope</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$http">$http</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$location">$location</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/HRS">HRS</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/breadcrumbs">breadcrumbs</a></code>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <div class="usage"><pre class="prettyprint linenums">new MainCtrl();</pre>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_onhrsglogin">onHRSGLogin()</h3>
+<div class="onhrsglogin"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-mainctrl-onhrsglogin-page"><p>Saves the token and selected system and authentication type for the login.</p>
+</div><h5 id="methods_onhrsglogin_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-mainctrl-onhrsglogin-page"><p>Returns nothing.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_breadcrumbsobject">breadcrumbs:object</h3>
+<div class="breadcrumbsobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-mainctrl-page"><p>Page Navigation/Level</p>
+</div></div>
+</li>
+<li><h3 id="properties_displaypropertiesobject">displayProperties:object</h3>
+<div class="displaypropertiesobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-mainctrl-page"><p>Controls visibility of login info</p>
+</div></div>
+</li>
+<li><h3 id="properties_backendsystemsarray">backendSystems:array</h3>
+<div class="backendsystemsarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-mainctrl-page"><p>Holds the list of all backend systems.</p>
+</div></div>
+</li>
+<li><h3 id="properties_selectedsystemstring">selectedSystem:string</h3>
+<div class="selectedsystemstring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-mainctrl-page"><p>Selected Backend System</p>
+</div></div>
+</li>
+</ul>
 </div>
 </div>

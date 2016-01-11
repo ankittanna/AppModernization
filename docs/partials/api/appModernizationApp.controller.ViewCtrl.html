@@ -5,9 +5,49 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-viewctrl-page"><h3 id="description_viewctrl">ViewCtrl</h3>
-<p>Controller of the appModernizationApp</p>
+<p>Controller of the appModernizationApp
+For View mode of the reservations made. This controller fetches the details of the reservation from the HRS services based on the route definition listed in app.js</p>
 </div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$scope">$scope</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$http">$http</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$location">$location</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$routeParams">$routeParams</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/HRS">HRS</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/breadcrumbs">breadcrumbs</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/UtilitiesService">UtilitiesService</a></code>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <div class="usage"><pre class="prettyprint linenums">new ViewCtrl();</pre>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_breadcrumbsobject">breadcrumbs:object</h3>
+<div class="breadcrumbsobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-viewctrl-page"><p>Page Navigation/Level</p>
+</div></div>
+</li>
+<li><h3 id="properties_responsemsgstring">responseMsg:string</h3>
+<div class="responsemsgstring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-viewctrl-page"><p>Response Message from server.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reservationdetailsarray">reservationDetails:array</h3>
+<div class="reservationdetailsarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-viewctrl-page"><p>Holds available reservations details.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reserveddataobject">reservedData:object</h3>
+<div class="reserveddataobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-viewctrl-page"><p>Holds reserved data of the current reservation on the screen.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reservationidnumber">reservationId:number</h3>
+<div class="reservationidnumber"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-viewctrl-page"><p>Reservation ID of the current reservation on the screen. Taken from the Route Parameter.</p>
+</div></div>
+</li>
+</ul>
 </div>
 </div>

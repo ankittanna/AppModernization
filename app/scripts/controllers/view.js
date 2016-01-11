@@ -6,6 +6,22 @@
  * @description
  * # ViewCtrl
  * Controller of the appModernizationApp
+ * For View mode of the reservations made. This controller fetches the details of the reservation from the HRS services based on the route definition listed in app.js
+ * 
+ * @requires $scope
+ * @requires $http
+ * @requires $location
+ * @requires $routeParams
+ * @requires HRS
+ * @requires breadcrumbs
+ * @requires UtilitiesService
+ * 
+ * @property {object} breadcrumbs:object Page Navigation/Level
+ * @property {string} responseMsg:string Response Message from server.
+ * @property {array} reservationDetails:array Holds available reservations details.
+ * @property {object} reservedData:object Holds reserved data of the current reservation on the screen.
+ * @property {number} reservationId:number Reservation ID of the current reservation on the screen. Taken from the Route Parameter.
+ *
  */
 angular.module('appModernizationApp')
     .controller('ViewCtrl', ['$scope', '$http', 'HRS', '$location', '$routeParams', 'breadcrumbs', 'UtilitiesService', function($scope, $http, HRS, $location, $routeParams, breadcrumbs, UtilitiesService) {

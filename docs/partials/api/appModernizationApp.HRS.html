@@ -1,0 +1,111 @@
+<h1><code ng:non-bindable="">HRS</code>
+<div><span class="hint">service in module <code ng:non-bindable="">appModernizationApp</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="appmodernizationapp-hrs-page"><h3 id="description_available-services">AVAILABLE SERVICES</h3>
+<p>The HRS consist of a services for CRUD operations on the database. This service works accross the application and it just needs a dependency of <strong>HRS</strong> and a call to <strong>SERVICE_NAME</strong> method of the services with required parameters.</p>
+<p>These are the list of services available within HRS.</p>
+<ul>
+<li>backendSystem</li>
+<li>authType</li>
+<li>authToken</li>
+<li>searchReservations</li>
+<li>saveReservations</li>
+<li>getRoomList</li>
+<li>getReservedRoomData</li>
+<li>cancelReservation</li>
+<li>getRegisteredData</li>
+<li>editReservation</li>
+<li>greetingFunction</li>
+</ul></div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$http">$http</a></code>
+</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">HRS(backendSystem:string, authType:string, authToken:object);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>backendSystem:string</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="appmodernizationapp-hrs-page"><p>Holds the backend system to be hit</p>
+</div></td></tr><tr><td>authType:string</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="appmodernizationapp-hrs-page"><p>Authentication Type ADFS/Facebook</p>
+</div></td></tr><tr><td>authToken:object</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-hrs-page"><p>Token Object from ADFS/Facebook</p>
+</div></td></tr></tbody></table><h4 id="usage_returns">Returns</h4><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-servicesmapobject">servicesMapObject</a></td><td><div class="appmodernizationapp-hrs-page"><p>services This maps the services with the functions listed in the file.</p>
+</div></td></tr></table></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_cancelreservation">cancelReservation()</h3>
+<div class="cancelreservation"><div class="appmodernizationapp-hrs-cancelreservation-page"><p>Allows you to cancel the reservation using http.delete method
+Service: API/reservation/12</p>
+</div><h5 id="methods_cancelreservation_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-httppromise">httpPromise</a></td><td><div class="appmodernizationapp-hrs-cancelreservation-page"><p>resolve with fetched data, or fails with error description.</p>
+</div></td></tr></table><h4 id="methods_cancelreservation_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-hrs-cancelreservation-page"><p>HRS.cancelReservation(reservationId);</p>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_editreservation">editReservation()</h3>
+<div class="editreservation"><div class="appmodernizationapp-hrs-editreservation-page"><p>Allows you to edit the reservation using http.put method
+Service: API/reservation/12</p>
+</div><h5 id="methods_editreservation_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-httppromise">httpPromise</a></td><td><div class="appmodernizationapp-hrs-editreservation-page"><p>resolve with fetched data, or fails with error description.</p>
+</div></td></tr></table><h4 id="methods_editreservation_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-hrs-editreservation-page"><p>HRS.editReservation(reservationId);</p>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_getregistereddata">getRegisteredData()</h3>
+<div class="getregistereddata"><div class="appmodernizationapp-hrs-getregistereddata-page"><p>Gets the reservation details based on reservation ID
+Service: API/reservation/12</p>
+</div><h5 id="methods_getregistereddata_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-httppromise">httpPromise</a></td><td><div class="appmodernizationapp-hrs-getregistereddata-page"><p>resolve with fetched data, or fails with error description.</p>
+</div></td></tr></table><h4 id="methods_getregistereddata_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-hrs-getregistereddata-page"><p>HRS.getRegisteredData(reservationId);</p>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_getreservedroomdata">getReservedRoomData()</h3>
+<div class="getreservedroomdata"><div class="appmodernizationapp-hrs-getreservedroomdata-page"><p>Sample Service for getting reserved room data
+Service: NA</p>
+</div><h5 id="methods_getreservedroomdata_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-httppromise">httpPromise</a></td><td><div class="appmodernizationapp-hrs-getreservedroomdata-page"><p>resolve with fetched data, or fails with error description.</p>
+</div></td></tr></table><h4 id="methods_getreservedroomdata_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-hrs-getreservedroomdata-page"><p>HRS.getReservedRoomData();</p>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_getroomlist">getRoomList()</h3>
+<div class="getroomlist"><div class="appmodernizationapp-hrs-getroomlist-page"><p>Method to Get available Rooms form the backend api
+Service: API/rooms?arrivalDate=20150303&amp;departureDate=20150303&amp;roomType=KI;</p>
+</div><h5 id="methods_getroomlist_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-httppromise">httpPromise</a></td><td><div class="appmodernizationapp-hrs-getroomlist-page"><p>resolve with fetched data, or fails with error description.</p>
+</div></td></tr></table><h4 id="methods_getroomlist_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-hrs-getroomlist-page"><p>HRS.getRoomList(arrivalDate, departureDate, roomType);</p>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_reservationdetails">reservationDetails()</h3>
+<div class="reservationdetails"><div class="appmodernizationapp-hrs-reservationdetails-page"><p>Post to the database the reservation to be made.
+Service: API/reservation;</p>
+</div><h5 id="methods_reservationdetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-httppromise">httpPromise</a></td><td><div class="appmodernizationapp-hrs-reservationdetails-page"><p>resolve with fetched data, or fails with error description.</p>
+</div></td></tr></table><h4 id="methods_reservationdetails_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-hrs-reservationdetails-page"><p>HRS.saveReservations(reservationDetails);</p>
+</div></div>
+</div>
+</li>
+<li><h3 id="methods_searchreservations">searchReservations()</h3>
+<div class="searchreservations"><div class="appmodernizationapp-hrs-searchreservations-page"><p>Method to search available reservations form the backend api
+Service: API/reservation?lastName=Tanna&amp;arrivalDate=20150303</p>
+</div><h5 id="methods_searchreservations_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-httppromise">httpPromise</a></td><td><div class="appmodernizationapp-hrs-searchreservations-page"><p>resolve with fetched data, or fails with error description.</p>
+</div></td></tr></table><h4 id="methods_searchreservations_example">Example</h4>
+<div class="example"><div class="appmodernizationapp-hrs-searchreservations-page"><p>HRS.searchReservations(lastName, arrivalDate);</p>
+</div></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_baseurlstring">baseUrl:string</h3>
+<div class="baseurlstring"><div class="appmodernizationapp-hrs-page"><p>Holds the base url for the server on which the services would be hit</p>
+</div></div>
+</li>
+<li><h3 id="properties_reserveddatastring">reservedData:string</h3>
+<div class="reserveddatastring"><div class="appmodernizationapp-hrs-page"><p>Holds Reserved Data</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

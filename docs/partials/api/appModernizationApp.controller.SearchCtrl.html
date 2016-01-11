@@ -5,9 +5,72 @@
 </h1>
 <div><h2 id="description">Description</h2>
 <div class="description"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page"><h3 id="description_searchctrl">SearchCtrl</h3>
-<p>Controller of the appModernizationApp</p>
+<p>Controller of the appModernizationApp
+Controller of search room page. Holds the functionality for searching rooms.</p>
 </div></div>
+<h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/ng.$scope">$scope</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$http">$http</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ng.$location">$location</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/HRS">HRS</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/breadcrumbs">breadcrumbs</a></code>
+</li>
+</ul>
 <h2 id="usage">Usage</h2>
 <div class="usage"><pre class="prettyprint linenums">new SearchCtrl();</pre>
+</div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_open">open()</h3>
+<div class="open"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-open-page"><p>Controls the opening and closing of the date picker.</p>
+</div><h5 id="methods_open_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-null">null</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-open-page"><p>Returns nothing. Sets the date picker #1 and #2 open status.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_searchreservations">searchReservations()</h3>
+<div class="searchreservations"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-searchreservations-page"><p>Calls HRS service to search reservation based on last name and arrival date.</p>
+</div><h5 id="methods_searchreservations_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-searchreservations-page"><p>True/False</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_utilities">utilities()</h3>
+<div class="utilities"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-utilities-page"><p>Holds the utilities service functions in an object</p>
+</div><h5 id="methods_utilities_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-utilities-page"><p>Type UtilitiesService</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_validatesearchcriteria">validateSearchCriteria()</h3>
+<div class="validatesearchcriteria"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-validatesearchcriteria-page"><p>Validates Search Criteria</p>
+</div><h5 id="methods_validatesearchcriteria_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-validatesearchcriteria-page"><p>True/False</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_breadcrumbsobject">breadcrumbs:object</h3>
+<div class="breadcrumbsobject"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page"><p>Page Navigation/Level</p>
+</div></div>
+</li>
+<li><h3 id="properties_responsemsgstring">responseMsg:string</h3>
+<div class="responsemsgstring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page"><p>Response Message from server.</p>
+</div></div>
+</li>
+<li><h3 id="properties_reservationsarray">reservations:array</h3>
+<div class="reservationsarray"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page"><p>Holds available reservations.</p>
+</div></div>
+</li>
+<li><h3 id="properties_searchvalidatedboolean">searchValidated:boolean</h3>
+<div class="searchvalidatedboolean"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page"><p>Is search criteria valid</p>
+</div></div>
+</li>
+<li><h3 id="properties_searchlastnamestring">searchLastName:string</h3>
+<div class="searchlastnamestring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page"><p>Last name for search criteria</p>
+</div></div>
+</li>
+<li><h3 id="properties_searcharrivaldatestring">searchArrivalDate:string</h3>
+<div class="searcharrivaldatestring"><div class="appmodernizationapp-controller-page appmodernizationapp-controller-searchctrl-page"><p>Arrival date in string format</p>
+</div></div>
+</li>
+</ul>
 </div>
 </div>

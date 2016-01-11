@@ -1,3 +1,22 @@
+/**
+ * @ngdoc service 
+ * @name appModernizationApp.UtilitiesService
+ * @description
+ * # AVAILABLE SERVICES
+ *
+ * The UtilitiesService consist of a services for Common operations on the Date and other common functionalities used across app. This service  works accross the application and it just needs a dependency of <strong>UtilitiesService</strong> and a call to <strong>UTILITY_NAME</strong> method of the services with required parameters.
+ *
+ * These are the list of services available within UtilitiesService.
+ * <ul>
+ * <li>convertToFormat</li>
+ * <li>convertToRaw</li>
+ * <li>formatMMDDYYYY</li>
+ * <li>keyUpEvent</li>
+ * <li>isPreviousDay</li>
+ * </ul>
+ * @returns {servicesMapObject} services This maps the services with the functions listed in the file.
+**/
+
 /* Factory UtilitiesService - Collection of all utility functions */
 function utilitiesService(){
     'use strict';
@@ -5,6 +24,20 @@ function utilitiesService(){
     Date.prototype.notPreviousDay = function(d) {
       return !(d.getFullYear() >= this.getFullYear() && d.getDate() >= this.getDate() && d.getMonth() >= this.getMonth());
     }; 
+    
+/**
+ * @ngdoc function
+ * @name appModernizationApp.UtilitiesService#convertToFormat
+ * @methodOf appModernizationApp.UtilitiesService
+ *
+ * @description
+ * Method to convert raw date to formatted date
+ * Service: NA
+ * @example
+ * UtilitiesService.convertToFormat(rawDate);
+ * 
+ * @returns {string} Formatted String
+ */    
     
     function convertToFormat(rawDate)
     {
@@ -15,6 +48,20 @@ function utilitiesService(){
         
         return formattedDate;
     }
+
+/**
+ * @ngdoc function
+ * @name appModernizationApp.UtilitiesService#convertToRaw
+ * @methodOf appModernizationApp.UtilitiesService
+ *
+ * @description
+ * Method to convert formatted date to raw date
+ * Service: NA
+ * @example
+ * UtilitiesService.convertToRaw(rawDate);
+ * 
+ * @returns {string} Raw String
+ */    
     
     function convertToRaw(formattedDate)
     {
@@ -26,6 +73,20 @@ function utilitiesService(){
         return rawDate;
     }
 
+/**
+ * @ngdoc function
+ * @name appModernizationApp.UtilitiesService#formatMMDDYYYY
+ * @methodOf appModernizationApp.UtilitiesService
+ *
+ * @description
+ * Converts Date to MMDDYYYY Format
+ * Service: NA
+ * @example
+ * UtilitiesService.formatMMDDYYYY(rawDate);
+ * 
+ * @returns {number} Formatted Date formattedDate
+ */    
+    
     function formatMMDDYYYY(date){
         // return parseInt( date.getFullYear()+ '' + (date.getMonth() + 1) + 
         // '' +  date.getDate());
@@ -37,11 +98,38 @@ function utilitiesService(){
 
         return parseInt(formattedDate);
     }
+
+/**
+ * @ngdoc function
+ * @name appModernizationApp.UtilitiesService#keyUpEvent
+ * @methodOf appModernizationApp.UtilitiesService
+ *
+ * @description
+ * Converts input to upper case
+ * Service: NA
+ * @example
+ * UtilitiesService.keyUpEvent(rawDate);
+ * 
+ * @returns {null} Nothing as of Now
+ */    
     
     function keyUpEvent(event)
     {
         event.currentTarget.value = event.currentTarget.value.toUpperCase();
     }
+/**
+ * @ngdoc function
+ * @name appModernizationApp.UtilitiesService#isPreviousDay
+ * @methodOf appModernizationApp.UtilitiesService
+ *
+ * @description
+ * Checks if the provided date is previous date or current date
+ * Service: NA
+ * @example
+ * UtilitiesService.isPreviousDay(todaysDate, selectedDate);
+ * 
+ * @returns {boolean} True/False
+ */
     
     function isPreviousDay(todaysDate, selectedDate)
     {
