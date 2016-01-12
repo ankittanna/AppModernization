@@ -29,7 +29,7 @@ angular.module('appModernizationApp')
         $scope.selectedSystem = "";
         // $scope.username = HRS.userName;
         
-        $scope.userInfo.userName = HRS.userName;
+        $scope.userInfo.userName = HRS.userName + "@accenture.com";
         $scope.password = '12345678';
 
         FacebookDataFactory.initializeFacebookLogin();
@@ -47,7 +47,7 @@ angular.module('appModernizationApp')
         	HRS.backendSystem = $scope.selectedSystem;
         	HRS.authType = authType;
         	HRS.authToken = 'Token1';//Pick From LocalStorage
-            HRS.userName = $scope.username;
+            HRS.userName =  $scope.userInfo.userName;
             
             if(authType === 'fb')
             {

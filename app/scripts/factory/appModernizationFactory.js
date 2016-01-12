@@ -38,7 +38,7 @@ function hotelReservationServices($http) {
     var backendSystem = '';
     var authType = '';
     var authToken = '';
-    var userName = 'john.doe@accenture.com';
+    var userName = 'john.doe';
 
 /**
  * @ngdoc function
