@@ -31,6 +31,7 @@ angular.module('appModernizationApp')
         this.searchLastName = '';
         this.searchArrivalDate = '';
 
+        $scope.userInfo.userName = HRS.userName;
         //$http.defaults.headers.common['X-AUTH-TOKEN'] = HRS.authToken;
         //$http.defaults.headers.common['X-AUTH-TYPE'] = HRS.authType;
         //$http.defaults.headers.common['X-BACK-END'] = HRS.backendSystem;
