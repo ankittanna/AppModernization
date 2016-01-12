@@ -76,7 +76,7 @@
                     <tbody>
                         <tr ng-repeat="(index, reservation) in reservations">
                             <td>{{index+1}}</td>
-                            <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch">{{reservation.reservationId}}</a></td>
+                            <td><a href="#/search/view/{{reservation.reservationId}}/fromsearch" title="View">{{reservation.reservationId}}</a></td>
                             <td>{{reservation.firstName}}</td>
                             <td>{{reservation.lastName}}</td>
                             <td>{{search.utilities.convertToFormat(reservation.arrivalDate)}}</td>
@@ -94,8 +94,8 @@
                             <th>S. No</th>
                             <td>{{index+1}}</td>
                             <td id="actions">
-                                <a id="editsrch" ng-href="#/search/details/{{reservation.reservationId}}" title="edit"><img ng-src="images/Icon_Edit.png"></a>
-                                <a ng-href="#/search/delete/{{reservation.reservationId}}" title="delete"><img ng-src="images/Icon_Delete.png"></a>
+                                <a id="editsrch" ng-href="#/search/details/{{reservation.reservationId}}" title="Edit"><img ng-src="images/Icon_Edit.png"></a>
+                                <a ng-href="#/search/delete/{{reservation.reservationId}}" title="Cancel"><img ng-src="images/Icon_Delete.png"></a>
                             </td>
                         </tr>
                         <tr>
