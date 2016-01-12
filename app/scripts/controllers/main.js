@@ -21,16 +21,18 @@
  *
  */
 angular.module('appModernizationApp')
-    .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', function($scope, $http, HRS, $location, breadcrumbs) {
+    .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'FacebookDataFactory', function($scope, $http, HRS, $location, breadcrumbs, FacebookDataFactory) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.displayProperties.isUserInfoVisible = false;
         $scope.backendSystems = ['LEGSTAR', 'RAINCODE', 'MICROFOCUS', 'TUXEDO'];
 
         $scope.selectedSystem = "";
-        $scope.username = HRS.userName;
+        // $scope.username = HRS.userName;
+        
+        $scope.userInfo.userName = HRS.userName;
         $scope.password = '12345678';
 
-        
+        FacebookDataFactory.initializeFacebookLogin();
 /**
  * @ngdoc function
  * @name appModernizationApp.controller:MainCtrl#onHRSGLogin
@@ -46,6 +48,11 @@ angular.module('appModernizationApp')
         	HRS.authType = authType;
         	HRS.authToken = 'Token1';//Pick From LocalStorage
             HRS.userName = $scope.username;
+            
+            if(authType === 'fb')
+            {
+                FacebookDataFactory.loginWithFacebook();
+            }
         };
 
     }]);

@@ -20,7 +20,10 @@
 angular.module('appModernizationApp')
     .controller('IndexCtrl', ['$scope', 'breadcrumbs', 'HRS', function($scope, breadcrumbs, HRS) {
 
-        $scope.userName = HRS.userName.substring(0, HRS.userName.indexOf('@'));
+        // $scope.userName = HRS.userName.substring(0, HRS.userName.indexOf('@'));
+        $scope.userInfo = {};
+        $scope.userInfo.userName = HRS.userName;
+        
         $scope.breadcrumbs = breadcrumbs;
         
         $scope.displayProperties = {};
