@@ -22,7 +22,8 @@ function utilitiesService(){
     'use strict';
     
     Date.prototype.notPreviousDay = function(d) {
-      return !(d.getFullYear() >= this.getFullYear() && d.getDate() >= this.getDate() && d.getMonth() >= this.getMonth());
+      //return !(d.getFullYear() >= this.getFullYear() && d.getDate() >= this.getDate() && d.getMonth() >= this.getMonth());
+      return !(this <= d);
     }; 
     
 /**
