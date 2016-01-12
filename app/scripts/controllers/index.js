@@ -20,7 +20,7 @@
 angular.module('appModernizationApp')
     .controller('IndexCtrl', ['$scope', 'breadcrumbs', 'HRS', function($scope, breadcrumbs, HRS) {
 
-        $scope.userName = HRS.userName;
+        //$scope.userName = HRS.userName;
         $scope.breadcrumbs = breadcrumbs;
         
         $scope.displayProperties = {};
