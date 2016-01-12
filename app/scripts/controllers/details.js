@@ -93,7 +93,13 @@ angular.module('appModernizationApp')
             if (!$scope.reservationId) {
                 $scope.reservationDetails =data.dummyreservation;
                 $scope.expirymonth.val = $scope.reservationDetails.expiryMonth;
-                $scope.expiryyear.val = $scope.reservationDetails.expiryYear;
+                $scope.expiryyear.val = $scope.reservationDetails.expiryYear;                
+                var arrivalDate = new Date();
+                var departureDate  = new Date()
+                arrivalDate.setDate(arrivalDate.getDate() + 1);
+                $scope.reservationDetails.arrivalDate = arrivalDate;
+                departureDate.setDate(departureDate.getDate() + 2);
+                $scope.reservationDetails.departureDate = departureDate;
             } 
         });
         

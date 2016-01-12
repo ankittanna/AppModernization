@@ -38,6 +38,7 @@ function hotelReservationServices($http) {
     var backendSystem = '';
     var authType = '';
     var authToken = '';
+    var userName = 'John Doe';
 
 /**
  * @ngdoc function
@@ -210,7 +211,8 @@ function hotelReservationServices($http) {
         cancelReservation: cancelReservation,
         getRegisteredData: getRegisteredData,
         editReservation: editReservation,
-        greetingFunction: greetingFunction
+        greetingFunction: greetingFunction,
+        userName: userName
     };
 }
 

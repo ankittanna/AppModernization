@@ -423,3 +423,7 @@ legend {
 .loginpage .jumbotron .btn {
     padding: 2px 10px;
 }
+
+#loginform button {
+    width: 100%;
+}

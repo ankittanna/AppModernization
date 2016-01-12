@@ -27,6 +27,9 @@ angular.module('appModernizationApp')
         $scope.backendSystems = ['LEGSTAR', 'RAINCODE', 'MICROFOCUS', 'TUXEDO'];
 
         $scope.selectedSystem = "";
+        $scope.username = HRS.userName;
+        $scope.password = '1234';
+
         
 /**
  * @ngdoc function
@@ -42,6 +45,7 @@ angular.module('appModernizationApp')
         	HRS.backendSystem = $scope.selectedSystem;
         	HRS.authType = authType;
         	HRS.authToken = 'Token1';//Pick From LocalStorage
+            HRS.userName = $scope.username;
         };
 
     }]);
