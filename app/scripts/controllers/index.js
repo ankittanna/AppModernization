@@ -22,7 +22,7 @@ angular.module('appModernizationApp')
 
         // $scope.userName = HRS.userName.substring(0, HRS.userName.indexOf('@'));
         $scope.userInfo = {};
-        $scope.userInfo.userName = HRS.userName;
+        $scope.userName = HRS.userName;
         
         $scope.breadcrumbs = breadcrumbs;
         

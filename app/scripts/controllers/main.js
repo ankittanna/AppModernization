@@ -47,7 +47,13 @@ angular.module('appModernizationApp')
         	HRS.backendSystem = $scope.selectedSystem;
         	HRS.authType = authType;
         	HRS.authToken = 'Token1';//Pick From LocalStorage
-            HRS.userName =  $scope.userInfo.userName;
+            if($scope.userInfo.userName.indexOf("@") > 0 ){
+                HRS.userName =  $scope.userInfo.userName.substring (0,$scope.userInfo.userName.indexOf("@"));
+            }
+            else {
+                HRS.userName =  $scope.userInfo.userName;
+            }
+            
             
             if(authType === 'fb')
             {
