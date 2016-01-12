@@ -92,6 +92,10 @@ body {
     .header {
         margin-bottom: 30px;
     }
+
+    .loginpage {
+        margin-top: -30px;
+    }
     /* Remove the bottom border on the jumbotron for visual effect */
     .jumbotron {
         border-bottom: 0;
@@ -397,6 +401,9 @@ legend {
     font-weight: bold;
 }
 
+.loginpage img{
+    width: 100%;
+}
 
 .loginpage .form-control {
     margin-bottom: 10px;
@@ -426,4 +433,16 @@ legend {
 
 #loginform button {
     width: 100%;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px; 
+  background-color: #ccc;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 2;
+  /* width and height can be anything, as long as they're equal */
 }

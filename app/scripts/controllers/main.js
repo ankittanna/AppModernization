@@ -28,7 +28,7 @@ angular.module('appModernizationApp')
 
         $scope.selectedSystem = "";
         $scope.username = HRS.userName;
-        $scope.password = '1234';
+        $scope.password = '12345678';
 
         
 /**
