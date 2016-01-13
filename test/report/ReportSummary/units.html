@@ -13,15 +13,15 @@
         <td colspan="3" title="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36">Browser: Chrome 47.0.2526 (Mac OS X 10.9.5)</td>
       </tr>
       <tr class="overview">
-        <td colspan="3">Timestamp: 1/13/2016, 5:49:21 PM</td>
+        <td colspan="3">Timestamp: 1/13/2016, 6:57:23 PM</td>
       </tr>
       <tr>
         <td colspan="3">
-          4 tests / 
+          6 tests / 
           0 errors / 
-          0 failures / 
+          1 failures / 
           0 skipped / 
-          runtime: 0.071s
+          runtime: 0.051s
         </td>
       </tr>
       <tr class="header">
@@ -30,17 +30,17 @@
         <td>Suite / Results</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.056s</td>
+        <td>Passed in 0.034s</td>
         <td>says Hello to me</td>
         <td>getGreeting</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.008s</td>
+        <td>Passed in 0.005s</td>
         <td>should convert the date into formatted date</td>
         <td>Factory: UtilitiesService &raquo; convertToFormat</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.004s</td>
+        <td>Passed in 0.003s</td>
         <td>should convert the date into raw formatted date</td>
         <td>Factory: UtilitiesService &raquo; convertToRaw</td>
       </tr>
@@ -49,48 +49,20 @@
         <td>should convert the date to the YYYYMMDD format</td>
         <td>Factory: UtilitiesService &raquo; formatMMDDYYYY</td>
       </tr>
-    </table>
-    <hr/>
-    <table cellspacing="0" cellpadding="0" border="0">
-      <tr class="overview">
-        <td colspan="3" title="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/537.86.3">Browser: Safari 9.0.2 (Mac OS X 10.9.5)</td>
-      </tr>
-      <tr class="overview">
-        <td colspan="3">Timestamp: 1/13/2016, 5:49:21 PM</td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          4 tests / 
-          0 errors / 
-          0 failures / 
-          0 skipped / 
-          runtime: 0.02s
+      <tr class="fail">
+        <td>Failed</td>
+        <td>Should be called and have a capital value stored</td>
+        <td>
+          Factory: UtilitiesService &raquo; keyUpEvent
+          <br />Error: Expected a spy, but got undefined.
+    at Object.&lt;anonymous&gt; (/Users/macadmin/Desktop/AppModernization/AppModernization/test/spec/factory/utilitiesFactory.js:90:62)
+
         </td>
-      </tr>
-      <tr class="header">
-        <td>Status</td>
-        <td>Spec</td>
-        <td>Suite / Results</td>
-      </tr>
-      <tr class="pass">
-        <td>Passed in 0.012s</td>
-        <td>says Hello to me</td>
-        <td>getGreeting</td>
-      </tr>
-      <tr class="pass">
-        <td>Passed in 0.003s</td>
-        <td>should convert the date into formatted date</td>
-        <td>Factory: UtilitiesService &raquo; convertToFormat</td>
       </tr>
       <tr class="pass">
         <td>Passed in 0.002s</td>
-        <td>should convert the date into raw formatted date</td>
-        <td>Factory: UtilitiesService &raquo; convertToRaw</td>
-      </tr>
-      <tr class="pass">
-        <td>Passed in 0.003s</td>
-        <td>should convert the date to the YYYYMMDD format</td>
-        <td>Factory: UtilitiesService &raquo; formatMMDDYYYY</td>
+        <td>should check if its a previous day</td>
+        <td>Factory: UtilitiesService &raquo; isPreviousDay</td>
       </tr>
     </table>
     <hr/>
@@ -99,15 +71,15 @@
         <td colspan="3" title="Mozilla/5.0 (Macintosh; Intel Mac OS X) AppleWebKit/534.34 (KHTML, like Gecko) PhantomJS/1.9.8 Safari/534.34">Browser: PhantomJS 1.9.8 (Mac OS X 0.0.0)</td>
       </tr>
       <tr class="overview">
-        <td colspan="3">Timestamp: 1/13/2016, 5:49:21 PM</td>
+        <td colspan="3">Timestamp: 1/13/2016, 6:57:24 PM</td>
       </tr>
       <tr>
         <td colspan="3">
-          4 tests / 
+          6 tests / 
           0 errors / 
-          0 failures / 
+          1 failures / 
           0 skipped / 
-          runtime: 0.022s
+          runtime: 0.028s
         </td>
       </tr>
       <tr class="header">
@@ -116,12 +88,12 @@
         <td>Suite / Results</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.013s</td>
+        <td>Passed in 0.01s</td>
         <td>says Hello to me</td>
         <td>getGreeting</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.002s</td>
         <td>should convert the date into formatted date</td>
         <td>Factory: UtilitiesService &raquo; convertToFormat</td>
       </tr>
@@ -131,9 +103,82 @@
         <td>Factory: UtilitiesService &raquo; convertToRaw</td>
       </tr>
       <tr class="pass">
-        <td>Passed in 0.003s</td>
+        <td>Passed in 0.006s</td>
         <td>should convert the date to the YYYYMMDD format</td>
         <td>Factory: UtilitiesService &raquo; formatMMDDYYYY</td>
+      </tr>
+      <tr class="fail">
+        <td>Failed</td>
+        <td>Should be called and have a capital value stored</td>
+        <td>
+          Factory: UtilitiesService &raquo; keyUpEvent
+          <br />Error: Expected a spy, but got undefined.
+    at /Users/macadmin/Desktop/AppModernization/AppModernization/test/spec/factory/utilitiesFactory.js:90
+
+        </td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should check if its a previous day</td>
+        <td>Factory: UtilitiesService &raquo; isPreviousDay</td>
+      </tr>
+    </table>
+    <hr/>
+    <table cellspacing="0" cellpadding="0" border="0">
+      <tr class="overview">
+        <td colspan="3" title="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/601.3.9 (KHTML, like Gecko) Version/9.0.2 Safari/537.86.3">Browser: Safari 9.0.2 (Mac OS X 10.9.5)</td>
+      </tr>
+      <tr class="overview">
+        <td colspan="3">Timestamp: 1/13/2016, 6:57:24 PM</td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          6 tests / 
+          0 errors / 
+          1 failures / 
+          0 skipped / 
+          runtime: 0.032s
+        </td>
+      </tr>
+      <tr class="header">
+        <td>Status</td>
+        <td>Spec</td>
+        <td>Suite / Results</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.018s</td>
+        <td>says Hello to me</td>
+        <td>getGreeting</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.004s</td>
+        <td>should convert the date into formatted date</td>
+        <td>Factory: UtilitiesService &raquo; convertToFormat</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should convert the date into raw formatted date</td>
+        <td>Factory: UtilitiesService &raquo; convertToRaw</td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.002s</td>
+        <td>should convert the date to the YYYYMMDD format</td>
+        <td>Factory: UtilitiesService &raquo; formatMMDDYYYY</td>
+      </tr>
+      <tr class="fail">
+        <td>Failed</td>
+        <td>Should be called and have a capital value stored</td>
+        <td>
+          Factory: UtilitiesService &raquo; keyUpEvent
+          <br />Error: Expected a spy, but got undefined. in /Users/macadmin/Desktop/AppModernization/AppModernization/node_modules/jasmine-core/lib/jasmine-core/jasmine.js (line 3083)
+/Users/macadmin/Desktop/AppModernization/AppModernization/test/spec/factory/utilitiesFactory.js:90:78
+
+        </td>
+      </tr>
+      <tr class="pass">
+        <td>Passed in 0.003s</td>
+        <td>should check if its a previous day</td>
+        <td>Factory: UtilitiesService &raquo; isPreviousDay</td>
       </tr>
     </table>
     <hr/>

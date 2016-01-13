@@ -1,6 +1,12 @@
 'use strict';
 
 describe('Factory: UtilitiesService', function(){
+
+//var scope;
+//var $compile;
+//var $document;
+//var element = null;
+    
     // Import the module this service belongs to
     beforeEach(module('appModernizationApp'));
     
@@ -40,4 +46,59 @@ describe('Factory: UtilitiesService', function(){
         expect(UtilitiesService.formatMMDDYYYY(currentDate)).toEqual(20160113);
         });
     });
+    
+    
+//    var template = '<div handle-esc="close()"></div>';
+//    beforeEach(inject(function($injector){
+//        $compile = $injector.get('$compile');
+//        scope = $injector.get('$rootScope').$new();
+//        $document = $injector.get('$document');
+//    }));
+//    
+//    beforeEach(function() {
+//        element = $compile(template)(scope);
+//        /**
+//         * Create method and spyOn it.
+//         */
+//        scope.close = function() {};
+//        spyOn(scope, 'close');
+//    });
+//
+//    
+//    
+//    function triggerKeyUpEvent()
+//    {
+//        var e = new window.KeyboardEvent('keydown', {
+//            bubbles: true,
+//            cancelable: true,
+//            shiftKey: true
+//        });
+//        
+//        delete e.keyCode;
+//        Object.defineProperty(e, 'keyCode', {'value': 27});
+//
+//        $document[0].dispatchEvent(e);
+//    }
+    // Test 4: keyUpEvent
+    // TODO: Learn Emulating Key Press Events
+    describe('keyUpEvent', function(){
+        it('Should be called and have a capital value stored', function(){
+            // Line to be tested
+            var sampleEvent = {};
+            sampleEvent.currentTarget = {};
+            sampleEvent.currentTarget.value = 'a';
+            expect(UtilitiesService.keyUpEvent(sampleEvent)).toHaveBeenCalled();    
+        });
+    });
+    
+    // Test 5: isPreviousDay
+    describe('isPreviousDay', function(){
+        it('should check if its a previous day', function(){
+            var previousDate = new Date('2016', '00', '12');
+            var nextDate = new Date('2016', '00', '13');
+            expect(UtilitiesService.isPreviousDay(previousDate, nextDate)).not.toBeTruthy();
+        });
+    });
+    
+    
 });
