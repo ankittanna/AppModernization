@@ -21,7 +21,7 @@
  *
  */
 angular.module('appModernizationApp')
-    .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'FacebookDataFactory', function($scope, $http, HRS, $location, breadcrumbs, FacebookDataFactory) {
+    .controller('MainCtrl', ['$scope', '$http', 'HRS', '$location', 'breadcrumbs', 'FacebookDataFactory', '$rootScope', function($scope, $http, HRS, $location, breadcrumbs, FacebookDataFactory, $rootScope) {
         $scope.breadcrumbs = breadcrumbs;
         $scope.displayProperties.isUserInfoVisible = false;
         $scope.backendSystems = ['LEGSTAR', 'RAINCODE', 'MICROFOCUS', 'TUXEDO'];
@@ -31,8 +31,16 @@ angular.module('appModernizationApp')
         
         $scope.userInfo.userName = HRS.userName + "@accenture.com";
         $scope.password = '12345678';
-
-        FacebookDataFactory.initializeFacebookLogin();
+        this.facebookButtonString = 'Login with Facebook';
+        
+        FacebookDataFactory.initializeFacebookLogin().then(function(response){
+            if(response.status === 'connected')
+            {
+                $rootScope.$apply(function(){
+                    this.facebookButtonString = 'Continue with Facebook Info';
+                });
+            }
+        });
 /**
  * @ngdoc function
  * @name appModernizationApp.controller:MainCtrl#onHRSGLogin

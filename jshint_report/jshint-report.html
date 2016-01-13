@@ -67,9 +67,9 @@
 </tr><tr><td colspan="5"><b>../app/scripts/controllers/main.js</b></td></tr><tr class="warning">
     <td class="text-center">W072</td>
     <td class="text-center">24</td>
-    <td class="text-center">115</td>
-    <td><code>    .controller&#40;&#39;MainCtrl&#39;&#44; &#91;&#39;&#36;scope&#39;&#44; &#39;&#36;http&#39;&#44; &#39;HRS&#39;&#44; &#39;&#36;location&#39;&#44; &#39;breadcrumbs&#39;&#44; &#39;FacebookDataFactory&#39;&#44; function&#40;&#36;scope&#44; &#36;http&#44; HRS&#44; &#36;location&#44; breadcrumbs&#44; FacebookDataFactory&#41; &#123;</code></td>
-    <td>This function has too many parameters. &#40;6&#41;</td>
+    <td class="text-center">129</td>
+    <td><code>    .controller&#40;&#39;MainCtrl&#39;&#44; &#91;&#39;&#36;scope&#39;&#44; &#39;&#36;http&#39;&#44; &#39;HRS&#39;&#44; &#39;&#36;location&#39;&#44; &#39;breadcrumbs&#39;&#44; &#39;FacebookDataFactory&#39;&#44; &#39;&#36;rootScope&#39;&#44; function&#40;&#36;scope&#44; &#36;http&#44; HRS&#44; &#36;location&#44; breadcrumbs&#44; FacebookDataFactory&#44; &#36;rootScope&#41; &#123;</code></td>
+    <td>This function has too many parameters. &#40;7&#41;</td>
 </tr><tr><td colspan="5"><b>../app/scripts/controllers/search.js</b></td></tr><tr class="warning">
     <td class="text-center">W072</td>
     <td class="text-center">26</td>
@@ -89,45 +89,57 @@
     <td><code>    .controller&#40;&#39;ViewCtrl&#39;&#44; &#91;&#39;&#36;scope&#39;&#44; &#39;&#36;http&#39;&#44; &#39;HRS&#39;&#44; &#39;&#36;location&#39;&#44; &#39;&#36;routeParams&#39;&#44; &#39;breadcrumbs&#39;&#44; &#39;UtilitiesService&#39;&#44; function&#40;&#36;scope&#44; &#36;http&#44; HRS&#44; &#36;location&#44; &#36;routeParams&#44; breadcrumbs&#44; UtilitiesService&#41; &#123;</code></td>
     <td>This function has too many statements. &#40;19&#41;</td>
 </tr><tr><td colspan="5"><b>../app/scripts/factory/facebookDataFactory.js</b></td></tr><tr class="warning">
+    <td class="text-center">W072</td>
+    <td class="text-center">1</td>
+    <td class="text-center">29</td>
+    <td><code>function facebookDataFactory&#40;&#36;location&#44; HRS&#44; &#36;window&#44; &#36;rootScope&#44; &#36;q&#41; &#123;</code></td>
+    <td>This function has too many parameters. &#40;5&#41;</td>
+</tr><tr class="warning">
     <td class="text-center">W117</td>
-    <td class="text-center">7</td>
+    <td class="text-center">9</td>
     <td class="text-center">11</td>
     <td><code>          FB.init&#40;&#123;</code></td>
     <td>&#39;FB&#39; is not defined.</td>
 </tr><tr class="warning">
     <td class="text-center">W117</td>
-    <td class="text-center">27</td>
+    <td class="text-center">29</td>
     <td class="text-center">11</td>
     <td><code>          FB.getLoginStatus&#40;function&#40;response&#41; &#123;</code></td>
     <td>&#39;FB&#39; is not defined.</td>
 </tr><tr class="warning">
     <td class="text-center">W117</td>
-    <td class="text-center">38</td>
+    <td class="text-center">43</td>
     <td class="text-center">9</td>
     <td><code>        FB.login&#40;function&#40;&#41; &#123;</code></td>
     <td>&#39;FB&#39; is not defined.</td>
 </tr><tr class="warning">
     <td class="text-center">W117</td>
-    <td class="text-center">41</td>
+    <td class="text-center">46</td>
     <td class="text-center">13</td>
     <td><code>            FB.init&#40;&#123;</code></td>
     <td>&#39;FB&#39; is not defined.</td>
 </tr><tr class="warning">
     <td class="text-center">W117</td>
-    <td class="text-center">49</td>
+    <td class="text-center">54</td>
     <td class="text-center">13</td>
     <td><code>            FB.getLoginStatus&#40;function&#40;response&#41; &#123;</code></td>
     <td>&#39;FB&#39; is not defined.</td>
 </tr><tr class="warning">
     <td class="text-center">W117</td>
-    <td class="text-center">68</td>
+    <td class="text-center">73</td>
     <td class="text-center">13</td>
     <td><code>            FB.api&#40;&#39;/me&#39;&#44; function&#40;response&#41; &#123;</code></td>
     <td>&#39;FB&#39; is not defined.</td>
+</tr><tr><td colspan="5"><b>../app/scripts/factory/utilitiesFactory.js</b></td></tr><tr class="warning">
+    <td class="text-center">W018</td>
+    <td class="text-center">26</td>
+    <td class="text-center">14</td>
+    <td><code>      return &#33;&#40;this &lt;&#61; d&#41;;</code></td>
+    <td>Confusing use of &#39;&#33;&#39;.</td>
 </tr>
     </table>
     <div class="well">
-    Found <span class="label label-default">18</span> failures - <span class="label label-danger">1 errors</span> &amp; <span class="label label-warning">17 warnings</span>
+    Found <span class="label label-default">20</span> failures - <span class="label label-danger">1 errors</span> &amp; <span class="label label-warning">19 warnings</span>
 </div>
 </div>
 

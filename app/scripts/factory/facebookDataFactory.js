@@ -1,8 +1,10 @@
-function facebookDataFactory($location, HRS, $window, $rootScope) {
+function facebookDataFactory($location, HRS, $window, $rootScope, $q) {
     'use strict';
     
     function initializeFacebookLogin()
     {
+        var deferred = $q.defer();
+        
         window.fbAsyncInit = function() {
           FB.init({
             appId      : '823760887743090',
@@ -27,10 +29,13 @@ function facebookDataFactory($location, HRS, $window, $rootScope) {
           FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
                 updateUserInfo(response);
+                $rootScope.$apply(deferred.resolve(response));
               } 
           });
 
           };
+        
+        return deferred.promise;
     }
     
     function loginWithFacebook()
@@ -92,4 +97,4 @@ function facebookDataFactory($location, HRS, $window, $rootScope) {
 angular.module('appModernizationApp')
     .factory('FacebookDataFactory', facebookDataFactory);
 
-facebookDataFactory.$inject = ['$location', 'HRS', '$window', '$rootScope'];
+facebookDataFactory.$inject = ['$location', 'HRS', '$window', '$rootScope', '$q'];
