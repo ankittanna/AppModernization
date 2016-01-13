@@ -36,7 +36,7 @@ function utilitiesService(){
  * Service: NA
  * @example
  * UtilitiesService.convertToFormat(rawDate);
- * 
+ * FORMAT: 20161301 YYYYDDMM To be shown in MM/DD/YYYY
  * @returns {string} Formatted String
  */    
     
