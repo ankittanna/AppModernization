@@ -247,7 +247,7 @@ angular.module('appModernizationApp')
                     }
 
                 }).catch(function(response) {
-                    $scope.roomSearchErrorMsg = response.data.errormessage;
+                    $scope.roomSearchErrorMsg = "ERROR: Internal Error Occured. Contact Admin.";
                 });       
             } else
             {   
@@ -302,7 +302,7 @@ angular.module('appModernizationApp')
                         console.log('Detail Data  ' + JSON.stringify(data));
                         $location.path('/search/view/' + reservationId + '/fromadd');
                     }).catch(function(response) {
-                        $scope.registerationErrorMsg = response.data.errorMessage;
+                        $scope.registerationErrorMsg = "ERROR: Internal Error Occured. Contact Admin.";
                     });
                 } else {
                     HRS.editReservation(reservationDetailsInp, $scope.reservationId).then(function(data) {
@@ -310,7 +310,7 @@ angular.module('appModernizationApp')
                         console.log('Detail Data  ' + JSON.stringify(data));
                         $location.path('/search/view/' + reservationId + '/fromedit');
                     }).catch(function(response) {
-                        $scope.registerationErrorMsg = response.data.errorMessage;
+                        $scope.registerationErrorMsg = "ERROR: Internal Error Occured. Contact Admin.";
                     });
                 }
             } else

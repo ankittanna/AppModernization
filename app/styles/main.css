@@ -446,3 +446,7 @@ legend {
   line-height: 2;
   /* width and height can be anything, as long as they're equal */
 }
+.form-horizontal .errorMsg .control-label
+ {
+    text-align: left;
+}

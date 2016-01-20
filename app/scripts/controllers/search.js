@@ -133,7 +133,7 @@ angular.module('appModernizationApp')
                     }
                 }).catch(function(response) {
                     $scope.isRoomTableVisible = false;
-                    $scope.responseMsg = response.data.errormessage;
+                    $scope.responseMsg = "Internal Error Occured. Contact Admin.";
                 });
 
             }
