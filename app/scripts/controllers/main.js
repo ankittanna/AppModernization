@@ -63,6 +63,8 @@ angular.module('appModernizationApp')
             {
                 FacebookDataFactory.loginWithFacebook();
             }
+
+            $location.path("/search");
         };
 
     }]);
