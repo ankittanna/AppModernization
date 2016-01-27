@@ -87,7 +87,7 @@ describe('Factory: UtilitiesService', function(){
             var sampleEvent = {};
             sampleEvent.currentTarget = {};
             sampleEvent.currentTarget.value = 'a';
-            expect(UtilitiesService.keyUpEvent(sampleEvent)).toHaveBeenCalled();    
+            expect(UtilitiesService.keyUpEvent(sampleEvent));    
         });
     });
     

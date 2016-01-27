@@ -57,6 +57,7 @@ function hotelReservationServices($http) {
     function searchReservations(lastName, arrivalDate) {
         var url = baseUrl + '/reservation?lastName=' + lastName + '&arrivalDate=' + arrivalDate;
         return $http.get(url).then(function(response) {
+            response.headers('A-Token');
             return response.data;
         });
     }
@@ -212,7 +213,8 @@ function hotelReservationServices($http) {
         getRegisteredData: getRegisteredData,
         editReservation: editReservation,
         greetingFunction: greetingFunction,
-        userName: userName
+        userName: userName,
+        baseUrl: baseUrl
     };
 }
 

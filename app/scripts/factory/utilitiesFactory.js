@@ -124,7 +124,7 @@ function utilitiesService(){
  * @methodOf appModernizationApp.UtilitiesService
  *
  * @description
- * Checks if the provided date is previous date or current date
+ * Checks if the provided date is previous date or current date. This function's actual functionality is to check if it is NOT a previous day
  * Service: NA
  * @example
  * UtilitiesService.isPreviousDay(todaysDate, selectedDate);
@@ -135,9 +135,14 @@ function utilitiesService(){
     function isPreviousDay(todaysDate, selectedDate)
     {
         // Usage: todaysDate.notPreviousDay(selectedDate)
-        var isSelectedDateValid = todaysDate.notPreviousDay(selectedDate);
+        try{
+            var isSelectedDateValid = todaysDate.notPreviousDay(selectedDate);
         
-        return isSelectedDateValid;
+            return isSelectedDateValid;
+        } catch(exception)
+        {
+            throw exception;
+        }
     }
     
     return {

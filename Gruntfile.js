@@ -48,7 +48,8 @@ module.exports = function (grunt) {
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
+        // tasks: ['newer:jshint:test', 'newer:jscs:test', 'karma']
+          tasks: ['test']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -474,7 +475,8 @@ grunt.loadNpmTasks('grunt-contrib-jshint');
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
-      'watch'
+      'watch',
+      'test'
     ]);
   });
 
@@ -513,7 +515,7 @@ grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('default', [
     'newer:jshint',
-    'newer:jscs',
+    // 'newer:jscs',
     'test',
     'build',
     'ngdocs'
